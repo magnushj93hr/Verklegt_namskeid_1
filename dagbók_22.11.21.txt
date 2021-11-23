@@ -1,4 +1,3 @@
-
 Dags: 22.nóvember 2021
 
 verkefnastjóri: Kristín
@@ -10,3 +9,6 @@ Búa til kröfulista: Kristín, Ellý
 klárað, Gera nafnorðagreiningu: Haukur og Sigurður 
 klárað, Skilgreina notendahópa: Hlynur, Magnús
 byrja á notkunartilvikum: Kristín, Ellý
+
+
+
