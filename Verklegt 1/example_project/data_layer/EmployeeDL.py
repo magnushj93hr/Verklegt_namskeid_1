@@ -1,5 +1,4 @@
 import csv
-
 from models.Employee import Employee
 
 class EmployeeDL:
@@ -20,4 +19,9 @@ class EmployeeDL:
             fieldnames = ["name","email","phone"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'name': emp.name, "email": emp.email, "phone": emp.phone})
-       
+
+    def load_employee_from_file(self, ID):
+        pass
+
+    def store_employee_to_file(self, Employees):
+        pass
