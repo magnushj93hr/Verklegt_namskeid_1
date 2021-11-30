@@ -9,7 +9,7 @@ class RealEstate:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
+|       Home(home)        Employee(emp)        >Real estate(real)<         Cases(cases)        Contractor(con)    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - s               //Search for estate                       - fi          //Filter options                    |

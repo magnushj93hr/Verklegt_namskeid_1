@@ -1,29 +1,29 @@
-from ui_layer.DestMenu import DestMenu
-from ui_layer.EmpMenu import EmpMenu
-from ui_layer.real_estate import RealEstate
-from ui_layer.cases import Cases
-from ui_layer.contractor import Contractor
+from ui_layer.Destination.DestMenu import DestMenu
+from ui_layer.Employee.EmpMenu import EmpMenu
+from ui_layer.RealEstate.real_estate_menu import RealEstate
+from ui_layer.Cases.cases_menu import Cases
+from ui_layer.Contractor.contractor_menu import Contractor
 from logic_layer.LLAPI import LLAPI
 
 class MainMenu:
     def __init__(self, user):
         self.user = user
         self.llapi = LLAPI()
-        self.options = """
+        self.header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
+|       >Home(home)<        Employee(emp)        Real estate(real)         Cases(cases)        Contractor(con)    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|   - home        //Goes to home screen                                                                           |
+|   - home        //Goes to home screen                                             - quit         //Quit         |
 |   - emp         //Goes to employee screen                                                                       |
 |   - real        //Goes to real estate screen                                                                    |
 |   - cases       //Goes to cases screen                                                                          |
-|   - con         //Goes to contractor screen                                                                     |
-|   - dest        //Goes to destination screen, shows what destinations are available                             |
-|_________________________________________________________________________________________________________________|
+|   - con         //Goes to contractor screen                                                                     |"""
+        self.supervisorLine = """|   - dest        //Goes to destination screen, shows what destinations are available                             |"""
+        self.footer = """|_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |                                                                                                                 |
 |                                                      |                                                          |
@@ -44,11 +44,19 @@ ________________________________________________________________________________
 """
 
     def draw_options(self):
-        print(self.options)
-        self.prompt_input()
+        #prints out menu bar
+        self.print_options()
+        return self.prompt_input()
+
+    def print_options(self):
+        #determines if menu bar should include supervisor options or not
+        print(self.header)
+        if self.user.is_supervisor():
+            print(self.supervisorLine)
+        print(self.footer)
 
     def prompt_input(self):
-        return_option = ""
+        # return_option = ""
         while True:
             command = input("Choose option: ")
             if command == "emp":
@@ -66,12 +74,12 @@ ________________________________________________________________________________
             elif command == "con":
                 con_menu = Contractor(self.llapi, self.user)
                 con_menu.draw_options()
-            elif command == "b":
+            elif command == "quit":
                 return
             else:
                 print("invalid option, try again!")
-            if return_option == "m":
-                return "m"
+            # if return_option == "m":
+            #     return "m"
             print(self.options)
 
 
