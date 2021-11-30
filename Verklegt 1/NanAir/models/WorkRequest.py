@@ -1,9 +1,10 @@
 class WorkRequest:
-    def __init__(self, subject, status, priorities):
+    def __init__(self, description, subject, priorities, status, due_date, repeated, creation_date):
         self.subject = subject
-        self.status = status
+        self.description = description
         self.priorities = priorities
-        
-        
-        #vantar meira?
+        self.status = status
+        self.due_date = due_date
+        self.repeated = repeated
+        self.creation_date = creation_date
 
