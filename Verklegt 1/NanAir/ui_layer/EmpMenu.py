@@ -10,7 +10,7 @@ class EmpMenu:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|   Home(home)   >Employee(emp)<    Real estate(real)    Cases(cases)    Contractor(con)    Deestination(dest)    |
+|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - s               //Search for employee                     - fi          //Filter options                    |

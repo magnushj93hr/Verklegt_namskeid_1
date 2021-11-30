@@ -14,7 +14,7 @@ class MainMenu:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|   >Home(home)<   Employee(emp)    Real estate(real)    Cases(cases)    Contractor(con)    Deestination(dest)    |
+|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - home        //Goes to home screen                                                                           |
@@ -54,7 +54,7 @@ ________________________________________________________________________________
             if command == "emp":
                 emp_menu = EmpMenu(self.llapi, self.user)
                 emp_menu.draw_options()
-            elif command == "dest":
+            elif command == "dest" and self.user.is_supervisor():
                 dest_menu = DestMenu(self.llapi)
                 dest_menu.draw_options()
             elif command == "real":

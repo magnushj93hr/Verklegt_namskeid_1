@@ -9,11 +9,11 @@ class RealEstate:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|   Home(home)   Employee(emp)    >Real estate(real)<    Cases(cases)    Contractor(con)    Deestination(dest)    |
+|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - s               //Search for estate                       - fi          //Filter options                    |
-|   - b               //Go back                                                                                     |"""
+|   - b               //Go back                                                                                   |"""
         self.supervisorLine = """|   - cr              //Creates new estate                                                                        |"""
 
         self.footer = """|_________________________________________________________________________________________________________________|
