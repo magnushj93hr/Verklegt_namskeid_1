@@ -5,4 +5,3 @@ class RealEstate:
         self.conditions = conditions
         self.type = type
         self.rooms = rooms
-        
