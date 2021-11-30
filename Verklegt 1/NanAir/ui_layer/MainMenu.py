@@ -2,7 +2,7 @@ from ui_layer.DestMenu import DestMenu
 from ui_layer.EmpMenu import EmpMenu
 from ui_layer.real_estate import RealEstate
 from ui_layer.cases import Cases
-from ui_layer.conductor import Conductor
+from ui_layer.contractor import Contractor
 from logic_layer.LLAPI import LLAPI
 
 class MainMenu:
@@ -14,15 +14,15 @@ class MainMenu:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|   >Home(home)<   Employee(emp)    Real estate(real)    Cases(cases)    Contuctor(con)    Deestination(dest)     |
+|   >Home(home)<   Employee(emp)    Real estate(real)    Cases(cases)    Contractor(con)    Deestination(dest)    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|   home:       //Goes to home screen                                                                             |
-|   emp:        //Goes to employee screen                                                                         |
-|   real:       //Goes to real estate screen                                                                      |
-|   cases:      //Goes to cases screen                                                                            |
-|   con:        //Goes to contractor screen                                                                       |
-|   dest:       //Goes to destination screen, shows what destinations are available                               |
+|   - home        //Goes to home screen                                                                           |
+|   - emp         //Goes to employee screen                                                                       |
+|   - real        //Goes to real estate screen                                                                    |
+|   - cases       //Goes to cases screen                                                                          |
+|   - con         //Goes to contractor screen                                                                     |
+|   - dest        //Goes to destination screen, shows what destinations are available                             |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |                                                                                                                 |
@@ -58,15 +58,15 @@ ________________________________________________________________________________
                 dest_menu = DestMenu(self.llapi)
                 dest_menu.draw_options()
             elif command == "real":
-                real_menu = RealEstate(self.llapi)
+                real_menu = RealEstate(self.llapi, self.user)
                 real_menu.draw_options()
             elif command == "cases":
-                cases_menu = Cases(self.llapi)
+                cases_menu = Cases(self.llapi, self.user)
                 cases_menu.draw_options()
             elif command == "con":
-                con_menu = Conductor(self.llapi)
+                con_menu = Contractor(self.llapi, self.user)
                 con_menu.draw_options()
-            elif command == "r":
+            elif command == "b":
                 return
             else:
                 print("invalid option, try again!")

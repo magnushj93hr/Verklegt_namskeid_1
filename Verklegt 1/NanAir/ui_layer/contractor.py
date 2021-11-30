@@ -1,6 +1,6 @@
 from logic_layer.LLAPI import LLAPI
 
-class RealEstate:
+class Contractor:
     def __init__(self, llapi, user):
         self.user = user
         self.llapi = llapi
@@ -9,11 +9,12 @@ class RealEstate:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|   Home(home)   Employee(emp)    >Real estate(real)<    Cases(cases)    Contractor(con)    Deestination(dest)    |
+|   Home(home)   Employee(emp)    Real estate(real)    Cases(cases)    >Contractor(con)<    Deestination(dest)    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - s               //Search for estate                       - fi          //Filter options                    |
-|   - b               //Go back                                                                                     |"""
+|   - o               //Open, for more info                     - d           //Display cases form contractor     |
+|   - b               //Go back                                                                                   |"""
         self.supervisorLine = """|   - cr              //Creates new estate                                                                        |"""
 
         self.footer = """|_________________________________________________________________________________________________________________|
@@ -30,7 +31,7 @@ ________________________________________________________________________________
         if self.user.is_supervisor():
             print(self.supervisorLine)
         print(self.footer)
-    
+
     def prompt_input(self):
         while True:
             command = input("Choose option: ")
@@ -43,7 +44,9 @@ ________________________________________________________________________________
                 pass
             elif command == "fi":
                 pass
-            elif command == "e":
+            elif command == "o":
+                pass
+            elif command == "d":
                 pass
             elif command == "b":
                 return "b"
