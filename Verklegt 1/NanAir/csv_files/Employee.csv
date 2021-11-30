@@ -1,0 +1,13 @@
+name, emp_id, address, homeline, email, phone, location, area
+Jan Jacobsen,NaN-0001,Vei 230 12,+47 92 09 77 00,jan.jacobsen@nanair.is,+354 777 1337,Svalbard,Longyearbyen
+Jacob Yxa,NaN-0002,Vei 224 3B,+47 92 09 77 01,jacob.yxa@nanair.is,+354 777 1338,Svalbard,Longyearbyen
+Nanna Daema,NaN-0003,Ivan Starostin st. 109,+47 92 09 77 02,nanna.daema@nanair.is,+354 777 1339,Svalbard,Longyearbyen
+Minik Wallace,NaN-0004,Isaajap Aqqutaa 1,+299 34 24 67
+Aqqaluk Lynge,NaN-0005, aqqaluk.lynge@nanair.is, Qattaaq 44 3905, +299352466, +35477713262, Nuuk, Greenland
+Nauja Lynge,NaN-0006, nauja.lynge@nanair.is, Qunguleg 3759 3905, +299312164, +3547771363, Nuuk, Greenland
+Annette Djurhuus, NaN-0007, annette.djurhuus@nannair.is, Tjarnardeild 8 100,+298772000,+354771381, Tórshavn, Faroe Island
+Áki Knudsen, NaN-0008, aki.knudsen@nanair.is, Traðartún 3 108, +298617210, +3547771381, Argir, Faroe Islands
+André Hjaltalin, Nan-0009, andre.hjaltalin@nanair.is, Í Lágni 19 100, +298661441,+3547771382,Tórshavn,Faroe Islands
+
+
+
