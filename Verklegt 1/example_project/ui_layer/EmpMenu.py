@@ -2,17 +2,30 @@ from logic_layer.LLAPI import LLAPI
 from models.Employee import Employee
 
 class EmpMenu:
-    def __init__(self, llapi):
+    def __init__(self, llapi, user):
+        self.user = user
         self.llapi = llapi
-        self.options = """
-Employee menu
-1 - list all employees
-2 - create a new employee
-r - return to previous menu
+        self.header = """
+      __|__                                                                                             __|__
+*---o--(_)--o---*                                                                                 *---o--(_)--o---* 
+___________________________________________________________________________________________________________________
+|                                                                                                                 |
+|   Home(home)   >Employee(emp)<    Real estate(real)    Cases(cases)    Contuctor(con)    Deestination(dest)     |
+|_________________________________________________________________________________________________________________|
+|                                                                                                                 |
+|   s:              //Search for employee                       fi:         //Filter options                      |"""
+        self.supervisorLine = """|   create:         //Creates new employee                      edit:       //Edit an existing employee           |"""
+
+        self.footer = """|_________________________________________________________________________________________________________________|
 """
+    def print_options(self):
+        print(self.header)
+        if self.user.is_supervisor():
+            print(self.supervisorLine)
+        print(self.footer)
 
     def draw_options(self):
-        print(self.options)
+        self.print_options()
         return self.prompt_input()
 
     def prompt_input(self):
@@ -38,4 +51,5 @@ r - return to previous menu
         phone = input("Enter employee phone: ")
         emp = Employee(name, email, phone)
         self.llapi.create_employee(emp)
+
 
