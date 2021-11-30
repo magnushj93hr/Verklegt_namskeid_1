@@ -1,5 +1,5 @@
-from ui_layer.MainMenu import MainMenu
+from ui_layer.login import Login
 
 if __name__ == "__main__":
-    main_menu = MainMenu()
-    main_menu.draw_options()
+    login_menu = Login()
+    login_menu.draw_login()

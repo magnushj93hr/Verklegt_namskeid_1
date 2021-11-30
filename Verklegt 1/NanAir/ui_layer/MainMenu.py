@@ -18,9 +18,9 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   home:       //Goes to home screen                                                                             |
-|   emp:        //Goes to Employee screen                                                                         |
-|   real:       //Goes to Real estate screen                                                                      |
-|   main:       //Goes to maintenance screen                                                                      |
+|   emp:        //Goes to employee screen                                                                         |
+|   real:       //Goes to real estate screen                                                                      |
+|   cases:      //Goes to cases screen                                                                            |
 |   con:        //Goes to contractor screen                                                                       |
 |   dest:       //Goes to destination screen, shows what destinations are available                               |
 |_________________________________________________________________________________________________________________|
