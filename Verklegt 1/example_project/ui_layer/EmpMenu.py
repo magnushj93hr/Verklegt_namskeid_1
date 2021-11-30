@@ -13,8 +13,9 @@ ________________________________________________________________________________
 |   Home(home)   >Employee(emp)<    Real estate(real)    Cases(cases)    Contuctor(con)    Deestination(dest)     |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|   s:              //Search for employee                       fi:         //Filter options                      |"""
-        self.supervisorLine = """|   create:         //Creates new employee                      edit:       //Edit an existing employee           |"""
+|   s:              //Search for employee                       fi:         //Filter options                      |
+|   b:              //Go back                                                                                     |"""
+        self.supervisorLine = """|   cr:             //Creates new employee                      e:          //Edit an existing employee           |"""
 
         self.footer = """|_________________________________________________________________________________________________________________|
 """
@@ -30,15 +31,17 @@ ________________________________________________________________________________
 
     def prompt_input(self):
         while True:
-            command = input("Enter your input: ")
-            if command == "1":
+            command = input("Choose option: ")
+            if command == "s":
                 all_emps = self.llapi.all_employees()
                 for emp in all_emps:
                     print(emp)
-            elif command == "2":
+            elif command == "cr":
                 self.create_employee()
-            elif command == "r":
-                return "r"
+            elif command == "fi":
+                pass
+            elif command == "b":
+                return "b"
             elif command == "m":
                 return "m"
             else:
@@ -51,5 +54,3 @@ ________________________________________________________________________________
         phone = input("Enter employee phone: ")
         emp = Employee(name, email, phone)
         self.llapi.create_employee(emp)
-
-
