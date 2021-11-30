@@ -4,7 +4,7 @@ from models.RealEstate import RealEstate
 
 class RealEstateDL:
     def __init__(self):
-        self.filepath = "csv_files/RealEstate.csv"
+        self.filepath = "Maggi_Test/test1/csv_files/RealEstate.csv"
     
     def get_all_realestate(self):
         ret_list = []
