@@ -12,8 +12,8 @@ ________________________________________________________________________________
 |       Home(home)        Employee(emp)        Real estate(real)         Cases(cases)        >Contractor(con)<    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|   - s               //Search for contractor                       - fi          //Filter options                |
-|   - o               //Open, for more info                     - d           //Display cases form contractor     |
+|   - s               //Search for contractor                      - fi          //Filter options                 |
+|   - o               //Open, for more info                        - d           //Display cases form contractor  |
 |   - b               //Go back                                                                                   |"""
         self.supervisorLine = """|   - cr              //Creates new estate                                                                        |"""
 

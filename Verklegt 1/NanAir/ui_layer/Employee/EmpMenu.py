@@ -1,3 +1,4 @@
+from ui_layer.Employee.create_emp import CreateEmp
 from logic_layer.LLAPI import LLAPI
 from models.Employee import Employee
 
@@ -5,6 +6,7 @@ class EmpMenu:
     def __init__(self, llapi, user):
         self.user = user
         self.llapi = llapi
+        self.create_emp = CreateEmp()
         self.header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -41,7 +43,7 @@ ________________________________________________________________________________
                 # for emp in all_emps:
                 #     print(emp)
             elif command == "cr" and self.user.is_supervisor():
-                self.create_employee()
+                self.create_emp.draw_options()
             elif command == "fi":
                 pass
             elif command == "e":
@@ -52,12 +54,3 @@ ________________________________________________________________________________
                 return "m"
             else:
                 print("invalid option, try again!")
-
-    def create_employee(self):
-        name = input("Enter employee name: ")
-        email = input("Enter employee email: ")
-        phone = input("Enter employee phone: ")
-        emp = Employee(name, email, phone)
-        self.llapi.create_employee(emp)
-
-
