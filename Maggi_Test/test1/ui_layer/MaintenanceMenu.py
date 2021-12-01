@@ -31,9 +31,9 @@ r - return to previous menu
             print(self.options)
 
     def create_maintenance_report(self):
-        real_estate_id = input("Enter Country name: ")
-        description = input("Enter aiport:")
-        repeated = input("Enter location phone: ")
+        real_estate_id = input("Enter ID: ")
+        description = input("Enter description:")
+        repeated = input("Is it repeated: ")
         employee_id = input("Enter employee id : ")
         case_id = input("Enter case id: ")
         total_cost = input("Enter total cost: ")
