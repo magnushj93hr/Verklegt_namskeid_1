@@ -8,4 +8,4 @@ class RealEstate:
         self.location = location
 
     def __str__(self):
-        return f"address: {self.address}, size: {self.size}, rooms: {self.rooms}, id {self.id}, amenities {self.amenities}, location {self.location}"
+        return f"address: {self.address}, size: {self.size}, rooms: {self.rooms}, id: {self.id}, amenities: {self.amenities}, location: {self.location}"

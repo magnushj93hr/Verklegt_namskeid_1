@@ -7,4 +7,4 @@ class Contractor:
         self.location = location
 
     def __str__(self):
-        return f"name: {self.name}, contact: {self.contact}, phone: {self.phone}, opening hours {self.opening_hours}, location {self.location}"
+        return f"name: {self.name}, contact: {self.contact}, phone: {self.phone}, opening hours: {self.opening_hours}, location: {self.location}"
