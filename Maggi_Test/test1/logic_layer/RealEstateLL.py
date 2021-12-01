@@ -1,0 +1,16 @@
+from data_layer.DLAPI import DLAPI
+from models.RealEstate import RealEstate
+
+
+class RealEstateLL:
+    def __init__(self, dlapi):
+        self.dlapi = dlapi
+    
+    def all_realestate(self):
+        return self.dlapi.get_all_realestate()
+
+    def create_realestate(self, real):
+        self.dlapi.create_realestate(real)
+    
+if __name__ == "__main__":
+    realLL = RealEstateLL(DLAPI())
