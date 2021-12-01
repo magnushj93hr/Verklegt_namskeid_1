@@ -8,6 +8,7 @@ class RealMenu:
 Dest menu
 1 - list all real estate
 2 - create real estate
+3 - edit real estate
 r - return to previous menu
 """
 
@@ -24,6 +25,8 @@ r - return to previous menu
                     print(real)
             elif command == "2":
                 self.create_realestate()
+            elif command == "3":
+                self.edit_realestate()
             elif command == "r":
                 return
             else:
@@ -41,3 +44,17 @@ r - return to previous menu
         
         real = RealEstate(address, size, rooms, id, amenities, location)
         self.llapi.create_realestate(real)
+    def edit_realestate(self):
+        edit_id = str(input("Enter real estate id: "))
+
+        print(f"you are editing real estate with the id: {edit_id}")
+        print("You can't delete the real estate id.\n")
+        address = str(input("Enter address: "))
+        size = str(input("Enter size: "))
+        rooms = str(input("Enter rooms: "))
+        id = str(input("Enter ID of real estate: "))
+        amentities = str(input("Enter amentities "))
+        location = str(input("Enter location: "))
+
+        real = RealEstate(address, size, rooms, id, amentities, location)        
+        self.llapi.edit_realestate(real)
