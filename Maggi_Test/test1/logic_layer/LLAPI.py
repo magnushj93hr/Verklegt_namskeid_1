@@ -39,8 +39,8 @@ class LLAPI:
     def create_contractor(self, contr):
         return self.contrLL.create_contractor(contr)
 
-    def all_location(self):
-        return self.locLL.all_location()
+    def all_locations(self):
+        return self.locLL.all_locations()
     
     def create_location(self,loc):
         return self.locLL.create_location(loc)

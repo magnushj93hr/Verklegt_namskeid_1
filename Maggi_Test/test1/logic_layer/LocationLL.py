@@ -6,8 +6,8 @@ class LocationLL:
     def __init__(self, dlapi):
         self.dlapi = dlapi
     
-    def all_location(self):
-        return self.dlapi.get_all_location()
+    def all_locations(self):
+        return self.dlapi.get_all_locations()
 
     def create_location(self, loc):
         self.dlapi.create_location(loc)

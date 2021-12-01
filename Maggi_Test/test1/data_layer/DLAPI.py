@@ -2,6 +2,7 @@ from data_layer.EmployeeDL import EmployeeDL
 from data_layer.RealEstateDL import RealEstateDL
 from data_layer.CaseDL import CaseDL
 from data_layer.ContractorDL import ContractorDL
+from data_layer.LocationDL import LocationDL
 
 class DLAPI:
     def __init__(self):
@@ -9,6 +10,7 @@ class DLAPI:
         self.realDL = RealEstateDL()
         self.caseDL = CaseDL()
         self.contrDL = ContractorDL()
+        self.locDL = LocationDL()
 
     def get_all_employees(self):
         return self.empDL.get_all_employees()
@@ -33,3 +35,9 @@ class DLAPI:
     
     def create_contractor(self, contr):
         return self.contrDL.create_contractor(contr)
+
+    def get_all_locations(self):
+        return self.locDL.get_all_locations()
+    
+    def create_location(self, loc):
+        return self.locDL.create_location(loc)

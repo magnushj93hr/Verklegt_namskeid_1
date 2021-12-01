@@ -19,7 +19,7 @@ r - return to previous menu
         while True:
             command = input("Enter your input: ")
             if command == "1":
-                all_loc = self.llapi.all_loc()
+                all_loc = self.llapi.all_locations()
                 for loc in all_loc:
                     print(loc)
             elif command == "2":

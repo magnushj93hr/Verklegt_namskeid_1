@@ -2,7 +2,7 @@ class Location:
     def __init__(self, country,airport,phone,opening_hours):
         self.country = country
         self.airport = airport
-        self.rooms = phone
+        self.phone = phone
         self.opening_hours = opening_hours
         
 
