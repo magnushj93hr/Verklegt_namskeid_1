@@ -25,14 +25,13 @@ class EmployeeDL:
             
     def edit_employee(self, emp):
         temp_file = NamedTemporaryFile(mode = 'w', delete=False)
-
+        
         fieldnames = ["name","id","address",'homeline','email','location','phone']
-
-        with open(self.filepath, 'r') as csvfile, temp_file:
+        with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
             reader = csv.DictReader(csvfile, fieldnames=fieldnames)
             #fieldnames = ["name","id","address",'homeline','email','location','phone']
             writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
-            writer.writeheader()
+            # writer.writeheader()
 
             for row in reader:
                 if row['id'] == emp.id:
