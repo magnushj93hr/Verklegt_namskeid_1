@@ -1,4 +1,6 @@
 import csv
+import shutil
+from tempfile import NamedTemporaryFile
 
 from models.Case import Case
 
@@ -20,3 +22,22 @@ class CaseDL:
             fieldnames = ["id", "subject","description","priority",'due date','repeated']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'id': case.id,'subject': case.subject, "description": case.description, "priority": case.priority, 'due date': case.due_date, 'repeated': case.repeated})
+    def edit_case(self, case):
+        temp_file = NamedTemporaryFile(mode = 'w', delete=False)
+        
+        fieldnames = ["id","subject","description",'priority','due date','repeated']
+        with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
+            reader = csv.DictReader(csvfile, fieldnames=fieldnames)
+            #fieldnames = ["name","id","address",'homeline','email','location','phone']
+            writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
+            # writer.writeheader()
+
+            for row in reader:
+                if row['id'] == case.id:
+                    print('updating row', row['id'])
+                    writer.writerow({'id': case.id, "subject": case.subject, "description": case.description, 'priority': case.priority, 'due date': case.due_date, 'repeated': case.repeated})
+                else:
+                    row = {'id': row['id'], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'due date': row['due date'], 'repeated': row['repeated']}
+                    writer.writerow(row)
+
+        shutil.move(temp_file.name, self.filepath)

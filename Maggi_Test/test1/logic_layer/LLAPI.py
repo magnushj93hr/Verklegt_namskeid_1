@@ -40,6 +40,9 @@ class LLAPI:
     def all_cases(self):
         return self.caseLL.all_cases()
     
+    def edit_case(self, case):
+        return self.caseLL.edit_case(case)
+    
     def all_contractors(self):
         return self.contrLL.all_contractors()
     

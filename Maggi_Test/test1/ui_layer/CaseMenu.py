@@ -8,6 +8,7 @@ class CaseMenu:
 Employee menu
 1 - list all cases
 2 - create a new case
+3 - edit case
 r - return to previous menu
 """
 
@@ -24,6 +25,8 @@ r - return to previous menu
                     print(case)
             elif command == "2":
                 self.create_case()
+            elif command == "3":
+                self.edit_case()
             elif command == "r":
                 return "r"
             else:
@@ -38,5 +41,20 @@ r - return to previous menu
         due_date = input("Enter due date: ")
         repeated = input("Is the case repeated?: ")
         
-        case = Case(id, subject, description, priority, due_date, repeated)
+        case = Case(id,subject, description, priority, due_date, repeated)
         self.llapi.create_case(case)
+    def edit_case(self):
+        edit_id = str(input("Enter case id: "))
+
+        print(f"you are editing a case with the id: {edit_id}")
+        print("You can't delete the case id.\n")
+        
+        subject = str(input("Enter the subject name: "))
+        description = str(input("Enter description: "))
+        priority = str(input("Enter priority: "))
+        due_date = str(input("Enter due date: "))
+        repeated = str(input("Is the case repeated?: "))
+        
+
+        case = Case(subject, edit_id, description, priority, due_date, repeated)        
+        self.llapi.edit_case(case)

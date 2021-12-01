@@ -11,6 +11,9 @@ class CaseLL:
 
     def create_case(self, case):
         self.dlapi.create_case(case)
+    
+    def edit_case(self, edit_id):
+        self.dlapi.edit_case(edit_id)
 
 if __name__ == "__main__":
     empLL = CaseLL(DLAPI())

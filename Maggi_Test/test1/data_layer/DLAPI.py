@@ -28,12 +28,17 @@ class DLAPI:
     
     def create_realestate(self, real):
         return self.realDL.create_realestate(real)
+    def edit_realestate(self, real):
+        return self.realDL.edit_realestate(real)
     
     def get_all_cases(self):
         return self.caseDL.get_all_cases()
     
     def create_case(self, case):
         return self.caseDL.create_case(case)
+    
+    def edit_case(self, case):
+        return self.caseDL.edit_case(case)
     
     def get_all_contractors(self):
         return self.contrDL.get_all_contractors()

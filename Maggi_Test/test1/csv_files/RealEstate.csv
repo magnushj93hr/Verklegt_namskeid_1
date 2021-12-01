@@ -1,5 +1,5 @@
 address,size,rooms,id,amenities,location
-boðagrandi 10,200,0001,123123,asdasf,rvk
-sunnubraut 9,25fm,0002,7127r17,sasaaf,kef
-Bolo,250,2,0003,Pool,Medellín
-boðagrandi10,200,3,0001,safe,rvk
+boðagrandi 10,200,3,0000,asdasf,rvk
+sunnubraut 9,25fm,0001,7127r17,sasaaf,kef
+Bolo,250,2,0002,Pool,Medellín
+boðagrandi10,200,3,0003,safe,rvk
