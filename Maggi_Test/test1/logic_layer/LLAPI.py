@@ -2,6 +2,7 @@ from logic_layer.EmployeeLL import EmployeeLL
 from logic_layer.RealEstateLL import RealEstateLL
 from logic_layer.CaseLL import CaseLL
 from logic_layer.ContractorLL import ContractorLL
+from logic_layer.LocationLL import LocationLL
 from data_layer.DLAPI import DLAPI
 
 
@@ -36,3 +37,9 @@ class LLAPI:
     
     def create_contractor(self, contr):
         return self.contrLL.create_contractor(contr)
+
+    def all_location(self):
+        return self.locLL.all_location()
+    
+    def create_location(self,loc):
+        return self.locLL.create_location(loc)
