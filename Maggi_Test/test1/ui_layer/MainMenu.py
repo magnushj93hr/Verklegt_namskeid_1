@@ -3,6 +3,7 @@ from ui_layer.EmpMenu import EmpMenu
 from ui_layer.CaseMenu import CaseMenu
 from ui_layer.ContractorMenu import ContractorMenu
 from ui_layer.LocMenu import LocMenu
+from ui_layer.MaintenanceMenu import MaintenanceMenu
 from logic_layer.LLAPI import LLAPI
 
 class MainMenu:
@@ -15,6 +16,7 @@ class MainMenu:
 3 - case menu
 4 - contractor menu
 5 - location menu
+6 - maintenance menu
 r - return to previous menu
 """
 
@@ -41,6 +43,9 @@ r - return to previous menu
             elif command == "5":
                 loc_menu = LocMenu(self.llapi)
                 loc_menu.draw_options()
+            elif command == "6":
+                maint_menu = MaintenanceMenu(self.llapi)
+                maint_menu.draw_options()
             elif command == "r":
                 return
             else:
