@@ -1,12 +1,14 @@
 from data_layer.EmployeeDL import EmployeeDL
 from data_layer.RealEstateDL import RealEstateDL
 from data_layer.CaseDL import CaseDL
+from data_layer.ContractorDL import ContractorDL
 
 class DLAPI:
     def __init__(self):
         self.empDL = EmployeeDL()
         self.realDL = RealEstateDL()
         self.caseDL = CaseDL()
+        self.contrDL = ContractorDL()
 
     def get_all_employees(self):
         return self.empDL.get_all_employees()
@@ -25,3 +27,9 @@ class DLAPI:
     
     def create_case(self, case):
         return self.caseDL.create_case(case)
+    
+    def get_all_contractors(self):
+        return self.contrDL.get_all_contractors()
+    
+    def create_contractor(self, contr):
+        return self.contrDL.create_contractor(contr)

@@ -1,7 +1,9 @@
 from logic_layer.EmployeeLL import EmployeeLL
 from logic_layer.RealEstateLL import RealEstateLL
 from logic_layer.CaseLL import CaseLL
+from logic_layer.ContractorLL import ContractorLL
 from data_layer.DLAPI import DLAPI
+
 
 class LLAPI:
     def __init__(self):
@@ -9,6 +11,7 @@ class LLAPI:
         self.empLL = EmployeeLL(self.dlapi)
         self.realLL = RealEstateLL(self.dlapi)
         self.caseLL = CaseLL(self.dlapi)
+        self.contrLL = ContractorLL(self.dlapi)
         
     def all_employees(self):
         return self.empLL.all_employees()
@@ -27,3 +30,9 @@ class LLAPI:
     
     def all_cases(self):
         return self.caseLL.all_cases()
+    
+    def all_contractors(self):
+        return self.contrLL.all_contractors()
+    
+    def create_contractor(self, contr):
+        return self.contrLL.create_contractor(contr)
