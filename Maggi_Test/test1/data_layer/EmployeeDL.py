@@ -39,7 +39,7 @@ class EmployeeDL:
                     print('updating row', row['id'])
                     writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
                 else:
-                    row = {'name': row['name'], 'address': row['address'], 'homeline': row['homeline'], 'email': row['email'], 'location': row['location'], 'phone': row['phone']}
+                    row = {'name': row['name'], 'id': row['id'], 'address': row['address'], 'homeline': row['homeline'], 'email': row['email'], 'location': row['location'], 'phone': row['phone']}
                     writer.writerow(row)
 
         shutil.move(temp_file.name, self.filepath)
