@@ -11,6 +11,9 @@ class EmployeeLL:
 
     def create_employee(self, emp):
         self.dlapi.create_employee(emp)
+    
+    def edit_employee(self, edit_id):
+        self.dlapi.edit_employee(edit_id)
 
 if __name__ == "__main__":
     empLL = EmployeeLL(DLAPI())

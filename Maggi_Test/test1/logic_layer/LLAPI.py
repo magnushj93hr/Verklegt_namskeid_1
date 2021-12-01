@@ -19,6 +19,9 @@ class LLAPI:
     def create_employee(self, emp):
         return self.empLL.create_employee(emp)
     
+    def edit_employee(self, emp):
+        return self.empLL.edit_employee(emp)
+    
     def all_realestate(self):
         return self.realLL.all_realestate()
     

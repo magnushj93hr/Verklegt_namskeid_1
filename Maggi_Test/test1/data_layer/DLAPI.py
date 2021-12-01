@@ -16,6 +16,9 @@ class DLAPI:
     def create_employee(self, emp):
         return self.empDL.create_employee(emp)
     
+    def edit_employee(self, emp):
+        return self.empDL.edit_employee(emp)
+    
     def get_all_realestate(self):
         return self.realDL.get_all_realestate()
     

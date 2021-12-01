@@ -20,3 +20,14 @@ class EmployeeDL:
             fieldnames = ["name","id","address",'homeline','email','location','phone']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
+            
+    def edit_employee(self, emp):
+        with open(self.filepath, 'r+', newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            fieldnames = ["name","id","address",'homeline','email','location','phone']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            for row in reader:
+                if row["id"] != emp.id: 
+                    writer.writerow({"name":row["name"], "id":row["id"], "address":row["address"], "homeline":row["homeline"], "email":row["email"], "location":row, "phone":row["phone"]})
+                elif row["id"] == emp.id:
+                    writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
