@@ -52,9 +52,8 @@ r - return to previous menu
         address = str(input("Enter address: "))
         size = str(input("Enter size: "))
         rooms = str(input("Enter rooms: "))
-        id = str(input("Enter ID of real estate: "))
         amentities = str(input("Enter amentities "))
         location = str(input("Enter location: "))
 
-        real = RealEstate(address, size, rooms, id, amentities, location)        
+        real = RealEstate(address, size, rooms,edit_id, amentities, location)        
         self.llapi.edit_realestate(real)

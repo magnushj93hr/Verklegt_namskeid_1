@@ -19,7 +19,7 @@ r - return to previous menu
         while True:
             command = input("Enter your input: ")
             if command == "1":
-                all_maintenance_reports = self.llapi.get_all_maintenance_reports()
+                all_maintenance_reports = self.llapi.all_maintenance_reports()
                 for maintenance in all_maintenance_reports:
                     print(maintenance)
             elif command == "2":
