@@ -56,5 +56,5 @@ r - return to previous menu
         repeated = str(input("Is the case repeated?: "))
         
 
-        case = Case(subject, edit_id, description, priority, due_date, repeated)        
+        case = Case(edit_id, subject, description, priority, due_date, repeated)        
         self.llapi.edit_case(case)

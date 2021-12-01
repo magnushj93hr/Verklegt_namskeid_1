@@ -28,6 +28,7 @@ class DLAPI:
     
     def create_realestate(self, real):
         return self.realDL.create_realestate(real)
+    
     def edit_realestate(self, real):
         return self.realDL.edit_realestate(real)
     
