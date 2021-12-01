@@ -31,8 +31,9 @@ class LLAPI:
     
     def create_realestate(self, real):
         return self.realLL.create_realestate(real)
+    
     def edit_realestate(self, real):
-        return self.empLL.edit_employee(real)
+        return self.realLL.edit_realestate(real)
     
     def create_case(self, case):
         return self.caseLL.create_case(case)
