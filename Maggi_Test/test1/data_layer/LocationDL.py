@@ -2,7 +2,7 @@ from models.Location import Location
 
 import csv
 
-class EmployeeDL:
+class LocationDL:
     def __init__(self):
         self.filepath = "Maggi_Test/test1/csv_files/Location.csv"
     
