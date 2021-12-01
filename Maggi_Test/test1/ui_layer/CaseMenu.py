@@ -31,7 +31,7 @@ r - return to previous menu
             print(self.options)
 
     def create_case(self):
-        id = input("Enter id for case")
+        id = input("Enter id for case: ")
         subject = input("Enter subject: ")
         description = input("Enter description ")
         priority = input("Set priority: ")

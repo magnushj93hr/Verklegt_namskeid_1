@@ -24,18 +24,33 @@ class EmployeeDL:
             writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
             
     def edit_employee(self, emp):
+        
+        
+        
+        
         temp_file = NamedTemporaryFile(delete=False)
 
         with open(self.filepath, 'r') as csvfile, temp_file:
             reader = csv.DictReader(csvfile)
             fieldnames = ["name","id","address",'homeline','email','location','phone']
             writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
-            #writer.writeheader()
+        #     #writer.writeheader()
             
+            #for row in reader:
+                # if str(row['id']) == emp.id:
+                #     row['name'] = emp.name
+                #     row['address'] = emp.address
+                #     row['homeline'] = emp.homeline
+                #     row['email'] = emp.email
+                #     row['location'] = emp.location
+                #     row['phone'] = emp.phone
+                # writer.writerow(row)
             for row in reader:
                 if row["id"] != emp.id: 
-                    writer.writerow({"name":row["name"], "id":row["id"], "address":row["address"], "homeline":row["homeline"], "email":row["email"], "location":row, "phone":row["phone"]})
+                    #writer.writerow({"name":row["name"], "id":row["id"], "address":row["address"], "homeline":row["homeline"], "email":row["email"], "location":row, "phone":row["phone"]})
+                    writer.writerow(row)
                 elif row["id"] == emp.id:
-                    writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
-
-        shutil.move(temp_file.name, self.filepath)
+                    #writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
+                    writer.writerow(row)
+                    
+            shutil.move(temp_file.name, self.filepath)
