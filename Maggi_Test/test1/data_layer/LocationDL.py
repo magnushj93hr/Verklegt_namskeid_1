@@ -1,6 +1,6 @@
+import csv
 from models.Location import Location
 
-import csv
 
 class LocationDL:
     def __init__(self):
