@@ -1,4 +1,4 @@
-class Destination:
+class Location:
     def __init__(self, country, airport, phone, opening_hours):
         self.country = country
         self.airport = airport
