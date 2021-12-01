@@ -1,0 +1,12 @@
+dags 01.12.2021
+
+verkefni dagsins:
+
+- reyna að klára DL
+	-location (klárað)
+	-verkskýrsla 
+	-edit
+
+-Fara yfir kröfulistann og sjá hvað við getum klárað að kóða í dl.
+
+Ætlum að klára að kóða DL og fá alla virkni til að virka síðan klára ui layerinn. 
