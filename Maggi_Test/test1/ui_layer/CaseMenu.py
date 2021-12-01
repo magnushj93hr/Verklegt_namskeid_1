@@ -31,11 +31,12 @@ r - return to previous menu
             print(self.options)
 
     def create_case(self):
+        id = input("Enter id for case")
         subject = input("Enter subject: ")
         description = input("Enter description ")
         priority = input("Set priority: ")
         due_date = input("Enter due date: ")
         repeated = input("Is the case repeated?: ")
         
-        case = Case(subject, description, priority, due_date, repeated)
+        case = Case(id, subject, description, priority, due_date, repeated)
         self.llapi.create_case(case)
