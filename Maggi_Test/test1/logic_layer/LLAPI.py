@@ -13,6 +13,7 @@ class LLAPI:
         self.realLL = RealEstateLL(self.dlapi)
         self.caseLL = CaseLL(self.dlapi)
         self.contrLL = ContractorLL(self.dlapi)
+        self.locLL = LocationLL(self.dlapi)
         
     def all_employees(self):
         return self.empLL.all_employees()
