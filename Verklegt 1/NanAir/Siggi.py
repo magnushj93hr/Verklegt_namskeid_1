@@ -1,5 +1,6 @@
-from ui_layer.login import Login
+from Siggi_home import HomeSiggi
 
 if __name__ == "__main__":
-    login_menu = Login()
-    login_menu.draw_login()
+    home_manu = HomeSiggi()
+    home_manu.options_print()
+    

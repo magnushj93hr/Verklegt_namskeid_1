@@ -10,7 +10,7 @@ class EmployeeDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                emp = Employee(row["Name"],row["ID"], row["Address"], row["Homeline"], row["Phone"],row["Email"], row["Location"])
+                emp = Employee(row["name"], row["emp_id"], row["address"], row["homeline"], row["email"], row["phone"], row["location"], row["area"])
                 ret_list.append(emp)
         return ret_list
 
