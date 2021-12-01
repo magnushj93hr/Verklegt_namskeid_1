@@ -6,8 +6,8 @@ class EmployeeLL:
     def __init__(self, dlapi):
         self.dlapi = dlapi
     
-    #def all_employees(self):
-        #return self.dlapi.get_all_employees()
+    def all_employees(self):
+        return self.dlapi.get_all_employees()
     
     def mark_complete(self, mark):
         self.dlapi.mark_complete(mark)

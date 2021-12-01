@@ -1,4 +1,6 @@
 import csv
+import shutil
+from tempfile import NamedTemporaryFile
 
 from models.Employee import Employee
 
@@ -20,3 +22,23 @@ class EmployeeDL:
             fieldnames = ["name","id","address",'homeline','email','location','phone']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
+            
+    def edit_employee(self, emp):
+        temp_file = NamedTemporaryFile(mode = 'w', delete=False)
+        
+        fieldnames = ["name","id","address",'homeline','email','location','phone']
+        with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
+            reader = csv.DictReader(csvfile, fieldnames=fieldnames)
+            #fieldnames = ["name","id","address",'homeline','email','location','phone']
+            writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
+            # writer.writeheader()
+
+            for row in reader:
+                if row['id'] == emp.id:
+                    print('updating row', row['id'])
+                    writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
+                else:
+                    row = {'name': row['name'], 'id': row['id'], 'address': row['address'], 'homeline': row['homeline'], 'email': row['email'], 'location': row['location'], 'phone': row['phone']}
+                    writer.writerow(row)
+
+        shutil.move(temp_file.name, self.filepath)
