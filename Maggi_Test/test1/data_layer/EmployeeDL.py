@@ -47,10 +47,8 @@ class EmployeeDL:
                 # writer.writerow(row)
             for row in reader:
                 if row["id"] != emp.id: 
-                    #writer.writerow({"name":row["name"], "id":row["id"], "address":row["address"], "homeline":row["homeline"], "email":row["email"], "location":row, "phone":row["phone"]})
-                    writer.writerow(row)
+                    writer.writerow({"name":row["name"], "id":row["id"], "address":row["address"], "homeline":row["homeline"], "email":row["email"], "location":row, "phone":row["phone"]})
                 elif row["id"] == emp.id:
-                    #writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
-                    writer.writerow(row)
-                    
+                    writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
+
             shutil.move(temp_file.name, self.filepath)
