@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-name,id,address,homeline,email,location,phone
-sigias,2002,4543,6,adfaf,346,gsdg
-aggi Valur,2003,kokos 25,554344,aggiva@gmil.com,reykjavik,34444448
-maggi Valur,2004,kokos 26,554343,maggiva@gmil.com,reykjavik,34444447
-Maggi Valur,2005,sunnubraut 9,775125,rajnrj@asngs.com,Keflavik,7711241
-=======
 name,id,address,homeline,email,location,phone
 Sigge,2002,latibær 4,5812345,sigge@nanair.is,Kjalarnes,6699932
 aggi Valur,2003,kokos 25,554344,aggiva@gmil.com,reykjavik,34444448
 maggi Valur,2004,kokos 26,554343,maggiva@gmil.com,reykjavik,34444447
 laggi Valur,2005,kokos 26,554342,laggiva@gmil.com,reykjavik,34444446
 sakki valur,2006,kokos26,5888881,biggi@nanair.is,reykavjík,5842345
->>>>>>> 2eced77b58448718957c08da41f72a53e2e1d89c
+
