@@ -10,4 +10,4 @@ class MaintananceReport:
         
 
     def __str__(self):
-        return f"country: {self.real_estate_id}, aiport: {self.description}, phone: {self.repeated}, opening hours: {self.case_id}, total cost: {self.total_cost}, contractor: {self.contractor}"
+        return f"real estate id: {self.real_estate_id}, description: {self.description}, repeated: {self.repeated}, case id: {self.case_id}, total cost: {self.total_cost}, contractor: {self.contractor}"
