@@ -23,6 +23,15 @@ class CaseDL:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'id': case.id,'location': case.location, 'subject': case.subject, "description": case.description, "priority": case.priority, 'due date': case.due_date, 'repeated': case.repeated})
             
+    def check_if_case_exists(self, id):
+            with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if row['id'] == id:
+                        return True
+                    else:
+                        return False
+
     def edit_case(self, case):
         temp_file = NamedTemporaryFile(mode = 'w', delete=False)
         

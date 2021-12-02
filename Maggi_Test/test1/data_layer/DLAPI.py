@@ -29,9 +29,6 @@ class DLAPI:
     def emp_search(self, search_type, value):
         return self.empDL.search(search_type, value)
 
-    # def emp_search(self, search_type, value):
-    #     return self.empDL.search(search_type, value)
-    
     def get_all_realestate(self):
         return self.realDL.get_all_realestate()
 
@@ -46,6 +43,9 @@ class DLAPI:
 
     def create_case(self, case):
         return self.caseDL.create_case(case)
+
+    def check_if_case_exists(self, id):
+        return self.caseDL.check_if_case_exists(id)
 
     def edit_case(self, case):
         return self.caseDL.edit_case(case)
