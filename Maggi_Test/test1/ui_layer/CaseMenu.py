@@ -35,13 +35,14 @@ r - return to previous menu
 
     def create_case(self):
         id = input("Enter id for case: ")
+        location = input("Enter the location: ")
         subject = input("Enter subject: ")
-        description = input("Enter description ")
+        description = input("Enter description: ")
         priority = input("Set priority: ")
         due_date = input("Enter due date: ")
         repeated = input("Is the case repeated?: ")
         
-        case = Case(id,subject, description, priority, due_date, repeated)
+        case = Case(id,location,subject, description, priority, due_date, repeated)
         self.llapi.create_case(case)
     def edit_case(self):
         edit_id = str(input("Enter case id: "))
@@ -49,6 +50,7 @@ r - return to previous menu
         print(f"you are editing a case with the id: {edit_id}")
         print("You can't delete the case id.\n")
         
+        location = str(input("Enter the location: "))
         subject = str(input("Enter the subject name: "))
         description = str(input("Enter description: "))
         priority = str(input("Enter priority: "))
@@ -56,5 +58,5 @@ r - return to previous menu
         repeated = str(input("Is the case repeated?: "))
         
 
-        case = Case(edit_id, subject, description, priority, due_date, repeated)        
+        case = Case(edit_id, location, subject, description, priority, due_date, repeated)        
         self.llapi.edit_case(case)
