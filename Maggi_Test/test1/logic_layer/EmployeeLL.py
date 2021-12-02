@@ -5,7 +5,7 @@ import csv
 MAX_NAME = 40
 MAX_ID = 4
 EMAIL = "@nanair.com"
-PHONE = 7
+MAX_PHONE = 7
 MAX_ADDRESS = 20
 MAX_LOCATION = 15
 
