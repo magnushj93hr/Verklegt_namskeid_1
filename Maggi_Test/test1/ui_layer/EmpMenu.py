@@ -99,48 +99,9 @@ r - return to previous menu
             self.llapi.edit_employee(emp)
         else:
             print("The employee id was not found")
-            print(self.options)
-
-
+            print(self.options) 
+    
     def search_employee(self):
-        search_options = """
-Search options
-1 - Search by name
-2 - Search by ID
-3 - Search by home address
-4 - Search by phonenumber
-5 - Search by GSM
-6 - Search by email
-7 - Search by destination
-r - return to previous menu
-"""
-        print(search_options)
-        self.prompt_search_input() 
-
-    def prompt_search_input(self):
-        while True:
-            command = input("Choose option: ")
-            if command == "1":
-                self.search(LLAPI.SEARCH_TYPE_NAME, "Enter name")
-            elif command == "2":
-                self.search(LLAPI.SEARCH_TYPE_ID, "Enter ID")
-            elif command == "3":
-                self.search(LLAPI.SEARCH_TYPE_ADDRESS, "Enter home address")
-            elif command == "4":
-                self.search(LLAPI.SEARCH_TYPE_PHONE, "Enter phonenumber")
-            elif command == "5":
-                self.search(LLAPI.SEARCH_TYPE_GSM, "Enter GSM")
-            elif command == "6":
-                self.search(LLAPI.SEARCH_TYPE_EMAIL, "Enter email")
-            elif command == "r":
-                return "r"
-            elif command == "home":
-                return "home"
-            else:
-                print("invalid option, try again!")
-
-
-    def search(self, search_type, prompt):
-        value = input(f"{prompt}: ")
-        values = self.llapi.emp_search(search_type, value)
-        print(values)
+        search_id = input("Enter employee id: ")
+        result = LLAPI.search_employee(search_id)
+        print(result)
