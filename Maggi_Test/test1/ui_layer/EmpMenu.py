@@ -90,16 +90,10 @@ r - return to previous menu
 
     def edit_employee(self):
         #check if id is len 4
-        while True:
-            
-            edit_id = str(input("Enter employee id: "))
-            id_c = self.llapi.check_if_id_correct(edit_id)
-            if id_c == False:
-                print("Invalid employee id(id is 4 number long)")
-            else: break
+        edit_id = str(input("Enter employee id: "))
 
         ready_to_continue = self.llapi.check_if_employee_exists(edit_id)
-        if ready_to_continue:
+        if ready_to_continue == True:
             name, phone, id, address, homeline, location = self.user_options(None)
             emp = Employee(name, edit_id, address, homeline, location, phone)        
             self.llapi.edit_employee(emp)
