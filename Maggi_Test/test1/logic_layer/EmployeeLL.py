@@ -13,11 +13,10 @@ MAX_LOCATION = 15
 class EmployeeLL:
     def __init__(self, dlapi):
         self.dlapi = dlapi
-        self.emp = Employee()
 
     def check_if_name_correct(self, name):
-        if len(self.emp.name) <= MAX_NAME:
-            if not self.emp.name.isdigit():
+        if len(name) <= MAX_NAME:
+            if not name.isdigit():
                 return True
         return False
 
