@@ -52,6 +52,9 @@ class LLAPI:
     def edit_employee(self, emp):
         return self.empLL.edit_employee(emp)
 
+    def search(self, emp):
+        return self.empLL.search(emp)
+
     def emp_search(self, search_type, value):
         return self.empLL.search(search_type, value)
 
