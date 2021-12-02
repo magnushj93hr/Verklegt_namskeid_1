@@ -22,6 +22,9 @@ class DLAPI:
     
     def edit_employee(self, emp):
         return self.empDL.edit_employee(emp)
+
+    def emp_search(self, search_type, value):
+        return self.empDL.search(search_type, value)
     
     def get_all_realestate(self):
         return self.realDL.get_all_realestate()
