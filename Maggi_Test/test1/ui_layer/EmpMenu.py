@@ -37,35 +37,55 @@ r - return to previous menu
             print(self.options)
 
     def user_options(self, controller):
-        name = input("Enter employee name: ")
-        name_c = self.llapi.check_if_name_correct(name)
-        if name_c == False:
-            print("invalid employee name")
-            self.user_options(controller)
+        while True:
+            name = input("Enter employee name: ")
+            name_c = self.llapi.check_if_name_correct(name)
+            if name_c == False:
+                print("invalid employee name")
+            else: break
 #----
-        phone = input("Enter employee phone: ")
-        phone_c = self.llapi.check_if_phone_correct(phone)
-        if phone_c == False:
-            print("invalid employee phone")
-            self.user_options(controller)
+        while True:
+            phone = input("Enter employee phone: ")
+            phone_c = self.llapi.check_if_phone_correct(phone)
+            if phone_c == False:
+                print("invalid employee phone")
+            else: break
 #----
         if controller == "create": 
-            id = input("Enter employee id: ")
-            id_c = self.llapi.check_if_id_correct(id)
-            if id_c == False:
-                print("Invalid employee id")
-                self.user_options(controller)
-        else: id == None
+            while True:
+                id = input("Enter employee id: ")
+                id_c = self.llapi.check_if_id_correct(id)
+                if id_c == False:
+                    print("Invalid employee id")
+                else: break
+        else: id = None
 #----
-        address = input("Enter employee address: ")
-        address_c = self.llapi.check_if_address_correct(address)
-        homeline = input("Enter employee homeline: ")
-        location = input("Enter employee location: ")
-        return name, email, phone, id, address, homeline, location
+        while True:
+            address = input("Enter employee address: ")
+            address_c = self.llapi.check_if_address_correct(address)
+            if address_c == False:
+                print("Invalid employee address")
+            else: break
+#----
+        while True:
+            homeline = input("Enter employee homeline: ")
+            homeline_c = self.llapi.check_if_phone_correct(homeline)
+            if homeline_c == False:
+                print("invalid employee homeline")
+            else: break
+#----
+        while True:
+            location = input("Enter employee location: ")
+            location_c = self.llapi.check_if_location_correct(location)
+            if location_c == False:
+                print("invalid employee location")
+            else: break
+#----
+        return name, phone, id, address, homeline, location
 
     def create_employee(self):
-        name, email, phone, id, address, homeline, location = user_options("create")
-        emp = Employee(name, id, address, homeline, email, location, phone)
+        name, phone, id, address, homeline, location = user_options("create")
+        emp = Employee(name, id, address, homeline, location, phone)
         self.llapi.create_employee(emp)
 
     def edit_employee(self):
@@ -80,8 +100,8 @@ r - return to previous menu
 
         ready_to_continue = self.llapi.check_if_employee_exists(edit_id)
         if ready_to_continue:
-            name, email, phone, id, address, homeline, location = self.user_options(None)
-            emp = Employee(name, edit_id, address, homeline, email, location, phone)        
+            name, phone, id, address, homeline, location = self.user_options(None)
+            emp = Employee(name, edit_id, address, homeline, location, phone)        
             self.llapi.edit_employee(emp)
         else:
             print("The employee id was not found")
