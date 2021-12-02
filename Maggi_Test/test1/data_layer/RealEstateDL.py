@@ -39,6 +39,7 @@ class RealEstateDL:
                 if row['id'] == real.id:
                     print('updating row', row['id'])
                     writer.writerow({'address': real.address, "size": real.size, "rooms": real.rooms, 'id': real.id, 'amenities': real.amenities, 'location': real.location})
+                    
                 else:
                     row = {'address': row['address'], 'size': row['size'], 'rooms': row['rooms'], 'id': row['id'], 'amenities': row['amenities'], 'location': row['location']}
                     writer.writerow(row)

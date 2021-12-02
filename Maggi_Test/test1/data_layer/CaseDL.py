@@ -13,19 +13,19 @@ class CaseDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                case = Case(row["id"], row["subject"], row["description"], row["priority"], row["due date"], row["repeated"])
+                case = Case(row["id"],row["location"], row["subject"], row["description"], row["priority"], row["due date"], row["repeated"])
                 ret_list.append(case)
         return ret_list
 
     def create_case(self, case):
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ["id", "subject","description","priority",'due date','repeated']
+            fieldnames = ["id", "location", "subject","description","priority",'due date','repeated']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'id': case.id,'subject': case.subject, "description": case.description, "priority": case.priority, 'due date': case.due_date, 'repeated': case.repeated})
+            writer.writerow({'id': case.id,'location': case.location, 'subject': case.subject, "description": case.description, "priority": case.priority, 'due date': case.due_date, 'repeated': case.repeated})
     def edit_case(self, case):
         temp_file = NamedTemporaryFile(mode = 'w', delete=False)
         
-        fieldnames = ["id","subject","description",'priority','due date','repeated']
+        fieldnames = ["id","location","subject","description",'priority','due date','repeated']
         with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
             reader = csv.DictReader(csvfile, fieldnames=fieldnames)
             #fieldnames = ["name","id","address",'homeline','email','location','phone']
@@ -35,9 +35,9 @@ class CaseDL:
             for row in reader:
                 if row['id'] == case.id:
                     print('updating row', row['id'])
-                    writer.writerow({'id': case.id, "subject": case.subject, "description": case.description, 'priority': case.priority, 'due date': case.due_date, 'repeated': case.repeated})
+                    writer.writerow({'id': case.id,'location': case.location, "subject": case.subject, "description": case.description, 'priority': case.priority, 'due date': case.due_date, 'repeated': case.repeated})
                 else:
-                    row = {'id': row['id'], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'due date': row['due date'], 'repeated': row['repeated']}
+                    row = {'id': row['id'],'location': row["location"], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'due date': row['due date'], 'repeated': row['repeated']}
                     writer.writerow(row)
 
         shutil.move(temp_file.name, self.filepath)
