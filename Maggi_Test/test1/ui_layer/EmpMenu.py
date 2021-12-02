@@ -24,6 +24,12 @@ r - return to previous menu
                 all_emps = self.llapi.all_employees()
                 for emp in all_emps:
                     print(emp)
+                filter_input = input("Do you want to filter by location(y/n)?: ")
+                if filter_input == 'y':
+                    filter_location = input('Enter location to filter by: ')
+                    result = LLAPI().filter_employee(filter_location)
+                    for row in result:
+                        print(row)
             elif command == "2":
                 self.create_employee()
             elif command == "3":
@@ -103,5 +109,5 @@ r - return to previous menu
     
     def search_employee(self):
         search_id = input("Enter employee id: ")
-        result = LLAPI.search_employee(search_id)
+        result = LLAPI().search_employee(search_id)
         print(result)

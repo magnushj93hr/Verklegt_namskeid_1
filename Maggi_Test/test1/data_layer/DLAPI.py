@@ -14,6 +14,9 @@ class DLAPI:
         self.locDL = LocationDL()
         self.maintanancereportDL = MaintenanceDL()
 
+
+# ----------------------------------------------------------------
+# EMPLOYEE FUNCTIONS
     def get_all_employees(self):
         return self.empDL.get_all_employees()
 
@@ -25,10 +28,8 @@ class DLAPI:
 
     def edit_employee(self, emp):
         return self.empDL.edit_employee(emp)
-
-    def emp_search(self, search_type, value):
-        return self.empDL.search(search_type, value)
-
+# ----------------------------------------------------------------
+# REAL ESTATE FUNCTIONS
     def get_all_realestate(self):
         return self.realDL.get_all_realestate()
 
@@ -37,7 +38,8 @@ class DLAPI:
 
     def edit_realestate(self, real):
         return self.realDL.edit_realestate(real)
-
+# ----------------------------------------------------------------
+# CASE FUNCTIONS
     def get_all_cases(self):
         return self.caseDL.get_all_cases()
 
@@ -49,19 +51,22 @@ class DLAPI:
 
     def edit_case(self, case):
         return self.caseDL.edit_case(case)
-
+# ----------------------------------------------------------------
+# CONTRACTOR FUNCTIONS
     def get_all_contractors(self):
         return self.contrDL.get_all_contractors()
 
     def create_contractor(self, contr):
         return self.contrDL.create_contractor(contr)
-
+# ----------------------------------------------------------------
+# LOCATION FUNCTIONS
     def get_all_locations(self):
         return self.locDL.get_all_locations()
 
     def create_location(self, loc):
         return self.locDL.create_location(loc)
-
+# ----------------------------------------------------------------
+# MAINTENANCE REPORT FUNCTIONS
     def get_all_maintenance_reports(self):
         return self.maintanancereportDL.get_all_maintenance_reports()
 

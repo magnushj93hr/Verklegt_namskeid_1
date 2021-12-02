@@ -9,6 +9,7 @@ Dest menu
 1 - list all real estate
 2 - create real estate
 3 - edit real estate
+4 - search real estate
 r - return to previous menu
 """
 
@@ -23,10 +24,18 @@ r - return to previous menu
                 all_real = self.llapi.all_realestate()
                 for real in all_real:
                     print(real)
+                filter_input = input("Do you want to filter by location(y/n)?: ")
+                if filter_input == 'y':
+                    filter_location = input('Enter location to filter by: ')
+                    result = LLAPI().filter_realestate(filter_location)
+                    for row in result:
+                        print(row)
             elif command == "2":
                 self.create_realestate()
             elif command == "3":
                 self.edit_realestate()
+            elif command == "4":
+                self.search_realestate()
             elif command == "r":
                 return
             else:
@@ -57,3 +66,8 @@ r - return to previous menu
 
         real = RealEstate(address, size, rooms,edit_id, amentities, location)        
         self.llapi.edit_realestate(real)
+
+    def search_realestate(self):
+        search_id = input("Enter real estate id: ")
+        result = LLAPI().search_realestate(search_id)
+        print(result)

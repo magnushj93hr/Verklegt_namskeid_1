@@ -9,6 +9,7 @@ Employee menu
 1 - list all cases
 2 - create a new case
 3 - edit case
+4 - search for case
 r - return to previous menu
 """
 
@@ -27,6 +28,8 @@ r - return to previous menu
                 self.create_case()
             elif command == "3":
                 self.edit_case()
+            elif command == '4':
+                self.search_case()
             elif command == "r":
                 return "r"
             else:
@@ -60,3 +63,8 @@ r - return to previous menu
 
         case = Case(edit_id, location, subject, description, priority, due_date, repeated)        
         self.llapi.edit_case(case)
+    
+    def search_case(self):
+        search_id = input("Enter case id: ")
+        result = LLAPI().search_case(search_id)
+        print(result)
