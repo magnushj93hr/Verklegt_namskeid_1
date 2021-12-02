@@ -15,5 +15,8 @@ class EmployeeLL:
     def edit_employee(self, edit_id):
         self.dlapi.edit_employee(edit_id)
 
+    def search(self, search_type, value):
+        return self.dlapi.emp_search(search_type, value)
+
 if __name__ == "__main__":
     empLL = EmployeeLL(DLAPI())

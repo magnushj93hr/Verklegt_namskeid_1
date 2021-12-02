@@ -8,6 +8,13 @@ from data_layer.DLAPI import DLAPI
 
 
 class LLAPI:
+    SEARCH_TYPE_NAME = "name"
+    SEARCH_TYPE_ID = "emp_id"
+    SEARCH_TYPE_ADDRESS = "address"
+    SEARCH_TYPE_PHONE = "phonenumber"
+    SEARCH_TYPE_GSM = "gsm"
+    SEARCH_TYPE_EMAIL = "email"
+
     def __init__(self):
         self.dlapi = DLAPI()
         self.empLL = EmployeeLL(self.dlapi)
@@ -25,6 +32,9 @@ class LLAPI:
     
     def edit_employee(self, emp):
         return self.empLL.edit_employee(emp)
+
+    def emp_search(self, search_type, value):
+        return self.empLL.search(search_type, value)
     
     def all_realestate(self):
         return self.realLL.all_realestate()

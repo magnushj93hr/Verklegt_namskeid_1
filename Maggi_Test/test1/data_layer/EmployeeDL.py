@@ -42,3 +42,17 @@ class EmployeeDL:
                     writer.writerow(row)
 
         shutil.move(temp_file.name, self.filepath)
+    
+
+    def search(self, search_type, value):
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                emp = Employee(row["name"], row["emp_id"], row["address"], row["homeline"], row["email"], row["location"], row["phone"])
+                if self.matches(emp, search_type, value):
+                    return "poop"
+
+    
+    def matches(emp, search_type, value):
+        if search_type == "name" and value == emp.name:
+            return True
