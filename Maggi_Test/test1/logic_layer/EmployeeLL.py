@@ -34,9 +34,6 @@ class EmployeeLL:
     def create_employee(self, emp):
         self.dlapi.create_employee(emp)
     
-    def check_if_employee_exists(self, id):
-        return self.dlapi.check_if_employee_exists(id)
-    
     def edit_employee(self, edit_id):
         self.dlapi.edit_employee(edit_id)
 
@@ -61,11 +58,16 @@ class EmployeeLL:
     def check_if_address_correct(self, address):
         if len(address) <= MAX_ADDRESS:
             return True
-        return False
-    def check_if_location_correct(self, location):
-        if len(location) <= MAX_LOCATION:
+        return False      
+    def check_if_employee_exists(self, id):
+        all_employees = self.dlapi.get_all_employees()
+        check_id = []
+        for employee in all_employees:
+            check_id.append(employee.id)
+        if id in check_id:
             return True
-        return False
+        else:
+            return False
 # ----------------------------------------------------------------
 
 

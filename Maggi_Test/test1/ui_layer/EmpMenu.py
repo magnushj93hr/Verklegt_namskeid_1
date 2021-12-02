@@ -1,6 +1,8 @@
 from logic_layer.LLAPI import LLAPI
 from models.Employee import Employee
 
+AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
+
 class EmpMenu:
     def __init__(self, llapi):
         self.llapi = llapi
@@ -81,11 +83,12 @@ r - return to previous menu
             else: break
 #----
         while True:
-            location = input("Enter employee location: ")
-            location_c = self.llapi.check_if_location_correct(location)
-            if location_c == False:
-                print("invalid employee location")
-            else: break
+            print('Available locations to choose from:')
+            for location in AVAILABLE_LOCATIONS:
+                print(location)
+            location = str(input("Enter location: "))
+            if location in AVAILABLE_LOCATIONS:
+                break
 #----
         return name, phone, id, address, homeline, location
 

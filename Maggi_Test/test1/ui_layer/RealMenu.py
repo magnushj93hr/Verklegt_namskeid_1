@@ -1,6 +1,8 @@
 from logic_layer.LLAPI import LLAPI
 from models.RealEstate import RealEstate
 
+AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
+
 class RealMenu:
     def __init__(self, llapi):
         self.llapi = llapi
@@ -48,11 +50,17 @@ r - return to previous menu
         rooms = input("Enter how many rooms are in the real estate: ")
         id = input("Enter ID of real estate: ")
         amenities = input("Enter amenities of real estate: ")
-        location = input("Enter location of real estate: ")
-        
-        
+        while True:
+            print('Available locations to choose from:')
+            for location in AVAILABLE_LOCATIONS:
+                print(location)
+            location = str(input("Enter location: "))
+            if location in AVAILABLE_LOCATIONS:
+                break
+            
         real = RealEstate(address, size, rooms, id, amenities, location)
         self.llapi.create_realestate(real)
+
     def edit_realestate(self):
         edit_id = str(input("Enter real estate id: "))
 
@@ -62,7 +70,13 @@ r - return to previous menu
         size = str(input("Enter size: "))
         rooms = str(input("Enter rooms: "))
         amentities = str(input("Enter amentities "))
-        location = str(input("Enter location: "))
+        while True:
+            print('Available locations to choose from:')
+            for location in AVAILABLE_LOCATIONS:
+                print(location)
+            location = str(input("Enter location: "))
+            if location in AVAILABLE_LOCATIONS:
+                break
 
         real = RealEstate(address, size, rooms,edit_id, amentities, location)        
         self.llapi.edit_realestate(real)
