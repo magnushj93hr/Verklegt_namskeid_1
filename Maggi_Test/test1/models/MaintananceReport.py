@@ -6,6 +6,7 @@ class MaintananceReport:
         self.case_id = case_id
         self.total_cost = total_cost
         self.contractor = contractor
+        self.employee_id = employee_id
         
 
     def __str__(self):

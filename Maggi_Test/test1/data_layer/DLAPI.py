@@ -57,4 +57,4 @@ class DLAPI:
         return self.maintanancereportDL.get_all_maintenance_reports()
     
     def create_maintenance_report(self, maintenancereport):
-        return self.locDL.create_location(maintenancereport)
+        return self.maintanancereportDL.create_maintenance_report(maintenancereport)

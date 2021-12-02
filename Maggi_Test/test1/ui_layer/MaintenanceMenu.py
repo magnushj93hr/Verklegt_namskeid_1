@@ -5,8 +5,8 @@ class MaintenanceMenu:
     def __init__(self, llapi):
         self.llapi = llapi
         self.options = """
-contractor menu
-1 - list all locations
+Maintenance Report menu
+1 - list all Reports
 2 - create new maintenance report
 r - return to previous menu
 """

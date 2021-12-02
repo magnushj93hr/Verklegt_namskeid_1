@@ -55,7 +55,9 @@ class LLAPI:
     
     def create_location(self,loc):
         return self.locLL.create_location(loc)
+
     def create_maintenance_report(self,maintenance):
         return self.maintenanceLL.create_maintenance_report(maintenance)
+
     def all_maintenance_reports(self):
-        return self.maintenanceLL.all_maintenance_reports
+        return self.maintenanceLL.all_maintenance_reports()
