@@ -11,6 +11,10 @@ class RealEstateLL:
 
     def create_realestate(self, real):
         self.dlapi.create_realestate(real)
+        
+    def edit_realestate(self, edit_id):
+        self.dlapi.edit_realestate(edit_id)
+
     
 if __name__ == "__main__":
     realLL = RealEstateLL(DLAPI())
