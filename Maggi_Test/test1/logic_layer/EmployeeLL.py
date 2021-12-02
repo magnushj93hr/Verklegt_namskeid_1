@@ -26,11 +26,6 @@ class EmployeeLL:
                 return True
         return False
 
-    def make_email(self):
-        em = self.emp.name.split()[0]
-        email = em + self.emp.id + EMAIL
-        return email
-
     def check_if_phone_correct(self, phone):
         if len(phone) == MAX_PHONE:
             if phone.isdigit():

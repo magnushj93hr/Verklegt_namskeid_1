@@ -84,7 +84,7 @@ r - return to previous menu
         return name, phone, id, address, homeline, location
 
     def create_employee(self):
-        name, phone, id, address, homeline, location = user_options("create")
+        name, phone, id, address, homeline, location = self.user_options("create")
         emp = Employee(name, id, address, homeline, location, phone)
         self.llapi.create_employee(emp)
 
