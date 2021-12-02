@@ -33,31 +33,56 @@ r - return to previous menu
                 print("invalid option, try again!")
             print(self.options)
 
-    def create_employee(self):
+    def user_options(self, controller):
         name = input("Enter employee name: ")
-        email = input("Enter employee email: ")
+        name_c = self.llapi.check_if_name_correct(name)
+        if name_c == False:
+            print("invalid employee name")
+            self.user_options(controller)
+#----
         phone = input("Enter employee phone: ")
-        id = input("Enter employee id: ")
+        phone_c = self.llapi.check_if_phone_correct(phone)
+        if phone_c == False:
+            print("invalid employee phone")
+            self.user_options(controller)
+#----
+        if controller == "create": 
+            id = input("Enter employee id: ")
+            id_c = self.llapi.check_if_id_correct(id)
+            if id_c == False:
+                print("Invalid employee id")
+                self.user_options(controller)
+        else: id == None
+#----
         address = input("Enter employee address: ")
+        address_c = self.llapi.check_if_address_correct(address)
         homeline = input("Enter employee homeline: ")
         location = input("Enter employee location: ")
+        return name, email, phone, id, address, homeline, location
 
+    def create_employee(self):
+        name, email, phone, id, address, homeline, location = user_options("create")
         emp = Employee(name, id, address, homeline, email, location, phone)
         self.llapi.create_employee(emp)
 
     def edit_employee(self):
-        edit_id = str(input("Enter employee id: "))
+        #check if id is len 4
+        while True:
+            
+            edit_id = str(input("Enter employee id: "))
+            id_c = self.llapi.check_if_id_correct(edit_id)
+            if id_c == False:
+                print("Invalid employee id(id is 4 number long)")
+            else: break
 
-        print(f"you are editing a employee with the id: {edit_id}")
-        print("You can't delete the employee id.\n")
-        name = str(input("Enter employee name: "))
-        email = str(input("Enter employee email: "))
-        phone = str(input("Enter employee phone: "))
-        address = str(input("Enter employee address: "))
-        homeline = str(input("Enter employee homeline: "))
-        location = str(input("Enter employee location: "))
+        ready_to_continue = self.llapi.check_if_employee_exists(edit_id)
+        if ready_to_continue:
+            name, email, phone, id, address, homeline, location = self.user_options(None)
+            emp = Employee(name, edit_id, address, homeline, email, location, phone)        
+            self.llapi.edit_employee(emp)
+        else:
+            print("The employee id was not found")
+            print(self.options)
 
-        emp = Employee(name, edit_id, address, homeline, email, location, phone)        
-        self.llapi.edit_employee(emp)
 
 

@@ -22,6 +22,7 @@ class CaseDL:
             fieldnames = ["id", "location", "subject","description","priority",'due date','repeated']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'id': case.id,'location': case.location, 'subject': case.subject, "description": case.description, "priority": case.priority, 'due date': case.due_date, 'repeated': case.repeated})
+            
     def edit_case(self, case):
         temp_file = NamedTemporaryFile(mode = 'w', delete=False)
         
