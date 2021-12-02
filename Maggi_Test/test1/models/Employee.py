@@ -9,4 +9,4 @@ class Employee:
         self.phone = phone
 
     def __str__(self):
-        return f"name: {self.name}, id: {self.id}, address: {self.address}, phone: {self.phone}, homeline: {self.homeline}, email: {self.email}, location: {self.location}"
+        return f"name: {self.name}, id: {self.id}, address: {self.address}, homeline: {self.homeline}, email: {self.email}, location: {self.location}, phone: {self.phone}"
