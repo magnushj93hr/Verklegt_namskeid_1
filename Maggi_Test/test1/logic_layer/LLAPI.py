@@ -28,18 +28,17 @@ class LLAPI:
 
 # ----------------------------------------------------------------
     # This function checks if the employee is valid
-    def check_if_name_correct(self, name):
+    def is_name_correct(self, name):
         return self.empLL.check_if_name_correct(name)
-    def check_if_id_correct(self, id):
+    def is_id_correct(self, id):
         return self.empLL.check_if_id_correct(id)
     def make_email(self):
         return self.empLL.make_email()
-    def check_if_phone_correct(self, phone):
+    def is_phone_correct(self, phone):
         return self.empLL.check_if_phone_correct(phone)
-    def check_if_address_correct(self, address):
+    def is_address_correct(self, address):
         return self.empLL.check_if_address_correct(address)
-    def check_if_location_correct(self, location):
-        return self.empLL.check_if_location_correct(location)
+
 # ----------------------------------------------------------------
 
 

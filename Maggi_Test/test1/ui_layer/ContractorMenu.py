@@ -30,13 +30,46 @@ r - return to previous menu
                 print("invalid option, try again!")
             print(self.options)
 
+    def user_options(self):
+        while True:
+            name = input("Enter contractor name: ")
+            name_c = self.llapi.check_if_name_correct(name)
+            if name_c == False:
+                print("invalid contractor name")
+            else: break
+#----
+        while True:
+            phone = input("Enter contractor phone number: ")
+            phone_c = self.llapi.check_if_phone_correct(phone)
+            if phone_c == False:
+                print("invalid contractor phone number")
+            else: break
+#----
+        while True:
+            contact = input("Enter contractor contact: ")
+            contact_c = self.llapi.check_if_location_correct(contact)
+            if contact_c == False:
+                print("invalid contracotr contact")
+            else: break
+#----
+        while True:
+            location = input("Enter contractor location: ")
+            location_c = self.llapi.check_if_location_correct(location)
+            if location_c == False:
+                print("invalid Contractor location")
+            else: break
+#----
+        while True:
+            open = input("Enter opening hours for contractor: ")
+            open_c = self.llapi.check_if_location_correct(open)
+            if open_c == False:
+                print("invalid opening hours for Contractor ")
+            else: break
+#----
+        return name, phone, contact, location, open
+
     def create_contractor(self):
-        name = input("Enter contractor name: ")
-        contact = input("Enter contractor contact: ")
-        phone = input("Enter contractor phone: ")
-        opening_hours = input("Enter contractor opening hours: ")
-        location = input("Enter contractor location: ")
-        
+        name, phone, contact, location, opening_hours = self.user_options()        
         contr = Contractor(name, contact, phone, opening_hours, location)
         self.llapi.create_contractor(contr)
 

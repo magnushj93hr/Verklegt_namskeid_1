@@ -44,43 +44,25 @@ r - return to previous menu
                 print("invalid option, try again!")
             print(self.options)
 
+    def input_and_check(self, info_type, check_fun):
+        while True:
+            value = input(f"Enter employee {info_type}: ")
+            if not check_fun(value):
+                print(f"Invalid employee {info_type}")
+            else:
+                return value
+
     def user_options(self, controller):
-        while True:
-            name = input("Enter employee name: ")
-            name_c = self.llapi.check_if_name_correct(name)
-            if name_c == False:
-                print("invalid employee name")
-            else: break
-#----
-        while True:
-            phone = input("Enter employee phone: ")
-            phone_c = self.llapi.check_if_phone_correct(phone)
-            if phone_c == False:
-                print("invalid employee phone")
-            else: break
-#----
+        name = self.input_and_check("name", lambda value : self.llapi.is_name_correct(value))
+        phone = self.input_and_check("phone", lambda value : self.llapi.is_phone_correct(value))
+        
         if controller == "create": 
-            while True:
-                id = input("Enter employee id: ")
-                id_c = self.llapi.check_if_id_correct(id)
-                if id_c == False:
-                    print("Invalid employee id")
-                else: break
-        else: id = None
-#----
-        while True:
-            address = input("Enter employee address: ")
-            address_c = self.llapi.check_if_address_correct(address)
-            if address_c == False:
-                print("Invalid employee address")
-            else: break
-#----
-        while True:
-            homeline = input("Enter employee homeline: ")
-            homeline_c = self.llapi.check_if_phone_correct(homeline)
-            if homeline_c == False:
-                print("invalid employee homeline")
-            else: break
+            id = self.input_and_check("id", lambda value : self.llapi.is_id_correct(value))
+        else:
+            id = None
+
+        address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
+        homeline = self.input_and_check("homeline", lambda value : self.llapi.is_phone_correct(value))
 #----
         while True:
             print('Available locations to choose from:')
