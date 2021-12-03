@@ -1,23 +1,17 @@
-from data_layer.DLAPI import DLAPI
-from models.Contractor import Contractor
-
 MAX_NAME = 40
 MAX_ID = 4
+MAX_REL_ID = 6
 MAX_PHONE = 7
 MAX_ADDRESS = 20
+MAX_LOCATION = 15
+MAX_ROOM = 10
 
 
-class ContractorLL:
+class InputCheck:
     def __init__(self, dlapi):
-        self.dlapi = dlapi
+        pass
     
-    def all_contractors(self):
-        return self.dlapi.get_all_contractors()
-
-    def create_contractor(self, contr):
-        self.dlapi.create_contractor(contr)
-
-
+    
 # ----------------------------------------------------------------
 # INPUT CHECK
     def check_if_name_correct(self, name):
@@ -38,17 +32,20 @@ class ContractorLL:
     def check_if_address_correct(self, address):
         if len(address) <= MAX_ADDRESS:
             return True
-        return False      
-    def check_if_employee_exists(self, id):
-        all_employees = self.dlapi.get_all_employees()
-        check_id = []
-        for employee in all_employees:
-            check_id.append(employee.id)
-        if id in check_id:
+        return False 
+# ------------------------------
+# for real estate ///
+    def check_if_rel_id_correct(self, id):
+        if id.isdigit():
             return True
-        else:
-            return False
+        return False
+    def check_if_size_correct(self, size):
+        if size.isdigit():
+            return True
+        return False
+    def check_if_room_correct(self, room):
+        if room.isdigit():
+            if len(room) <= MAX_ROOM:
+                return True
+        return False
 # ----------------------------------------------------------------
-
-if __name__ == "__main__":
-    empLL = ContractorLL(DLAPI())
