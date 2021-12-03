@@ -20,6 +20,7 @@ class RealEstateLL:
         for realestate in all_realestate:
             if realestate.id == real_id:
                 return realestate
+        return None
     
     def filter_realestate(self, filter):
         filtered_realestate = []
