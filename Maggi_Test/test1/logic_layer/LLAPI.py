@@ -8,13 +8,7 @@ from data_layer.DLAPI import DLAPI
 
 
 class LLAPI:
-    SEARCH_TYPE_NAME = "name"
-    SEARCH_TYPE_ID = "emp_id"
-    SEARCH_TYPE_ADDRESS = "address"
-    SEARCH_TYPE_PHONE = "phonenumber"
-    SEARCH_TYPE_GSM = "gsm"
-    SEARCH_TYPE_EMAIL = "email"
-
+    
     def __init__(self):
         self.dlapi = DLAPI()
         self.empLL = EmployeeLL(self.dlapi)
@@ -24,7 +18,6 @@ class LLAPI:
         self.locLL = LocationLL(self.dlapi)
         self.maintenanceLL = MaintenanceLL(self.dlapi)
 
-    
 
 # ----------------------------------------------------------------
     # This function checks if the employee is valid

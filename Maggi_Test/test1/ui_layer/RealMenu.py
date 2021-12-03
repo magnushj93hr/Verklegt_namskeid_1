@@ -78,7 +78,7 @@ r - return to previous menu
             if location in AVAILABLE_LOCATIONS:
                 break
 
-        real = RealEstate(address, size, rooms,edit_id, amentities, location)        
+        real = RealEstate(address, size, rooms, edit_id, amentities, location)        
         self.llapi.edit_realestate(real)
 
     def search_realestate(self):
