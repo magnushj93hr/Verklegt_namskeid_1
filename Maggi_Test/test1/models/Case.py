@@ -15,7 +15,7 @@ class Case:
             self.date = date
 
     def __str__(self):
-        return f"id: {self.id}, location: {self.location}, subject: {self.subject}, description: {self.description}, priority: {self.priority}, due_date: {self.due_date}, repeated: {self.repeated}, creation date: {self.date}"
+        return f"id: {self.id}, location: {self.location}, subject: {self.subject}, description: {self.description}, priority: {self.priority}, repeated: {self.repeated}, creation date: {self.date}"
     
     def creation_date(self):
         dt = datetime.datetime.now()
