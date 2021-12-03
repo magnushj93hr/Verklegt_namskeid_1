@@ -1,4 +1,4 @@
-id,location,subject,description,priority,due date,repeated, real_est_id
+id,location,subject,description,priority,due date,repeated,real_est_id
 1001,rvk,Pizza,pepperoni,3,01/12,y,0000
 1002,rvk,asþf.kjaslkf,asdgasdg,1,34,n,0000
 1003,rvk,Baka kleinur fyrir jólin,Vantar djúpsteikingarpott,1,20/24,y,0001

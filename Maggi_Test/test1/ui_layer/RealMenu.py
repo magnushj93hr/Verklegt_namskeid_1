@@ -44,6 +44,7 @@ r - return to previous menu
                 self.create_realestate()
             elif command == "3":
                 self.search_realestate()
+                self.get_cases(self.search_id)
                 self.prompt_input_search()
             elif command == "r":
                 return
@@ -97,6 +98,11 @@ r - return to previous menu
                 print(result)
                 break
     
+    def get_cases(self, search_id):
+        result = self.llapi.get_cases(search_id)
+        for case in result:
+            print(case)
+
 
     def prompt_input_search(self):
         while True:
@@ -124,7 +130,6 @@ r - return to previous menu
 
 
     def create_case(self):
-        
         id = input("Enter id for case: ")
         location = input("Enter the location: ")
         subject = input("Enter subject: ")
