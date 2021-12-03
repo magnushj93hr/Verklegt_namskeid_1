@@ -3,6 +3,9 @@ from models.RealEstate import RealEstate
 from models.Case import Case
 
 PRIORITY = ['low','medium','high']
+AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen"]
+
+
 
 class RealMenu:
     def __init__(self, llapi):

@@ -1,7 +1,7 @@
 from logic_layer.LLAPI import LLAPI
 from models.Employee import Employee
 
-AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
+AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen"]
 
 class EmpMenu:
     def __init__(self, llapi):
