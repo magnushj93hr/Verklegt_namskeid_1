@@ -1,5 +1,8 @@
-id,location,subject,description,priority,due date,repeated
-1001,rvk,Pizza,pepperoni,3,01/12,y
-1002,rvk,asþf.kjaslkf,asdgasdg,1,34,n
-1003,rvk,Baka kleinur fyrir jólin,Vantar djúpsteikingarpott,1,20/24,y
-1004,torshavn,Fix erryting,Fix lamp and light ,3,20/12,n
+id,location,subject,description,priority,repeated,date,real_est_id
+1001,rvk,Pizza,pepperoni,3,y,1/12/2021,0001
+1002,rvk,asþf.kjaslkf,asdgasdg,1,n,2/12/2021,0000
+1003,rvk,Baka kleinur fyrir jólin,Vantar djúpsteikingarpott,1,y,29/11/2021,0002
+1004,torshavn,Fix erryting,Fix lamp and light,1,n,3/12/2021,0003
+1005,Reykjavík,sdfsadgadfh,asdgasdgdsfgadgf,h,y,3/12/2021,0001
+1006,Reykjavík,asfdasdgsdgdfg,sdf,h,y,3/12/2021,0002
+1007,reykjavík,sdfh,adfg,low,y,3/12/2021,0001

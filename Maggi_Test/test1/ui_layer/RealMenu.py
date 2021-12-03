@@ -1,22 +1,29 @@
 from logic_layer.LLAPI import LLAPI
 from models.RealEstate import RealEstate
+from models.Case import Case
 
-AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
 
 class RealMenu:
     def __init__(self, llapi):
         self.llapi = llapi
-        self.options = """
-Dest menu
+        self.main_options = """
+Real estate menu
 1 - list all real estate
 2 - create real estate
-3 - edit real estate
-4 - search real estate
+3 - search real estate
 r - return to previous menu
 """
 
+        self.real_est_options = """
+Real estate search menu
+1 - edit real estate
+2 - create case
+3 - edit case
+r - return to previous menu
+    """
+
     def draw_options(self):
-        print(self.options)
+        print(self.main_options)
         return self.prompt_input()
 
     def prompt_input(self):
@@ -35,9 +42,8 @@ r - return to previous menu
             elif command == "2":
                 self.create_realestate()
             elif command == "3":
-                self.edit_realestate()
-            elif command == "4":
                 self.search_realestate()
+                self.prompt_input_search()
             elif command == "r":
                 return
             else:
@@ -80,6 +86,32 @@ r - return to previous menu
             self.llapi.create_realestate(real)
             id += 1
 
+    def search_realestate(self):
+        while True:
+            self.search_id = input("Enter real estate id: ")
+            result = LLAPI().search_realestate(self.search_id)
+            if result == None:
+                print("Invalid ID")
+            else:
+                print(result)
+                break
+    
+
+    def prompt_input_search(self):
+        while True:
+            print(self.real_est_options)
+            command = input("Enter your input: ")
+            if command == "1":
+                self.edit_realestate()
+            elif command == "2":
+                self.create_case()
+            elif command == "3":
+                self.edit_case()   
+            elif command == "r":
+                return
+            else:
+                print("invalid option, try again!")
+
     def edit_realestate(self):
         edit_id = str(input("Enter real estate id: "))
         ready_to_continue = self.llapi.check_if_employee_exists(edit_id)
@@ -89,7 +121,32 @@ r - return to previous menu
         real = RealEstate(address, size, rooms,edit_id, amentities, location)        
         self.llapi.edit_realestate(real)
 
-    def search_realestate(self):
-        search_id = input("Enter real estate id: ")
-        result = LLAPI().search_realestate(search_id)
-        print(result)
+
+    def create_case(self):
+        id = input("Enter id for case: ")
+        location = input("Enter the location: ")
+        subject = input("Enter subject: ")
+        description = input("Enter description: ")
+        priority = input("Set priority: ")
+        due_date = input("Enter due date: ")
+        repeated = input("Is the case repeated?: ")
+        
+        case = Case(id,location,subject, description, priority, due_date, repeated, self.search_id)
+        self.llapi.create_case(case)
+
+    def edit_case(self):
+        edit_id = str(input("Enter case id: "))
+
+        print(f"you are editing a case with the id: {edit_id}")
+        print("You can't delete the case id.\n")
+        
+        location = str(input("Enter the location: "))
+        subject = str(input("Enter the subject name: "))
+        description = str(input("Enter description: "))
+        priority = str(input("Enter priority: "))
+        due_date = str(input("Enter due date: "))
+        repeated = str(input("Is the case repeated?: "))
+        
+
+        case = Case(edit_id, location, subject, description, priority, due_date, repeated)        
+        self.llapi.edit_case(case)  
