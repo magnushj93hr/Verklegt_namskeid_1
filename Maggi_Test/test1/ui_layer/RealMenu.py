@@ -2,6 +2,7 @@ from logic_layer.LLAPI import LLAPI
 from models.RealEstate import RealEstate
 from models.Case import Case
 
+PRIORITY = ['low','medium','high']
 
 class RealMenu:
     def __init__(self, llapi):
@@ -124,16 +125,22 @@ r - return to previous menu
 # -----------------------------------------------------------------------------------------
 
     def create_case(self):
+        
         id = input("Enter id for case: ")
         location = input("Enter the location: ")
         subject = input("Enter subject: ")
         description = input("Enter description: ")
-        priority = input("Set priority: ")
-        due_date = input("Enter due date: ")
+        while True:
+            print('What priority?: ')
+            for prio in PRIORITY:
+                print(prio)
+            priority = str(input("Enter priority: "))
+            if priority in PRIORITY:
+                break
         repeated = input("Is the case repeated?: ")
-        
-        case = Case(id,location,subject, description, priority, due_date, repeated, self.search_id)
-        self.llapi.create_case(case)
+
+        case = Case(id,location,subject, description, priority, repeated, self.search_id)
+        self.llapi.create_case(case)        
 
     def edit_case(self):
         edit_id = str(input("Enter case id: "))
