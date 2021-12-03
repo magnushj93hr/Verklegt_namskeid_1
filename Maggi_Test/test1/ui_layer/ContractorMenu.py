@@ -30,43 +30,24 @@ r - return to previous menu
                 print("invalid option, try again!")
             print(self.options)
 
+#------------------------------------------------------------------------------------------
+# User options and check if correct:
+    def input_and_check(self, info_type, check_fun):
+        while True:
+            value = input(f"Enter {info_type} for contractor: ")
+            if not check_fun(value):
+                print(f"Invalid {info_type} for contractor!")
+            else:
+                return value
+
     def user_options(self):
-        while True:
-            name = input("Enter contractor name: ")
-            name_c = self.llapi.check_if_name_correct(name)
-            if name_c == False:
-                print("invalid contractor name")
-            else: break
-#----
-        while True:
-            phone = input("Enter contractor phone number: ")
-            phone_c = self.llapi.check_if_phone_correct(phone)
-            if phone_c == False:
-                print("invalid contractor phone number")
-            else: break
-#----
-        while True:
-            contact = input("Enter contractor contact: ")
-            contact_c = self.llapi.check_if_location_correct(contact)
-            if contact_c == False:
-                print("invalid contracotr contact")
-            else: break
-#----
-        while True:
-            location = input("Enter contractor location: ")
-            location_c = self.llapi.check_if_location_correct(location)
-            if location_c == False:
-                print("invalid Contractor location")
-            else: break
-#----
-        while True:
-            open = input("Enter opening hours for contractor: ")
-            open_c = self.llapi.check_if_location_correct(open)
-            if open_c == False:
-                print("invalid opening hours for Contractor ")
-            else: break
-#----
+        name = self.input_and_check("name", lambda value : self.llapi.is_name_correct(value))
+        phone = self.input_and_check("phone number", lambda value : self.llapi.is_phone_correct(value))
+        contact = self.input_and_check("contact", lambda value : self.llapi.is_address_correct(value))
+        location = self.input_and_check("location", lambda value : self.llapi.is_address_correct(value))
+        open = self.input_and_check("opening hours", lambda value : self.llapi.is_address_correct(value))
         return name, phone, contact, location, open
+#------------------------------------------------------------------------------------------
 
     def create_contractor(self):
         name, phone, contact, location, opening_hours = self.user_options()        

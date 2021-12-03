@@ -19,10 +19,10 @@ class CaseDL:
 
     def create_case(self, case):
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ["id", "location", "subject","description","priority",'repeated','date']
+            fieldnames = ["id", "location", "subject","description","priority",'due date','repeated', "real_est_id"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'id': case.id,'location': case.location, 'subject': case.subject, "description": case.description, "priority": case.priority, 'repeated': case.repeated, 'date': case.date})
-            
+            writer.writerow({'id': case.id,'location': case.location, 'subject': case.subject, "description": case.description, "priority": case.priority, 'due date': case.due_date, 'repeated': case.repeated, "real_est_id": case.real_est_id})
+
     def check_if_case_exists(self, id):
             with open(self.filepath, newline='', encoding='utf-8') as csvfile:
                 reader = csv.DictReader(csvfile)
