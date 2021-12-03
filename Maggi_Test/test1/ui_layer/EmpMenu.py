@@ -86,7 +86,7 @@ r - return to previous menu
         ready_to_continue = self.llapi.check_if_employee_exists(edit_id)
         if ready_to_continue == True:
             name, phone, id, address, homeline, location = self.user_options(None)
-            emp = Employee(name, edit_id, address, homeline, location, phone)        
+            emp = Employee(name, edit_id, address, homeline, location, phone)
             self.llapi.edit_employee(emp)
         else:
             print("The employee id was not found")

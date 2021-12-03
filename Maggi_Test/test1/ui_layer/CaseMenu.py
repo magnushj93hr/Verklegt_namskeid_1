@@ -1,6 +1,7 @@
 from logic_layer.LLAPI import LLAPI
 from models.Case import Case
 
+
 class CaseMenu:
     def __init__(self, llapi):
         self.llapi = llapi
@@ -37,6 +38,7 @@ r - return to previous menu
             print(self.options)
 
     def create_case(self):
+        
         id = input("Enter id for case: ")
         location = input("Enter the location: ")
         subject = input("Enter subject: ")
@@ -45,8 +47,11 @@ r - return to previous menu
         due_date = input("Enter due date: ")
         repeated = input("Is the case repeated?: ")
         
+        
         case = Case(id,location,subject, description, priority, due_date, repeated)
         self.llapi.create_case(case)
+        
+        
     def edit_case(self):
         edit_id = str(input("Enter case id: "))
 
