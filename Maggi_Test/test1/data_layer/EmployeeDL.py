@@ -15,7 +15,7 @@ class EmployeeDL:
             for row in reader:
                 emp = Employee(row["name"], row["id"], row["address"], row["homeline"], row["location"], row["phone"])
                 ret_list.append(emp)
-                print(emp)
+                # print(emp)
         return ret_list
 
     def create_employee(self, emp):
