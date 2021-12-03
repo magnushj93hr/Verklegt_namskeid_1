@@ -4,6 +4,7 @@ from logic_layer.CaseLL import CaseLL
 from logic_layer.ContractorLL import ContractorLL
 from logic_layer.LocationLL import LocationLL
 from logic_layer.MaintenanceLL import MaintenanceLL
+from logic_layer.InputCheck import InputCheck
 from data_layer.DLAPI import DLAPI
 
 
@@ -17,20 +18,27 @@ class LLAPI:
         self.contrLL = ContractorLL(self.dlapi)
         self.locLL = LocationLL(self.dlapi)
         self.maintenanceLL = MaintenanceLL(self.dlapi)
+        self.input_check = InputCheck(self.dlapi)
 
 
 # ----------------------------------------------------------------
-    # This function checks if the employee is valid
+    # This function is her to stop spam and protect the input
     def is_name_correct(self, name):
-        return self.empLL.check_if_name_correct(name)
+        return self.input_check.check_if_name_correct(name)
     def is_id_correct(self, id):
-        return self.empLL.check_if_id_correct(id)
+        return self.input_check.check_if_id_correct(id)
     def make_email(self):
-        return self.empLL.make_email()
+        return self.input_check.make_email()
     def is_phone_correct(self, phone):
-        return self.empLL.check_if_phone_correct(phone)
+        return self.input_check.check_if_phone_correct(phone)
     def is_address_correct(self, address):
-        return self.empLL.check_if_address_correct(address)
+        return self.input_check.check_if_address_correct(address)
+    def check_if_rel_id_correct(self, rel_id):
+        return self.input_check.check_if_rel_id_correct(rel_id)
+    def check_if_size_correct(self, size):
+        return self.input_check.check_if_size_correct(size)
+    def check_if_room_correct(self, room):
+        return self.input_check.check_if_room_correct(room)
 
 # ----------------------------------------------------------------
 

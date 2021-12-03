@@ -44,23 +44,17 @@ r - return to previous menu
                 print("invalid option, try again!")
             print(self.options)
 
+# ------------------------------------------------------------------------------------------------------------------
     def input_and_check(self, info_type, check_fun):
         while True:
             value = input(f"Enter employee {info_type}: ")
-            if not check_fun(value):
-                print(f"Invalid employee {info_type}")
-            else:
-                return value
+            if not check_fun(value): print(f"Invalid employee {info_type}")
+            else: return value
 
     def user_options(self, controller):
         name = self.input_and_check("name", lambda value : self.llapi.is_name_correct(value))
         phone = self.input_and_check("phone", lambda value : self.llapi.is_phone_correct(value))
-        
-        if controller == "create": 
-            id = self.input_and_check("id", lambda value : self.llapi.is_id_correct(value))
-        else:
-            id = None
-
+        id = self.input_and_check("id", lambda value : self.llapi.is_id_correct(value)) if controller == "create" else None
         address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
         homeline = self.input_and_check("homeline", lambda value : self.llapi.is_phone_correct(value))
 #----
@@ -71,8 +65,9 @@ r - return to previous menu
             location = str(input("Enter location: "))
             if location in AVAILABLE_LOCATIONS:
                 break
-#----
+
         return name, phone, id, address, homeline, location
+# ------------------------------------------------------------------------------------------------------------------
 
     def create_employee(self):
         name, phone, id, address, homeline, location = self.user_options("create")
