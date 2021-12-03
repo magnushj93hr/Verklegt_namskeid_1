@@ -1,7 +1,7 @@
 from logic_layer.LLAPI import LLAPI
 from models.Case import Case
 
-PRIORITY = ['low']
+PRIORITY = ['low','medium','high']
 
 class CaseMenu:
     def __init__(self, llapi):
@@ -44,7 +44,13 @@ r - return to previous menu
         location = input("Enter the location: ")
         subject = input("Enter subject: ")
         description = input("Enter description: ")
-        priority = input("Set priority: ")
+        while True:
+            print('What priority?: ')
+            for prio in PRIORITY:
+                print(prio)
+            priority = str(input("Enter priority: "))
+            if priority in PRIORITY:
+                break
         repeated = input("Is the case repeated?: ")
         
         
