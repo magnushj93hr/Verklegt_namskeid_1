@@ -14,6 +14,20 @@ class RealEstateLL:
         
     def edit_realestate(self, edit_id):
         self.dlapi.edit_realestate(edit_id)
+    
+    def search_realestate(self, real_id):
+        all_realestate = self.dlapi.get_all_realestate()
+        for realestate in all_realestate:
+            if realestate.id == real_id:
+                return realestate
+    
+    def filter_realestate(self, filter):
+        filtered_realestate = []
+        all_realestate = self.dlapi.get_all_realestate()
+        for realestate in all_realestate:
+            if realestate.location == filter:
+                filtered_realestate.append(realestate)
+        return filtered_realestate
 
     
 if __name__ == "__main__":
