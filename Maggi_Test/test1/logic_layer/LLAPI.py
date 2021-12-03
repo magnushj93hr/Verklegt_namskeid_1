@@ -92,7 +92,7 @@ class LLAPI:
         return self.caseLL.edit_case(case)
     
     def search_case(self, case_id):
-        return self.caseLL.search_employee(case_id)
+        return self.caseLL.search_case(case_id)
 # ----------------------------------------------------------------
 # CONTRACTOR FUNCTIONS
     def all_contractors(self):

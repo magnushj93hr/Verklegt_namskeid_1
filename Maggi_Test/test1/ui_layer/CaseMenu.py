@@ -11,7 +11,8 @@ Case menu
 3 - search for case
 r - return to previous menu
 """
-
+# ------------------------------------------------------------------------------------------------------------------
+# menu input
     def draw_options(self):
         print(self.options)
         return self.prompt_input()
@@ -32,7 +33,9 @@ r - return to previous menu
             else:
                 print("invalid option, try again!")
             print(self.options)
-    
+# ------------------------------------------------------------------------------------------------------------------
+
+
     def search_case(self):
         search_id = input("Enter case id: ")
         result = LLAPI().search_case(search_id)
