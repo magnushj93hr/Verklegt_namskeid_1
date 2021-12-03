@@ -1,13 +1,12 @@
 import datetime
 
 class Case:
-    def __init__(self, id, location, subject, description, priority, due_date, repeated, date = None):
+    def __init__(self, id, location, subject, description, priority, repeated, date = None):
         self.id = id
         self.location = location
         self.subject = subject
         self.description = description
         self.priority = priority
-        self.due_date = due_date
         self.repeated = repeated
         if date == None:
             self.date = self.creation_date()

@@ -1,6 +1,7 @@
 from logic_layer.LLAPI import LLAPI
 from models.Case import Case
 
+PRIORITY = ['low']
 
 class CaseMenu:
     def __init__(self, llapi):
@@ -44,11 +45,10 @@ r - return to previous menu
         subject = input("Enter subject: ")
         description = input("Enter description: ")
         priority = input("Set priority: ")
-        due_date = input("Enter due date: ")
         repeated = input("Is the case repeated?: ")
         
         
-        case = Case(id,location,subject, description, priority, due_date, repeated)
+        case = Case(id,location,subject, description, priority, repeated)
         self.llapi.create_case(case)
         
         
@@ -62,11 +62,10 @@ r - return to previous menu
         subject = str(input("Enter the subject name: "))
         description = str(input("Enter description: "))
         priority = str(input("Enter priority: "))
-        due_date = str(input("Enter due date: "))
         repeated = str(input("Is the case repeated?: "))
         
 
-        case = Case(edit_id, location, subject, description, priority, due_date, repeated)        
+        case = Case(edit_id, location, subject, description, priority, repeated)        
         self.llapi.edit_case(case)
     
     def search_case(self):

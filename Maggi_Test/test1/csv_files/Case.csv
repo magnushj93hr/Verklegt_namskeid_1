@@ -1,7 +1,7 @@
-id,location,subject,description,priority,due date,repeated,date
-1001,torshavn,burger,needs onions,1,1,n,3/12/2021
-1002,torshavn,ons,borg,1,1,y,3/12/2021
-1003,rvk,Baka kleinur fyrir jólin,Vantar djúpsteikingarpott,1,20/24,y,29/11/2021
-1004,torshavn,Fix erryting,Fix lamp and light ,3,20/12,n,3/12/2021
-1005,Reykjavík,sdfsadgadfh,asdgasdgdsfgadgf,h,23,y,3/12/2021
-1006,Reykjavík,asfdasdgsdgdfg,sdf,h,23,y,3/12/2021
+id,location,subject,description,priority,repeated,date
+1001,rvk,Pizza,pepperoni,3,y,1/12/2021
+1002,rvk,asþf.kjaslkf,asdgasdg,1,n,2/12/2021
+1003,rvk,Baka kleinur fyrir jólin,Vantar djúpsteikingarpott,1,y,29/11/2021
+1004,torshavn,Fix erryting,Fix lamp and light,1,n,3/12/2021
+1005,Reykjavík,sdfsadgadfh,asdgasdgdsfgadgf,h,y,3/12/2021
+1006,Reykjavík,asfdasdgsdgdfg,sdf,h,y,3/12/2021
