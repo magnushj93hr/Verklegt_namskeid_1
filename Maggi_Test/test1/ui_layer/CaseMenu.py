@@ -1,18 +1,25 @@
 from logic_layer.LLAPI import LLAPI
 from models.Case import Case
+from models.MaintananceReport import MaintananceReport
 
 class CaseMenu:
     def __init__(self, llapi):
         self.llapi = llapi
         self.options = """
-Employee menu
+Case menu
 1 - list all cases
-2 - create a new case
-3 - edit case
-4 - search for case
+2 - edit case
+3 - search for case
 r - return to previous menu
 """
 
+        self.real_est_options = """
+Real estate search menu
+1 - edit real estate
+2 - create case
+3 - edit case
+r - return to previous menu
+    """
     def draw_options(self):
         print(self.options)
         return self.prompt_input()
@@ -25,46 +32,47 @@ r - return to previous menu
                 for case in all_cases:
                     print(case)
             elif command == "2":
-                self.create_case()
-            elif command == "3":
                 self.edit_case()
-            elif command == '4':
+            elif command == "3":
                 self.search_case()
             elif command == "r":
                 return "r"
             else:
                 print("invalid option, try again!")
             print(self.options)
+# ------------------------------------------------------------------------------------------------------------------
 
-    def create_case(self):
-        id = input("Enter id for case: ")
-        location = input("Enter the location: ")
-        subject = input("Enter subject: ")
-        description = input("Enter description: ")
-        priority = input("Set priority: ")
-        due_date = input("Enter due date: ")
-        repeated = input("Is the case repeated?: ")
-        
-        case = Case(id,location,subject, description, priority, due_date, repeated)
-        self.llapi.create_case(case)
-    def edit_case(self):
-        edit_id = str(input("Enter case id: "))
 
-        print(f"you are editing a case with the id: {edit_id}")
-        print("You can't delete the case id.\n")
-        
-        location = str(input("Enter the location: "))
-        subject = str(input("Enter the subject name: "))
-        description = str(input("Enter description: "))
-        priority = str(input("Enter priority: "))
-        due_date = str(input("Enter due date: "))
-        repeated = str(input("Is the case repeated?: "))
-        
-
-        case = Case(edit_id, location, subject, description, priority, due_date, repeated)        
-        self.llapi.edit_case(case)
-    
     def search_case(self):
         search_id = input("Enter case id: ")
         result = LLAPI().search_case(search_id)
         print(result)
+
+    def prompt_input_search(self):
+            while True:
+                print(self.real_est_options)
+                command = input("Enter your input: ")
+                if command == "1":
+                    self.edit_realestate()
+                elif command == "2":
+                    self.create_case()
+                elif command == "3":
+                    self.edit_case()   
+                elif command == "r":
+                    return
+                else:
+                    print("invalid option, try again!")
+
+
+    def create_maintenance_report(self):
+        real_estate_id = input("Enter ID: ")
+        description = input("Enter description:")
+        repeated = input("Is it repeated: ")
+        employee_id = input("Enter employee id : ")
+        case_id = input("Enter case id: ")
+        total_cost = input("Enter total cost: ")
+        contractor = input("Enter contractor: ")
+        
+        
+        maintenance = MaintananceReport(real_estate_id, description, repeated, employee_id, case_id, total_cost, contractor)
+        self.llapi.create_maintenance_report(maintenance)
