@@ -20,6 +20,7 @@ Real estate search menu
 1 - edit real estate
 2 - create case
 3 - edit case
+4 - display cases
 r - return to previous menu
     """
 
@@ -44,7 +45,6 @@ r - return to previous menu
                 self.create_realestate()
             elif command == "3":
                 self.search_realestate()
-                self.get_cases(self.search_id)
                 self.prompt_input_search()
             elif command == "r":
                 return
@@ -113,7 +113,9 @@ r - return to previous menu
             elif command == "2":
                 self.create_case()
             elif command == "3":
-                self.edit_case()   
+                self.edit_case() 
+            elif command == "4":
+                self.get_cases(self.search_id)  
             elif command == "r":
                 return
             else:
