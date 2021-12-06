@@ -21,13 +21,12 @@ class CaseLL:
             if case.id == case_id:
                 return case
     
-    def search_cases(self, searche_id):
-        cases= []
+    def search_cases(self, search_id):
         all_cases = self.dlapi.get_all_cases()
         for case in all_cases:
-            if case.real_est_id == searche_id:
-                cases.append(case)
-        return cases
+            if case.id == search_id:
+                return case
+        return None
 
 if __name__ == "__main__":
     empLL = CaseLL(DLAPI())

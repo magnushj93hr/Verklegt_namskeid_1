@@ -160,7 +160,7 @@ class LLAPI:
 
     def search_case(self, case_id):
 
-        return self.caseLL.search_employee(case_id)
+        return self.caseLL.search_cases(case_id)
 
 # ----------------------------------------------------------------
 

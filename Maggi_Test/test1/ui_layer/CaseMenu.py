@@ -79,18 +79,21 @@ r - return to previous menu
         
         
         maintenance = MaintananceReport(real_estate_id, description, repeated, employee_id, case_id, total_cost, contractor)
-        self.llapi.create_maintenance_report(maintenance)
+        
 
-        # id, location, subject, description, priority, repeated, real_est_id, status, date = LLAPI().search_case(case_id)
+        case = LLAPI().search_case(case_id)
+        if case == None:
+            raise ValueError("Case not found")
         #1001,rvk,Pizza,pepperoni,3,y,2/12/2021,0001,open
 
-        id = "1001"
-        location = "rvk"
-        subject = "Pizza"
-        description = "pepperoni"
-        priority = "3"
-        repeated = "y"
-        real_est_id = "0001"
+        # id = "1001"
+        # location = "rvk"
+        # subject = "Pizza"
+        # description = "pepperoni"
+        # priority = "3"
+        # repeated = "y"
+        # real_est_id = "0001"
 
-        case = Case(id, location, subject, description, priority, repeated, real_est_id, "ready to close")
+        case.status = "Ready to close"
+        self.llapi.create_maintenance_report(maintenance)
         self.llapi.edit_case(case)
