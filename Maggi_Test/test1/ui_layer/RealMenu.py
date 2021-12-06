@@ -96,7 +96,7 @@ r - return to previous menu
     def create_realestate(self):
         value = int(input("How many apartments are the in your aria: "))
         address, size, rooms, id, amenities, location = self.user_options("create")
-        for apartment in range(0, value+1):
+        for apartment in range(0, value):
             real = RealEstate(address, size, rooms, id, amenities, location)
             self.llapi.create_realestate(real)
             id += 1
