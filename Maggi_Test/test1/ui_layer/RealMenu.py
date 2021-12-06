@@ -17,7 +17,7 @@ r - return to previous menu
 """
 
         self.real_est_options = """
-Real estate search menu
+Real estate menu ##### á ekki að standa fasteigna id hérna af því hann er kominn inn í fasteignina hérna
 1 - edit real estate
 2 - create case
 3 - edit case
@@ -112,7 +112,7 @@ r - return to previous menu
 
 
 # ------------------------------------------------------------------------------------------------------------------
-# search for real estate
+# search for real estate og komin inn í real estate færðu þessi option
     def prompt_input_search(self):
         while True:
             print(self.real_est_options)

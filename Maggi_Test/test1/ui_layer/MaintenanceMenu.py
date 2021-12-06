@@ -29,3 +29,16 @@ r - return to previous menu
             else:
                 print("invalid option, try again!")
             print(self.options)
+
+    def create_maintenance_report(self):   
+        real_estate_id = input("Enter ID: ")
+        description = input("Enter description:")
+        repeated = input("Is it repeated: ")
+        employee_id = input("Enter employee id : ")
+        case_id = input("Enter case id: ")
+        total_cost = input("Enter total cost: ")
+        contractor = input("Enter contractor: ")
+        
+        
+        maintenance = MaintananceReport(real_estate_id, description, repeated, employee_id, case_id, total_cost, contractor)
+        self.llapi.create_maintenance_report(maintenance)
