@@ -21,5 +21,15 @@ class CaseLL:
             if case.id == case_id:
                 return case
 
+
+    def case_exist(self, id):
+        cases = self.dlapi.all_cases()
+        check_id = []
+        for case in cases:
+            check_id.append(case.id)
+        if id in check_id:
+            return check_id
+        return False
+        
 if __name__ == "__main__":
     empLL = CaseLL(DLAPI())
