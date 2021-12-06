@@ -84,7 +84,7 @@ r - return to previous menu
         address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
         size = self.input_and_check("size", lambda value : self.llapi.check_if_size_correct(value))
         rooms = self.input_and_check("rooms", lambda value : self.llapi.check_if_room_correct(value))
-        id = self.input_and_check("id", lambda value : self.llapi.check_if_rel_id_correct(value)) if controller == "create" else None
+        id = self.input_and_check("id", lambda value : self.llapi.check_if_rel_id_correct(value)) if controller == "create" else 0
         amenities = input("Enter amenities seaparadid by (,): ").split(",")
         location = self.location_in()
 
@@ -93,7 +93,6 @@ r - return to previous menu
 
 
 # ------------------------------------------------------------------------------------------------------------------
-
     def create_realestate(self):
         value = int(input("How many apartments are the in your aria: "))
         address, size, rooms, id, amenities, location = self.user_options("create")
@@ -103,8 +102,8 @@ r - return to previous menu
             id += 1
 
     def edit_realestate(self):
-        edit_id = self.search_id
-        address, size, rooms, id, amentities, location = self.user_options(None)
+        edit_id = int(self.search_id)
+        address, size, rooms, _, amentities, location = self.user_options(None)
         
         real = RealEstate(address, size, rooms, edit_id, amentities, location)        
         self.llapi.edit_realestate(real)
@@ -139,7 +138,6 @@ r - return to previous menu
 # allavega hreinskrifa þetta eihvða 
 
     def create_case(self):
-        
         id = input("Enter id for case: ")
         location = input("Enter the location: ")
         subject = input("Enter subject: ")
