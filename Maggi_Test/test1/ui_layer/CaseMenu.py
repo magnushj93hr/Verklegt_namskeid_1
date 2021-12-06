@@ -29,7 +29,7 @@ r - return to previous menu
         while True:
             command = input("Enter your input: ")
             if command == "1":
-                all_cases = self.llapi.all_cases()
+                all_cases = self.llapi.list_cases()
                 for case in all_cases:
                     print(case)
             elif command == "2":

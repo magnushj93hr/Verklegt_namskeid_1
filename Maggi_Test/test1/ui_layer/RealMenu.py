@@ -138,7 +138,7 @@ r - return to previous menu
 # allavega hreinskrifa þetta eihvða 
 
     def create_case(self, real_id):
-        id = real_id
+        id = input("Enter ID for case: ")
         location = input("Enter the location: ")
         subject = input("Enter subject: ")
         description = input("Enter description: ")
@@ -150,8 +150,9 @@ r - return to previous menu
             if priority in PRIORITY:
                 break
         repeated = input("Is the case repeated?: ")
+        emp_id = input("Enter your employee ID: ")
 
-        case = Case(id,location,subject, description, priority, repeated, self.search_id)
+        case = Case(id,location,subject, description, priority, repeated, real_id, emp_id)
         self.llapi.create_case(case)        
 
 

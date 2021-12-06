@@ -20,6 +20,16 @@ class CaseLL:
         for case in all_cases:
             if case.id == case_id:
                 return case
+    
+    def list_cases(self):
+        cases = self.all_cases()
+        employees = self.dlapi.get_all_employees()
+        for case in cases:
+            for employee in employees:
+                if case.emp_id == employee.id:
+                    case.emp_id = employee.name
+                    break
+        return cases
 
     def case_exist(self, id):
         all_cases = self.all_cases()
