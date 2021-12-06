@@ -1,4 +1,8 @@
-address,size,rooms,id,amenities,location
-Rúv,2000m2,2,20011,['pool'],Reykjavík
-æíú,1m2,1,100,['pooæ'],Reykjavík
-æíú,1m2,1,101,['pooæ'],Reykjavík
+address,size,rooms,id,amenities,location
+
+Ruv,2000m2,2,20011,['pool'],Reykjavik
+
+asd,1m2,1,100,['poo'],Reykjavik
+
+asd,1m2,1,101,['poo'],Reykjavik
+

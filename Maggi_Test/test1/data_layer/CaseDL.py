@@ -33,7 +33,7 @@ class CaseDL:
                         return False
 
     def edit_case(self, case):
-        temp_file = NamedTemporaryFile(mode = 'w', delete=False)
+        temp_file = NamedTemporaryFile(mode = 'w', newline='', encoding='utf-8', delete=False)
         
         fieldnames = ["id","location","subject","description",'priority','repeated','date']
         with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
