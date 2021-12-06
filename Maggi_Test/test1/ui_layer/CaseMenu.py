@@ -62,18 +62,20 @@ r - return to previous menu
 
     def create_maintenance_report(self):
         real_estate_id = input("Enter real estate id: ")
-        description = input("Enter description:")
+        description = input("Enter description: ")
         repeated = input("Is it repeated: ")
         employee_id = input("Enter employee id: ")
         case_id = self.search_id
         total_cost = input("Enter total cost: ")
         contractor = input("Enter contractor: ")
         
-        
         maintenance = MaintananceReport(real_estate_id, description, repeated, employee_id, case_id, total_cost, contractor)
         self.llapi.create_maintenance_report(maintenance)
 
+        case = LLAPI().search_case(case_id)
+        case.status = "Ready to close"
         self.llapi.create_maintenance_report(maintenance)
+        self.llapi.edit_case(case)
 
     def edit_case(self):
         edit_id = self.search_id
@@ -108,17 +110,3 @@ r - return to previous menu
 
         return int(id), location, subject, description, priority, repeated, real_id
 
-        # id, location, subject, description, priority, repeated, real_est_id, status, date = LLAPI().search_case(case_id)
-        #1001,rvk,Pizza,pepperoni,3,y,2/12/2021,0001,open
-
-        # id = "1001"
-        # location = "rvk"
-        # subject = "Pizza"
-        # description = "pepperoni"
-        # priority = "3"
-        # repeated = "y"
-        # real_est_id = "0001"
-
-        case.status = "Ready to close"
-        self.llapi.create_maintenance_report(maintenance)
-        self.llapi.edit_case(case)
