@@ -36,7 +36,6 @@ r - return to previous menu
                 self.edit_case()
             elif command == "3":
                 self.search_case()
-                print(self.real_est_options)
                 self.prompt_input_search()
             elif command == "r":
                 return "r"
