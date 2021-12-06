@@ -41,14 +41,6 @@ r - return to previous menu
             else:
                 print("invalid option, try again!")
             print(self.options)
-    
-    def input_and_check(self, info_type, check_fun):
-        while True:
-            value = input(f"Enter employee {info_type}: ")
-            if not check_fun(value):
-                print(f"Invalid employee {info_type}")
-            else:
-                return value
 
     def user_options(self, controller):
         name = self.input_and_check("name", lambda value : self.llapi.is_name_correct(value))
@@ -66,6 +58,17 @@ r - return to previous menu
         return name, phone, id, address, homeline, location
 
 
+<<<<<<< Updated upstream
+=======
+    def input_and_check(self, info_type, check_fun):
+        while True:
+            value = input(f"Enter employee {info_type}: ")
+            if not check_fun(value):
+                print(f"Invalid employee {info_type}")
+            else:
+                return value
+
+>>>>>>> Stashed changes
     def create_employee(self):
         name, phone, id, address, homeline, location = self.user_options("create")
         emp = Employee(name, id, address, homeline, location, phone)
