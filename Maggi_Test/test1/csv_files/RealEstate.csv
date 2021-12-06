@@ -1,4 +1,8 @@
 address,size,rooms,id,amenities,location
-álagrandi 8,130,4,0000,asf,rvk
-Bolo,250,2,0001,Pool,Medellín
-boðagrandi10,200,3,0002,safe,rvk
+
+Rív,2000m2,2,20011,['pool'],Reykjavík
+
+æææ,1m2,1,100,['pooæ'],Reykjavík
+
+æææ,1m2,1,101,['pooæ'],Reykjavþík
+

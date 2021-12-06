@@ -15,7 +15,7 @@ class CaseLL:
     def edit_case(self, edit_id):
         self.dlapi.edit_case(edit_id)
     
-    def search_employee(self, case_id):
+    def search_case(self, case_id):
         all_cases = self.dlapi.get_all_cases()
         for case in all_cases:
             if case.id == case_id:
@@ -27,6 +27,9 @@ class CaseLL:
             if case.id == search_id:
                 return case
         return None
+
+    def case_exist(self, id):
+        all_cases = self.all_cases()
 
 if __name__ == "__main__":
     empLL = CaseLL(DLAPI())

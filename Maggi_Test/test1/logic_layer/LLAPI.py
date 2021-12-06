@@ -9,7 +9,7 @@ from logic_layer.ContractorLL import ContractorLL
 from logic_layer.LocationLL import LocationLL
 
 from logic_layer.MaintenanceLL import MaintenanceLL
-
+from logic_layer.InputCheck import InputCheck
 from data_layer.DLAPI import DLAPI
 
 
@@ -17,57 +17,43 @@ from data_layer.DLAPI import DLAPI
 class LLAPI:
 
     SEARCH_TYPE_NAME = "name"
-
     SEARCH_TYPE_ID = "emp_id"
-
     SEARCH_TYPE_ADDRESS = "address"
-
     SEARCH_TYPE_PHONE = "phonenumber"
-
     SEARCH_TYPE_GSM = "gsm"
-
     SEARCH_TYPE_EMAIL = "email"
 
 
     def __init__(self):
-
         self.dlapi = DLAPI()
-
         self.empLL = EmployeeLL(self.dlapi)
-
         self.realLL = RealEstateLL(self.dlapi)
-
         self.caseLL = CaseLL(self.dlapi)
-
         self.contrLL = ContractorLL(self.dlapi)
-
         self.locLL = LocationLL(self.dlapi)
-
         self.maintenanceLL = MaintenanceLL(self.dlapi)
+        self.input_check = InputCheck(self.dlapi)
 
-    
 
 
 # ----------------------------------------------------------------
-
-    # This function checks if the employee is valid
+    # This function is her to stop spam and protect the input
     def is_name_correct(self, name):
-        return self.empLL.check_if_name_correct(name)
+        return self.input_check.check_if_name_correct(name)
     def is_id_correct(self, id):
-
-        return self.empLL.check_if_id_correct(id)
+        return self.input_check.check_if_id_correct(id)
     def make_email(self):
-        return self.empLL.make_email()
-
+        return self.input_check.make_email()
     def is_phone_correct(self, phone):
-
-        return self.empLL.check_if_phone_correct(phone)
+        return self.input_check.check_if_phone_correct(phone)
     def is_address_correct(self, address):
-
-        return self.empLL.check_if_address_correct(address)
-
-    def is_location_correct(self, location):
-        return self.empLL.check_if_location_correct(location)
+        return self.input_check.check_if_address_correct(address)
+    def check_if_rel_id_correct(self, rel_id):
+        return self.input_check.check_if_rel_id_correct(rel_id)
+    def check_if_size_correct(self, size):
+        return self.input_check.check_if_size_correct(size)
+    def check_if_room_correct(self, room):
+        return self.input_check.check_if_room_correct(room)
 
 # ----------------------------------------------------------------
 
@@ -159,9 +145,10 @@ class LLAPI:
     
 
     def search_case(self, case_id):
-
-        return self.caseLL.search_cases(case_id)
-
+        return self.caseLL.search_case(case_id)
+    
+    def case_exist(self, id):
+        return self.caseLL.case_exist(id)
 # ----------------------------------------------------------------
 
 # CONTRACTOR FUNCTIONS
