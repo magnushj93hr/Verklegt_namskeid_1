@@ -91,7 +91,6 @@ r - return to previous menu
         priority = "3"
         repeated = "y"
         real_est_id = "0001"
-        date = "1/12/2021"
 
         case = Case(id, location, subject, description, priority, repeated, real_est_id, "ready to close")
         self.llapi.edit_case(case)
