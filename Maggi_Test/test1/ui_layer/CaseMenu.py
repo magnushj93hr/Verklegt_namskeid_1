@@ -14,7 +14,7 @@ r - return to previous menu
 """
 
         self.case_options = """
-Case search menu ###standa case id hérna ??
+Case menu ###standa case id hérna ??
 1 - edit case ??? þetta er líka í real áttu að geta editað hérna??
 2 - create maintenance report
 3 - edit maintenance report???
@@ -46,8 +46,8 @@ r - return to previous menu
 
 
     def search_case(self):
-        search_id = input("Enter case id: ")
-        result = LLAPI().search_case(search_id)
+        self.search_id = input("Enter case id: ")
+        result = LLAPI().search_case(self.search_id)
         print(result)
 
     def prompt_input_search(self):
