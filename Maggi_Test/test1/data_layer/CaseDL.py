@@ -35,19 +35,17 @@ class CaseDL:
     def edit_case(self, case):
         temp_file = NamedTemporaryFile(mode = 'w', delete=False)
         
-        fieldnames = ["id","location","subject","description",'priority','due date','repeated']
+        fieldnames = ["id", "location", "subject","description","priority",'due date','repeated', "real_est_id", "status"]
         with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
             reader = csv.DictReader(csvfile, fieldnames=fieldnames)
             #fieldnames = ["name","id","address",'homeline','email','location','phone']
             writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
             # writer.writeheader()
-
             for row in reader:
                 if row['id'] == case.id:
                     print('updating row', row['id'])
-                    writer.writerow({'id': case.id,'location': case.location, "subject": case.subject, "description": case.description, 'priority': case.priority, 'due date': case.due_date, 'repeated': case.repeated})
+                    writer.writerow({'id': case.id,'location': case.location, 'subject': case.subject, "description": case.description, "priority": case.priority, 'due date': case.due_date, 'repeated': case.repeated, "real_est_id": case.real_est_id, "status": case.status})
                 else:
-                    row = {'id': row['id'],'location': row["location"], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'due date': row['due date'], 'repeated': row['repeated']}
+                    row = {'name': row['name'], 'id': row['id'], 'address': row['address'], 'homeline': row['homeline'], 'email': row['email'], 'location': row['location'], 'phone': row['phone']}
                     writer.writerow(row)
-
         shutil.move(temp_file.name, self.filepath)
