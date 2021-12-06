@@ -1,25 +1,4 @@
 address,size,rooms,id,amenities,location
-álagrandi 8,130,4,0000,asf,rvk
-Bolo,250,2,0001,Pool,Medellín
-boðagrandi10,200,3,0002,safe,rvk
-Grandavegur 45,90,2,0003,balcony,Reykjavík
-Ironvil 20,2000m2,2,209000,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209001,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209002,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209003,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209004,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209005,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209006,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209007,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209008,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209009,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209010,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209011,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209012,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209013,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209014,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209015,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209016,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209017,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209018,"['Hot tup', ' pool', ' hot-water']",
-Ironvil 20,2000m2,2,209019,"['Hot tup', ' pool', ' hot-water']",
+Rúv,2000m2,2,20011,['pool'],Reykjavík
+æíú,1m2,1,100,['pooæ'],Reykjavík
+æíú,1m2,1,101,['pooæ'],Reykjavík
