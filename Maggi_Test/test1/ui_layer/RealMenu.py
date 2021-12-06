@@ -156,6 +156,7 @@ r - return to previous menu
         case = Case(id,location,subject, description, priority, repeated, self.search_id)
         self.llapi.create_case(case)        
 
+
     def edit_case(self):
         edit_id = str(input("Enter case id: "))
 
