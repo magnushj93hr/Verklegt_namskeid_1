@@ -58,17 +58,6 @@ r - return to previous menu
         return name, phone, id, address, homeline, location
 
 
-<<<<<<< Updated upstream
-=======
-    def input_and_check(self, info_type, check_fun):
-        while True:
-            value = input(f"Enter employee {info_type}: ")
-            if not check_fun(value):
-                print(f"Invalid employee {info_type}")
-            else:
-                return value
-
->>>>>>> Stashed changes
     def create_employee(self):
         name, phone, id, address, homeline, location = self.user_options("create")
         emp = Employee(name, id, address, homeline, location, phone)

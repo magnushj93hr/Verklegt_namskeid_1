@@ -18,6 +18,7 @@ Real estate search menu
 1 - edit real estate
 2 - create case
 3 - edit case
+4 - create report
 r - return to previous menu
     """
     def draw_options(self):
@@ -35,6 +36,8 @@ r - return to previous menu
                 self.edit_case()
             elif command == "3":
                 self.search_case()
+                print(self.real_est_options)
+                self.prompt_input_search()
             elif command == "r":
                 return "r"
             else:
@@ -58,6 +61,8 @@ r - return to previous menu
                     self.create_case()
                 elif command == "3":
                     self.edit_case()   
+                elif command == "4":
+                    self.create_maintenance_report()
                 elif command == "r":
                     return
                 else:
@@ -77,4 +82,6 @@ r - return to previous menu
         maintenance = MaintananceReport(real_estate_id, description, repeated, employee_id, case_id, total_cost, contractor)
         self.llapi.create_maintenance_report(maintenance)
 
-        id, location, subject, description, priority, repeated, date, real_est_id = self.llapi.search_case(case_id)
+        id, location, subject, description, priority, repeated, real_est_id, status, date = LLAPI().search_case(case_id)
+        case = Case(id, location, subject, description, priority, repeated, real_est_id, "ready to close", date)
+        self.llapi.edit_case(case)
