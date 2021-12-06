@@ -47,20 +47,7 @@ r - return to previous menu
             else: print("invalid option, try again!")
             print(self.main_options)
 
-    def sort_by_location(self):
-        while True:
-            filter_input = input("Do you want to filter by location(y/n)?: ")
-            if filter_input == 'y':
-                filter_location = self.location_in()
-                result = LLAPI().filter_realestate(filter_location)
-                if result != []:
-                    for row in result:
-                        print(row)
-                    break
-                else: print("No real estate found.")
-            else: break
-# ------------------------------------------------------------------------------------------------------------------
-
+#=============================User input functions begins hear======================================================================
 
 # ------------------------------------------------------------------------------------------------------------------
 # Check if the input is valid and 
@@ -91,6 +78,7 @@ r - return to previous menu
         return address, size, rooms, int(id), amenities, location
 # ------------------------------------------------------------------------------------------------------------------
 
+#=============================Real Estate functions begins hear======================================================================
 
 # ------------------------------------------------------------------------------------------------------------------
     def create_realestate(self):
@@ -100,7 +88,9 @@ r - return to previous menu
             real = RealEstate(address, size, rooms, id, amenities, location)
             self.llapi.create_realestate(real)
             id += 1
+# ------------------------------------------------------------------------------------------------------------------
 
+# ------------------------------------------------------------------------------------------------------------------
     def edit_realestate(self):
         edit_id = int(self.search_id)
         address, size, rooms, _, amentities, location = self.user_options(None)
@@ -109,6 +99,22 @@ r - return to previous menu
         self.llapi.edit_realestate(real)
 # ------------------------------------------------------------------------------------------------------------------
 
+# --------------------------------------------------------------------------------------------------------------------
+    def sort_by_location(self):
+        while True:
+            filter_input = input("Do you want to filter by location(y/n)?: ")
+            if filter_input == 'y':
+                filter_location = self.location_in()
+                result = LLAPI().filter_realestate(filter_location)
+                if result != []:
+                    for row in result:
+                        print(row)
+                    break
+                else: print("No real estate found.")
+            else: break
+# ------------------------------------------------------------------------------------------------------------------
+
+#=============================Search functions begins hear======================================================================
 
 # ------------------------------------------------------------------------------------------------------------------
 # search for real estate
@@ -121,17 +127,24 @@ r - return to previous menu
             elif command == "3": self.edit_case()   
             elif command == "r": return
             else: print("invalid option, try again!")
-
-    def search_realestate(self):
-        while True:
-            self.search_id = input("Enter real estate id: ")
-            result = LLAPI().search_realestate(self.search_id)
-            if result == None: print("Invalid ID")
-            else:
-                print(result)
-                return result
 # ------------------------------------------------------------------------------------------------------------------
 
+# ------------------------------------------------------------------------------------------------------------------
+    def search_realestate(self):
+        while True:
+            print("Quit by entering (q)")
+            self.search_id = input("Enter real estate id: ")
+            if self.search_id != "q":
+                result = LLAPI().search_realestate(self.search_id)
+                if result == None:
+                    print("Invalid ID")
+                else:
+                    print(result)
+                    return result
+            else: break
+# ------------------------------------------------------------------------------------------------------------------
+
+#=============================Case functions begins hear======================================================================
 
 # ------------------------------------------------------------------------------------------------------------------
 # það þarf að skoða þetta fall eihvða betur geta

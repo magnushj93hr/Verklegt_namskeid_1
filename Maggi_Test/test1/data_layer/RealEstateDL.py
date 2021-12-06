@@ -23,7 +23,7 @@ class RealEstateDL:
             writer.writerow({'address': real.address, "size": real.size, "rooms": real.rooms, 'id': real.id, 'amenities': real.amenities, 'location': real.location})
 
     def edit_realestate(self, real):
-        temp_file = NamedTemporaryFile(mode = 'w', delete=False)
+        temp_file = NamedTemporaryFile(mode = 'w', newline='', encoding='utf-8', delete=False)
         
         fieldnames = ["address","size","rooms",'id','amenities','location']
         with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
