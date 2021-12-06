@@ -41,8 +41,8 @@ r - return to previous menu
             elif command == "2":
                 self.create_realestate()
             elif command == "3":
-                self.search_realestate()
-                self.prompt_input_search()
+                real_id = self.search_realestate()
+                self.prompt_input_search(real_id)
             elif command == "r": return
             else: print("invalid option, try again!")
             print(self.main_options)
@@ -101,7 +101,7 @@ r - return to previous menu
             self.llapi.create_realestate(real)
             id += 1
 
-    def edit_realestate(self):
+    def edit_realestate(self,real_id):
         edit_id = int(self.search_id)
         address, size, rooms, _, amentities, location = self.user_options(None)
         
@@ -112,13 +112,13 @@ r - return to previous menu
 
 # ------------------------------------------------------------------------------------------------------------------
 # search for real estate
-    def prompt_input_search(self):
+    def prompt_input_search(self, real_id):
         while True:
             print(self.real_est_options)
             command = input("Enter your input: ")
-            if command == "1": self.edit_realestate()
-            elif command == "2": self.create_case()
-            elif command == "3": self.edit_case()   
+            if command == "1": self.edit_realestate(real_id)
+            elif command == "2": self.create_case(real_id)
+            elif command == "3": self.edit_case(real_id)   
             elif command == "r": return
             else: print("invalid option, try again!")
 
@@ -129,7 +129,7 @@ r - return to previous menu
             if result == None: print("Invalid ID")
             else:
                 print(result)
-                return result
+                return self.search_id
 # ------------------------------------------------------------------------------------------------------------------
 
 
@@ -137,8 +137,8 @@ r - return to previous menu
 # það þarf að skoða þetta fall eihvða betur geta
 # allavega hreinskrifa þetta eihvða 
 
-    def create_case(self):
-        id = input("Enter id for case: ")
+    def create_case(self, real_id):
+        id = real_id
         location = input("Enter the location: ")
         subject = input("Enter subject: ")
         description = input("Enter description: ")
