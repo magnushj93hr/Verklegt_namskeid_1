@@ -137,9 +137,9 @@ r - return to previous menu
         maintenance = MaintananceReport(real_estate_id, tasks_done, employee_id, case_id, cost_of_materials, contractor)
 
         case = self.llapi.search_case(case_id)
-        case.status = "Ready to close"
-        self.llapi.edit_case(case)
+        case.status = "ready to close"
         self.llapi.create_maintenance_report(maintenance)
+        self.llapi.edit_case(case)
 
     def edit_case(self):
         edit_id = self.search_id
