@@ -96,6 +96,7 @@ r - return to previous menu
                 search_case_opt = input("Do you want to select a case(y/n): ")
                 if search_case_opt == "y":
                     case_id = self.select_id(cases_id)
+
             elif command == "2":
                 cases = self.llapi.filter_cases("Ready to close")
                 cases_id = []
@@ -104,10 +105,12 @@ r - return to previous menu
                     print(case)
                 search_case_opt = input("Do you want to select a case(y/n): ")
                 if search_case_opt == "y":
-                    case_id = self.select_id(cases_id)
+                    case_id, report = self.select_id(cases_id)
                     close_case_opt = input("Do you want to close the case(y/n): ")
                     if close_case_opt == "y":
+                        self.contractor_review(report)
                         self.change_case_status("Close", case_id)
+
             elif command == "3":
                 cases = self.llapi.filter_cases("Close")
                 cases_id = []
@@ -116,7 +119,7 @@ r - return to previous menu
                     print(case)
                 search_case_opt = input("Do you want to select a case(y/n): ")
                 if search_case_opt == "y":
-                    case_id = self.select_id(cases_id)
+                    case_id, report = self.select_id(cases_id)
                     open_case_opt = input("Do you want to open the case(y/n): ")
                     if open_case_opt == "y":
                         self.change_case_status("Open", case_id)
@@ -132,7 +135,13 @@ r - return to previous menu
                 print("Invalid id")
             print(self.llapi.search_case(case_id))
             print(f"Report - {self.llapi.search_maintenance_report(case_id)}")
-            return case_id
+            return case_id, self.llapi.search_maintenance_report(case_id)
+
+    def contractor_review(self, report):
+        contractor = self.llapi.search_contractor(report.contractor)
+        if report.contractor != "":
+            contractor.review = int(input("Pleas review contractor(1-5): "))
+            self.llapi.edit_contractor(contractor)
 
     def change_case_status(self, status, case_id):
         case = self.llapi.search_case(case_id)
@@ -156,14 +165,17 @@ r - return to previous menu
         tasks_done = input("Enter what you did:")
         employee_id = input("Enter your employee id: ")
         case_id = result.id
-        cost_of_materials = input("Enter cost of materials: ")
+        cost_of_materials = int(input("Enter cost of materials: "))
         used_contractor = input('Did you use a contractor(y/n)?: ')
         if used_contractor == "y":
             contractor = input("Enter contractor: ")
+            contractor_cost = int(input("Enter contractor cost: "))
+            total_cost = cost_of_materials + contractor_cost
         else:
+            total_cost = cost_of_materials
             contractor = ""
         
-        maintenance = MaintananceReport(real_estate_id, tasks_done, employee_id, case_id, cost_of_materials, contractor)
+        maintenance = MaintananceReport(real_estate_id, tasks_done, employee_id, case_id, total_cost, contractor, contractor_cost)
 
         case = self.llapi.search_case(case_id)
         case.status = "Ready to close"
