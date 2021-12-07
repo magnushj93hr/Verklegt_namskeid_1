@@ -1,8 +1,110 @@
 address,size,rooms,id,amenities,location
-
-Rív,2000m2,2,20011,['pool'],Reykjavík
-
-æææ,1m2,1,100,['pooæ'],Reykjavík
-
-æææ,1m2,1,101,['pooæ'],Reykjavþík
-
+Vei 217,150m2,4,5000,[''],Longyearbyen
+Harbor 1,500m2,1,5001,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5002,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5003,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5004,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5005,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5006,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5007,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5008,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5009,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5010,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5011,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5012,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5013,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5014,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5015,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5016,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5017,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5018,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5019,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5020,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5021,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5022,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5023,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5024,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5025,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5026,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5027,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5028,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5029,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5030,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5031,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5032,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5033,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5034,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5035,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5036,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5037,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5038,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5039,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5040,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5041,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5042,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5043,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5044,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5045,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5046,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5047,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5048,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5049,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5050,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5051,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5052,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5053,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5054,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5055,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5056,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5057,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5058,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5059,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5060,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5061,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5062,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5063,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5064,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5065,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5066,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5067,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5068,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5069,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5070,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5071,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5072,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5073,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5074,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5075,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5076,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5077,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5078,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5079,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5080,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Igloo-Ville,35m2,1,3900,['Igloo'],Nuuk
+Igloo-Ville,35m2,1,3901,['Igloo'],Nuuk
+Igloo-Ville,35m2,1,3902,['Igloo'],Nuuk
+Igloo-Ville,35m2,1,3903,['Igloo'],Nuuk
+Igloo-Ville,35m2,1,3904,['Igloo'],Nuuk
+Igloo-Ville,35m2,1,3905,['Igloo'],Nuuk
+Igloo-Ville,35m2,1,3906,['Igloo'],Nuuk
+Igloo-Ville,35m2,1,3907,['Igloo'],Nuuk
+Igloo-Ville,35m2,1,3908,['Igloo'],Nuuk
+Igloo-Ville,35m2,1,3909,['Igloo'],Nuuk
+Suloraq 42,69m2,2,3875,[''],Nuuk
+Suloraq 42,69m2,2,3876,[''],Nuuk
+Igimaq 7,10m2,1,3831,['Igloo'],Nuuk
+Nuussuaq 4,400m2,8,3812,['Villa'],Nuuk
+Skákið 15,100m2,3,9331,[''],Þórshöfn
+Skákið 15,100m2,3,9332,[''],Þórshöfn
+Skákið 15,100m2,3,9333,[''],Þórshöfn
+Svalbarðavegur 22,200m2,5,2239,[''],Þórshöfn
+Nýggivegur 1,15m2,1,9492,[''],Þórshöfn
+Nýggivegur 1,15m2,1,9493,[''],Þórshöfn
+Nýggivegur 1,15m2,1,9494,[''],Þórshöfn
+Nýggivegur 1,15m2,1,9495,[''],Þórshöfn
+Nýggivegur 1,15m2,1,9496,[''],Þórshöfn
+Nýggivegur 1,15m2,1,9497,[''],Þórshöfn
+Nýggivegur 1,15m2,1,9498,[''],Þórshöfn
+Nýggivegur 1,15m2,1,9499,[''],Þórshöfn
+Nýggivegur 1,15m2,1,9500,[''],Þórshöfn
+Nýggivegur 1,15m2,1,9501,[''],Þórshöfn

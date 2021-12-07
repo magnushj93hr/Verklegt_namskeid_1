@@ -14,10 +14,9 @@ Case menu
 r - return to previous menu
 """
 
-        self.case_options = """
-Case search menu
-1 - edit case
-2 - create maintenance report
+        self.case_menu = """
+Real estate search menu
+1 - create maintenance report
 r - return to previous menu
     """
 
@@ -37,15 +36,15 @@ r - return to previous menu
         while True:
             command = input("Enter your input: ")
             if command == "1":
-                all_cases = self.llapi.all_cases()
+                all_cases = self.llapi.list_cases()
                 for case in all_cases:
                     print(case)
                 filter_input = input("Do you want to filter by status(y/n): ")
                 if filter_input == "y":
                     self.prompt_input_filter()
             elif command == "2":
-                self.search_case()
-                self.prompt_input_search()
+                result = self.search_case()
+                self.prompt_input_search(result)
             elif command == "r":
                 return "r"
             else:
@@ -57,6 +56,7 @@ r - return to previous menu
         self.search_id = input("Enter case id: ")
         result = self.llapi.search_case(self.search_id)
         print(result)
+        return result
 
     def prompt_input_filter(self):
         while True:
@@ -68,59 +68,78 @@ r - return to previous menu
                 for case in cases:
                     cases_id.append(case.id)
                     print(case)
-                id = self.select_id(cases_id)
+                search_case_opt = input("Do you want to select a case(y/n): ")
+                if search_case_opt == "y":
+                    case_id = self.select_id(cases_id)
             elif command == "2":
                 cases = self.llapi.filter_cases("ready to close")
+                cases_id = []
                 for case in cases:
+                    cases_id.append(case.id)
                     print(case)
+                search_case_opt = input("Do you want to select a case(y/n): ")
+                if search_case_opt == "y":
+                    case_id = self.select_id(cases_id)
+                    close_case_opt = input("Do you want to close the case(y/n): ")
+                    if close_case_opt == "y":
+                        self.close_case(case_id)
             elif command == "3":
-                cases = self.llapi.filter_cases("close")
+                cases_id = []
                 for case in cases:
+                    cases_id.append(case.id)
                     print(case)
+                search_case_opt = input("Do you want to select a case(y/n): ")
+                if search_case_opt == "y":
+                    case_id = self.select_id(cases_id)
             elif command == "r":
                 return
             else:
                 print("Invalid option")
-    
+
     def select_id(self, cases_id):
         while True:
-            id = input("Enter case id: ")
-            if id not in cases_id:
+            case_id = input("Enter case id: ")
+            if case_id not in cases_id:
                 print("Invalid id")
-            
-            
+            print(self.llapi.search_case(case_id))
+            print(self.llapi.search_maintenance_report(case_id))
+            return case_id
 
+    def close_case(self, case_id):
+        case = self.llapi.search_case(case_id)
+        case.status = "Close"
+        self.llapi.edit_case(case)
 
-    def prompt_input_search(self):
+    def prompt_input_search(self, result):
             while True:
-                print(self.case_options)
+                print(self.case_menu)
                 command = input("Enter your input: ")
                 if command == "1":
-                    self.edit_case()
-                elif command == "2":
-                    self.create_maintenance_report()
+                    self.create_maintenance_report(result)
                 elif command == "r":
                     return
                 else:
                     print("invalid option, try again!")
 
 
-    def create_maintenance_report(self):
-        real_estate_id = input("Enter real estate id: ")
-        description = input("Enter description: ")
-        repeated = input("Is it repeated: ")
-        employee_id = input("Enter employee id: ")
-        case_id = self.search_id
-        total_cost = input("Enter total cost: ")
-        contractor = input("Enter contractor: ")
+    def create_maintenance_report(self, result):
+        real_estate_id = result.real_est_id
+        tasks_done = input("Enter what you did:")
+        employee_id = input("Enter your employee id: ")
+        case_id = result.id
+        cost_of_materials = input("Enter cost of materials: ")
+        used_contractor = input('Did you use a contractor(y/n)?: ')
+        if used_contractor == "y":
+            contractor = input("Enter contractor: ")
+        else:
+            contractor = ""
         
-        maintenance = MaintananceReport(real_estate_id, description, repeated, employee_id, case_id, total_cost, contractor)
-        self.llapi.create_maintenance_report(maintenance)
+        maintenance = MaintananceReport(real_estate_id, tasks_done, employee_id, case_id, cost_of_materials, contractor)
 
         case = self.llapi.search_case(case_id)
-        case.status = "ready to close"
-        self.llapi.create_maintenance_report(maintenance)
+        case.status = "Ready to close"
         self.llapi.edit_case(case)
+        self.llapi.create_maintenance_report(maintenance)
 
     def edit_case(self):
         edit_id = self.search_id
