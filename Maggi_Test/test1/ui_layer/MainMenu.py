@@ -49,7 +49,7 @@ r - return to previous menu
             elif command == "r":
                 return
             else:
-                print("invalid option, try again!")
+                print("Invalid option, try again!")
             if return_option == "m":
                 return "m"
             print(self.options)
