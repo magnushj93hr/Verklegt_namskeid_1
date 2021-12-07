@@ -72,6 +72,7 @@ r - return to previous menu
             result = LLAPI().search_case(search_id, 'caseid')
             for i in result:
                 print(i)
+            return result
         elif command == "2":
             search_id = input("Enter employee id: ")
             result = LLAPI().search_case(search_id, 'empid')
