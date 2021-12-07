@@ -146,7 +146,7 @@ r - return to previous menu
         while True:
             print("Quit by entering (q)")
             search_id = input("Enter employee id: ")
-            if search_id.lower() == "q":
+            if search_id.lower() != "q":
                 result = LLAPI().search_employee(search_id)
                 print(result)
             else: break
