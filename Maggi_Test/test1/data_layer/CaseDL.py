@@ -45,9 +45,9 @@ class CaseDL:
             for row in reader:
                 if row['id'] == case.id:
                     print('updating row', row['id'])
-                    writer.writerow({'id': case.id,'location': case.location, "subject": case.subject, "description": case.description, 'priority': case.priority, 'repeated': case.repeated, 'real_est_id': row['real_est_id'], 'emp_id': row['emp_id'], 'date': row['date'], 'status': row['status'] })
+                    writer.writerow({'id': case.id,'location': case.location, "subject": case.subject, "description": case.description, 'priority': case.priority, 'repeated': case.repeated, 'real_est_id': row['real_est_id'], 'emp_id': row['emp_id'], 'date': row['date'], "status": case.status})
                 else:
-                    row = {'id': row['id'],'location': row["location"], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'repeated': row['repeated'], 'real_est_id': row['real_est_id'], 'emp_id': row['emp_id'], 'date': row['date'], 'status': row['status']}
+                    row = {'id': row['id'],'location': row["location"], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'repeated': row['repeated'], 'real_est_id': row['real_est_id'], 'emp_id': row['emp_id'], 'date': row['date'], "status": row['status']}
                     writer.writerow(row)
 
         shutil.move(temp_file.name, self.filepath)
