@@ -107,11 +107,11 @@ r - return to previous menu
     def create_realestate(self):
         value = int(input("How many apartments are the in your area: "))
         address, size, rooms, id, amenities, location = self.user_options("create")
-        if value <= 1:
-            self.make_realestate(address, size, rooms, id, amenities, location)
-        for apartment in range(0, value):
-            self.make_realestate(address, size, rooms, id, amenities, location)
-            id += 1
+        if value > 1:
+            for apartment in range(0, value):
+                self.make_realestate(address, size, rooms, id, amenities, location)
+                id += 1
+        else: self.make_realestate(address, size, rooms, id, amenities, location)
 
     def make_realestate(self, address, size, rooms, id, amenities, location):
         real = RealEstate(address, size, rooms, id, amenities, location)
