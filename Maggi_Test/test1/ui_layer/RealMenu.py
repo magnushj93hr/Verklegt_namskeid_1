@@ -74,7 +74,7 @@ r - return to previous menu
         size = self.input_and_check("size", lambda value : self.llapi.check_if_size_correct(value))
         rooms = self.input_and_check("rooms", lambda value : self.llapi.check_if_room_correct(value))
         id = self.input_and_check("id", lambda value : self.llapi.check_if_rel_id_correct(value)) if controller == "create" else 0
-        amenities = input("Enter amenities seaparadid by (,): ").split(",")
+        amenities = input("Enter amenities seperated by (,): ").split(",")
         location = self.location_in()
 
         return address, size, rooms, int(id), amenities, location
@@ -84,7 +84,7 @@ r - return to previous menu
 
 # ------------------------------------------------------------------------------------------------------------------
     def create_realestate(self):
-        value = int(input("How many apartments are the in your aria: "))
+        value = int(input("How many apartments are the in your area: "))
         address, size, rooms, id, amenities, location = self.user_options("create")
         for apartment in range(0, value):
             real = RealEstate(address, size, rooms, id, amenities, location)
