@@ -30,6 +30,14 @@ class CaseLL:
 
     def case_exist(self, id):
         all_cases = self.all_cases()
+    
+    def filter_cases(self, status):
+        filtered_cases = []
+        all_cases = self.all_cases()
+        for case in all_cases:
+            if case.status == status:
+                filtered_cases.append(case)
+        return filtered_cases
 
 if __name__ == "__main__":
     empLL = CaseLL(DLAPI())

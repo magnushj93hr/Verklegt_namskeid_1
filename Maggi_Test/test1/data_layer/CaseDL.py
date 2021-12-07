@@ -13,7 +13,7 @@ class CaseDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                case = Case(row["id"],row["location"], row["subject"], row["description"], row["priority"], row["repeated"], row["real_est_id"], row['date'])
+                case = Case(row["id"],row["location"], row["subject"], row["description"], row["priority"], row["repeated"], row["real_est_id"], row['status'])
                 ret_list.append(case)
         return ret_list
 
