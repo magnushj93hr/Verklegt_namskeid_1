@@ -118,6 +118,9 @@ class LLAPI:
     def edit_case(self, case):
         return self.caseLL.edit_case(case)
 
+    def search_case_real_id(self, real_id):
+        return self.caseLL.search_case_real_id(real_id)
+
     def search_case(self, case_id):
         return self.caseLL.search_case(case_id)
 

@@ -92,10 +92,9 @@ r - return to previous menu
         self.llapi.edit_case(case)
 
     def edit_case(self):
-        edit_id = self.search_id
         _, location, subject, description, priority, repeated, real_est_id = self.user_options(None)
 
-        case = Case(edit_id, location, subject, description, priority, repeated, real_est_id)        
+        case = Case(self.search_id, location, subject, description, priority, repeated, real_est_id)        
         self.llapi.edit_case(case)       
 #----------------------------------------------------------------
     def input_and_check(self, info_type, check_fun):

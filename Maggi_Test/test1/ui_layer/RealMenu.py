@@ -25,7 +25,7 @@ Real estate search menu
 3 - edit case
 r - return to previous menu
     """
-
+#=============================User input functions begins hear======================================================================
 # ------------------------------------------------------------------------------------------------------------------
 # Menu options
     def draw_options(self):
@@ -48,14 +48,34 @@ r - return to previous menu
             elif command == "r": return
             else: print("invalid option, try again!")
             print(self.main_options)
+# ------------------------------------------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------------------------------------
+# search for real estate
+    def prompt_input_search(self, result):
+        while True:
+            print(self.real_est_options)
+            command = input("Enter your input: ")
+            if command == "1": self.edit_realestate(result.id)
+            elif command == "2": self.create_case(result)
+            elif command == "3": self.edit_case(result)   
+            elif command == "r": return
+            else: print("Invalid option, try again!")
+# ------------------------------------------------------------------------------------------------------------------
 
 #=============================User input functions begins hear======================================================================
 
 # ------------------------------------------------------------------------------------------------------------------
 # Check if the input is valid and 
-    def input_and_check(self, info_type, check_fun):
+    def input_real_and_check(self, info_type, check_fun):
         while True:
             value = input(f"Enter the {info_type} of the real estate: ")
+            if not check_fun(value): print(f"Invalid {info_type} for the real estate")
+            else: return value
+
+    def input_case_and_check(self, info_type, check_fun):
+        while True:
+            value = input(f"Enter case {info_type}: ")
             if not check_fun(value): print(f"Invalid {info_type} for the real estate")
             else: return value
 
@@ -65,15 +85,15 @@ r - return to previous menu
             for location in AVAILABLE_LOCATIONS:
                 print(location)
             location = str(input("Enter location: "))
-            if location in AVAILABLE_LOCATIONS:
-                return location
+            if location in AVAILABLE_LOCATIONS: return location
+            else: print("Invalid location")
 
 
     def user_options(self, controller):
-        address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
-        size = self.input_and_check("size", lambda value : self.llapi.check_if_size_correct(value))
-        rooms = self.input_and_check("rooms", lambda value : self.llapi.check_if_room_correct(value))
-        id = self.input_and_check("id", lambda value : self.llapi.check_if_rel_id_correct(value)) if controller == "create" else 0
+        address = self.input_real_and_check("address", lambda value : self.llapi.is_address_correct(value))
+        size = self.input_real_and_check("size", lambda value : self.llapi.check_if_size_correct(value))
+        rooms = self.input_real_and_check("rooms", lambda value : self.llapi.check_if_room_correct(value))
+        id = self.input_real_and_check("id", lambda value : self.llapi.check_if_rel_id_correct(value)) if controller == "create" else 0
         amenities = input("Enter amenities seperated by (,): ").split(",")
         location = self.location_in()
 
@@ -83,6 +103,7 @@ r - return to previous menu
 #=============================Real Estate functions begins hear======================================================================
 
 # ------------------------------------------------------------------------------------------------------------------
+# Create real estate
     def create_realestate(self):
         value = int(input("How many apartments are the in your area: "))
         address, size, rooms, id, amenities, location = self.user_options("create")
@@ -91,7 +112,7 @@ r - return to previous menu
             self.llapi.create_realestate(real)
             id += 1
 # ------------------------------------------------------------------------------------------------------------------
-
+# Edit real estate
     def edit_realestate(self,result):
         edit_id = int(result.id)
         address, size, rooms, _, amentities, location = self.user_options(None)
@@ -116,19 +137,6 @@ r - return to previous menu
 # ------------------------------------------------------------------------------------------------------------------
 
 #=============================Search functions begins hear======================================================================
-
-# ------------------------------------------------------------------------------------------------------------------
-# search for real estate
-    def prompt_input_search(self, result):
-        while True:
-            print(self.real_est_options)
-            command = input("Enter your input: ")
-            if command == "1": self.edit_realestate(result.id)
-            elif command == "2": self.create_case(result)
-            elif command == "3": self.edit_case(result.id)   
-            elif command == "r": return
-            else: print("Invalid option, try again!")
-# ------------------------------------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------------------------------------
     def search_realestate(self):
@@ -170,6 +178,58 @@ r - return to previous menu
 
         case = Case(id,location,subject, description, priority, repeated, real_id, emp_id)
         self.llapi.create_case(case)        
-
+# ------------------------------------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------------------------------------
+# Edit Case
+    def print_emp_as_menu(self, case):
+        print(case.id)
+        print(case.location)
+        print(case.subject)
+        print(case.description)
+        print(case.priority)
+        print(case.repeated)
+        self.edit_options = f"""
+        Case: {case.id}
+        1 - Location: {case.location}
+        2 - subject: {case.subject}
+        3 - description: {case.description}
+        4 - priority: {case.priority}
+        5 - repeated: {case.repeated}
+        r - return to previous menu
+        """
+        print(self.edit_options)
+
+    def edit_case(self, real):
+        print(real.id)
+        case = self.llapi.search_case_real_id(real.id)
+        if case == None:
+            print("The case id was not found")
+            print(self.edit_options) 
+            return
+        self.promt_edit(case)
+
+    def promt_edit(self, case):
+        while True:
+            self.print_emp_as_menu(case)
+            command = input("Enter edit option: ")
+            
+            if command == "1":
+                case.location = self.location_in()
+                self.llapi.edit_case(case)
+            elif command == "2":
+                case.subject = self.input_case_and_check("subject", lambda value : self.llapi.is_address_correct(value))
+                self.llapi.edit_case(case)
+            elif command == "3":
+                case.description = self.input_case_and_check("description", lambda value : self.llapi.is_phone_correct(value))
+                self.llapi.edit_case(case)
+            elif command == "4":
+                case.priority = self.input_case_and_check("priority", lambda value : self.llapi.is_phone_correct(value))
+                self.llapi.edit_case(case)
+            elif command == "5":
+                case.repeated = self.input_case_and_check("repeated", lambda value : self.llapi.is_phone_correct(value))
+                self.llapi.edit_case(case)
+            elif command == "r":
+                return
+            else:
+                print("Invalid option")
