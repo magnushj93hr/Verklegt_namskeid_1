@@ -47,6 +47,7 @@ r - return to previous menu
                 maint_menu = MaintenanceMenu(self.llapi)
                 maint_menu.draw_options()
             elif command == "r":
+                print("Thanks for using NaN air")
                 return
             else:
                 print("Invalid option, try again!")

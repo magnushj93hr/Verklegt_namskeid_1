@@ -118,12 +118,56 @@ r - return to previous menu
         self.llapi.create_realestate(real)
 # ------------------------------------------------------------------------------------------------------------------
 # Edit real estate
-    def edit_realestate(self,result):
-        edit_id = int(result.id)
-        address, size, rooms, _, amentities, location = self.user_options(None)
-        
-        real = RealEstate(address, size, rooms, edit_id, amentities, location)        
-        self.llapi.edit_realestate(real)
+    def print_emp_as_menu(self, real):
+            self.edit_options = f"""
+            Real estate: {real.id}
+
+            1 - address: {real.address}
+            2 - size: {real.size}
+            3 - description: {real.description}
+            4 - rooms: {real.rooms}
+            5 - amenities: {real.amenities}
+            6 - location: {real.location}
+            r - return to previous menu
+            """
+            print(self.edit_options)
+
+    def edit_real(self, real):
+            print(real.id)
+            real = self.llapi.search_realestate(real.id)
+            if real == None:
+                print("The real estate id was not found")
+                print(self.edit_options) 
+                return
+            self.promt_edit(real)
+
+    def promt_edit(self, real):
+            while True:
+                self.print_emp_as_menu(real)
+                command = input("Enter edit option: ")
+                
+                if command == "1":
+                    real.address = self.input_real_and_check("address", lambda value : self.llapi.is_address_correct(value))
+                    self.llapi.edit_real(real)
+                elif command == "2":
+                    real.size = self.input_real_and_check("size", lambda value : self.llapi.check_if_size_correct(value))
+                    self.llapi.edit_real(real)
+                elif command == "3":
+                    real.description = input("Enter description: ")
+                    self.llapi.edit_real(real)
+                elif command == "4":
+                    real.rooms = self.input_real_and_check("size", lambda value : self.llapi.check_if_room_correct(value))
+                    self.llapi.edit_real(real)
+                elif command == "5":
+                    real.amenities = self.input_real_and_check("size", lambda value : self.llapi.check_if_size_correct(value))
+                    self.llapi.edit_real(real)
+                elif command == "6":
+                    real.location = self.location_in()
+                    self.llapi.edit_case(real)
+                elif command == "r":
+                    return
+                else:
+                    print("Invalid option")
 # ------------------------------------------------------------------------------------------------------------------
 
 # --------------------------------------------------------------------------------------------------------------------
@@ -188,14 +232,9 @@ r - return to previous menu
 # ------------------------------------------------------------------------------------------------------------------
 # Edit Case
     def print_emp_as_menu(self, case):
-        print(case.id)
-        print(case.location)
-        print(case.subject)
-        print(case.description)
-        print(case.priority)
-        print(case.repeated)
         self.edit_options = f"""
         Case: {case.id}
+
         1 - Location: {case.location}
         2 - subject: {case.subject}
         3 - description: {case.description}
@@ -223,16 +262,22 @@ r - return to previous menu
                 case.location = self.location_in()
                 self.llapi.edit_case(case)
             elif command == "2":
-                case.subject = self.input_case_and_check("subject", lambda value : self.llapi.is_address_correct(value))
+                case.subject = input("Enter subject")
                 self.llapi.edit_case(case)
             elif command == "3":
-                case.description = self.input_case_and_check("description", lambda value : self.llapi.is_phone_correct(value))
+                case.description = input("Enter description: ")
                 self.llapi.edit_case(case)
             elif command == "4":
-                case.priority = self.input_case_and_check("priority", lambda value : self.llapi.is_phone_correct(value))
-                self.llapi.edit_case(case)
+                while True:
+                    print('What priority?: ')
+                    for prio in PRIORITY:
+                        print(prio)
+                    case.priority = str(input("Enter priority: ")) #setja inn low/medium/high
+                    if case.priority in PRIORITY:
+                        self.llapi.edit_case(case)
+                        break 
             elif command == "5":
-                case.repeated = self.input_case_and_check("repeated", lambda value : self.llapi.is_phone_correct(value))
+                case.repeated = input("Enter repeated(y/n): ")
                 self.llapi.edit_case(case)
             elif command == "r":
                 return

@@ -11,6 +11,7 @@ class CaseMenu:
 Case menu
 1 - list all cases
 2 - search for case
+3 - list all maintenance reports
 r - return to previous menu
 """
 
@@ -49,11 +50,13 @@ r - return to previous menu
                 filter_input = input("Do you want to filter by status(y/n): ")
                 if filter_input == "y":
                     self.prompt_input_filter()
-            elif command == "3":
-                self.edit_case()
             elif command == "2":
                 result = self.search_case()
                 self.prompt_input_search(result)
+            elif command == "3": 
+                all_maintenance_reports = self.llapi.all_maintenance_reports()
+                for maintenance in all_maintenance_reports:
+                    print(maintenance)
             elif command == "r":
                 return "r"
             else:
@@ -114,7 +117,7 @@ r - return to previous menu
                 search_case_opt = input("Do you want to select a case(y/n): ")
                 if search_case_opt == "y":
                     case_id = self.select_id(cases_id)
-                    open_case_opt = input("Do ypu want to open the case(y/n): ")
+                    open_case_opt = input("Do you want to open the case(y/n): ")
                     if open_case_opt == "y":
                         self.change_case_status("Open", case_id)
             elif command == "r":
