@@ -49,11 +49,8 @@ r - return to previous menu
                 filter_input = input("Do you want to filter by status(y/n): ")
                 if filter_input == "y":
                     self.prompt_input_filter()
-<<<<<<< Updated upstream
-=======
             elif command == "3":
                 self.edit_case()
->>>>>>> Stashed changes
             elif command == "2":
                 result = self.search_case()
                 self.prompt_input_search(result)
@@ -65,11 +62,6 @@ r - return to previous menu
 # ------------------------------------------------------------------------------------------------------------------
 
     def search_case(self):
-<<<<<<< Updated upstream
-        self.search_id = input("Enter case id: ")
-        result = self.llapi.search_case(self.search_id)
-        print(result)
-=======
         print(self.search_options)
         command = input("Enter your input: ")
         if command == "1":
@@ -86,7 +78,6 @@ r - return to previous menu
             print(result)
         elif command == "r":
                 return "r"
->>>>>>> Stashed changes
         return result
 
     def prompt_input_filter(self):
@@ -176,20 +167,12 @@ r - return to previous menu
         self.llapi.create_maintenance_report(maintenance)
         self.llapi.edit_case(case)
 
-<<<<<<< Updated upstream
-    def edit_case(self):
-        _, location, subject, description, priority, repeated, real_est_id = self.user_options(None)
-
-        case = Case(self.search_id, location, subject, description, priority, repeated, real_est_id)        
-        self.llapi.edit_case(case)       
-=======
     # def edit_case(self):
     #     edit_id = self.search_id
     #     _, location, subject, description, priority, repeated, real_est_id = self.user_options(None)
 
     #     case = Case(edit_id, location, subject, description, priority, repeated, real_est_id)        
     #     self.llapi.edit_case(case)       
->>>>>>> Stashed changes
 #----------------------------------------------------------------
     def input_and_check(self, info_type, check_fun):
         while True:
