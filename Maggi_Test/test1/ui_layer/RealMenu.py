@@ -3,7 +3,7 @@ from models.RealEstate import RealEstate
 from models.Case import Case
 
 PRIORITY = ['low','medium','high']
-AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
+# AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
 CASE = 'CAS-'
 
 
@@ -82,10 +82,10 @@ r - return to previous menu
     def location_in(self):
         while True:
             print('Available locations to choose from:')
-            for location in AVAILABLE_LOCATIONS:
+            for location in self.llapi.get_locations_name():
                 print(location)
             location = str(input("Enter location: "))
-            if location in AVAILABLE_LOCATIONS: return location
+            if location in self.llapi.get_locations_name(): return location
             else: print("Invalid location")
 
 

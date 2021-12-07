@@ -1,7 +1,7 @@
 from logic_layer.LLAPI import LLAPI
 from models.Employee import Employee
 
-AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen"]
+# AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen"]
 AUTO_ID = 'NaN-'
 
 
@@ -46,11 +46,11 @@ r - return to previous menu
     def available_locations(self):
         while True:
             print('Available locations to choose from: \n')
-            for location in AVAILABLE_LOCATIONS:
+            for location in self.llapi.get_locations_name():
                 print(location)
             print()
             location = str(input("Enter location: ")).capitalize()
-            if location not in AVAILABLE_LOCATIONS:
+            if location not in self.llapi.get_locations_name():
                 print("Invalid location")
             else:
                 return location

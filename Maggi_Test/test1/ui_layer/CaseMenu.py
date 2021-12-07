@@ -2,7 +2,7 @@ from logic_layer.LLAPI import LLAPI
 from models.Case import Case
 from models.MaintananceReport import MaintananceReport
 
-AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
+# AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
 
 class CaseMenu:
     def __init__(self, llapi):
@@ -183,10 +183,10 @@ r - return to previous menu
     def location_in(self):
         while True:
             print('Available locations to choose from:')
-            for location in AVAILABLE_LOCATIONS:
+            for location in self.llapi.get_locations_name():
                 print(location)
             location = str(input("Enter location: "))
-            if location in AVAILABLE_LOCATIONS:
+            if location in self.llapi.get_locations_name():
                 return location
 
     def user_options(self, controller):
