@@ -1,13 +1,10 @@
 name,id,address,homeline,email,location,phone
-arna siggi,2002,laugavegur 25,5554321,arna2002@nanair.com,Reykjavik,8239998
-Maggi,2003,Kokosbolla 23,7654321,kristin2003@nanair.com,Reykjavík,1234567
-Maggi Valur,2004,bambus,7654321,maggi2004@nanair.com,Reykjavík,1234567
-laggi Valur,2005,kokos 26,554342,laggiva@gmil.com,reykjavik,34444446
-sakki valur,2006,kokos26,5888881,biggi@nanair.is,reykavjk,5842345
-Arna Besta,2210,laugarvegur 25,5546543,Arna2210@nanair.com,reykjavik,7654321
-Arna valur,2210,naruto 25,5554321,Arna2210@nanair.com,Reykjavik,1234567
-sadfig,2300,kk 23,5543215,sadfig2300@nanair.com,Reyk,1234566
-einhver,2222,Grandavegur 45,2345678,einhver2222@nanair.com,Reykjavík,2345678
-sdddfi,2002,sigig,7654321,sdddfi2002@nanair.com,Nuuk,4321567
-Son,2030,Ironvil 24,5564321,son2030@nanair.com,Nuuk,7654321
-asjdfladsfsdajfi,2371,jsadklfji,2457346,asjdfladsfsdajfi2371@nanair.com,Nuuk,2847824
+Jan Jacobsen,0001,Vei 230 12,+4792097700,jan.jacobsen@nanair.is,Longyearbyen,+3547771337
+Jacob Yxa, 0002, Vei 224 3B, +4792097701,jacob.yxa@nanair.is,Longyearbyen,+3547771338
+Nanna Daema, 0003, Ivan Starostin st. 109, +4792097702,nanna.daema@nanair.is,Longyearbyen+3547771339
+Minik Wallace, 0004, Isaajap Aqqutaa 1,+299342467,minik.wallace@nanair.is, Nuuk,+3547771361
+Aqqaluk Lyngi, 0005, Qattaaq 44, +299352466,aqqaluk.lynge@nanair.is,Nuuk,+3547771362
+Nauja Lynge, 0006, Qunguleq 3759, +299312164,nauja.lynge@nanair.is,Nuuk,+3547771363
+Annette Djurhuus, 0007, Tjarnardeild 8, +298772000,annette.djurhuus@nanair.is,Tórshavn, +3547771381
+Áki Knudsen, 0008, Traðartún 3, +298617210,aki.knudsen@nanair.is,Tórshavn,+3547771381
+André Hjaltalin, 0009, Í Lágni 19, +298661441,andre.hjaltalin@nanair.is,Tórshavn, +3547771382
