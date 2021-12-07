@@ -84,7 +84,6 @@ class LLAPI:
         return self.empLL.filter_employee(filter)
 
 # ----------------------------------------------------------------
-
 # REAL ESTATE FUNCTIONS
 
     def all_realestate(self):
@@ -101,9 +100,12 @@ class LLAPI:
 
     def filter_realestate(self, filter):
         return self.realLL.filter_realestate(filter)
-    
+
     def get_cases(self, search_id):
         return self.caseLL.search_cases(search_id)
+
+    def change_amenities(self):
+        return self.realLL.change_amenities()
 
 # ----------------------------------------------------------------
 
