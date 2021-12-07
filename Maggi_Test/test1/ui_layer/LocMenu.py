@@ -32,10 +32,10 @@ r - return to previous menu
 
     def create_location(self):
         country = input("Enter country name: ")
+        location = input("Enter location: ")
         airport = input("Enter aiport:")
         phone = input("Enter location phone: ")
         opening_hours = input("Enter location opening hours: ")
         
-        
-        loc = Location(country, airport, phone, opening_hours)
+        loc = Location(country, location, airport, phone, opening_hours)
         self.llapi.create_location(loc)

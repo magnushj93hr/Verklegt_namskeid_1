@@ -148,6 +148,9 @@ class LLAPI:
 
     def create_location(self,loc):
         return self.locLL.create_location(loc)
+    
+    def get_locations_name(self):
+        return self.locLL.get_locations_name()
 
 # ----------------------------------------------------------------
 
