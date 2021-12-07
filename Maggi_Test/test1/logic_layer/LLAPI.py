@@ -140,6 +140,12 @@ class LLAPI:
 
     def create_contractor(self, contr):
         return self.contrLL.create_contractor(contr)
+    
+    def search_contractor(self, name):
+        return self.contrLL.search_contractor(name)
+
+    def edit_contractor(self, contractor):
+        return self.contrLL.edit_contractor(contractor)
 
 # ----------------------------------------------------------------
 

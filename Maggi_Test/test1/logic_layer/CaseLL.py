@@ -19,21 +19,25 @@ class CaseLL:
     
     def search_case(self, search_id, controller):
         all_cases = self.dlapi.get_all_cases()
+        case_list = []
         if controller == 'caseid':
             for case in all_cases:
                 if case.id == search_id:
                     result = self.list_cases(case)
-                    return result
+                    case_list.append(result)
+            return case_list
         elif controller == 'empid':
             for case in all_cases:
                 if case.emp_id == search_id:
                     result = self.list_cases(case)
-                    return result
+                    case_list.append(result)
+            return case_list
         elif controller == "realid":
             for case in all_cases:
                 if case.real_est_id == search_id:
                     result = self.list_cases(case)
-                    return result
+                    case_list.append(result)
+            return case_list
             
     
     def list_cases(self, case):
