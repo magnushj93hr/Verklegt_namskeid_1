@@ -11,8 +11,8 @@ class Employee:
         self.email = self.make_email()
 
     def make_email(self): 
-        em = str(self.name.split()[0]).lower()
-        email = em + str(self.id) + EMAIL
+        em = str(self.name.split()[1]).lower()
+        email = em + EMAIL
         return email
 
     def __str__(self):
