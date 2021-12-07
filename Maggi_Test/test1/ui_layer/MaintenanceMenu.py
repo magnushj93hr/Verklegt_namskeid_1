@@ -27,5 +27,5 @@ r - return to previous menu
             elif command == "r":
                 return "r"
             else:
-                print("invalid option, try again!")
+                print("Invalid option, try again!")
             print(self.options)

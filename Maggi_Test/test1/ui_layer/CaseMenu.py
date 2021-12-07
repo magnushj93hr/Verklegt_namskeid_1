@@ -50,7 +50,7 @@ r - return to previous menu
             elif command == "r":
                 return "r"
             else:
-                print("invalid option, try again!")
+                print("Invalid option, try again!")
             print(self.options)
 # ------------------------------------------------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ r - return to previous menu
                 elif command == "r":
                     return
                 else:
-                    print("invalid option, try again!")
+                    print("Invalid option, try again!")
 
 
     def create_maintenance_report(self, result):
@@ -119,7 +119,7 @@ r - return to previous menu
         subject = input("Enter subject: ")
         description = input("Enter description: ")
         priority = input("Enter priority: ")
-        repeated = input("Is the case repeated?: ")
+        repeated = input("Is the case repeated(y/n)?: ")
         real_id = self.input_and_check("id", lambda value : self.llapi.check_if_rel_id_correct(value)) if controller == "create" else 0
 
         return int(id), location, subject, description, priority, repeated, real_id
