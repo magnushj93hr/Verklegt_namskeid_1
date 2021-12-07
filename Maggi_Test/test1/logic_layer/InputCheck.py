@@ -1,10 +1,10 @@
 MAX_NAME = 40
-MAX_ID = 4
+MAX_ID = 4 
 MAX_REL_ID = 6
-MAX_PHONE = 7
-MAX_ADDRESS = 20
-MAX_LOCATION = 15
-MAX_ROOM = 10
+MAX_PHONE = 7  #Þarf að vera lengra
+MAX_ADDRESS = 20 # -||-
+MAX_LOCATION = 15 # -||-
+MAX_ROOM = 10 
 
 
 class InputCheck:
