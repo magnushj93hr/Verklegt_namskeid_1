@@ -158,5 +158,8 @@ class LLAPI:
 
     def all_maintenance_reports(self):
         return self.maintenanceLL.all_maintenance_reports()
+    
+    def search_maintenance_report(self, report_id):
+        return self.maintenanceLL.search_maintenance_report(report_id)
 
 # ----------------------------------------------------------------
