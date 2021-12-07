@@ -55,7 +55,7 @@ r - return to previous menu
 
     def search_case(self):
         self.search_id = input("Enter case id: ")
-        result = LLAPI().search_case(self.search_id)
+        result = self.llapi.search_case(self.search_id)
         print(result)
 
     def prompt_input_filter(self):
@@ -64,8 +64,11 @@ r - return to previous menu
             command = input("Enter input: ")
             if command == "1":
                 cases = self.llapi.filter_cases("open")
+                cases_id = []
                 for case in cases:
+                    cases_id.append(case.id)
                     print(case)
+                id = self.select_id(cases_id)
             elif command == "2":
                 cases = self.llapi.filter_cases("ready to close")
                 for case in cases:
@@ -78,6 +81,15 @@ r - return to previous menu
                 return
             else:
                 print("Invalid option")
+    
+    def select_id(self, cases_id):
+        while True:
+            id = input("Enter case id: ")
+            if id not in cases_id:
+                print("Invalid id")
+            
+            
+
 
     def prompt_input_search(self):
             while True:
