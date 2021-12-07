@@ -41,21 +41,25 @@ r - return to previous menu
             if not check_fun(value): print(f"Invalid employee {info_type}")
             else: return value
 
+    def available_locations(self):
+        while True:
+            print('Available locations to choose from: \n')
+            for location in AVAILABLE_LOCATIONS:
+                print(location)
+            print()
+            location = str(input("Enter location: ")).capitalize()
+            if location not in AVAILABLE_LOCATIONS:
+                print("Invalid location")
+            else:
+                return location
+
     def user_options(self, controller):
         name = self.input_and_check("name", lambda value : self.llapi.is_name_correct(value))
         phone = self.input_and_check("phone", lambda value : self.llapi.is_phone_correct(value))
         id = self.input_and_check("id", lambda value : self.llapi.is_id_correct(value)) if controller == "create" else None
         address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
         homeline = self.input_and_check("homeline", lambda value : self.llapi.is_phone_correct(value))
-
-        while True:
-            print('Available locations to choose from:')
-            for location in AVAILABLE_LOCATIONS:
-                print(location)
-            location = str(input("Enter location: "))
-            if location in AVAILABLE_LOCATIONS:
-                break
-
+        location = self.available_locations()
         return name, phone, id, address, homeline, location
 # ------------------------------------------------------------------------------------------------------------------
 
@@ -69,17 +73,6 @@ r - return to previous menu
 
 # ------------------------------------------------------------------------------------------------------------------
 # Edit Employee
-    def edit_employee(self):
-        #check if id is len 4
-        edit_id = str(input("Enter employee id: "))
-
-        emp = self.llapi.search_employee(edit_id)
-        if emp == None:
-            print("The employee id was not found")
-            print(self.options) 
-            return
-        self.promt_edit(emp)
-
     def print_emp_as_menu(self, emp):
         edit_options = f"""
         Employee {emp.id}
@@ -92,6 +85,17 @@ r - return to previous menu
         r - return to previous menu
         """
         print(edit_options)
+
+    def edit_employee(self):
+        #check if id is len 4
+        edit_id = str(input("Enter employee id: "))
+
+        emp = self.llapi.search_employee(edit_id)
+        if emp == None:
+            print("The employee id was not found")
+            print(self.options) 
+            return
+        self.promt_edit(emp)
 
     def promt_edit(self, emp):
         while True:
@@ -111,23 +115,12 @@ r - return to previous menu
                 emp.phone = self.input_and_check("phone", lambda value : self.llapi.is_phone_correct(value))
                 self.llapi.edit_employee(emp)
             elif command == "5":
-                while True:
-                    print('Available locations to choose from: \n')
-                    for location in AVAILABLE_LOCATIONS:
-                        print(location)
-                    print()
-                    location = str(input("Enter location: ")).capitalize()
-                    if location not in AVAILABLE_LOCATIONS:
-                        print("Invalid location")
-                    else:
-                        emp.location = location
-                        break
+                emp.location = self.available_locations()
                 self.llapi.edit_employee(emp)
             elif command == "r":
                 return
             else:
                 print("Invalid option")
-            
 # ------------------------------------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------------------------------------
