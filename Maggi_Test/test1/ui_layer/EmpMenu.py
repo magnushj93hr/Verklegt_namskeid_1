@@ -2,6 +2,8 @@ from logic_layer.LLAPI import LLAPI
 from models.Employee import Employee
 
 AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen"]
+AUTO_ID = 'NaN-'
+
 
 class EmpMenu:
     def __init__(self, llapi):
@@ -56,7 +58,8 @@ r - return to previous menu
     def user_options(self, controller):
         name = self.input_and_check("name", lambda value : self.llapi.is_name_correct(value))
         phone = self.input_and_check("phone", lambda value : self.llapi.is_phone_correct(value))
-        id = self.input_and_check("id", lambda value : self.llapi.is_id_correct(value)) if controller == "create" else None
+        all_id = self.llapi.all_employees()
+        id = AUTO_ID + str(len(all_id) + 1)
         address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
         homeline = self.input_and_check("homeline", lambda value : self.llapi.is_phone_correct(value))
         location = self.available_locations()
