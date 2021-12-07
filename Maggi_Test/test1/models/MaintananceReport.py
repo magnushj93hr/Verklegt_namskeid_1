@@ -7,7 +7,7 @@ class MaintananceReport:
         self.total_cost = total_cost
         self.contractor = contractor
         self.employee_id = employee_id
-        
+
 
     def __str__(self):
         return f"real estate id: {self.real_estate_id}, description: {self.description}, repeated: {self.repeated}, case id: {self.case_id}, total cost: {self.total_cost}, contractor: {self.contractor}"

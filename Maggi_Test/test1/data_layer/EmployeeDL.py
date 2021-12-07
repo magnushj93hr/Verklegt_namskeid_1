@@ -24,7 +24,7 @@ class EmployeeDL:
             writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
 
     def edit_employee(self, emp):
-        temp_file = NamedTemporaryFile(mode = 'w', delete=False)
+        temp_file = NamedTemporaryFile(mode = 'w', newline='', encoding='utf-8', delete=False)
         
         fieldnames = ["name","id","address",'homeline','email','location','phone']
         with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:

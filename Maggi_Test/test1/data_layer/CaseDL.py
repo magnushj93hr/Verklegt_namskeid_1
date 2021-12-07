@@ -13,7 +13,7 @@ class CaseDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                case = Case(row["id"],row["location"], row["subject"], row["description"], row["priority"], row["repeated"], row['date'])
+                case = Case(row["id"],row["location"], row["subject"], row["description"], row["priority"], row["repeated"], row["real_est_id"], row['status'])
                 ret_list.append(case)
         return ret_list
 
@@ -22,7 +22,7 @@ class CaseDL:
             fieldnames = ["id", "location", "subject","description","priority",'due date','repeated', "real_est_id"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'id': case.id,'location': case.location, 'subject': case.subject, "description": case.description, "priority": case.priority, 'due date': case.due_date, 'repeated': case.repeated, "real_est_id": case.real_est_id})
-
+            
     def check_if_case_exists(self, id):
             with open(self.filepath, newline='', encoding='utf-8') as csvfile:
                 reader = csv.DictReader(csvfile)
@@ -33,9 +33,9 @@ class CaseDL:
                         return False
 
     def edit_case(self, case):
-        temp_file = NamedTemporaryFile(mode = 'w', delete=False)
+        temp_file = NamedTemporaryFile(mode = 'w', newline='', encoding='utf-8', delete=False)
         
-        fieldnames = ["id","location","subject","description",'priority','repeated','date']
+        fieldnames = ["id","location","subject","description",'priority','repeated', 'date', "real_est_id", "status"]
         with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
             reader = csv.DictReader(csvfile, fieldnames=fieldnames)
             #fieldnames = ["name","id","address",'homeline','email','location','phone']
@@ -45,9 +45,9 @@ class CaseDL:
             for row in reader:
                 if row['id'] == case.id:
                     print('updating row', row['id'])
-                    writer.writerow({'id': case.id,'location': case.location, "subject": case.subject, "description": case.description, 'priority': case.priority, 'repeated': case.repeated, 'date': row['date']})
+                    writer.writerow({'id': case.id,'location': case.location, "subject": case.subject, "description": case.description, 'priority': case.priority, 'repeated': case.repeated, 'date': row['date'], "real_est_id": case.real_est_id, "status": case.status,})
                 else:
-                    row = {'id': row['id'],'location': row["location"], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'repeated': row['repeated'], 'date': row['date']}
+                    row = {'id': row['id'],'location': row["location"], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'repeated': row['repeated'], 'date': row['date'], "real_est_id": row["real_est_id"], "status": row["status"]}
                     writer.writerow(row)
 
         shutil.move(temp_file.name, self.filepath)
