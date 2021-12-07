@@ -127,7 +127,7 @@ r - return to previous menu
             elif command == "2": self.create_case(result)
             elif command == "3": self.edit_case(result.id)   
             elif command == "r": return
-            else: print("invalid option, try again!")
+            else: print("Invalid option, try again!")
 # ------------------------------------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -161,10 +161,10 @@ r - return to previous menu
             print('What priority?: ')
             for prio in PRIORITY:
                 print(prio)
-            priority = str(input("Enter priority: "))
+            priority = str(input("Enter priority: ")) #setja inn low/medium/high
             if priority in PRIORITY:
                 break
-        repeated = input("Is the case repeated?: ")
+        repeated = input("Is the case repeated(y/n)?: ")
         real_id = result.id
         emp_id = input("Enter your employee ID: ")
 
