@@ -27,15 +27,15 @@ r - return to previous menu
             elif command == "r":
                 return "r"
             else:
-                print("invalid option, try again!")
+                print("Invalid option, try again!")
             print(self.options)
 
     def create_location(self):
-        country = input("Enter Country name: ")
+        country = input("Enter country name: ")
+        location = input("Enter location: ")
         airport = input("Enter aiport:")
         phone = input("Enter location phone: ")
         opening_hours = input("Enter location opening hours: ")
         
-        
-        loc = Location(country, airport, phone, opening_hours)
+        loc = Location(country, location, airport, phone, opening_hours)
         self.llapi.create_location(loc)

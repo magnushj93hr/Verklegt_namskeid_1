@@ -58,6 +58,9 @@ class DLAPI:
 
     def create_contractor(self, contr):
         return self.contrDL.create_contractor(contr)
+    
+    def edit_contractor(self, name):
+        return self.contrDL.edit_contractor(name)
 # ----------------------------------------------------------------
 # LOCATION FUNCTIONS
     def get_all_locations(self):

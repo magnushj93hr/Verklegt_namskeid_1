@@ -7,22 +7,22 @@ from models.Case import Case
 class CaseDL:
     def __init__(self):
         self.filepath = "Maggi_Test/test1/csv_files/Case.csv"
-    
+     
     def get_all_cases(self):
         ret_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                case = Case(row["id"],row["location"], row["subject"], row["description"], row["priority"], row["repeated"], row["real_est_id"], row['status'])
+                case = Case(row["id"],row["location"], row["subject"], row["description"], row["priority"], row["repeated"], row['real_est_id'], row['emp_id'] ,row['date'], row['status'])
                 ret_list.append(case)
         return ret_list
 
     def create_case(self, case):
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ["id", "location", "subject","description","priority",'due date','repeated', "real_est_id"]
+            fieldnames = ["id", "location", "subject","description","priority",'repeated', "real_est_id", 'emp_id', 'date', 'status']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'id': case.id,'location': case.location, 'subject': case.subject, "description": case.description, "priority": case.priority, 'due date': case.due_date, 'repeated': case.repeated, "real_est_id": case.real_est_id})
-            
+            writer.writerow({'id': case.id,'location': case.location, 'subject': case.subject, "description": case.description, "priority": case.priority, 'repeated': case.repeated, "real_est_id": case.real_est_id, 'emp_id': case.emp_id, 'date': case.date, 'status': case.status })
+
     def check_if_case_exists(self, id):
             with open(self.filepath, newline='', encoding='utf-8') as csvfile:
                 reader = csv.DictReader(csvfile)
@@ -35,7 +35,7 @@ class CaseDL:
     def edit_case(self, case):
         temp_file = NamedTemporaryFile(mode = 'w', newline='', encoding='utf-8', delete=False)
         
-        fieldnames = ["id","location","subject","description",'priority','repeated', 'date', "real_est_id", "status"]
+        fieldnames = ["id","location","subject","description",'priority','repeated','real_est_id', 'emp_id', 'date', 'status']
         with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
             reader = csv.DictReader(csvfile, fieldnames=fieldnames)
             #fieldnames = ["name","id","address",'homeline','email','location','phone']
@@ -45,9 +45,9 @@ class CaseDL:
             for row in reader:
                 if row['id'] == case.id:
                     print('updating row', row['id'])
-                    writer.writerow({'id': case.id,'location': case.location, "subject": case.subject, "description": case.description, 'priority': case.priority, 'repeated': case.repeated, 'date': row['date'], "real_est_id": case.real_est_id, "status": case.status,})
+                    writer.writerow({'id': case.id,'location': case.location, "subject": case.subject, "description": case.description, 'priority': case.priority, 'repeated': case.repeated, 'real_est_id': row['real_est_id'], 'emp_id': row['emp_id'], 'date': row['date'], "status": case.status})
                 else:
-                    row = {'id': row['id'],'location': row["location"], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'repeated': row['repeated'], 'date': row['date'], "real_est_id": row["real_est_id"], "status": row["status"]}
+                    row = {'id': row['id'],'location': row["location"], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'repeated': row['repeated'], 'real_est_id': row['real_est_id'], 'emp_id': row['emp_id'], 'date': row['date'], "status": row['status']}
                     writer.writerow(row)
 
         shutil.move(temp_file.name, self.filepath)

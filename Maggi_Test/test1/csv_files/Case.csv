@@ -1,2 +1,4 @@
-id,location,subject,description,priority,repeated,date,real_est_id,status
-1002,rvk,asaf.kjaslkf,asdgasdg,1,n,2/12/2021,0002,ready to close
+id,location,subject,description,priority,repeated,real_est_id,emp_id,date,status
+CAS-1,Nuuk,Laga heita Pottinn,það þarf að laga pottinn,medium,n,5003,NaN-7,6/12/2021,Open
+CAS-2,Longyearbyen,Laga donkið,Vantar spliffið,low,n,5006,NaN-2,7/12/2021,Open
+CAS-3,Longyearbyen,Laga donkið,Vantar spliffið,low,n,5003,NaN-2,7/12/2021,Open

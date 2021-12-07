@@ -84,7 +84,6 @@ class LLAPI:
         return self.empLL.filter_employee(filter)
 
 # ----------------------------------------------------------------
-
 # REAL ESTATE FUNCTIONS
 
     def all_realestate(self):
@@ -101,9 +100,12 @@ class LLAPI:
 
     def filter_realestate(self, filter):
         return self.realLL.filter_realestate(filter)
-    
+
     def get_cases(self, search_id):
         return self.caseLL.search_cases(search_id)
+
+    def change_amenities(self):
+        return self.realLL.change_amenities()
 
 # ----------------------------------------------------------------
 
@@ -118,8 +120,11 @@ class LLAPI:
     def edit_case(self, case):
         return self.caseLL.edit_case(case)
 
-    def search_case(self, case_id):
-        return self.caseLL.search_case(case_id)
+    def search_case(self, search_id, controller):
+        return self.caseLL.search_case(search_id, controller)
+
+    def list_cases(self):
+        return self.caseLL.list_cases()
     
     def case_exist(self, id):
         return self.caseLL.case_exist(id)
@@ -135,6 +140,12 @@ class LLAPI:
 
     def create_contractor(self, contr):
         return self.contrLL.create_contractor(contr)
+    
+    def search_contractor(self, name):
+        return self.contrLL.search_contractor(name)
+
+    def edit_contractor(self, contractor):
+        return self.contrLL.edit_contractor(contractor)
 
 # ----------------------------------------------------------------
 
@@ -145,6 +156,9 @@ class LLAPI:
 
     def create_location(self,loc):
         return self.locLL.create_location(loc)
+    
+    def get_locations_name(self):
+        return self.locLL.get_locations_name()
 
 # ----------------------------------------------------------------
 
@@ -155,5 +169,8 @@ class LLAPI:
 
     def all_maintenance_reports(self):
         return self.maintenanceLL.all_maintenance_reports()
+    
+    def search_maintenance_report(self, report_id):
+        return self.maintenanceLL.search_maintenance_report(report_id)
 
 # ----------------------------------------------------------------

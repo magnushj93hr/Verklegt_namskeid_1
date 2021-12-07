@@ -1,5 +1,5 @@
-name,contact,phone,opening hours,location
-maggi,pétur,123345,3-5,rvk
-siggi,siggi.inc,1234567,7-20,Reykjavik
-Iron Man,Iron.inc,5576432,24/7,Iron City
-Arna,Arna.inc,7654321,123,Iron
+name,contact,phone,opening hours,location,review
+maggi,pétur,123345,3-5,rvk,
+siggi,siggi.inc,1234567,7-20,Reykjavik,
+Iron Man,Iron.inc,5576432,24/7,Iron City,
+Arna,Arna.inc,7654321,123,Iron,
