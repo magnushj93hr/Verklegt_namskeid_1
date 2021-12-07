@@ -1,6 +1,7 @@
 from logic_layer.LLAPI import LLAPI
 from models.RealEstate import RealEstate
 from models.Case import Case
+import ast
 
 PRIORITY = ['low','medium','high']
 # AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
@@ -44,7 +45,8 @@ r - return to previous menu
                 self.create_realestate()
             elif command == "3":
                 result = self.search_realestate()
-                self.prompt_input_search(result)
+                if result is not None:
+                    self.prompt_input_search(result)
             elif command == "r": return
             else: print("invalid option, try again!")
             print(self.main_options)
@@ -56,7 +58,7 @@ r - return to previous menu
         while True:
             print(self.real_est_options)
             command = input("Enter your input: ")
-            if command == "1": self.edit_realestate(result.id)
+            if command == "1": self.edit_real(result)
             elif command == "2": self.create_case(result)
             elif command == "3": self.edit_case(result)   
             elif command == "r": return
@@ -118,56 +120,86 @@ r - return to previous menu
         self.llapi.create_realestate(real)
 # ------------------------------------------------------------------------------------------------------------------
 # Edit real estate
-    def print_emp_as_menu(self, real):
+    def print_real_as_menu(self, real):
             self.edit_options = f"""
             Real estate: {real.id}
 
             1 - address: {real.address}
             2 - size: {real.size}
-            3 - description: {real.description}
-            4 - rooms: {real.rooms}
-            5 - amenities: {real.amenities}
-            6 - location: {real.location}
+            3 - rooms: {real.rooms}
+            4 - amenities: {real.amenities}
+            5 - location: {real.location}
             r - return to previous menu
             """
             print(self.edit_options)
 
     def edit_real(self, real):
-            print(real.id)
             real = self.llapi.search_realestate(real.id)
             if real == None:
                 print("The real estate id was not found")
                 print(self.edit_options) 
                 return
-            self.promt_edit(real)
+            self.promt_edit_real(real)
 
-    def promt_edit(self, real):
+    def promt_edit_real(self, real):
             while True:
-                self.print_emp_as_menu(real)
+                self.print_real_as_menu(real)
                 command = input("Enter edit option: ")
                 
                 if command == "1":
                     real.address = self.input_real_and_check("address", lambda value : self.llapi.is_address_correct(value))
-                    self.llapi.edit_real(real)
+                    self.llapi.edit_realestate(real)
                 elif command == "2":
                     real.size = self.input_real_and_check("size", lambda value : self.llapi.check_if_size_correct(value))
-                    self.llapi.edit_real(real)
+                    self.llapi.edit_realestate(real)
                 elif command == "3":
-                    real.description = input("Enter description: ")
-                    self.llapi.edit_real(real)
+                    real.rooms = self.input_real_and_check("rooms", lambda value : self.llapi.check_if_room_correct(value))
+                    self.llapi.edit_realestate(real)
                 elif command == "4":
-                    real.rooms = self.input_real_and_check("size", lambda value : self.llapi.check_if_room_correct(value))
-                    self.llapi.edit_real(real)
+                    self.amenities_ui(real)
+                    real.amenities = self.amenities_logic(real)
+                    self.llapi.edit_realestate(real)
                 elif command == "5":
-                    real.amenities = self.input_real_and_check("size", lambda value : self.llapi.check_if_size_correct(value))
-                    self.llapi.edit_real(real)
-                elif command == "6":
                     real.location = self.location_in()
-                    self.llapi.edit_case(real)
+                    self.llapi.edit_realestate(real)
                 elif command == "r":
                     return
                 else:
                     print("Invalid option")
+
+    def amenities_ui(self, ame):
+        self.edit_ame = f"""
+        Amenities: {ame.amenities}
+        1 - Remove
+        2 - Add
+        """
+        print(self.edit_ame)
+
+    def amenities_logic(self, ame):
+        input_ame = input("Enter a option: ")
+        if input_ame == "1":
+            list_ame = self.amenities_remove(ame)
+        elif input_ame == "2":
+            list_ame = self.amenities_add(ame)
+        return list_ame
+
+    def amenities_remove(self, ame):
+        while True:
+            print(ame.amenities)
+            rem_input = input("Enter a amenitie to remove: ")
+            if rem_input in ame.amenities: 
+                new_list = ast.literal_eval(ame.amenities)
+                new_list.remove(rem_input)
+                return new_list
+            else: print(f"{rem_input} is not in the amenities")
+
+    def amenities_add(self, ame):
+        print(ame.amenities)
+        list_ame = input("Enter a amenities to add, seperated by(,): ").split(",")
+        if ame.amenities == "":
+            ame.amenities = []
+        return ame.amenities.extend(list_ame)
+
 # ------------------------------------------------------------------------------------------------------------------
 
 # --------------------------------------------------------------------------------------------------------------------
@@ -199,7 +231,7 @@ r - return to previous menu
                 else:
                     print(result)
                     return result
-            else: break
+            else: return None
 # ------------------------------------------------------------------------------------------------------------------
 
 #=============================Case functions begins here======================================================================
@@ -231,7 +263,7 @@ r - return to previous menu
 
 # ------------------------------------------------------------------------------------------------------------------
 # Edit Case
-    def print_emp_as_menu(self, case):
+    def print_case_as_menu(self, case):
         self.edit_options = f"""
         Case: {case.id}
 
@@ -251,11 +283,11 @@ r - return to previous menu
             print("The case id was not found")
             print(self.edit_options) 
             return
-        self.promt_edit(case)
+        self.promt_edit_case(case)
 
-    def promt_edit(self, case):
+    def promt_edit_case(self, case):
         while True:
-            self.print_emp_as_menu(case)
+            self.print_case_as_menu(case)
             command = input("Enter edit option: ")
             
             if command == "1":
