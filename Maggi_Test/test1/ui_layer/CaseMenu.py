@@ -103,7 +103,6 @@ r - return to previous menu
         contractor = input("Enter contractor: ")
         
         maintenance = MaintananceReport(real_estate_id, description, repeated, employee_id, case_id, total_cost, contractor)
-        self.llapi.create_maintenance_report(maintenance)
 
         case = self.llapi.search_case(case_id)
         case.status = "ready to close"
