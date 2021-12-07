@@ -4,6 +4,8 @@ from models.Case import Case
 
 PRIORITY = ['low','medium','high']
 AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
+CASE = 'CAS-'
+
 
 class RealMenu:
     def __init__(self, llapi):
@@ -41,8 +43,8 @@ r - return to previous menu
             elif command == "2":
                 self.create_realestate()
             elif command == "3":
-                self.search_realestate()
-                self.prompt_input_search()
+                result = self.search_realestate()
+                self.prompt_input_search(result)
             elif command == "r": return
             else: print("invalid option, try again!")
             print(self.main_options)
@@ -84,15 +86,14 @@ r - return to previous menu
     def create_realestate(self):
         value = int(input("How many apartments are the in your aria: "))
         address, size, rooms, id, amenities, location = self.user_options("create")
-        for apartment in range(0, value+1):
+        for apartment in range(0, value):
             real = RealEstate(address, size, rooms, id, amenities, location)
             self.llapi.create_realestate(real)
             id += 1
 # ------------------------------------------------------------------------------------------------------------------
 
-# ------------------------------------------------------------------------------------------------------------------
-    def edit_realestate(self):
-        edit_id = int(self.search_id)
+    def edit_realestate(self,result):
+        edit_id = int(result.id)
         address, size, rooms, _, amentities, location = self.user_options(None)
         
         real = RealEstate(address, size, rooms, edit_id, amentities, location)        
@@ -118,13 +119,13 @@ r - return to previous menu
 
 # ------------------------------------------------------------------------------------------------------------------
 # search for real estate
-    def prompt_input_search(self):
+    def prompt_input_search(self, result):
         while True:
             print(self.real_est_options)
             command = input("Enter your input: ")
-            if command == "1": self.edit_realestate()
-            elif command == "2": self.create_case()
-            elif command == "3": self.edit_case()   
+            if command == "1": self.edit_realestate(result.id)
+            elif command == "2": self.create_case(result)
+            elif command == "3": self.edit_case(result.id)   
             elif command == "r": return
             else: print("invalid option, try again!")
 # ------------------------------------------------------------------------------------------------------------------
@@ -150,9 +151,10 @@ r - return to previous menu
 # það þarf að skoða þetta fall eihvða betur geta
 # allavega hreinskrifa þetta eihvða 
 
-    def create_case(self):
-        id = input("Enter id for case: ")
-        location = input("Enter the location: ")
+    def create_case(self, result):
+        all_cases = self.llapi.all_cases()
+        id = CASE + str(len(all_cases) + 1)
+        location = result.location
         subject = input("Enter subject: ")
         description = input("Enter description: ")
         while True:
@@ -163,8 +165,10 @@ r - return to previous menu
             if priority in PRIORITY:
                 break
         repeated = input("Is the case repeated?: ")
+        real_id = result.id
+        emp_id = input("Enter your employee ID: ")
 
-        case = Case(id,location,subject, description, priority, repeated, self.search_id)
+        case = Case(id,location,subject, description, priority, repeated, real_id, emp_id)
         self.llapi.create_case(case)        
 
 

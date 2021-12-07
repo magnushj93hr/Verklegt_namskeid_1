@@ -1,10 +1,10 @@
 name,id,address,homeline,email,location,phone
-Jan Jacobsen,0001,Vei 230 12,+4792097700,jan.jacobsen@nanair.is,Longyearbyen,+3547771337
-Jacob Yxa, 0002, Vei 224 3B, +4792097701,jacob.yxa@nanair.is,Longyearbyen,+3547771338
-Nanna Daema, 0003, Ivan Starostin st. 109, +4792097702,nanna.daema@nanair.is,Longyearbyen+3547771339
-Minik Wallace, 0004, Isaajap Aqqutaa 1,+299342467,minik.wallace@nanair.is, Nuuk,+3547771361
-Aqqaluk Lyngi, 0005, Qattaaq 44, +299352466,aqqaluk.lynge@nanair.is,Nuuk,+3547771362
-Nauja Lynge, 0006, Qunguleq 3759, +299312164,nauja.lynge@nanair.is,Nuuk,+3547771363
-Annette Djurhuus, 0007, Tjarnardeild 8, +298772000,annette.djurhuus@nanair.is,Tórshavn, +3547771381
-Áki Knudsen, 0008, Traðartún 3, +298617210,aki.knudsen@nanair.is,Tórshavn,+3547771381
-André Hjaltalin, 0009, Í Lágni 19, +298661441,andre.hjaltalin@nanair.is,Tórshavn, +3547771382
+Jan Jacobsen,1000,Vei 230 12,9209770,jan1000@nanair.com,Longyearbyen,7771337
+Jacob Yxa,1001,Vei 224 3B,9209771,jacob1001@nanair.com,Longyearbyen,7771338
+Nanna Daema,1002,Ivan Starostin 109,9209772,nanna1002@nanair.com,Longyearbyen,7771339
+Minik Wallace,1003,Isaajjap Aqquta 1,3424671,minik1003@nanair.com,Nuuk,7771361
+Aqqaluk Lynge,1004,Qattaaq 44,3521642,aqqaluk1004@nanair.com,Nuuk,7771362
+Nauja Lynge,1005,Qunguleq 3759,3121643,nauja1004@nanair.com,Nuuk,7771363
+Annette Djurhuus,1006,Tjarnardeild 8,7720001,annette1006@nanair.com,Þórshöfn,7771381
+Áki Knudsen,1007,Traðartún 3,6172101,áki1007@nanair.com,Þórshöfn,7773181
+André Hjaltalin,1008,Í Lágni 19,6614411,andré1008@nanair.com,Þórshöfn,7771382

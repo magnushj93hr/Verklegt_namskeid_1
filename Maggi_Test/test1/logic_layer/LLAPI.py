@@ -120,6 +120,9 @@ class LLAPI:
 
     def search_case(self, case_id):
         return self.caseLL.search_case(case_id)
+
+    def list_cases(self):
+        return self.caseLL.list_cases()
     
     def case_exist(self, id):
         return self.caseLL.case_exist(id)
