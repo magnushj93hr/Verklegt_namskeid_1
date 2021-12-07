@@ -1,9 +1,12 @@
+from ui_layer.Contractor.create_con import CreateReal
 from logic_layer.LLAPI import LLAPI
+from models.Contractor import Contractor
 
 class Contractor:
     def __init__(self, llapi, user):
         self.user = user
         self.llapi = llapi
+        self.create_con = CreateCon
         self.header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -15,7 +18,7 @@ ________________________________________________________________________________
 |   - s               //Search for contractor                      - fi          //Filter options                 |
 |   - o               //Open, for more info                        - d           //Display cases form contractor  |
 |   - b               //Go back                                                                                   |"""
-        self.supervisorLine = """|   - cr              //Creates new estate                                                                        |"""
+        self.supervisorLine = """|   - cr              //Creates new contractor                                                                    |"""
 
         self.footer = """|_________________________________________________________________________________________________________________|
 """
@@ -41,7 +44,7 @@ ________________________________________________________________________________
                 # for emp in all_emps:
                 #     print(emp)
             elif command == "cr" and self.user.is_supervisor():
-                pass
+                self.create_con.draw_options()
             elif command == "fi":
                 pass
             elif command == "o":

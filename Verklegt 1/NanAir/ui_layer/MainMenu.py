@@ -1,4 +1,4 @@
-from ui_layer.Destination.DestMenu import DestMenu
+from ui_layer.Location.LocMenu import LocMenu
 from ui_layer.Employee.EmpMenu import EmpMenu
 from ui_layer.RealEstate.real_estate_menu import RealEstate
 from ui_layer.Cases.cases_menu import Cases
@@ -22,7 +22,7 @@ ________________________________________________________________________________
 |   - real        //Goes to real estate screen                                                                    |
 |   - cases       //Goes to cases screen                                                                          |
 |   - con         //Goes to contractor screen                                                                     |"""
-        self.supervisorLine = """|   - dest        //Goes to destination screen, shows what destinations are available                             |"""
+        self.supervisorLine = """|   - loc         //Goes to location screen, shows what locations are available                                   |"""
         self.footer = """|_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |                                                                                                                 |
@@ -62,8 +62,8 @@ ________________________________________________________________________________
             if command == "emp":
                 emp_menu = EmpMenu(self.llapi, self.user)
                 emp_menu.draw_options()
-            elif command == "dest" and self.user.is_supervisor():
-                dest_menu = DestMenu(self.llapi)
+            elif command == "loc" and self.user.is_supervisor():
+                dest_menu = LocMenu(self.llapi)
                 dest_menu.draw_options()
             elif command == "real":
                 real_menu = RealEstate(self.llapi, self.user)

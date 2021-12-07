@@ -1,9 +1,12 @@
+from ui_layer.RealEstate.create_real import CreateReal
 from logic_layer.LLAPI import LLAPI
+from models.RealEstate import RealEstate
 
 class RealEstate:
     def __init__(self, llapi, user):
         self.user = user
         self.llapi = llapi
+        self.create_real = CreateReal()
         self.header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -14,7 +17,7 @@ ________________________________________________________________________________
 |                                                                                                                 |
 |   - s               //Search for estate                       - fi          //Filter options                    |
 |   - b               //Go back                                                                                   |"""
-        self.supervisorLine = """|   - cr              //Creates new estate                                                                        |"""
+        self.supervisorLine = """|   - cr              //Creates new real estate                                                                    |"""
 
         self.footer = """|_________________________________________________________________________________________________________________|
 """
@@ -40,7 +43,7 @@ ________________________________________________________________________________
                 # for emp in all_emps:
                 #     print(emp)
             elif command == "cr" and self.user.is_supervisor():
-                pass
+                self.create_real.draw_options()
             elif command == "fi":
                 pass
             elif command == "e":

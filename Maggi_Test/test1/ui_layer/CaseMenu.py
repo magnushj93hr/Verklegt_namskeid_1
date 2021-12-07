@@ -8,8 +8,7 @@ class CaseMenu:
         self.options = """
 Case menu
 1 - list all cases
-2 - edit case ##??????
-3 - search for case
+2 - search for case
 r - return to previous menu
 """
 
@@ -17,7 +16,6 @@ r - return to previous menu
 Case menu ###standa case id hérna ??
 1 - edit case ??? þetta er líka í real áttu að geta editað hérna??
 2 - create maintenance report
-3 - edit maintenance report???
 r - return to previous menu
     """
 #---------------------------------------------
@@ -33,9 +31,7 @@ r - return to previous menu
                 all_cases = self.llapi.all_cases()
                 for case in all_cases:
                     print(case)
-            elif command == "2": #??????? þarf edit í main
-                self.edit_case()
-            elif command == "3":
+            elif command == "2":
                 self.search_case()
             elif command == "r":
                 return "r"
@@ -77,6 +73,6 @@ r - return to previous menu
         total_cost = input("Enter total cost: ")
         contractor = input("Enter contractor: ")
         
-        
+    
         maintenance = MaintananceReport(real_estate_id, description, repeated, employee_id, case_id, total_cost, contractor)
         self.llapi.create_maintenance_report(maintenance)

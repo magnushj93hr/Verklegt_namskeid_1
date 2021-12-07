@@ -1,4 +1,4 @@
-class WorkRequest:
+class MaintananceReport:
     def __init__(self, description, subject, priorities, status, due_date, repeated, creation_date):
         self.subject = subject
         self.description = description
