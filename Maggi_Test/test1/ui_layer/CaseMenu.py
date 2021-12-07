@@ -2,14 +2,15 @@ from logic_layer.LLAPI import LLAPI
 from models.Case import Case
 from models.MaintananceReport import MaintananceReport
 
+AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
+
 class CaseMenu:
     def __init__(self, llapi):
         self.llapi = llapi
         self.options = """
 Case menu
 1 - list all cases
-2 - edit case
-3 - search for case
+2 - search for case
 r - return to previous menu
 """
 
@@ -18,6 +19,15 @@ Real estate search menu
 1 - create maintenance report
 r - return to previous menu
     """
+
+        self.filter_options = """
+1 - filter by open cases
+2 - filter by "ready to close" cases
+3 - filter by closed cases
+r - return to previous menu
+"""
+
+
     def draw_options(self):
         print(self.options)
         return self.prompt_input()
@@ -29,6 +39,9 @@ r - return to previous menu
                 all_cases = self.llapi.list_cases()
                 for case in all_cases:
                     print(case)
+                filter_input = input("Do you want to filter by status(y/n): ")
+                if filter_input == "y":
+                    self.prompt_input_filter()
             elif command == "2":
                 self.edit_case()
             elif command == "3":
@@ -40,7 +53,6 @@ r - return to previous menu
                 print("invalid option, try again!")
             print(self.options)
 # ------------------------------------------------------------------------------------------------------------------
-
 
     def search_case(self):
         self.search_id = input("Enter case id: ")
@@ -74,17 +86,41 @@ r - return to previous menu
         maintenance = MaintananceReport(real_estate_id, description, employee_id, case_id, cost_of_materials, contractor)
         self.llapi.create_maintenance_report(maintenance)
 
-        # id, location, subject, description, priority, repeated, real_est_id, status, date = LLAPI().search_case(case_id)
-        #1001,rvk,Pizza,pepperoni,3,y,2/12/2021,0001,open
+        case = self.llapi.search_case(case_id)
+        case.status = "ready to close"
+        self.llapi.create_maintenance_report(maintenance)
+        self.llapi.edit_case(case)
 
-        # id = "1001"
-        # location = "rvk"
-        # subject = "Pizza"
-        # description = "pepperoni"
-        # priority = "3"
-        # repeated = "y"
-        # real_est_id = "0001"
-        print(self.llapi.case_exist(case_id))
+    def edit_case(self):
+        edit_id = self.search_id
+        _, location, subject, description, priority, repeated, real_est_id = self.user_options(None)
 
-        # case = Case(id, location, subject, description, priority, repeated, real_est_id, "ready to close")
-        # self.llapi.edit_case(case)
+        case = Case(edit_id, location, subject, description, priority, repeated, real_est_id)        
+        self.llapi.edit_case(case)       
+#----------------------------------------------------------------
+    def input_and_check(self, info_type, check_fun):
+        while True:
+            value = input(f"Enter case {info_type}: ")
+            if not check_fun(value): print(f"Invalid case {info_type}")
+            else: return value  
+
+    def location_in(self):
+        while True:
+            print('Available locations to choose from:')
+            for location in AVAILABLE_LOCATIONS:
+                print(location)
+            location = str(input("Enter location: "))
+            if location in AVAILABLE_LOCATIONS:
+                return location
+
+    def user_options(self, controller):
+        id = self.input_and_check("id", lambda value : self.llapi.is_id_correct(value)) if controller == "create" else 0
+        location = self.location_in()
+        subject = input("Enter subject: ")
+        description = input("Enter description: ")
+        priority = input("Enter priority: ")
+        repeated = input("Is the case repeated?: ")
+        real_id = self.input_and_check("id", lambda value : self.llapi.check_if_rel_id_correct(value)) if controller == "create" else 0
+
+        return int(id), location, subject, description, priority, repeated, real_id
+

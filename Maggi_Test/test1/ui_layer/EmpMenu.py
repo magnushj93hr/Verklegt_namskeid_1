@@ -19,32 +19,22 @@ r - return to previous menu
         print(self.options)
         return self.prompt_input()
 
+# ------------------------------------------------------------------------------------------------------------------
+# Menu Options
     def prompt_input(self):
         while True:
             command = input("Enter your input: ")
-            if command == "1":
-                all_emps = self.llapi.all_employees()
-                for emp in all_emps:
-                    print(emp)
-                filter_input = input("Do you want to filter by location(y/n)?: ")
-                if filter_input == 'y':
-                    filter_location = input('Enter location to filter by: ')
-                    result = LLAPI().filter_employee(filter_location)
-                    for row in result:
-                        print(row)
-            elif command == "2":
-                self.create_employee()
-            elif command == "3":
-                self.edit_employee()
-            elif command == "4":
-                self.search_employee()
-            elif command == "r":
-                return "r"
-            else:
-                print("invalid option, try again!")
+            if command == "1": self.filter_by_location()
+            elif command == "2": self.create_employee()
+            elif command == "3": self.edit_employee()
+            elif command == "4": self.search_employee()
+            elif command == "r": return "r"
+            else: print("invalid option, try again!")
             print(self.options)
+# ------------------------------------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------------------------------------
+# input parameters and checks
     def input_and_check(self, info_type, check_fun):
         while True:
             value = input(f"Enter employee {info_type}: ")
@@ -57,7 +47,7 @@ r - return to previous menu
         id = self.input_and_check("id", lambda value : self.llapi.is_id_correct(value)) if controller == "create" else None
         address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
         homeline = self.input_and_check("homeline", lambda value : self.llapi.is_phone_correct(value))
-#----
+
         while True:
             print('Available locations to choose from:')
             for location in AVAILABLE_LOCATIONS:
@@ -69,25 +59,99 @@ r - return to previous menu
         return name, phone, id, address, homeline, location
 # ------------------------------------------------------------------------------------------------------------------
 
+# ------------------------------------------------------------------------------------------------------------------
+# Create Employee
     def create_employee(self):
         name, phone, id, address, homeline, location = self.user_options("create")
         emp = Employee(name, id, address, homeline, location, phone)
         self.llapi.create_employee(emp)
+# ------------------------------------------------------------------------------------------------------------------
 
+# ------------------------------------------------------------------------------------------------------------------
+# Edit Employee
     def edit_employee(self):
         #check if id is len 4
         edit_id = str(input("Enter employee id: "))
 
-        ready_to_continue = self.llapi.check_if_employee_exists(edit_id)
-        if ready_to_continue == True:
-            name, phone, id, address, homeline, location = self.user_options(None)
-            emp = Employee(name, edit_id, address, homeline, location, phone)
-            self.llapi.edit_employee(emp)
-        else:
+        emp = self.llapi.search_employee(edit_id)
+        if emp == None:
             print("The employee id was not found")
             print(self.options) 
-    
+            return
+        self.promt_edit(emp)
+
+    def print_emp_as_menu(self, emp):
+        edit_options = f"""
+        Employee {emp.id}
+
+        1 - Name: {emp.name}
+        2 - Address: {emp.address}
+        3 - Homeline: {emp.homeline}
+        4 - Phone: {emp.phone}
+        5 - Location: {emp.location}
+        r - return to previous menu
+        """
+        print(edit_options)
+
+    def promt_edit(self, emp):
+        while True:
+            self.print_emp_as_menu(emp)
+            command = input("Enter edit option: ")
+            
+            if command == "1":
+                emp.name = self.input_and_check("name", lambda value : self.llapi.is_name_correct(value))
+                self.llapi.edit_employee(emp)
+            elif command == "2":
+                emp.address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
+                self.llapi.edit_employee(emp)
+            elif command == "3":
+                emp.homeline = self.input_and_check("homeline", lambda value : self.llapi.is_phone_correct(value))
+                self.llapi.edit_employee(emp)
+            elif command == "4":
+                emp.phone = self.input_and_check("phone", lambda value : self.llapi.is_phone_correct(value))
+                self.llapi.edit_employee(emp)
+            elif command == "5":
+                while True:
+                    print('Available locations to choose from: \n')
+                    for location in AVAILABLE_LOCATIONS:
+                        print(location)
+                    print()
+                    location = str(input("Enter location: ")).capitalize()
+                    if location not in AVAILABLE_LOCATIONS:
+                        print("Invalid location")
+                    else:
+                        emp.location = location
+                        break
+                self.llapi.edit_employee(emp)
+            elif command == "r":
+                return
+            else:
+                print("Invalid option")
+            
+# ------------------------------------------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------------------------------------
+# Filters by the employee location
+    def filter_by_location(self):
+                all_emps = self.llapi.all_employees()
+                for emp in all_emps: 
+                    print(emp)
+                filter_input = input("Do you want to filter by location(y/n)?: ")
+                if filter_input == 'y':
+                    filter_location = input('Enter location to filter by: ')
+                    result = LLAPI().filter_employee(filter_location)
+                    for row in result:
+                        print(row)
+# ------------------------------------------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------------------------------------
+# Search for employee by ther id
     def search_employee(self):
-        search_id = input("Enter employee id: ")
-        result = LLAPI().search_employee(search_id)
-        print(result)
+        while True:
+            print("Quit by entering (q)")
+            search_id = input("Enter employee id: ")
+            if search_id.lower() == "q":
+                result = LLAPI().search_employee(search_id)
+                print(result)
+            else: break
+# ------------------------------------------------------------------------------------------------------------------
