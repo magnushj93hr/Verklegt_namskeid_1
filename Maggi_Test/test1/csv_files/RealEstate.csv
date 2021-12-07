@@ -1,6 +1,6 @@
 address,size,rooms,id,amenities,location
 Vei 217,150m2,4,5000,[''],Longyearbyen
-Reykjabyggd 47,600,1,5001,"['Hot-tub', ' mirror']",Nuuk
+Reykjabyggd 47,600,5,5001,"['Hot-tub', ' mirror']",Nuuk
 Harbor 1,500m2,1,5002,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
 Harbor 1,500m2,1,5003,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
 Harbor 1,500m2,1,5004,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen

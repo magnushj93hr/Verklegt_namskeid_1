@@ -45,7 +45,8 @@ r - return to previous menu
                 self.create_realestate()
             elif command == "3":
                 result = self.search_realestate()
-                self.prompt_input_search(result)
+                if result is not None:
+                    self.prompt_input_search(result)
             elif command == "r": return
             else: print("invalid option, try again!")
             print(self.main_options)
@@ -230,7 +231,7 @@ r - return to previous menu
                 else:
                     print(result)
                     return result
-            else: break
+            else: return None
 # ------------------------------------------------------------------------------------------------------------------
 
 #=============================Case functions begins here======================================================================
