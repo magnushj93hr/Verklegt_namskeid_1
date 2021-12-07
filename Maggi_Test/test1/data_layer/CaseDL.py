@@ -7,7 +7,7 @@ from models.Case import Case
 class CaseDL:
     def __init__(self):
         self.filepath = "Maggi_Test/test1/csv_files/Case.csv"
-    
+     
     def get_all_cases(self):
         ret_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
