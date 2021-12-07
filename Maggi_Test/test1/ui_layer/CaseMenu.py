@@ -70,17 +70,20 @@ r - return to previous menu
         if command == "1":
             search_id = input("Enter case id: ")
             result = LLAPI().search_case(search_id, 'caseid')
-            print(result)
+            for i in result:
+                print(i)
         elif command == "2":
             search_id = input("Enter employee id: ")
             result = LLAPI().search_case(search_id, 'empid')
-            print(result)
+            for i in result:
+                print(i)
         elif command == "3":
             search_id = input("Enter real estate id: ")
             result = LLAPI().search_case(search_id, 'realid')
-            print(result)
+            for i in result:
+                print(i)
         elif command == "r":
-                return "r"
+                return
         return result
 
     def prompt_input_filter(self):
