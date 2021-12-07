@@ -4,6 +4,8 @@ from models.Case import Case
 
 PRIORITY = ['low','medium','high']
 AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
+CASE = 'CAS-'
+
 
 class RealMenu:
     def __init__(self, llapi):
@@ -41,8 +43,8 @@ r - return to previous menu
             elif command == "2":
                 self.create_realestate()
             elif command == "3":
-                real_id = self.search_realestate()
-                self.prompt_input_search(real_id)
+                result = self.search_realestate()
+                self.prompt_input_search(result)
             elif command == "r": return
             else: print("invalid option, try again!")
             print(self.main_options)
@@ -101,8 +103,8 @@ r - return to previous menu
             self.llapi.create_realestate(real)
             id += 1
 
-    def edit_realestate(self,real_id):
-        edit_id = int(self.search_id)
+    def edit_realestate(self,result):
+        edit_id = int(result.id)
         address, size, rooms, _, amentities, location = self.user_options(None)
         
         real = RealEstate(address, size, rooms, edit_id, amentities, location)        
@@ -112,13 +114,13 @@ r - return to previous menu
 
 # ------------------------------------------------------------------------------------------------------------------
 # search for real estate
-    def prompt_input_search(self, real_id):
+    def prompt_input_search(self, result):
         while True:
             print(self.real_est_options)
             command = input("Enter your input: ")
-            if command == "1": self.edit_realestate(real_id)
-            elif command == "2": self.create_case(real_id)
-            elif command == "3": self.edit_case(real_id)   
+            if command == "1": self.edit_realestate(result.id)
+            elif command == "2": self.create_case(result)
+            elif command == "3": self.edit_case(result.id)   
             elif command == "r": return
             else: print("invalid option, try again!")
 
@@ -129,7 +131,7 @@ r - return to previous menu
             if result == None: print("Invalid ID")
             else:
                 print(result)
-                return self.search_id
+                return result
 # ------------------------------------------------------------------------------------------------------------------
 
 
@@ -137,9 +139,10 @@ r - return to previous menu
 # það þarf að skoða þetta fall eihvða betur geta
 # allavega hreinskrifa þetta eihvða 
 
-    def create_case(self, real_id):
-        id = input("Enter ID for case: ")
-        location = input("Enter the location: ")
+    def create_case(self, result):
+        all_cases = self.llapi.all_cases()
+        id = CASE + str(len(all_cases) + 1)
+        location = result.location
         subject = input("Enter subject: ")
         description = input("Enter description: ")
         while True:
@@ -150,6 +153,7 @@ r - return to previous menu
             if priority in PRIORITY:
                 break
         repeated = input("Is the case repeated?: ")
+        real_id = result.id
         emp_id = input("Enter your employee ID: ")
 
         case = Case(id,location,subject, description, priority, repeated, real_id, emp_id)

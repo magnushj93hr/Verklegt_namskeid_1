@@ -1,2 +1,2 @@
-id,location,subject,description,priority,repeated,real_est_id,emp_id,date
-0000,Longyearbyen,laga potta,asdasfasf,low,y,5000,1000,6/12/2021
+id,location,subject,description,priority,repeated,real_est_id,emp_id,date,status
+CAS-1,Longyearbyen,Laga heita pottinn,það þarf að laga pottinn,low,n,5003,1006,6/12/2021,Open

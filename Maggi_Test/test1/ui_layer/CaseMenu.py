@@ -13,12 +13,9 @@ Case menu
 r - return to previous menu
 """
 
-        self.real_est_options = """
+        self.case_menu = """
 Real estate search menu
-1 - edit real estate
-2 - create case
-3 - edit case
-4 - create report
+1 - create maintenance report
 r - return to previous menu
     """
     def draw_options(self):
@@ -35,8 +32,8 @@ r - return to previous menu
             elif command == "2":
                 self.edit_case()
             elif command == "3":
-                self.search_case()
-                self.prompt_input_search()
+                result = self.search_case()
+                self.prompt_input_search(result)
             elif command == "r":
                 return "r"
             else:
@@ -49,36 +46,32 @@ r - return to previous menu
         self.search_id = input("Enter case id: ")
         result = LLAPI().search_case(self.search_id)
         print(result)
+        return result
 
-    def prompt_input_search(self):
+    def prompt_input_search(self, result):
             while True:
-                print(self.real_est_options)
+                print(self.case_menu)
                 command = input("Enter your input: ")
                 if command == "1":
-                    self.edit_realestate()
-                elif command == "2":
-                    self.create_case()
-                elif command == "3":
-                    self.edit_case()   
-                elif command == "4":
-                    self.create_maintenance_report()
+                    self.create_maintenance_report(result)
                 elif command == "r":
                     return
                 else:
                     print("invalid option, try again!")
 
 
-    def create_maintenance_report(self):
-        real_estate_id = input("Enter real estate id: ")
+    def create_maintenance_report(self, result):
+        real_estate_id = result.real_estate_id
         description = input("Enter description:")
-        repeated = input("Is it repeated: ")
-        employee_id = input("Enter employee id: ")
-        case_id = self.search_id
-        total_cost = input("Enter total cost: ")
-        contractor = input("Enter contractor: ")
+        employee_id = input("Enter your employee id: ")
+        case_id = result.id
+        cost_of_materials = input("Enter cost of materials: ")
+        used_contractor = input('Did you use a contractor(y/n)?: ')
+        if used_contractor == "y":
+            contractor = input("Enter contractor: ")
         
         
-        maintenance = MaintananceReport(real_estate_id, description, repeated, employee_id, case_id, total_cost, contractor)
+        maintenance = MaintananceReport(real_estate_id, description, employee_id, case_id, cost_of_materials, contractor)
         self.llapi.create_maintenance_report(maintenance)
 
         # id, location, subject, description, priority, repeated, real_est_id, status, date = LLAPI().search_case(case_id)
