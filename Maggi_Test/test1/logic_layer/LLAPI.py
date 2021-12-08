@@ -122,7 +122,10 @@ class LLAPI:
 
     def search_case(self, search_id, controller):
         return self.caseLL.search_case(search_id, controller)
-    
+
+    def search_cases_for_real_id(self, search_id):
+        return self.caseLL.search_cases_for_real_id(search_id)
+
     def get_case(self, case_id):
         return self.caseLL.get_case(case_id)
 
