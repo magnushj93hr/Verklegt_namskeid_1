@@ -253,7 +253,6 @@ r - return to previous menu
         emp_id = input("Enter your supervisor ID: ")
         result = LLAPI().search_employee(emp_id)
         return result
-            
 
     def create_case(self, result):
         emp = self.create_case_start()
@@ -267,7 +266,7 @@ r - return to previous menu
             repeated = input("Is the case repeated(y/n)?: ")
             real_id = result.id
 
-        case = Case(id,location,subject, description, priority, repeated, real_id, emp_id)
+        case = Case(id,location,subject, description, priority, repeated, repeat_days, real_id, emp_id)
         self.llapi.create_case(case)        
 # ------------------------------------------------------------------------------------------------------------------
 

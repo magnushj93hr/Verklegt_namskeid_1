@@ -17,7 +17,7 @@ class MainMenu:
 4 - contractor menu
 5 - location menu
 6 - maintenance menu
-q - return to previous menu
+q - quit
 """
 
     def draw_options(self):
