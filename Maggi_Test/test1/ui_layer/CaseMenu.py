@@ -178,6 +178,8 @@ r - return to previous menu
         if status == "Closed":
             dt = datetime.datetime.now()
             case.closed_date = "%s/%s/%s" % (dt.day, dt.month, dt.year)
+        elif status == "Open":
+            case.closed_date = None
         case.status = status
         self.llapi.edit_case(case)
 
