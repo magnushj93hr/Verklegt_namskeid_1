@@ -111,7 +111,7 @@ r - return to previous menu
             command = input("Enter input: ")
             if command == "1":
                 cases = self.llapi.filter_cases("Open")
-                case, report = self.select_case(cases)
+                case, reports = self.select_case(cases)
                 if case != None:
                     make_report = input("Do you want to make a report(y/n): ")
                     if make_report == "y":
@@ -119,18 +119,18 @@ r - return to previous menu
 
             elif command == "2":
                 cases = self.llapi.filter_cases("Ready to close")
-                case, report = self.select_case(cases)
+                case, reports = self.select_case(cases)
                 if case != None:
                     close_case_opt = input("Do you want to close the case(y/n): ")
                     if close_case_opt == "y":
-                        self.contractor_review(report)
+                        self.contractor_review(reports)
                         self.change_case_status("Closed", case)
-                        if case.repeated == "y":
+                        if case.repeated == "y" and len(reports) == 1:
                             self.create_repeated_case(case.id)
 
             elif command == "3":
                 cases = self.llapi.filter_cases("Closed")
-                case, report = self.select_case(cases)
+                case, reports = self.select_case(cases)
                 if case != None:
                     open_case_opt = input("Do you want to open the case(y/n): ")
                     if open_case_opt == "y":
@@ -153,9 +153,10 @@ r - return to previous menu
                 print("Invalid id")
             case = next(case for case in cases if case.id == case_id)
             print(case)
-            report = self.llapi.search_maintenance_report(case_id)
-            print(f"Report - {report}")
-            return case, report
+            reports = self.llapi.search_maintenance_report(case_id)
+            for report in reports:
+                print(f"Report - {report}")
+            return case, reports
 
 
     # def select_id(self, case_ids_list):
@@ -167,7 +168,8 @@ r - return to previous menu
     #         print(f"Report - {self.llapi.search_maintenance_report(case_id)}")
     #         return case_id, self.llapi.search_maintenance_report(case_id)
 
-    def contractor_review(self, report):
+    def contractor_review(self, reports):
+        report = reports[-1]
         contractor = self.llapi.search_contractor(report.contractor)
         if report.contractor != "":
             contractor.review = int(input("Pleas review contractor(1-5): "))

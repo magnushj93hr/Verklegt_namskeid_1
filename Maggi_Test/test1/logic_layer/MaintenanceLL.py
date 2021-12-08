@@ -13,10 +13,12 @@ class MaintenanceLL:
         self.dlapi.create_maintenance_report(maintenance)
     
     def search_maintenance_report(self, report_id):
+        reports = []
         all_reports = self.all_maintenance_reports()
         for report in all_reports:
             if report.case_id == report_id:
-                return report
+                reports.append(report)
+        return reports
 
 if __name__ == "__main__":
     empLL = MaintenanceLL(DLAPI())
