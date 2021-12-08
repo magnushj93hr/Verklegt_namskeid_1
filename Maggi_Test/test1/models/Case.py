@@ -1,7 +1,7 @@
 import datetime
 
 class Case:
-    def __init__(self, id, location, subject, description, priority, repeated, repeat_days, real_est_id, emp_id, date = None, status = 'Open', close_date = None):
+    def __init__(self, id, location, subject, description, priority, repeated, repeat_days, real_est_id, emp_id, date = None, status = 'Open', closed_date = None):
         self.id = id
         self.location = location
         self.subject = subject
@@ -16,13 +16,13 @@ class Case:
         else:
             self.date = date
         self.status = status
-        if close_date == 'Closed':
-            self.close_date = self.creation_date()
+        if status == 'Closed':
+            self.closed_date = self.creation_date()
         else:
-            self.close_date = close_date
+            self.closed_date = closed_date
 
     def __str__(self):
-        return f"id: {self.id}, location: {self.location}, subject: {self.subject}, description: {self.description}, priority: {self.priority}, repeated: {self.repeated}, repeat_days: {self.repeat_days}, real_est_id: {self.real_est_id}, created by: {self.emp_id} creation date: {self.date}, status: {self.status}, closed date {self.close_date}"
+        return f"id: {self.id}, location: {self.location}, subject: {self.subject}, description: {self.description}, priority: {self.priority}, repeated: {self.repeated}, repeat_days: {self.repeat_days}, real_est_id: {self.real_est_id}, created by: {self.emp_id} creation date: {self.date}, status: {self.status}, closed date: {self.closed_date}"
     
     def creation_date(self):
         dt = datetime.datetime.now()

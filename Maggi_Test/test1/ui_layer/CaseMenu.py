@@ -124,12 +124,12 @@ r - return to previous menu
                     close_case_opt = input("Do you want to close the case(y/n): ")
                     if close_case_opt == "y":
                         self.contractor_review(report)
-                        self.change_case_status("Close", case)
+                        self.change_case_status("Closed", case)
                         if case.repeated == "y":
                             self.create_repeated_case(case.id)
 
             elif command == "3":
-                cases = self.llapi.filter_cases("Close")
+                cases = self.llapi.filter_cases("Closed")
                 case, report = self.select_case(cases)
                 if case != None:
                     open_case_opt = input("Do you want to open the case(y/n): ")
