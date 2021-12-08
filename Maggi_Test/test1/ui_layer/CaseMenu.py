@@ -176,7 +176,7 @@ r - return to previous menu
             contractor_cost = int(input("Enter contractor cost: "))
             total_cost = cost_of_materials + contractor_cost
         else:
-            total_cost = cost_of_materialss
+            total_cost = cost_of_materials
         
         maintenance = MaintananceReport(real_estate_id, tasks_done, employee_id, case_id, total_cost, contractor, contractor_cost)
 
