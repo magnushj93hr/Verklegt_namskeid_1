@@ -287,7 +287,7 @@ r - return to previous menu
 
     def edit_case(self, real):
         print(real.id)
-        case = self.llapi.search_case_real_id(real.id)
+        case = self.llapi.search_cases_for_real_id(real.id)
         if case == None:
             print("The case id was not found")
             print(self.edit_options) 
