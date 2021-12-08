@@ -264,7 +264,10 @@ r - return to previous menu
             description = input("Enter description: ")
             priority = self.priority_check()
             repeated = input("Is the case repeated(y/n)?: ")
+            if repeated == "y":
+                repeat_days = int(input("Enter how many days between cases: "))
             real_id = result.id
+            emp_id = input("Enter employee id: ")
 
         case = Case(id,location,subject, description, priority, repeated, repeat_days, real_id, emp_id)
         self.llapi.create_case(case)        
