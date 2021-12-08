@@ -16,8 +16,16 @@ class ContractorLL:
 
     def create_contractor(self, contr):
         self.dlapi.create_contractor(contr)
-
-
+    
+    def search_contractor(self, name):
+        all_contractors = self.all_contractors()
+        for contractor in all_contractors:
+            if contractor.name == name:
+                return contractor
+    
+    def edit_contractor(self, contractor):
+        return self.dlapi.edit_contractor(contractor)
+        
 # ----------------------------------------------------------------
 # INPUT CHECK
     def check_if_name_correct(self, name):

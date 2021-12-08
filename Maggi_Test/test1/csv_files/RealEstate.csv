@@ -1,6 +1,6 @@
 address,size,rooms,id,amenities,location
 Vei 217,150m2,4,5000,[''],Longyearbyen
-Harbor 1,500m2,1,5001,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Reykjabyggd 47,600,5,5001,"['Hot-tub', ' mirror']",Nuuk
 Harbor 1,500m2,1,5002,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
 Harbor 1,500m2,1,5003,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
 Harbor 1,500m2,1,5004,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
@@ -109,3 +109,8 @@ Nýggivegur 1,15m2,1,9499,[''],Þórshöfn
 Nýggivegur 1,15m2,1,9500,[''],Þórshöfn
 Nýggivegur 1,15m2,1,9501,[''],Þórshöfn
 Polarbear lane,20m2,1,1020,"['Fishing rod', ' Coca Cola bear']",Nuuk
+sadjif,20m2,2,1020,['pool'],Nuuk
+sadjif,20m2,2,1020,['pool'],Nuuk
+sadfia,20m2,20,1020,['pool'],Nuuk
+sadfia,20m2,20,1020,['pool'],Nuuk
+sdjfiag,200m2,2,2,['asdffa'],Nuuk

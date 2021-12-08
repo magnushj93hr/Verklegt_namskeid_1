@@ -2,7 +2,7 @@ from logic_layer.LLAPI import LLAPI
 from models.Case import Case
 from models.MaintananceReport import MaintananceReport
 
-AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
+# AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen" ]
 
 class CaseMenu:
     def __init__(self, llapi):
@@ -11,6 +11,7 @@ class CaseMenu:
 Case menu
 1 - list all cases
 2 - search for case
+3 - list all maintenance reports
 r - return to previous menu
 """
 
@@ -49,11 +50,13 @@ r - return to previous menu
                 filter_input = input("Do you want to filter by status(y/n): ")
                 if filter_input == "y":
                     self.prompt_input_filter()
-            elif command == "3":
-                self.edit_case()
             elif command == "2":
                 result = self.search_case()
                 self.prompt_input_search(result)
+            elif command == "3": 
+                all_maintenance_reports = self.llapi.all_maintenance_reports()
+                for maintenance in all_maintenance_reports:
+                    print(maintenance)
             elif command == "r":
                 return "r"
             else:
@@ -67,17 +70,21 @@ r - return to previous menu
         if command == "1":
             search_id = input("Enter case id: ")
             result = LLAPI().search_case(search_id, 'caseid')
-            print(result)
+            for i in result:
+                print(i)
+            return result
         elif command == "2":
             search_id = input("Enter employee id: ")
             result = LLAPI().search_case(search_id, 'empid')
-            print(result)
+            for i in result:
+                print(i)
         elif command == "3":
             search_id = input("Enter real estate id: ")
             result = LLAPI().search_case(search_id, 'realid')
-            print(result)
+            for i in result:
+                print(i)
         elif command == "r":
-                return "r"
+                return
         return result
 
     def prompt_input_filter(self):
@@ -93,6 +100,7 @@ r - return to previous menu
                 search_case_opt = input("Do you want to select a case(y/n): ")
                 if search_case_opt == "y":
                     case_id = self.select_id(cases_id)
+
             elif command == "2":
                 cases = self.llapi.filter_cases("Ready to close")
                 cases_id = []
@@ -101,10 +109,12 @@ r - return to previous menu
                     print(case)
                 search_case_opt = input("Do you want to select a case(y/n): ")
                 if search_case_opt == "y":
-                    case_id = self.select_id(cases_id)
+                    case_id, report = self.select_id(cases_id)
                     close_case_opt = input("Do you want to close the case(y/n): ")
                     if close_case_opt == "y":
+                        self.contractor_review(report)
                         self.change_case_status("Close", case_id)
+
             elif command == "3":
                 cases = self.llapi.filter_cases("Close")
                 cases_id = []
@@ -113,8 +123,8 @@ r - return to previous menu
                     print(case)
                 search_case_opt = input("Do you want to select a case(y/n): ")
                 if search_case_opt == "y":
-                    case_id = self.select_id(cases_id)
-                    open_case_opt = input("Do ypu want to open the case(y/n): ")
+                    case_id, report = self.select_id(cases_id)
+                    open_case_opt = input("Do you want to open the case(y/n): ")
                     if open_case_opt == "y":
                         self.change_case_status("Open", case_id)
             elif command == "r":
@@ -129,7 +139,13 @@ r - return to previous menu
                 print("Invalid id")
             print(self.llapi.search_case(case_id))
             print(f"Report - {self.llapi.search_maintenance_report(case_id)}")
-            return case_id
+            return case_id, self.llapi.search_maintenance_report(case_id)
+
+    def contractor_review(self, report):
+        contractor = self.llapi.search_contractor(report.contractor)
+        if report.contractor != "":
+            contractor.review = int(input("Pleas review contractor(1-5): "))
+            self.llapi.edit_contractor(contractor)
 
     def change_case_status(self, status, case_id):
         case = self.llapi.search_case(case_id)
@@ -153,14 +169,16 @@ r - return to previous menu
         tasks_done = input("Enter what you did:")
         employee_id = input("Enter your employee id: ")
         case_id = result.id
-        cost_of_materials = input("Enter cost of materials: ")
+        cost_of_materials = int(input("Enter cost of materials: "))
         used_contractor = input('Did you use a contractor(y/n)?: ')
         if used_contractor == "y":
             contractor = input("Enter contractor: ")
+            contractor_cost = int(input("Enter contractor cost: "))
+            total_cost = cost_of_materials + contractor_cost
         else:
-            contractor = ""
+            total_cost = cost_of_materials
         
-        maintenance = MaintananceReport(real_estate_id, tasks_done, employee_id, case_id, cost_of_materials, contractor)
+        maintenance = MaintananceReport(real_estate_id, tasks_done, employee_id, case_id, total_cost, contractor, contractor_cost)
 
         case = self.llapi.search_case(case_id)
         case.status = "Ready to close"
@@ -183,10 +201,10 @@ r - return to previous menu
     def location_in(self):
         while True:
             print('Available locations to choose from:')
-            for location in AVAILABLE_LOCATIONS:
+            for location in self.llapi.get_locations_name():
                 print(location)
             location = str(input("Enter location: "))
-            if location in AVAILABLE_LOCATIONS:
+            if location in self.llapi.get_locations_name():
                 return location
 
     def user_options(self, controller):

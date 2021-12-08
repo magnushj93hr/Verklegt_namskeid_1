@@ -17,7 +17,7 @@ class MainMenu:
 4 - contractor menu
 5 - location menu
 6 - maintenance menu
-r - return to previous menu
+q - quit
 """
 
     def draw_options(self):
@@ -46,7 +46,8 @@ r - return to previous menu
             elif command == "6":
                 maint_menu = MaintenanceMenu(self.llapi)
                 maint_menu.draw_options()
-            elif command == "r":
+            elif command == "q":
+                print("Thanks for using NaN air")
                 return
             else:
                 print("Invalid option, try again!")
