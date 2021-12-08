@@ -54,6 +54,8 @@ class LLAPI:
         return self.input_check.check_if_size_correct(size)
     def check_if_room_correct(self, room):
         return self.input_check.check_if_room_correct(room)
+    def check_location_append_to_list(self, location):
+        return self.input_check.check_location_append_to_list(location)
 
 # ----------------------------------------------------------------
 
@@ -82,6 +84,7 @@ class LLAPI:
 
     def filter_employee(self, filter):
         return self.empLL.filter_employee(filter)
+
 
 # ----------------------------------------------------------------
 # REAL ESTATE FUNCTIONS

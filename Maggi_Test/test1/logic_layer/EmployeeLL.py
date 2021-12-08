@@ -23,7 +23,7 @@ class EmployeeLL:
             if employee.location == filter:
                 filtered_employees.append(employee)
         return filtered_employees
-        
+
     def create_employee(self, emp):
         self.dlapi.create_employee(emp)
     
