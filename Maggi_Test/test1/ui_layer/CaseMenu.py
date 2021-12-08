@@ -126,7 +126,7 @@ r - return to previous menu
                         self.contractor_review(report)
                         self.change_case_status("Close", case)
                         if case.repeated == "y":
-                            self.create_repeated_case(case)
+                            self.create_repeated_case(case.id)
 
             elif command == "3":
                 cases = self.llapi.filter_cases("Close")
@@ -246,8 +246,9 @@ r - return to previous menu
 
         return int(id), location, subject, description, priority, repeated, real_id
 
-    def create_repeated_case(self, case):
+    def create_repeated_case(self, case_id):
         all_cases = self.llapi.all_cases()
+        case = self.llapi.get_case(case_id)
         id = CASE + str(len(all_cases) + 1)
         next_date = datetime.datetime.strptime(case.date, "%d/%m/%Y") + datetime.timedelta(days = int(case.repeat_days))
         new_date = "%s/%s/%s" % (next_date.day, next_date.month, next_date.year)
