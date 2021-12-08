@@ -45,7 +45,7 @@ class CaseDL:
             for row in reader:
                 if row['id'] == case.id:
                     print('updating row', row['id'])
-                    writer.writerow({'id': case.id,'location': case.location, "subject": case.subject, "description": case.description, 'priority': case.priority, 'repeated': case.repeated, "repeat_days": case.repeat_days, 'real_est_id': row['real_est_id'], 'emp_id': row['emp_id'], 'date': row['date'], "status": case.status, 'closed_date':case.closed_date})
+                    writer.writerow({'id': case.id,'location': case.location, "subject": case.subject, "description": case.description, 'priority': case.priority, 'repeated': case.repeated, "repeat_days": case.repeat_days, 'real_est_id': row['real_est_id'], 'emp_id': row['emp_id'], 'date': row['date'], "status": case.status, 'closed_date': case.closed_date})
                 else:
                     row = {'id': row['id'],'location': row["location"], 'subject': row['subject'], 'description': row['description'], 'priority': row['priority'], 'repeated': row['repeated'], "repeat_days": row["repeat_days"], 'real_est_id': row['real_est_id'], 'emp_id': row['emp_id'], 'date': row['date'], "status": row['status'], 'closed_date': row['closed_date']}
                     writer.writerow(row)

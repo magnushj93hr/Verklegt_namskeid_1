@@ -16,7 +16,7 @@ class Case:
         else:
             self.date = date
         self.status = status
-        if status == 'Closed':
+        if status == "Closed" and closed_date == None:
             self.closed_date = self.creation_date()
         else:
             self.closed_date = closed_date
