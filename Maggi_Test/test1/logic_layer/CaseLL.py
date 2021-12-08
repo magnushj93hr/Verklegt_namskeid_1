@@ -38,7 +38,12 @@ class CaseLL:
                     result = self.list_cases(case)
                     case_list.append(result)
             return case_list
-            
+
+    def get_case(self, search_id):
+        all_cases = self.dlapi.get_all_cases()
+        for case in all_cases:
+            if case.id == search_id:
+                return case 
     
     def list_cases(self, case):
         employees = self.dlapi.get_all_employees()
