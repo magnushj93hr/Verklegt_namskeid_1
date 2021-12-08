@@ -19,4 +19,4 @@ class LocationDL:
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["country","location","airport","phone",'opening hours']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'country': loc.country, "loaction": loc.location, "airport": loc.airport, 'phone': loc.phone, 'opening hours': loc.opening_hours})
+            writer.writerow({'country': loc.country, "location": loc.location, "airport": loc.airport, 'phone': loc.phone, 'opening hours': loc.opening_hours})
