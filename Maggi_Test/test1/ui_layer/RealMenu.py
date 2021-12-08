@@ -254,10 +254,14 @@ r - return to previous menu
             if priority in PRIORITY:
                 break
         repeated = input("Is the case repeated(y/n)?: ")
+        if repeated == "y":
+            repeat_days = int(input("How many days are between: "))
+        else:
+            repeat_days = 0
         real_id = result.id
         emp_id = input("Enter your employee ID: ")
 
-        case = Case(id,location,subject, description, priority, repeated, real_id, emp_id)
+        case = Case(id,location,subject, description, priority, repeated, repeat_days, real_id, emp_id)
         self.llapi.create_case(case)        
 # ------------------------------------------------------------------------------------------------------------------
 

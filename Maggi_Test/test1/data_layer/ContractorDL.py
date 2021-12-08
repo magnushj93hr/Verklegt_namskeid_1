@@ -26,7 +26,7 @@ class ContractorDL:
     def edit_contractor(self, contr):
         temp_file = NamedTemporaryFile(mode = 'w', newline='', encoding='utf-8', delete=False)
         
-        fieldnames = ["name","contract","phone",'opening hours','location','review']
+        fieldnames = ["name","contact","phone",'opening hours','location','review']
         with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
             reader = csv.DictReader(csvfile, fieldnames=fieldnames)
             writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
@@ -34,8 +34,8 @@ class ContractorDL:
             for row in reader:
                 if row['name'] == contr.name:
                     print('updating row', row['name'])
-                    writer.writerow({'name': contr.name, "contract": contr.contract, "phone": contr.phone, "opening hours": contr.opening_hours, 'location': contr.location, "review": {contr.review}})
+                    writer.writerow({'name': contr.name, "contact": contr.contact, "phone": contr.phone, "opening hours": contr.opening_hours, 'location': contr.location, "review": contr.review})
                 else:
-                    row = {"name": row["name"], "contract": row["contact"], "phone": row["phone"], "opening hours": row["opening hours"], "location": row["location"], "review": row["review"]}
+                    row = {"name": row["name"], "contact": row["contact"], "phone": row["phone"], "opening hours": row["opening hours"], "location": row["location"], "review": row["review"]}
                     writer.writerow(row)
         shutil.move(temp_file.name, self.filepath)

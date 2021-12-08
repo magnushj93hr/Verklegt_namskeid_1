@@ -1,5 +1,5 @@
 class MaintananceReport:
-    def __init__(self, real_estate_id, description, employee_id, case_id, total_cost, contractor = "", contractor_cost = None):
+    def __init__(self, real_estate_id, description, employee_id, case_id, total_cost, contractor, contractor_cost):
         self.real_estate_id = real_estate_id
         self.description = description
         self.case_id = case_id
