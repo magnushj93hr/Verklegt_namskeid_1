@@ -16,10 +16,7 @@ class Case:
         else:
             self.date = date
         self.status = status
-        if status == "Closed" and closed_date == None:
-            self.closed_date = self.creation_date()
-        else:
-            self.closed_date = closed_date
+        self.closed_date = closed_date
 
     def __str__(self):
         return f"id: {self.id}, location: {self.location}, subject: {self.subject}, description: {self.description}, priority: {self.priority}, repeated: {self.repeated}, repeat_days: {self.repeat_days}, real_est_id: {self.real_est_id}, created by: {self.emp_id} creation date: {self.date}, status: {self.status}, closed date: {self.closed_date}"

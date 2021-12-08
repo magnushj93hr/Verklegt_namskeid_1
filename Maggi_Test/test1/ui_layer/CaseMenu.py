@@ -175,6 +175,9 @@ r - return to previous menu
         return
 
     def change_case_status(self, status, case):
+        if status == "Closed":
+            dt = datetime.datetime.now()
+            case.closed_date = "%s/%s/%s" % (dt.day, dt.month, dt.year)
         case.status = status
         self.llapi.edit_case(case)
 
