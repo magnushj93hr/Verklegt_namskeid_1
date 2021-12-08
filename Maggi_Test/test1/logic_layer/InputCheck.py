@@ -1,9 +1,8 @@
 MAX_NAME = 40
-MAX_ID = 4 
 MAX_REL_ID = 6
-MAX_PHONE = 7  #Þarf að vera lengra?
-MAX_ADDRESS = 20 # -||-
-MAX_LOCATION = 15 # -||-
+MAX_PHONE = 10  #Þarf að vera lengra?
+MAX_ADDRESS = 30 # -||-
+MAX_LOCATION = 30 # -||-
 MAX_ROOM = 10 
 
 
@@ -17,11 +16,6 @@ class InputCheck:
     def check_if_name_correct(self, name):
         if len(name) <= MAX_NAME:
             if not name.isdigit():
-                return True
-        return False
-    def check_if_id_correct(self, id):
-        if len(id) == MAX_ID:
-            if id.isdigit():
                 return True
         return False
     def check_if_phone_correct(self, phone):
