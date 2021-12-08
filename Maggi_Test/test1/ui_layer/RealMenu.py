@@ -273,7 +273,7 @@ r - return to previous menu
 # ------------------------------------------------------------------------------------------------------------------
 # Edit Case
     def print_case_as_menu(self, case):
-        self.edit_options = f"""
+        self.edit_options_case = f"""
         Case: {case.id}
 
         1 - Location: {case.location}
@@ -283,14 +283,13 @@ r - return to previous menu
         5 - repeated: {case.repeated}
         r - return to previous menu
         """
-        print(self.edit_options)
+        print(self.edit_options_case)
 
     def edit_case(self, real):
         print(real.id)
         case = self.llapi.search_cases_for_real_id(real.id)
         if case == None:
             print("The case id was not found")
-            print(self.edit_options) 
             return
         self.promt_edit_case(case)
 
