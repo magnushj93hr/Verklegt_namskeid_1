@@ -240,22 +240,32 @@ r - return to previous menu
 # það þarf að skoða þetta fall eihvða betur geta
 # allavega hreinskrifa þetta eihvða 
 
-    def create_case(self, result):
-        all_cases = self.llapi.all_cases()
-        id = CASE + str(len(all_cases) + 1)
-        location = result.location
-        subject = input("Enter subject: ")
-        description = input("Enter description: ")
+    def priority_check(self):
         while True:
             print('What priority?: ')
             for prio in PRIORITY:
                 print(prio)
             priority = str(input("Enter priority: ")) #setja inn low/medium/high
             if priority in PRIORITY:
-                break
-        repeated = input("Is the case repeated(y/n)?: ")
-        real_id = result.id
-        emp_id = input("Enter your employee ID: ")
+                return priority
+
+    def create_case_start(self):
+        emp_id = input("Enter your supervisor ID: ")
+        result = LLAPI().search_employee(emp_id)
+        return result
+            
+
+    def create_case(self, result):
+        emp = self.create_case_start()
+        if emp.id.split("-")[0] == "air":
+            all_cases = self.llapi.all_cases()
+            id = CASE + str(len(all_cases) + 1)
+            location = result.location
+            subject = input("Enter subject: ")
+            description = input("Enter description: ")
+            priority = self.priority_check()
+            repeated = input("Is the case repeated(y/n)?: ")
+            real_id = result.id
 
         case = Case(id,location,subject, description, priority, repeated, real_id, emp_id)
         self.llapi.create_case(case)        

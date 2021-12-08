@@ -2,7 +2,8 @@ from logic_layer.LLAPI import LLAPI
 from models.Employee import Employee
 
 # AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen"]
-AUTO_ID = 'NaN-'
+EMP_ID = 'NaN-'
+SUP_ID = 'air-'
 
 
 class EmpMenu:
@@ -49,20 +50,38 @@ r - return to previous menu
             for location in self.llapi.get_locations_name():
                 print(location)
             print()
-            location = str(input("Enter location: ")).capitalize()
+            location = str(input("Enter location: ")).lower().capitalize()
             if location not in self.llapi.get_locations_name():
                 print("Invalid location")
             else:
                 return location
 
+    def make_emp_or_sup(self):
+        location = self.available_locations()
+        result = LLAPI().filter_employee(location)
+        for row in result:
+            if row.id.split("-")[0] != "air":
+                return location, "True"
+            else: return location, "False"
+
+    def make_emp_or_sup_id(self, check):
+        all_id = self.llapi.all_employees()
+        emp_or_sup = input("Make employee or supervisor(e/s): ").lower()
+        if emp_or_sup == "e":
+            id = EMP_ID + str(len(all_id) + 1).zfill(4)
+            return id
+        elif emp_or_sup == "s":
+            if check == "True":
+                id = SUP_ID + str(len(all_id) + 1).zfill(4)
+                return id
+
     def user_options(self, controller):
+        location, check = self.make_emp_or_sup()
+        id = self.make_emp_or_sup_id(check)
         name = self.input_and_check("name", lambda value : self.llapi.is_name_correct(value))
         phone = self.input_and_check("phone", lambda value : self.llapi.is_phone_correct(value))
-        all_id = self.llapi.all_employees()
-        id = AUTO_ID + str(len(all_id) + 1)
         address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
         homeline = self.input_and_check("homeline", lambda value : self.llapi.is_phone_correct(value))
-        location = self.available_locations()
         return name, phone, id, address, homeline, location
 # ------------------------------------------------------------------------------------------------------------------
 
@@ -91,14 +110,17 @@ r - return to previous menu
 
     def edit_employee(self):
         #check if id is len 4
-        edit_id = str(input("Enter employee id: "))
-
-        emp = self.llapi.search_employee(edit_id)
-        if emp == None:
-            print("The employee id was not found")
-            print(self.options) 
-            return
-        self.promt_edit(emp)
+        print("Quit by entering (q)")
+        while True:
+            edit_id = str(input("Enter employee id: "))
+            if edit_id != "q":
+                emp = self.llapi.search_employee(edit_id)
+                if emp == None: 
+                    print("The employee id was not found")
+                else: 
+                    self.promt_edit(emp)
+                    return
+            else: return
 
     def promt_edit(self, emp):
         while True:
@@ -134,8 +156,8 @@ r - return to previous menu
                     print(emp)
                 filter_input = input("Do you want to filter by location(y/n)?: ")
                 if filter_input == 'y':
-                    filter_location = input('Enter location to filter by: ')
-                    result = LLAPI().filter_employee(filter_location)
+                    location = self.available_locations()
+                    result = LLAPI().filter_employee(location)
                     for row in result:
                         print(row)
 # ------------------------------------------------------------------------------------------------------------------

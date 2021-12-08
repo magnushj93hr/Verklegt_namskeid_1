@@ -2,3 +2,4 @@ id,location,subject,description,priority,repeated,real_est_id,emp_id,date,status
 CAS-1,Nuuk,Laga heita Pottinn,það þarf að laga pottinn,medium,n,5003,NaN-7,6/12/2021,Open
 CAS-2,Longyearbyen,Laga donkið,Vantar spliffið,low,n,5006,NaN-2,7/12/2021,Open
 CAS-3,Longyearbyen,Laga donkið,Vantar spliffið,low,n,5003,NaN-2,7/12/2021,Open
+CAS-4,Nuuk,fix toilet,now,high,n,5001,2    def available_locations(self):,8/12/2021,Open
