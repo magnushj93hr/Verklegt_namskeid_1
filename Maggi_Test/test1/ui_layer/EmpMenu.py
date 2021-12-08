@@ -59,10 +59,13 @@ r - return to previous menu
     def make_emp_or_sup(self):
         location = self.available_locations()
         result = LLAPI().filter_employee(location)
+        # check = True
         for row in result:
             if row.id.split("-")[0] != "air":
-                return location, "True"
-            else: return location, "False"
+                return location, True
+            else:
+                # check == False
+                return location, False
 
     def make_emp_or_sup_id(self, check):
         all_id = self.llapi.all_employees()
@@ -71,7 +74,7 @@ r - return to previous menu
             id = EMP_ID + str(len(all_id) + 1).zfill(4)
             return id
         elif emp_or_sup == "s":
-            if check == "True":
+            if check:
                 id = SUP_ID + str(len(all_id) + 1).zfill(4)
                 return id
 

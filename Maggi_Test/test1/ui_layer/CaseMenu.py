@@ -146,7 +146,7 @@ r - return to previous menu
         case_ids_list = map(lambda case: case.id, cases)
         search_case_opt = input("Do you want to select a case(y/n): ")
         if search_case_opt != "y":
-            return None
+            return None, None
         while True:
             case_id = input("Enter case id: ")
             if case_id not in case_ids_list:
