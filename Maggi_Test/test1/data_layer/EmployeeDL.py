@@ -9,6 +9,8 @@ class EmployeeDL:
         self.filepath = "Maggi_Test/test1/csv_files/Employee.csv"
 
     def get_all_employees(self):
+        """"Returns a list of all employees"""
+
         ret_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -18,12 +20,16 @@ class EmployeeDL:
         return ret_list
 
     def create_employee(self, emp):
+        """Takes in information you need to create a employee and puts in employee csv file  """
+
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["name","id","address",'homeline','email','location','phone']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'name': emp.name, "id": emp.id, "address": emp.address, 'homeline': emp.homeline, 'email': emp.email, 'location': emp.location, 'phone': emp.phone})
 
     def edit_employee(self, emp):
+        """Takes in employee information from employee csv file, and updates it """
+
         temp_file = NamedTemporaryFile(mode = 'w', newline='', encoding='utf-8', delete=False)
         
         fieldnames = ["name","id","address",'homeline','email','location','phone']
