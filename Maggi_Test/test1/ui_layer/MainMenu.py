@@ -10,18 +10,43 @@ class MainMenu:
     def __init__(self):
         self.llapi = LLAPI()
         self.options = """
-    Main menu
-1 - employee menu
-2 - real estate menu
-3 - case menu
-4 - contractor menu
-5 - location menu
-6 - maintenance menu
-q - quit
+      __|__                                                                                             __|__
+*---o--(_)--o---*                                                                                 *---o--(_)--o---* 
+___________________________________________________________________________________________________________________
+|                                                                                                                 |
+|       >Home<        Employee        Real estate         Cases        Contractor        Location                 |
+|_________________________________________________________________________________________________________________|
+|                                                                                                                 |
+|   - 1         //Goes to employee menu                                             - q         //Quit            |
+|   - 2         //Goes to real estate menu                                                                        |
+|   - 3         //Goes to case menu                                                                               |
+|   - 4         //Goes to contractor menu                                                                         |
+|   - 5         //Goes to location menu                                                                           |"""
+        self.supervisorLine = """|   - dest        //Goes to destination screen, shows what destinations are available                             |"""
+        self.footer = """|_________________________________________________________________________________________________________________|
+|                                                                                                                 |
+|                                                                                                                 |
+|                                                      |                                                          |
+|                                                      |                                                          |
+|                            .''.         .''. `._    _|_    _.' .''.         .''.                                |
+|                             '. '.     .' .'     ~-./ _ \.-~     '. '.     .' .'                                 |
+|                               '. '._.' .'         /_/_\_\         '. '._.' .'                                   |
+|            .----~~~~-----......-'.' '.'`~-.____.-~       ~-..____.-~'.' '.'`-......-----~~~~---.                |
+|            '---~~~~----....__  .''._.'.              .              .'._.''.  ___....----~~~~--'                |
+|                              .' .'__'. '._..__               __.._.' .'__'. '.                                  |
+|                            .' .'||    '. '.   ~-.._______..-~   .' .'    ||'. '.                                |
+|                           '.,'  ||-.    ',.'        |_|        '.,'    .-||  ',.'                               |
+|                                 \| |                .'.                | |/                                     |
+|                                  | |                | |                | |                                      |
+|                                  '.'                '.'                '.'                                      |
+|                                                                                                                 |
+|_________________________________________________________________________________________________________________|
 """
+
 
     def draw_options(self):
         print(self.options)
+        print(self.footer)
         self.prompt_input()
 
     def prompt_input(self):
@@ -54,5 +79,4 @@ q - quit
             if return_option == "m":
                 return "m"
             print(self.options)
-
-
+            print(self.footer)

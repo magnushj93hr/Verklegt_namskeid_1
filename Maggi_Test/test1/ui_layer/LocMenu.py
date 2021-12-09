@@ -33,7 +33,7 @@ r - return to previous menu
     def create_location(self):
         country = input("Enter country name: ")
         location = input("Enter location: ")
-        airport = input("Enter aiport:")
+        airport = input("Enter airport: ")
         phone = input("Enter location phone: ")
         opening_hours = input("Enter location opening hours: ")
         
