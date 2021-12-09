@@ -1,3 +1,4 @@
+import os
 
 from ui_layer.Employee.EmpMenu import EmpMenu
 from ui_layer.RealEstate.RealEstMenu import RealEstMenu
@@ -77,7 +78,7 @@ ________________________________________________________________________________
                 continue
 
 
-def clear(self):
+    def clear(self):
         '''Function to clear screen'''
         if os.name == 'posix':
             os.system('clear')

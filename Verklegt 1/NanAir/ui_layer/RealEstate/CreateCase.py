@@ -1,5 +1,7 @@
 from models.Case import Case
 
+PRIORITY = ['low','medium','high']
+CASE = 'CAS-'
 
 class CreateCase:
     
@@ -16,11 +18,12 @@ class CreateCase:
                 return priority
 
     def create_case_start(self):
-        emp_id = input("Enter your supervisor ID: ").lower()
-        result = LLAPI().search_employee(emp_id)
+        emp_id = input("Enter your supervisor ID: ")
+        result = self.llapi.search_employee(emp_id)
         try:
-            result.id
-            return result, emp_id
+            if result.supervisor == "yes":
+                return result, emp_id
+            else: print("Only enter a supervisor ID")
         except AttributeError:
             print("Invalid supervisor ID")
             return None, None
@@ -37,7 +40,9 @@ class CreateCase:
             repeated = input("Is the case repeated(y/n)?: ")
             if repeated == "y":
                 repeat_days = int(input("Enter how many days between cases: "))
-            real_id = result.id
+            else:
+                repeat_days = 0
+                real_id = result.id
             
             case = Case(id,location,subject, description, priority, repeated, repeat_days, real_id, emp_id)
             self.llapi.create_case(case)

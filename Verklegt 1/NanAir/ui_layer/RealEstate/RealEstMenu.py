@@ -62,4 +62,4 @@ ________________________________________________________________________________
                 return "m"
             else:
                 print("invalid option, try again!")
-            print(self.header)
+            self.print_options()
