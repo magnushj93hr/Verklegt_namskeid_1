@@ -40,8 +40,7 @@ ________________________________________________________________________________
                 case = self.select_case()
                 self.print_full_case(case)
             elif command == "4": 
-                search_contractor = input("Enter contractor name: ")
-                result = False
+                self.get_contractors()
             elif command == "r":
                     return
             else:
@@ -109,7 +108,12 @@ ________________________________________________________________________________
             else:
                 return case
 
-
+    def get_contractors(self):
+        all_contractors = self.llapi.get_contractors_name()
+        print("Here are all available contractors: ")
+        for contractor in all_contractors:
+            print(contractor)
+        
 
     # all_contractors = self.llapi.get_contractors_name()
     # print('Here are all available contractors:')
