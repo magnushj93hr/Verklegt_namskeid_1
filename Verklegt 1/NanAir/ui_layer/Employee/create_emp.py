@@ -17,11 +17,9 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|
 """
 
-    # def draw_options(self):
-    #     print(self.options)
-    #     return self.create_employee()
 
     def create_employee(self):
+        """Creates employee"""
         print(self.options)
         print("Welcome to the creation kit!")
         # print("Quit by entering (q): ")
@@ -33,6 +31,7 @@ ________________________________________________________________________________
             self.llapi.create_employee(emp)
 
     def user_options(self):
+        """Returns employee information"""
         location = self.available_locations()
         # check = self.llapi.check_location_append_to_list(location)
         id = self.get_emp_id()
