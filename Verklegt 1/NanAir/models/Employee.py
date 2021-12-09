@@ -11,7 +11,8 @@ class Employee:
         self.supervisor = supervisor
         self.email = self.make_email()
 
-    def make_email(self): 
+    def make_email(self):
+        """Creates an email for employee""" 
         first = str(self.name.split()[0]).lower()
         last = str(self.name.split()[-1]).lower()
         email = '{}.{}{}'.format(first, last, EMAIL)
