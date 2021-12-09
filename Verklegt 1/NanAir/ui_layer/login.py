@@ -33,10 +33,12 @@ class Login:
 """
 
     def draw_login(self):
+        """prints login screen"""
         print(self.screen)
         self.promt_input()
 
     def promt_input(self):
+        """Asks user to enter ID option"""
         while True:
             user_id = input("Enter ID: ")
             result = self.llapi.search_employee(user_id)
