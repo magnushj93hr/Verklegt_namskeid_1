@@ -108,3 +108,13 @@ ________________________________________________________________________________
                 print("No case found")
             else:
                 return case
+
+
+
+# result = self.llapi.search_contractor_in_case(contr_name)
+# for i in result:
+#     print(i)
+#     return result
+# elif command == "r":
+#     return
+# # return result
