@@ -53,6 +53,7 @@ ________________________________________________________________________________
             print(self.options)
             command = input("Enter your input: ")
             if command == "1":
+                self.clear()
                 emp_menu = EmpMenu(self.llapi, self.user)
                 return_option = emp_menu.prompt_input()
             elif command == "2":
@@ -74,3 +75,11 @@ ________________________________________________________________________________
                 print("Invalid option, try again!")
             if return_option == "m":
                 continue
+
+
+def clear(self):
+        '''Function to clear screen'''
+        if os.name == 'posix':
+            os.system('clear')
+        else:
+            os.system('cls')
