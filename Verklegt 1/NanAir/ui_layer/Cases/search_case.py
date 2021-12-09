@@ -32,15 +32,21 @@ ________________________________________________________________________________
                 result = self.llapi.search_case(search_id, 'empid')
                 self.printing_cases(result)
                 case = self.select_case()
-                self.print_full_case(case)
+                if case != None:
+                    self.print_full_case(case)
             elif command == "3":
                 search_id = input("Enter real estate id: ")
                 result = self.llapi.search_case(search_id, 'realid')
                 self.printing_cases(result)
                 case = self.select_case()
-                self.print_full_case(case)
+                if case != None:
+                    self.print_full_case(case)
             elif command == "4": 
-                self.get_contractors()
+                cases = self.get_contractors()
+                self.printing_cases(cases)
+                case = self.select_case()
+                if case != None:
+                    self.print_full_case(case)
             elif command == "r":
                     return
             else:
@@ -51,7 +57,7 @@ ________________________________________________________________________________
 
 
     def print_full_case(self, case):
-            printing_case = f"""
+        self.print_case = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
@@ -65,17 +71,45 @@ ________________________________________________________________________________
 |             Employee ID: {case.emp_id:87s}|
 |                Location: {case.location:87s}|
 |                 Subject: {case.id:87s}|
-|            Descriptioin: {case.description:87s}|
+|             Description: {case.description:87s}|
 |                Priority: {case.priority:87s}|
 |                Repeated: {case.repeated:87s}|
 |           Repeated days: {case.repeat_days:87s}|
 |                    Date: {case.date:87s}|
 |                  Status: {case.status:87s}|
 |             Closed date: {case.closed_date:87s}|
-|_________________________________________________________________________________________________________________|
-"""
-            print(printing_case)
+|_________________________________________________________________________________________________________________|"""
 
+
+        reports = self.llapi.search_maintenance_report(case.id)
+        print(self.print_case)
+        if len(reports) == 1:
+            self.print_report(reports[0])
+        else:
+            for rep in reports:
+                self.print_report(rep)
+            
+
+    def print_report(self, report):
+        content =  f"""|                                                                                                                 |
+|      Maintenance Report                                                                                         |
+|                                                                                                                 |
+|             Employee ID: {report.employee_id:}                                                                  |
+|              Contractor: {report.contractor}                                                               |
+|               
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+real_estate_id,description,employee_id,case_id,total_cost,contractor,contractor_cost
+"""
 
     def printing_cases(self, case_list):
         header = """
@@ -113,17 +147,13 @@ ________________________________________________________________________________
         print("Here are all available contractors: ")
         for contractor in all_contractors:
             print(contractor)
-        
-
-    # all_contractors = self.llapi.get_contractors_name()
-    # print('Here are all available contractors:')
-    # for contractor in all_contractors:
-    #     print(contractor)
-    # while True:
-    #     print()
-    #     contr_name = input("Enter contractor name: ")
-    #     if contr_name in all_contractors:
-    #         result = self.llapi.search_contractor_in_case(contr_name)
-    #         for i in result:
-    #             print(i)
-    #         return result
+        while True:
+            print()
+            contr_name = input("Enter contractor name: ")
+            if contr_name in all_contractors:
+                result = self.llapi.search_contractor_in_case(contr_name)
+                for case in result:
+                    print(case)
+                return result
+            else:
+                print("Invalid option")
