@@ -10,6 +10,7 @@ class RealEstate:
         self.location = location
 
     def add_m2_to_size(self, size):
+        """Adds m2 to size of real estate input"""
         if SIZE_END not in size: 
             final_size = size + SIZE_END
             return final_size
