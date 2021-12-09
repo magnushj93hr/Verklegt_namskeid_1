@@ -1,8 +1,10 @@
 from ui_layer.MainMenu import MainMenu
 from ui_layer.user import User
+from logic_layer.LLAPI import LLAPI
 
 class Login:
     def __init__(self):
+        self.llapi = LLAPI()
         self.screen = """
          __      __       .__                                   __              _______           _______         _____  .__        
         /  \    /  \ ____ |  |   ____  ____   _____   ____    _/  |_  ____      \      \ _____    \      \       /  _  \ |__|______ 
@@ -35,7 +37,13 @@ class Login:
         self.promt_input()
 
     def promt_input(self):
-        user_id = input("Enter ID: ")
-        user = User(user_id)
+        while True:
+            user_id = input("Enter ID: ")
+            result = self.llapi.search_employee(user_id)
+            if result == None:
+                print("No user found")
+            else:
+                break
+        user = User(result)
         main_menu = MainMenu(user)
-        main_menu.draw_options()
+        main_menu.prompt_input()

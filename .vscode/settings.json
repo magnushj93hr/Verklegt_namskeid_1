@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./Maggi_Test/test1"
+    ]
+}
