@@ -38,4 +38,4 @@ class Login:
         user_id = input("Enter ID: ")
         user = User(user_id)
         main_menu = MainMenu(user)
-        main_menu.draw_options()
+        main_menu.prompt_input()

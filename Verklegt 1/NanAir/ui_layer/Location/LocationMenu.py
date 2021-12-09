@@ -1,4 +1,4 @@
-class DestMenu:
+class LocationMenu:
     def __init__(self, llapi):
         self.llapi = llapi
         self.options = """

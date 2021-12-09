@@ -1,13 +1,21 @@
+EMAIL = "@nanair.com"
+
 class Employee:
-    def __init__(self, name, emp_id, address, homeline, email, phone, location):
+    def __init__(self, name, id, address, homeline, location, phone, supervisor):
         self.name = name
-        self.emp_id = emp_id
+        self.id = id
         self.address = address
         self.homeline = homeline
-        self.phone = phone
-        self.email = email
         self.location = location
-        #Skrá sem yfirmann? 
+        self.phone = phone
+        self.supervisor = supervisor
+        self.email = self.make_email()
+
+    def make_email(self): 
+        first = str(self.name.split()[0]).lower()
+        last = str(self.name.split()[-1]).lower()
+        email = '{}.{}{}'.format(first, last, EMAIL)
+        return email
 
     def __str__(self):
-        return f"name: {self.name}, ID: {self.emp_id}, Address: {self.address}, Homeline: {self.homeline}, Phone: {self.phone}, Email: {self.email}, Location: {self.location}"
+        return f"name: {self.name}, id: {self.id}, address: {self.address}, homeline: {self.homeline}, email: {self.email}, location: {self.location}, phone: {self.phone}, supervisor: {self.supervisor}"

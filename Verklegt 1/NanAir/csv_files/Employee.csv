@@ -1,10 +1,15 @@
-name, emp_id, address, homeline, email, phone, location, area
-Jan Jacobsen,NaN-0001,Vei 230 12,+47 92 09 77 00,jan.jacobsen@nanair.is,+354 777 1337,Svalbard,Longyearbyen
-Jacob Yxa,NaN-0002,Vei 224 3B,+47 92 09 77 01,jacob.yxa@nanair.is,+354 777 1338,Svalbard,Longyearbyen
-Nanna Daema,NaN-0003,Ivan Starostin st. 109,+47 92 09 77 02,nanna.daema@nanair.is,+354 777 1339,Svalbard,Longyearbyen
-Minik Wallace,NaN-0004,Isaajap Aqqutaa 1,+299 34 24 67
-Aqqaluk Lynge,NaN-0005, aqqaluk.lynge@nanair.is, Qattaaq 44 3905, +299352466, +35477713262, Nuuk, Greenland
-Nauja Lynge,NaN-0006, nauja.lynge@nanair.is, Qunguleg 3759 3905, +299312164, +3547771363, Nuuk, Greenland
-Annette Djurhuus, NaN-0007, annette.djurhuus@nannair.is, Tjarnardeild 8 100,+298772000,+354771381, Tórshavn, Faroe Island
-Áki Knudsen, NaN-0008, aki.knudsen@nanair.is, Traðartún 3 108, +298617210, +3547771381, Argir, Faroe Islands
-André Hjaltalin, Nan-0009, andre.hjaltalin@nanair.is, Í Lágni 19 100, +298661441,+3547771382,Tórshavn, Faroe Islands
+name,id,address,homeline,email,location,phone,supervisor
+Jan Jacobsen,NaN-1,Vei 230 12,9209770,jan.jacobsen@nanair.com,Reykjavik,7771337,no
+Jacob Yxa,NaN-2,Vei 224 3B,9209771,jacob1001@nanair.com,Longyearbyen,7771338,no
+Nanna Daema,NaN-3,Ivan Starostin 109,9209772,nanna1002@nanair.com,Longyearbyen,7771339,no
+Minik Wallace,NaN-4,Isaajjap Aqquta 1,3424671,minik1003@nanair.com,Nuuk,7771361,no
+Aqqaluk Lynge,NaN-5,Qattaaq 44,3521642,aqqaluk1004@nanair.com,Nuuk,7771362,no
+Nauja Lynge,NaN-6,Qunguleq 3759,3121643,nauja1004@nanair.com,Nuuk,7771363,no
+Annette Djurhuus,NaN-7,Tjarnardeild 8,7720001,annette1006@nanair.com,Þórshöfn,7771381,no
+Áki Knudsen,NaN-8,Traðartún 3,6172101,áki1007@nanair.com,Þórshöfn,7773181,no
+André Hjaltalin,NaN-9,Í Lágni 19,6614411,andré1008@nanair.com,Þórshöfn,7771382,no
+Hlynur Freyr,NaN-10,asfasf,1123456,hlynur.['hlynur']@nanair.com,Reykjavík,6699287,no
+svenni jons,NaN-11,sdgsdg,1234567,svenni.jons@nanair.com,Nuuk,1234567,no
+Mike Hawk,NaN-12,svalgata 69,7764415,mike.hawk@nanair.com,Nuuk,7764418,no
+join,NaN-13,adfi,7654321,join.join@nanair.com,Nuuk,7654321,no
+Siggi,NaN-14,Ironvil 29,9876543,siggi.siggi@nanair.com,Nuuk,8765432,yes
