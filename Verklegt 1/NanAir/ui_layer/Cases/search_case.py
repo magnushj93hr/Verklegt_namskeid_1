@@ -57,7 +57,9 @@ ________________________________________________________________________________
 
 
     def print_full_case(self, case):
-        self.print_case = f"""
+        reports = self.llapi.search_maintenance_report(case.id)
+        last_report = reports[-1]
+        print_case = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
@@ -65,10 +67,9 @@ ________________________________________________________________________________
 |       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|      Case: {case.id:101s}|
+|      Case: {case.id:28s}Created by: {case.emp_id:25}Total cost: {last_report.total_cost:24s}|
 |                                                                                                                 |
 |          Real estate ID: {case.real_est_id:87s}|
-|             Employee ID: {case.emp_id:87s}|
 |                Location: {case.location:87s}|
 |                 Subject: {case.id:87s}|
 |             Description: {case.description:87s}|
@@ -81,8 +82,8 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|"""
 
 
-        reports = self.llapi.search_maintenance_report(case.id)
-        print(self.print_case)
+
+        print(print_case)
         if len(reports) == 1:
             self.print_report(reports[0])
         else:
@@ -94,22 +95,14 @@ ________________________________________________________________________________
         content =  f"""|                                                                                                                 |
 |      Maintenance Report                                                                                         |
 |                                                                                                                 |
-|             Employee ID: {report.employee_id:}                                                                  |
-|              Contractor: {report.contractor}                                                               |
-|               
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
+|             Employee ID: {report.employee_id:87s}|
+|              Contractor: {report.contractor:87s}|
+|         Contractor cost: {report.contractor_cost:87s}|
+|             Description: {report.description:87s}|
+|_________________________________________________________________________________________________________________|"""
+        
+        print(content)
 
-real_estate_id,description,employee_id,case_id,total_cost,contractor,contractor_cost
-"""
 
     def printing_cases(self, case_list):
         header = """
