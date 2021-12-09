@@ -1,6 +1,7 @@
 from ui_layer.Employee.create_emp import CreateEmp
 from ui_layer.Employee.search_emp import SearchEmp
 from ui_layer.Employee.list_all_emp import ListAllEmployee
+from ui_layer.Employee.edit_emp import EditEmployee
 
 
 class EmpMenu:
@@ -10,6 +11,7 @@ class EmpMenu:
         self.create_emp = CreateEmp(llapi)
         self.search_emp = SearchEmp(llapi)
         self.list_all_emp = ListAllEmployee(llapi)
+        self.edit_emp = EditEmployee(llapi)
         self.header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -48,7 +50,7 @@ ________________________________________________________________________________
             elif command == "3" and self.user.is_supervisor():
                 self.create_emp.create_employee()
             elif command == "4":
-                pass
+                self.edit_emp.edit_employee()
             elif command == "r":
                 return
             elif command == "m":

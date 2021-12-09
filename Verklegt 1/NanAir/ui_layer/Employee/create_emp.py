@@ -41,7 +41,7 @@ ________________________________________________________________________________
         homeline = self.input_and_check("homeline", lambda value : self.llapi.is_phone_correct(value))
         address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
         supervisor = self.is_supervisor()
-        return name.lower().capitalize(), phone, id, address, homeline, location, supervisor
+        return name, phone, id, address, homeline, location, supervisor
 
 
 # input parameters and checks
