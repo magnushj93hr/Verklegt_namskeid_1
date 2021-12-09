@@ -104,7 +104,8 @@ r - return to previous menu
                 print(i)
             return result
         elif command == "4": 
-            
+            search_contractor = input("Enter contractor name: ")
+            result = LL
         elif command == "r":
                 return
         # return result

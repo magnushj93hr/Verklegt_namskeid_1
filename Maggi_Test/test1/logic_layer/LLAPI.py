@@ -184,5 +184,6 @@ class LLAPI:
     
     def search_maintenance_report(self, report_id):
         return self.maintenanceLL.search_maintenance_report(report_id)
+    
 
 # ----------------------------------------------------------------

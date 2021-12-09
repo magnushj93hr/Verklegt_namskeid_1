@@ -71,6 +71,7 @@ class CaseLL:
     def case_exist(self, id):
         all_cases = self.all_cases()
         pass
+    
     def filter_cases(self, status):
         filtered_cases = []
         all_cases = self.all_cases()
@@ -78,6 +79,15 @@ class CaseLL:
             if case.status == status:
                 filtered_cases.append(case)
         return filtered_cases
+
+    def search_contractor(self, contr_name):
+        case_list = []
+        all_reports = self.llapi.all_maintenance_reports()
+        for report in all_reports:
+            if report.contractor == contr_name:
+                case_list.append(report.case_id)
+        case_list = self.search_case(case_list, "caseid")
+            return case_list
 
 if __name__ == "__main__":
     empLL = CaseLL(DLAPI())
