@@ -1,7 +1,22 @@
+from os import system
 from logic_layer.LLAPI import LLAPI
+from ui_layer.RealEstate.CreateReal import CreateReal
+from ui_layer.RealEstate.EditReal import EditReal
+from ui_layer.RealEstate.SearchReal import SearchReal
+from ui_layer.RealEstate.CreateCase import CreateCase
+from ui_layer.RealEstate.EditCase import EditCase
+from ui_layer.RealEstate.ListReal import ListReal
+
+
 
 class RealEstMenu:
     def __init__(self, llapi, user):
+        self.create_real = CreateReal(llapi, user)
+        self.edit_real = EditReal(llapi, user)
+        self.search_real = SearchReal(llapi, user)
+        self.create_case = CreateCase(llapi, user)
+        self.edit_case = EditCase(llapi, user)
+        self.list_real = ListReal(llapi, user)
         self.user = user
         self.llapi = llapi
         self.header = """
@@ -12,11 +27,10 @@ ________________________________________________________________________________
 |       Home(home)        Employee(emp)        >Real estate(real)<         Cases(cases)        Contractor(con)    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|   - s               //Search for estate                       - fi          //Filter options                    |
-|   - b               //Go back                                                                                   |"""
-        self.supervisorLine = """|   - cr              //Creates new estate                                                                        |"""
-
-        self.footer = """|_________________________________________________________________________________________________________________|
+|   - 1               //list all realestate                     - 2           //search real estate                |"""
+        self.supervisorLine = """|   - 3               //Creates new estate                                                                        |"""
+        self.footer = """|   - r               //return                                                                                    |
+|_________________________________________________________________________________________________________________|
 """
 
     def draw_options(self):
@@ -34,21 +48,18 @@ ________________________________________________________________________________
     def prompt_input(self):
         while True:
             command = input("Choose option: ")
-            if command == "s":
-                pass
-                # all_emps = self.llapi.all_employees()
-                # for emp in all_emps:
-                #     print(emp)
-            elif command == "cr" and self.user.is_supervisor():
-                pass
-            elif command == "fi":
-                pass
-            elif command == "e":
-                pass
-            elif command == "b":
-                return "b"
+            if command == "1":
+                self.list_real.real_printer()
+            elif command == "2":
+                result = self.search_real.search_realestate()
+                if result is not None:
+                    self.search_real.prompt_input_search(result)
+            elif command == "3" and self.user.is_supervisor():
+                self.create_real.create_realestate()
+            elif command == "r":
+                return "r"
             elif command == "m":
                 return "m"
             else:
                 print("invalid option, try again!")
-            print(self.options)
+            print(self.header)

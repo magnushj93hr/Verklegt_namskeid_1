@@ -1,3 +1,4 @@
+
 from ui_layer.Employee.EmpMenu import EmpMenu
 from ui_layer.RealEstate.RealEstMenu import RealEstMenu
 from ui_layer.Cases.CaseMenu import CaseMenu
@@ -55,16 +56,16 @@ ________________________________________________________________________________
                 emp_menu = EmpMenu(self.llapi, self.user)
                 return_option = emp_menu.prompt_input()
             elif command == "2":
-                real_menu = RealEstMenu(self.llapi)
+                real_menu = RealEstMenu(self.llapi, self.user)
                 real_menu.draw_options()
             elif command == '3':
-                case_menu = CaseMenu(self.llapi)
+                case_menu = CaseMenu(self.llapi, self.user)
                 case_menu.draw_options()
             elif command == '4':
-                case_menu = ContractorMenu(self.llapi)
+                case_menu = ContractorMenu(self.llapi, self.user)
                 case_menu.draw_options()
             elif command == "5":
-                loc_menu = LocationMenu(self.llapi)
+                loc_menu = LocationMenu(self.llapi, self.user)
                 loc_menu.draw_options()
             elif command == "q":
                 print("Thanks for using NaN air")
