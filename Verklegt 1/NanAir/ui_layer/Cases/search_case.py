@@ -31,11 +31,14 @@ ________________________________________________________________________________
                 search_id = input("Enter employee id: ")
                 result = self.llapi.search_case(search_id, 'empid')
                 self.printing_cases(result)
-                self.select_case()
+                case = self.select_case()
+                self.print_full_case(case)
             elif command == "3":
                 search_id = input("Enter real estate id: ")
                 result = self.llapi.search_case(search_id, 'realid')
                 self.printing_cases(result)
+                case = self.select_case()
+                self.print_full_case(case)
             elif command == "4": 
                 search_contractor = input("Enter contractor name: ")
                 result = False
@@ -89,4 +92,19 @@ ________________________________________________________________________________
 
     def select_case(self):
         while True:
-            option = input("Do you want to select a case: ")
+            option = input("Do you want to select a case(y/n): ")
+            if option == "y":
+                return self.get_the_case()
+            elif option == "n":
+                return
+            else:
+                print("Invalid option")
+
+    def get_the_case(self):
+        while True:
+            case_id = input("Enter case ID: ")
+            case = self.llapi.get_case(case_id)
+            if case == None:
+                print("No case found")
+            else:
+                return case
