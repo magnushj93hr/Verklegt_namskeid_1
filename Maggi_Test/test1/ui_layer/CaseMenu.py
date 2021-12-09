@@ -228,7 +228,7 @@ r - return to previous menu
             contractor_cost = 0
             total_cost = cost_of_materials
         
-        maintenance = MaintananceReport(real_estate_id, tasks_done, employee_id, case_id, total_cost, contractor, contractor_cost)
+        maintenance = MaintananceReport(real_estate_id, tasks_done, employee_id, case_id, cost_of_materials, contractor, contractor_cost, total_cost)
 
         case = self.llapi.get_case(case_id)
         case.status = "Ready to close"

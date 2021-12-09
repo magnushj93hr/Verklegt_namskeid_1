@@ -57,7 +57,7 @@ ________________________________________________________________________________
 
 
     def print_full_case(self, case):
-            printing_case = f"""
+        self.print_case = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
@@ -71,17 +71,45 @@ ________________________________________________________________________________
 |             Employee ID: {case.emp_id:87s}|
 |                Location: {case.location:87s}|
 |                 Subject: {case.id:87s}|
-|            Descriptioin: {case.description:87s}|
+|             Description: {case.description:87s}|
 |                Priority: {case.priority:87s}|
 |                Repeated: {case.repeated:87s}|
 |           Repeated days: {case.repeat_days:87s}|
 |                    Date: {case.date:87s}|
 |                  Status: {case.status:87s}|
 |             Closed date: {case.closed_date:87s}|
-|_________________________________________________________________________________________________________________|
-"""
-            print(printing_case)
+|_________________________________________________________________________________________________________________|"""
 
+
+        reports = self.llapi.search_maintenance_report(case.id)
+        print(self.print_case)
+        if len(reports) == 1:
+            self.print_report(reports[0])
+        else:
+            for rep in reports:
+                self.print_report(rep)
+            
+
+    def print_report(self, report):
+        content =  f"""|                                                                                                                 |
+|      Maintenance Report                                                                                         |
+|                                                                                                                 |
+|             Employee ID: {report.employee_id:}                                                                  |
+|              Contractor: {report.contractor}                                                               |
+|               
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+real_estate_id,description,employee_id,case_id,total_cost,contractor,contractor_cost
+"""
 
     def printing_cases(self, case_list):
         header = """

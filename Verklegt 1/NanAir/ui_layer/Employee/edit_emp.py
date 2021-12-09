@@ -32,9 +32,10 @@ ________________________________________________________________________________
             edit_id = str(input("Enter employee id: "))
             if edit_id != "q":
                 emp = self.llapi.search_employee(edit_id)
-                self.promt_edit(emp)
-            elif emp == None: 
-                print("The employee id was not found")
+                if emp == None: 
+                    print("The employee id was not found")
+                else:
+                    self.promt_edit(emp)
             else: 
                 return
 
