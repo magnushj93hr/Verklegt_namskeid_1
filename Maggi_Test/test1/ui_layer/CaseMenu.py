@@ -35,6 +35,7 @@ r - return to previous menu
 1 - search by case id
 2 - search by employee id
 3 - search by real_estate_id
+4 - search by contractor
 r - return to previous menu
 """
 
