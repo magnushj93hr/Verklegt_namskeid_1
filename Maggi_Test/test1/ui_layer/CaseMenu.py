@@ -103,6 +103,8 @@ r - return to previous menu
             for i in result:
                 print(i)
             return result
+        elif command == "4": 
+            
         elif command == "r":
                 return
         # return result
