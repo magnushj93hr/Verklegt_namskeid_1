@@ -4,6 +4,8 @@ class EditEmployee:
 
 
     def print_emp_as_menu(self, emp):
+        """Prints employee menu"""
+
         edit_options = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -26,6 +28,8 @@ ________________________________________________________________________________
 
 
     def edit_employee(self):
+        """"""
+
         #check if id is len 4
         print("Quit by entering (q)")
         while True:
