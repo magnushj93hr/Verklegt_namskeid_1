@@ -103,9 +103,12 @@ r - return to previous menu
             for i in result:
                 print(i)
             return result
-        elif command == "4": 
-            search_contractor = input("Enter contractor name: ")
-            result = LL
+        elif command == "4":
+            contr_name = input("Enter contractor name: ")
+            result = self.llapi.search_contractor_in_case(contr_name)
+            for i in result:
+                print(i)
+            return result
         elif command == "r":
                 return
         # return result

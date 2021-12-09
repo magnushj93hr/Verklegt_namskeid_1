@@ -7,8 +7,9 @@ from tempfile import NamedTemporaryFile
 class ContractorDL:
     def __init__(self):
         self.filepath = "Maggi_Test/test1/csv_files/Contractor.csv"
-    
+   
     def get_all_contractors(self):
+        """Returns a list of all contractors"""        
         ret_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -16,14 +17,19 @@ class ContractorDL:
                 contr = Contractor(row["name"], row["contact"], row["phone"], row["opening hours"], row["location"], row["review"])
                 ret_list.append(contr)
         return ret_list
-
+    
     def create_contractor(self, contr):
+        """Takes in information you need to create a contractor and puts in contractor csv file"""
+
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["name","contact","phone",'opening hours','location',"review"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'name': contr.name, "contact": contr.contact, "phone": contr.phone, 'opening hours': contr.opening_hours, 'location': contr.location, "review": contr.review})
     
     def edit_contractor(self, contr):
+
+        """Takes in contractor information from csv file, and updates information """
+
         temp_file = NamedTemporaryFile(mode = 'w', newline='', encoding='utf-8', delete=False)
         
         fieldnames = ["name","contact","phone",'opening hours','location','review']
