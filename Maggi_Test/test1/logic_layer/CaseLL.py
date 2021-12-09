@@ -80,14 +80,24 @@ class CaseLL:
                 filtered_cases.append(case)
         return filtered_cases
 
-    def search_contractor(self, contr_name):
+    def search_contractor_in_case(self, contr_name):
         case_list = []
-        all_reports = self.llapi.all_maintenance_reports()
+        contractor_list = []
+        all_cases = self.dlapi.get_all_cases()
+        all_reports = self.dlapi.get_all_maintenance_reports()
         for report in all_reports:
             if report.contractor == contr_name:
-                case_list.append(report.case_id)
-        case_list = self.search_case(case_list, "caseid")
-            return case_list
+                case_list.append(report)
+        
+        for case in all_cases:
+            for id in case_list:
+                if id.case_id == case.id:
+                    contractor_list.append(case)
+        
+        return contractor_list
+        
+            
+
 
 if __name__ == "__main__":
     empLL = CaseLL(DLAPI())

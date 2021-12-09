@@ -140,6 +140,9 @@ class LLAPI:
     
     def filter_cases(self, status):
         return self.caseLL.filter_cases(status)
+    
+    def search_contractor_in_case(self, contr_name):
+        return self.caseLL.search_contractor_in_case(contr_name)
 # ----------------------------------------------------------------
 
 # CONTRACTOR FUNCTIONS
@@ -150,14 +153,14 @@ class LLAPI:
     def create_contractor(self, contr):
         return self.contrLL.create_contractor(contr)
     
-    def search_contractor(self, name):
-        return self.contrLL.search_contractor(name)
+    def search_contractor(self):
+        return self.contrLL.search_contractor()
 
     def edit_contractor(self, contractor):
         return self.contrLL.edit_contractor(contractor)
 
-    def get_contractors_name(self):
-        return self.contrLL.get_contractors_name()
+    def get_contractors_name(self, contr_name):
+        return self.contrLL.get_contractors_name(contr_name)
 
 # ----------------------------------------------------------------
 
