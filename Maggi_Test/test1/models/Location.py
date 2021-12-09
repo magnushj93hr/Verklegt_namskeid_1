@@ -5,7 +5,6 @@ class Location:
         self.airport = airport
         self.phone = phone
         self.opening_hours = opening_hours
-        
 
     def __str__(self):
         return f"country: {self.country}, location: {self.location}, aiport: {self.airport}, phone: {self.phone}, opening hours: {self.opening_hours}"
