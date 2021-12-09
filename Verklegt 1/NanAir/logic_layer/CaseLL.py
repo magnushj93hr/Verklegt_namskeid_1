@@ -97,8 +97,9 @@ class CaseLL:
 
 
     def search_contractor_in_case(self, contr_name):
+        """Takes in contractors name and returns all cases that contractor has worked on"""
         case_list = []
-        contractor_list = []
+        contractor_case_list = []
         all_cases = self.dlapi.get_all_cases()
         all_reports = self.dlapi.get_all_maintenance_reports()
         for report in all_reports:
@@ -108,9 +109,9 @@ class CaseLL:
         for case in all_cases:
             for id in case_list:
                 if id.case_id == case.id:
-                    contractor_list.append(case)
+                    contractor_case_list.append(case)
         
-        return contractor_list
+        return contractor_case_list
 
 if __name__ == "__main__":
     empLL = CaseLL(DLAPI())
