@@ -1,11 +1,11 @@
 from data_layer.DLAPI import DLAPI
 
-MAX_NAME = 40
+MAX_NAME = 30
 MAX_REL_ID = 6
 MAX_PHONE = 12  #Þarf að vera lengra?
 MIN_PHONE = 7
-MAX_ADDRESS = 30 # -||-
-MAX_LOCATION = 30 # -||-
+MAX_ADDRESS = 25 # -||-
+MAX_LOCATION = 25 # -||-
 MAX_ROOM = 10 
 
 
