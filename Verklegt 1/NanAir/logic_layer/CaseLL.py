@@ -68,9 +68,6 @@ class CaseLL:
             return case
             
 
-    def case_exist(self, id):
-        all_cases = self.all_cases()
-        pass
     def filter_cases(self, status):
         filtered_cases = []
         all_cases = self.all_cases()

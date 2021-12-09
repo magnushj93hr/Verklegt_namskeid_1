@@ -27,7 +27,6 @@ class ContractorDL:
             writer.writerow({'name': contr.name, "contact": contr.contact, "phone": contr.phone, 'opening hours': contr.opening_hours, 'location': contr.location, "review": contr.review})
     
     def edit_contractor(self, contr):
-
         """Takes in contractor information from csv file, and updates information """
 
         temp_file = NamedTemporaryFile(mode = 'w', newline='', encoding='utf-8', delete=False)

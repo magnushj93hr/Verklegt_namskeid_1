@@ -12,9 +12,11 @@ class ContractorLL:
         self.dlapi = dlapi
     
     def all_contractors(self):
+        """Returns list of all contractors"""
         return self.dlapi.get_all_contractors()
 
     def create_contractor(self, contr):
+        """Takes in """
         self.dlapi.create_contractor(contr)
     
     def search_contractor(self, name):
