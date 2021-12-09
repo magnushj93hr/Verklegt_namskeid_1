@@ -59,7 +59,7 @@ ________________________________________________________________________________
                 real_menu.draw_options()
             elif command == '3':
                 case_menu = CaseMenu(self.llapi)
-                case_menu.draw_options()
+                case_menu.prompt_input()
             elif command == '4':
                 case_menu = ContractorMenu(self.llapi)
                 case_menu.draw_options()
