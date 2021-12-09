@@ -1,6 +1,8 @@
 class User:
-    def __init__(self, user_id):
-        self.user_id = user_id
-        
+    def __init__(self, user):
+        self.user = user
+    
     def is_supervisor(self):
-        return self.user_id == 'sup'
+        if self.user.supervisor == "yes":
+            return True
+        return False
