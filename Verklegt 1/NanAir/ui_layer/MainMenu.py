@@ -64,8 +64,8 @@ ________________________________________________________________________________
                 case_menu = CaseMenu(self.llapi)
                 case_menu.prompt_input()
             elif command == '4':
-                case_menu = ContractorMenu(self.llapi, self.user)
-                case_menu.draw_options()
+                con_menu = ContractorMenu(self.llapi, self.user)
+                con_menu.prompt_input()
             elif command == "5":
                 loc_menu = LocationMenu(self.llapi, self.user)
                 loc_menu.draw_options()
