@@ -5,6 +5,7 @@ class SearchEmp:
         self.llapi = llapi
     
     def search_employee(self):
+        """Search for employee"""
         while True:
             print("Quit by entering (q)")
             search_id = input("Enter employee id: ")
@@ -17,6 +18,7 @@ class SearchEmp:
             break
     
     def print_searched_emp(self, result):
+        """Prints employee info"""
         layout = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 

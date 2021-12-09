@@ -33,13 +33,14 @@ ________________________________________________________________________________
     #     return self.prompt_input()
 
     def draw_options(self):
-        #determines if menu bar should include supervisor options or not
+        """determines if menu bar should include supervisor options or not"""
         print(self.header)
         if self.user.is_supervisor():
             print(self.supervisorLine)
         print(self.footer)
 
     def prompt_input(self):
+        """Asks user to enter employee menu option"""
         while True:
             self.draw_options()
             command = input("Choose option: ")

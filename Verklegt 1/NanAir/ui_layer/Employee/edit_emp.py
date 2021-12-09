@@ -28,9 +28,8 @@ ________________________________________________________________________________
 
 
     def edit_employee(self):
-        """"""
+        """Checks if employee exists before editing"""
 
-        #check if id is len 4
         print("Quit by entering (q)")
         while True:
             edit_id = str(input("Enter employee id: "))
@@ -43,6 +42,7 @@ ________________________________________________________________________________
                 return
 
     def promt_edit(self, emp):
+        """Asks user to enter edit option"""
         while True:
             self.print_emp_as_menu(emp)
             command = input("Enter edit option: ")
@@ -68,6 +68,7 @@ ________________________________________________________________________________
                 print("Invalid option")
 
     def input_and_check(self, info_type, check_fun):
+        """Takes in input from user and checks if input is valid, returns the input if it's valid"""
         while True:
             value = input(f"Enter employee {info_type}: ")
             if not check_fun(value): print(f"Invalid employee {info_type}")
