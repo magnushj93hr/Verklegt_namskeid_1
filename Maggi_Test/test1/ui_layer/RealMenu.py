@@ -257,13 +257,13 @@ r - return to previous menu
         result = LLAPI().search_employee(emp_id)
         try:
             result.id
-            return result
+            return result, emp_id
         except AttributeError:
             print("Invalid supervisor ID")
-            return None
+            return None, None
 
     def create_case(self, result):
-        emp = self.create_case_start()
+        emp, emp_id = self.create_case_start()
         if emp != None:
             all_cases = self.llapi.all_cases()
             id = CASE + str(len(all_cases) + 1)
@@ -272,6 +272,8 @@ r - return to previous menu
             description = input("Enter description: ")
             priority = self.priority_check()
             repeated = input("Is the case repeated(y/n)?: ")
+            if repeated == "y":
+                repeat_days = int(input("Enter how many days between cases: "))
             real_id = result.id
             
             case = Case(id,location,subject, description, priority, repeated, repeat_days, real_id, emp_id)

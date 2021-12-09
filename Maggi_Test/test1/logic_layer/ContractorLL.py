@@ -25,6 +25,13 @@ class ContractorLL:
     
     def edit_contractor(self, contractor):
         return self.dlapi.edit_contractor(contractor)
+
+    def get_contractors_name(self):
+        contractors_names = []
+        all_contractors = self.all_contractors()
+        for contractor in all_contractors:
+            contractors_names.append(contractor.name)
+        return contractors_names
         
 # ----------------------------------------------------------------
 # INPUT CHECK

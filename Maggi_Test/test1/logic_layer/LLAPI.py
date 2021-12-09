@@ -156,6 +156,9 @@ class LLAPI:
     def edit_contractor(self, contractor):
         return self.contrLL.edit_contractor(contractor)
 
+    def get_contractors_name(self):
+        return self.contrLL.get_contractors_name()
+
 # ----------------------------------------------------------------
 
 # LOCATION FUNCTIONS

@@ -1,3 +1,4 @@
+# from Maggi_Test.test1.models.Contractor import Contractor
 from logic_layer.LLAPI import LLAPI
 from models.Case import Case
 from models.MaintananceReport import MaintananceReport
@@ -34,6 +35,7 @@ r - return to previous menu
 1 - search by case id
 2 - search by employee id
 3 - search by real_estate_id
+4 - search by contractor
 r - return to previous menu
 """
 
@@ -101,6 +103,8 @@ r - return to previous menu
             for i in result:
                 print(i)
             return result
+        elif command == "4": 
+            
         elif command == "r":
                 return
         # return result
@@ -146,7 +150,7 @@ r - return to previous menu
         case_ids_list = map(lambda case: case.id, cases)
         search_case_opt = input("Do you want to select a case(y/n): ")
         if search_case_opt != "y":
-            return None
+            return None, None
         while True:
             case_id = input("Enter case id: ")
             if case_id not in case_ids_list:
@@ -205,7 +209,7 @@ r - return to previous menu
         cost_of_materials = int(input("Enter cost of materials: "))
         used_contractor = input('Did you use a contractor(y/n)?: ')
         if used_contractor == "y":
-            contractor = input("Enter contractor: ")
+            contractor = self.available_contractors()
             contractor_cost = int(input("Enter contractor cost: "))
             total_cost = cost_of_materials + contractor_cost
         else:
@@ -220,6 +224,18 @@ r - return to previous menu
         self.llapi.create_maintenance_report(maintenance)
         self.llapi.edit_case(case)
 
+
+    def available_contractors(self):
+        while True:
+            print('Available contractors to choose from: \n')
+            for contractor in self.llapi.get_contractors_name():
+                print(contractor)
+            print()
+            contractor = str(input("Enter contractor: ")).lower().capitalize()
+            if contractor not in self.llapi.get_contractors_name():
+                print("Contractor not found")
+            else:
+                return contractor
     # def edit_case(self):
     #     edit_id = self.search_id
     #     _, location, subject, description, priority, repeated, real_est_id = self.user_options(None)
