@@ -27,6 +27,7 @@ ________________________________________________________________________________
             else:
                 print("Invalid option")
 
+# Gives available locations
     def available_locations(self):
         while True:
             print('Available locations to choose from: \n')

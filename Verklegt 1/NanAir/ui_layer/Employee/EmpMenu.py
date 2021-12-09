@@ -46,7 +46,7 @@ ________________________________________________________________________________
             elif command == "2":
                 self.list_all_emp.list_all_employees()
             elif command == "3" and self.user.is_supervisor():
-                self.create_emp.draw_options()
+                self.create_emp.create_employee()
             elif command == "4":
                 pass
             elif command == "r":

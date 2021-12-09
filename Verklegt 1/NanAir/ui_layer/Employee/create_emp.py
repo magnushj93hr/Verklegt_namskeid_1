@@ -17,11 +17,12 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|
 """
 
-    def draw_options(self):
-        print(self.options)
-        return self.create_employee()
+    # def draw_options(self):
+    #     print(self.options)
+    #     return self.create_employee()
 
     def create_employee(self):
+        print(self.options)
         print("Welcome to the creation kit!")
         # print("Quit by entering (q): ")
         name, phone, id, address, homeline, location, supervisor = self.user_options()
