@@ -32,15 +32,21 @@ ________________________________________________________________________________
                 result = self.llapi.search_case(search_id, 'empid')
                 self.printing_cases(result)
                 case = self.select_case()
-                self.print_full_case(case)
+                if case != None:
+                    self.print_full_case(case)
             elif command == "3":
                 search_id = input("Enter real estate id: ")
                 result = self.llapi.search_case(search_id, 'realid')
                 self.printing_cases(result)
                 case = self.select_case()
-                self.print_full_case(case)
+                if case != None:
+                    self.print_full_case(case)
             elif command == "4": 
-                self.get_contractors()
+                cases = self.get_contractors()
+                self.printing_cases(cases)
+                case = self.select_case()
+                if case != None:
+                    self.print_full_case(case)
             elif command == "r":
                     return
             else:
@@ -113,17 +119,13 @@ ________________________________________________________________________________
         print("Here are all available contractors: ")
         for contractor in all_contractors:
             print(contractor)
-        
-
-    # all_contractors = self.llapi.get_contractors_name()
-    # print('Here are all available contractors:')
-    # for contractor in all_contractors:
-    #     print(contractor)
-    # while True:
-    #     print()
-    #     contr_name = input("Enter contractor name: ")
-    #     if contr_name in all_contractors:
-    #         result = self.llapi.search_contractor_in_case(contr_name)
-    #         for i in result:
-    #             print(i)
-    #         return result
+        while True:
+            print()
+            contr_name = input("Enter contractor name: ")
+            if contr_name in all_contractors:
+                result = self.llapi.search_contractor_in_case(contr_name)
+                for case in result:
+                    print(case)
+                return result
+            else:
+                print("Invalid option")
