@@ -2,8 +2,8 @@ from logic_layer.LLAPI import LLAPI
 from models.Employee import Employee
 
 # AVAILABLE_LOCATIONS = ["Reykjavík", "Nuuk", "Kulusuk", "Þórshöfn", "Tingwall", "Longyearbyen"]
-EMP_ID = 'NaN-'
-SUP_ID = 'air-'
+EMP_ID = 'emp-'
+SUP_ID = 'sup-'
 
 
 class EmpMenu:

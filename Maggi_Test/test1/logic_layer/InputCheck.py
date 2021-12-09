@@ -26,7 +26,7 @@ class InputCheck:
 
     def check_if_sup_in_location(self, emp):
         for row in emp:
-            if row.id.split("-")[0] != "air":  return location, "True"
+            if row.id.split("-")[0] != "sup":  return location, "True"
             else:  return location, "False"
 
 # ----------------------------------------------------------------
