@@ -23,6 +23,7 @@ class CaseLL:
     
     def search_case(self, search_id, controller):
         """Takes in id and searches for case"""
+        
         all_cases = self.dlapi.get_all_cases()
         case_list = []
         if controller == 'caseid':
@@ -62,6 +63,7 @@ class CaseLL:
     
     def list_cases(self, case):
         """Takes in case and changes employee id to employee name"""
+
         employees = self.dlapi.get_all_employees()
         try:
             if len(case) > 1:
@@ -78,12 +80,10 @@ class CaseLL:
             return case
             
 
-<<<<<<< Updated upstream
-=======
-    
->>>>>>> Stashed changes
+
     def filter_cases(self, status):
         """Returns cases by status of case"""
+
         filtered_cases = []
         all_cases = self.all_cases()
         for case in all_cases:
