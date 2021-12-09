@@ -16,7 +16,7 @@ class LocationLL:
         self.dlapi.create_location(loc)
 
     def get_locations_name(self):
-        """Takes in location name and returns """
+        """Returns list of location names """
         location_names = []
         all_locations = self.all_locations()
         for location in all_locations:
