@@ -4,7 +4,7 @@ from models.Location import Location
 
 class LocationDL:
     def __init__(self):
-        self.filepath = "Maggi_Test/test1/csv_files/Location.csv"
+        self.filepath = "Verklegt 1/NanAir/csv_files/Location.csv"
     
     def get_all_locations(self):
         """Returns a list of all location"""
