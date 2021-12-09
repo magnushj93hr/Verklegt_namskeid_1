@@ -6,7 +6,7 @@ from models.Case import Case
 
 class CaseDL:
     def __init__(self):
-        self.filepath = "Maggi_Test/test1/csv_files/Case.csv"
+        self.filepath = "Verklegt 1/NanAir/csv_files/Case.csv"
      
     def get_all_cases(self):
         """Returns a list of all cases"""
