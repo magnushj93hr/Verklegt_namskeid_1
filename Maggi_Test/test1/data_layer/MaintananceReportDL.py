@@ -7,6 +7,8 @@ class MaintenanceDL:
         self.filepath = "Maggi_Test/test1/csv_files/MaintenanceReport.csv"
     
     def get_all_maintenance_reports(self):
+        """"Returns a list of all maintenance reports"""
+        
         ret_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -16,6 +18,9 @@ class MaintenanceDL:
         return ret_list
 
     def create_maintenance_report(self, maintenance):
+        """Takes in information you need to create a maintenance report and puts in maintenance report csv file  """
+
+
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["real_estate_id","description",'employee_id','case_id','cost','contractor',"contractor_cost"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
