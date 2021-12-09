@@ -3,11 +3,11 @@ class ListAllEmployee:
     def __init__(self, llapi):
         self.llapi = llapi        
         self.variables = """
-_________________________________________________________________________________________________________________________________________________________________________
-|   Name                   ID          Homeline         GSM           Address                 Location             Email                                Supervisor      |
-|                                                                                                                                                                       |"""
+___________________________________________________________________________________________________________________________________________________________________________________________
+|  Name                            Supervisor     ID        Homeline       GSM           Address                    Location                   Email                                      |
+|                                                                                                                                                                                         |"""
 
-        self.footer = "|_______________________________________________________________________________________________________________________________________________________________________|"
+        self.footer = "|_________________________________________________________________________________________________________________________________________________________________________________________|"
 
     def list_all_employees(self):
         all_emps = self.llapi.all_employees()
@@ -43,5 +43,5 @@ ________________________________________________________________________________
     def print_employees(self, all_emps):
         print(self.variables)
         for emp in all_emps:
-            print(f"|   {emp.name:<23}{emp.id:<12}{emp.homeline:<17s}{emp.phone:<14s}{emp.address:<24}{emp.location:<21}{emp.email:<37s}{emp.supervisor:<16}|")
+            print(f"|  {emp.name:<32}{emp.supervisor:<15}{emp.id:<10}{emp.homeline:<15s}{emp.phone:<14s}{emp.address:<27}{emp.location:<27}{emp.email:<43s}|")
         print(self.footer)
