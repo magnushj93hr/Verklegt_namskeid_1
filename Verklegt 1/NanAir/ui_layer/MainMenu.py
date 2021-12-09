@@ -1,38 +1,37 @@
-from ui_layer.Destination.DestMenu import DestMenu
 from ui_layer.Employee.EmpMenu import EmpMenu
-from ui_layer.RealEstate.real_estate_menu import RealEstate
-from ui_layer.Cases.cases_menu import Cases
-from ui_layer.Contractor.contractor_menu import Contractor
+from ui_layer.RealEstate.RealEstMenu import RealEstMenu
+from ui_layer.Cases.CaseMenu import CaseMenu
+from ui_layer.Contractor.ContractorMenu import ContractorMenu
+from ui_layer.Location.LocationMenu import LocationMenu
 from logic_layer.LLAPI import LLAPI
 
 class MainMenu:
     def __init__(self, user):
         self.user = user
         self.llapi = LLAPI()
-        self.header = """
+        self.options = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       >Home(home)<        Employee(emp)        Real estate(real)         Cases(cases)        Contractor(con)    |
+|       >Home<        Employee          Real estate         Cases           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|   - home        //Goes to home screen                                             - quit         //Quit         |
-|   - emp         //Goes to employee screen                                                                       |
-|   - real        //Goes to real estate screen                                                                    |
-|   - cases       //Goes to cases screen                                                                          |
-|   - con         //Goes to contractor screen                                                                     |"""
-        self.supervisorLine = """|   - dest        //Goes to destination screen, shows what destinations are available                             |"""
-        self.footer = """|_________________________________________________________________________________________________________________|
+|   - 1         //Goes to employee menu                                             - q         //Quit            |
+|   - 2         //Goes to real estate menu                                                                        |
+|   - 3         //Goes to case menu                                                                               |
+|   - 4         //Goes to contractor menu                                                                         |
+|   - 5         //Goes to location menu                                                                           |
+|_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |                                                                                                                 |
 |                                                      |                                                          |
 |                                                      |                                                          |
 |                            .''.         .''. `._    _|_    _.' .''.         .''.                                |
 |                             '. '.     .' .'     ~-./ _ \.-~     '. '.     .' .'                                 |
-|             ____              '. '._.' .'         /_/_\_\         '. '._.' .'               ____                |
-|            '.__ ~~~~-----......-'.' '.'`~-.____.-~       ~-..____.-~'.' '.'`-......-----~~~~ __.'               |
-|                ~~~~----....__  .''._.'.              .              .'._.''.  ___....----~~~~                   |
+|                               '. '._.' .'         /_/_\_\         '. '._.' .'                                   |
+|            .----~~~~-----......-'.' '.'`~-.____.-~       ~-..____.-~'.' '.'`-......-----~~~~---.                |
+|            '---~~~~----....__  .''._.'.              .              .'._.''.  ___....----~~~~--'                |
 |                              .' .'__'. '._..__               __.._.' .'__'. '.                                  |
 |                            .' .'||    '. '.   ~-.._______..-~   .' .'    ||'. '.                                |
 |                           '.,'  ||-.    ',.'        |_|        '.,'    .-||  ',.'                               |
@@ -43,43 +42,34 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|
 """
 
-    def draw_options(self):
-        #prints out menu bar
-        self.print_options()
-        return self.prompt_input()
-
-    def print_options(self):
-        #determines if menu bar should include supervisor options or not
-        print(self.header)
-        if self.user.is_supervisor():
-            print(self.supervisorLine)
-        print(self.footer)
+    # def draw_options(self):
+    #     print(self.options)
+    #     self.prompt_input()
 
     def prompt_input(self):
-        # return_option = ""
+        return_option = ""
         while True:
-            command = input("Choose option: ")
-            if command == "emp":
+            print(self.options)
+            command = input("Enter your input: ")
+            if command == "1":
                 emp_menu = EmpMenu(self.llapi, self.user)
-                emp_menu.draw_options()
-            elif command == "dest" and self.user.is_supervisor():
-                dest_menu = DestMenu(self.llapi)
-                dest_menu.draw_options()
-            elif command == "real":
-                real_menu = RealEstate(self.llapi, self.user)
+                return_option = emp_menu.prompt_input()
+            elif command == "2":
+                real_menu = RealEstMenu(self.llapi)
                 real_menu.draw_options()
-            elif command == "cases":
-                cases_menu = Cases(self.llapi, self.user)
-                cases_menu.draw_options()
-            elif command == "con":
-                con_menu = Contractor(self.llapi, self.user)
-                con_menu.draw_options()
-            elif command == "quit":
+            elif command == '3':
+                case_menu = CaseMenu(self.llapi)
+                case_menu.draw_options()
+            elif command == '4':
+                case_menu = ContractorMenu(self.llapi)
+                case_menu.draw_options()
+            elif command == "5":
+                loc_menu = LocationMenu(self.llapi)
+                loc_menu.draw_options()
+            elif command == "q":
+                print("Thanks for using NaN air")
                 return
             else:
-                print("invalid option, try again!")
-            # if return_option == "m":
-            #     return "m"
-            print(self.options)
-
-
+                print("Invalid option, try again!")
+            if return_option == "m":
+                continue

@@ -1,6 +1,6 @@
 from logic_layer.LLAPI import LLAPI
 
-class RealEstate:
+class ContractorMenu:
     def __init__(self, llapi, user):
         self.user = user
         self.llapi = llapi
@@ -9,10 +9,11 @@ class RealEstate:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        >Real estate(real)<         Cases(cases)        Contractor(con)    |
+|       Home(home)        Employee(emp)        Real estate(real)         Cases(cases)        >Contractor(con)<    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|   - s               //Search for estate                       - fi          //Filter options                    |
+|   - s               //Search for contractor                      - fi          //Filter options                 |
+|   - o               //Open, for more info                        - d           //Display cases form contractor  |
 |   - b               //Go back                                                                                   |"""
         self.supervisorLine = """|   - cr              //Creates new estate                                                                        |"""
 
@@ -30,7 +31,7 @@ ________________________________________________________________________________
         if self.user.is_supervisor():
             print(self.supervisorLine)
         print(self.footer)
-    
+
     def prompt_input(self):
         while True:
             command = input("Choose option: ")
@@ -43,7 +44,9 @@ ________________________________________________________________________________
                 pass
             elif command == "fi":
                 pass
-            elif command == "e":
+            elif command == "o":
+                pass
+            elif command == "d":
                 pass
             elif command == "b":
                 return "b"

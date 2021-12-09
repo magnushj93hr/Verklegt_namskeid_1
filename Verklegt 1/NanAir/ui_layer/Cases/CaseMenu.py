@@ -1,6 +1,6 @@
 from logic_layer.LLAPI import LLAPI
 
-class Cases:
+class CaseMenu:
     def __init__(self, llapi, user):
         self.user = user
         self.llapi = llapi
