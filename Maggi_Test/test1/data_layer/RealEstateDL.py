@@ -8,6 +8,7 @@ class RealEstateDL:
         self.filepath = "Maggi_Test/test1/csv_files/RealEstate.csv"
     
     def get_all_realestate(self):
+        """Returns a list of all real estates"""
         ret_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -17,6 +18,8 @@ class RealEstateDL:
         return ret_list
 
     def create_realestate(self, real):
+        """Takes in information you need to create a real estate. The information will 
+        be stored in a RealEstate.csv file"""
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["address","size","rooms",'id','amenities','location']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
