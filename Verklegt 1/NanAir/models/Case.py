@@ -22,6 +22,7 @@ class Case:
         return f"id: {self.id}, location: {self.location}, subject: {self.subject}, description: {self.description}, priority: {self.priority}, repeated: {self.repeated}, repeat_days: {self.repeat_days}, real_est_id: {self.real_est_id}, created by: {self.emp_id} creation date: {self.date}, status: {self.status}, closed date: {self.closed_date}"
     
     def creation_date(self):
+        """Returns todays date"""
         dt = datetime.datetime.now()
         date = "%s/%s/%s" % (dt.day, dt.month, dt.year)
         return date

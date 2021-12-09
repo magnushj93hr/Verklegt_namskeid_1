@@ -104,14 +104,21 @@ r - return to previous menu
                 print(i)
             return result
         elif command == "4":
-            contr_name = input("Enter contractor name: ")
-            result = self.llapi.search_contractor_in_case(contr_name)
-            for i in result:
-                print(i)
-            return result
+            all_contractors = self.llapi.get_contractors_name()
+            print('Here are all available contractors:')
+            for contractor in all_contractors:
+                print(contractor)
+            while True:
+                print()
+                contr_name = input("Enter contractor name: ")
+                if contr_name in all_contractors:
+                    result = self.llapi.search_contractor_in_case(contr_name)
+                    for i in result:
+                        print(i)
+                    return result
+                
         elif command == "r":
                 return
-        # return result
 
     def prompt_input_filter(self):
         while True:
