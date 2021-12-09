@@ -107,7 +107,10 @@ r - return to previous menu
 # ------------------------------------------------------------------------------------------------------------------
 # Create real estate
     def create_realestate(self):
-        value = int(input("How many apartments are the in your area: "))
+        try:
+            value = int(input("How many apartments are the in your area: "))
+        except ValueError:
+            print("Only enter a int number")
         address, size, rooms, id, amenities, location = self.user_options("create")
         if value > 1:
             for apartment in range(0, value):
@@ -250,13 +253,18 @@ r - return to previous menu
                 return priority
 
     def create_case_start(self):
-        emp_id = input("Enter your supervisor ID: ")
+        emp_id = input("Enter your supervisor ID: ").lower()
         result = LLAPI().search_employee(emp_id)
-        return result
+        try:
+            result.id
+            return result, emp_id
+        except AttributeError:
+            print("Invalid supervisor ID")
+            return None, None
 
     def create_case(self, result):
-        emp = self.create_case_start()
-        if emp.id.split("-")[0] == "air":
+        emp, emp_id = self.create_case_start()
+        if emp != None:
             all_cases = self.llapi.all_cases()
             id = CASE + str(len(all_cases) + 1)
             location = result.location
@@ -267,10 +275,9 @@ r - return to previous menu
             if repeated == "y":
                 repeat_days = int(input("Enter how many days between cases: "))
             real_id = result.id
-            emp_id = input("Enter employee id: ")
-
-        case = Case(id,location,subject, description, priority, repeated, repeat_days, real_id, emp_id)
-        self.llapi.create_case(case)        
+            
+            case = Case(id,location,subject, description, priority, repeated, repeat_days, real_id, emp_id)
+            self.llapi.create_case(case) 
 # ------------------------------------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------------------------------------

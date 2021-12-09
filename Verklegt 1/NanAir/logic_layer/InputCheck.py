@@ -20,15 +20,15 @@ class InputCheck:
         new_list = []
         all_employees = self.dlapi.get_all_employees()
         for employee in all_employees:
-            if employee.location == filter:
+            if employee.location == location:
                 new_list.append(employee)
         return self.check_if_sup_in_location(new_list)
 
-    def check_if_sup_in_location(self, emp):
-        for row in emp:
-            if row.id.split("-")[0] != "sup":  return location, "True"
-            else:  return location, "False"
-
+    def check_if_sup_in_location(self, emp_list):
+        for emp in emp_list:
+            if emp.supervisor == "y":
+                return True
+        return False
 # ----------------------------------------------------------------
 # INPUT CHECK
     def check_if_name_correct(self, name):
