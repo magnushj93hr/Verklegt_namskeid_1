@@ -1,8 +1,9 @@
 from models.Employee import Employee
 
+AUTO_ID = 'NaN-'
+
 class CreateEmp:
-    def __init__(self, llapi, user):
-        self.user = user
+    def __init__(self, llapi):
         self.llapi = llapi
         self.options = """
       __|__                                                                                             __|__
@@ -22,21 +23,24 @@ ________________________________________________________________________________
 
     def create_employee(self):
         print("Welcome to the creation kit!")
-        print("Quit by entering (q): ")
+        # print("Quit by entering (q): ")
         name, phone, id, address, homeline, location, supervisor = self.user_options()
         # if name != None and phone != None and id != None and address != None and homeline != None and location != None and supervisor != None:
         emp = Employee(name, id, address, homeline, location, phone, supervisor)
-        self.llapi.create_employee(emp)
+        save = self.display_emp(emp)
+        if save:
+            self.llapi.create_employee(emp)
 
     def user_options(self):
         location = self.available_locations()
-        check = self.llapi.check_location_append_to_list(location)
-        id = self.make_emp_or_sup_id(check, location)
+        # check = self.llapi.check_location_append_to_list(location)
+        id = self.get_emp_id()
         name = self.input_and_check("name", lambda value : self.llapi.is_name_correct(value))
         phone = self.input_and_check("phone", lambda value : self.llapi.is_phone_correct(value))
-        address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
         homeline = self.input_and_check("homeline", lambda value : self.llapi.is_phone_correct(value))
-        return name, phone, id, address, homeline, location
+        address = self.input_and_check("address", lambda value : self.llapi.is_address_correct(value))
+        supervisor = self.is_supervisor()
+        return name.lower().capitalize(), phone, id, address, homeline, location, supervisor
 
 
 # input parameters and checks
@@ -60,28 +64,37 @@ ________________________________________________________________________________
             else:
                 return location
 
-    def make_emp_or_sup_id(self, check, location):
+    def get_emp_id(self):
+        all_id = self.llapi.all_employees()
+        id = AUTO_ID + str(len(all_id) + 1)
+        return id
+    
+    def is_supervisor(self):
         while True:
-            all_id = self.llapi.all_employees()
-            emp_or_sup = input("Make employee or supervisor(e/s): ").lower()
-            if emp_or_sup == "e":
-                id = EMP_ID + str(len(all_id) + 1).zfill(4)
-                return id
-            elif emp_or_sup == "s":
-                if check == "True":
-                    id = SUP_ID + str(len(all_id) + 1).zfill(4)
-                    return id
-                else: print(f"Invalid ther is alredy a supervisor in {location}")
+            opt = input("Make employee supervisor(yes/no): ")
+            if opt != "yes" and opt != "no":
+                print("Invalid option")
+            else:
+                return opt
+
+
+    # def make_emp_or_sup_id(self, check, location):
+    #     while True:
+    #         all_id = self.llapi.all_employees()
+    #         emp_or_sup = input("Make employee or supervisor(e/s): ").lower()
+    #         if emp_or_sup == "e":
+    #             id = EMP_ID + str(len(all_id) + 1).zfill(4)
+    #             return id
+    #         elif emp_or_sup == "s":
+    #             if check == "True":
+    #                 id = SUP_ID + str(len(all_id) + 1).zfill(4)
+    #                 return id
+    #             else: print(f"Invalid ther is alredy a supervisor in {location}")
 
 
 # ------------------------------------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
 
 
     def display_emp(self, emp):
@@ -97,19 +110,26 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|"""
         
         new_emp = f"""|                                                                                                                 |
-|   Create New Employee                                                                                           |
+|      Employee                                                                                                   |
 |                                                                                                                 |
 |                    Name: {emp.name:87s}|
-|                      ID: {emp.emp_id:87s}|
+|                      ID: {emp.id:87s}|
 |            Home address: {emp.address:87s}|
 |        Home phonenumber: {emp.homeline:87s}|
 |                     GSM: {emp.phone:87s}|
 |                   Email: {emp.email:87s}|
 |                Location: {emp.location:87s}|
-|                    Area: {emp.area:87s}|
-|   Is Supervisor(yes/no): {emp.supervisor:87s}|
+|              Supervisor: {emp.supervisor:87s}|
 |_________________________________________________________________________________________________________________|
 """
 
         print(header)
         print(new_emp)
+        while True:
+            save = input("Do you want to save employee(y/n): ")
+            if save == "y":
+                return True
+            elif save == "n":
+                return False
+            else:
+                print("Invalid option")
