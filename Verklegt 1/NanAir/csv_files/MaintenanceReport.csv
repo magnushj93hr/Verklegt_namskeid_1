@@ -4,4 +4,4 @@ real_estate_id,description,employee_id,case_id,material_cost,contractor,contract
 5002,Lagaði vaskinn,NaN-12,CAS-4,4500,Iron Man,0,4500
 5003,Lagaði heita potta,NaN-10,CAS-1,4500,Tobey,0,4500
 5002,Lagaði allt,NaN-10,CAS-4,500,Tobey,0,599
-5002,Lagaði vaskinn,NaN-10,CAS-5,599,Tobey,349,948
+5002,Lagaði vaskinn,NaN-10,CAS-5,599,Iron Man,100,948

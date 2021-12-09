@@ -30,8 +30,8 @@ ________________________________________________________________________________
     def edit_employee(self):
         """Checks if employee exists before editing"""
 
-        print("Quit by entering (q)")
         while True:
+            print("Quit by entering (q)")
             edit_id = str(input("Enter employee id: "))
             if edit_id != "q":
                 emp = self.llapi.search_employee(edit_id)

@@ -1,5 +1,4 @@
 
-
 class SearchCasae:
     def __init__(self, llapi):
         self.llapi = llapi
@@ -26,27 +25,39 @@ ________________________________________________________________________________
             if command == "1":
                 search_id = input("Enter case id: ")
                 result = self.llapi.get_case(search_id)
-                self.print_full_case(result)
+                if len(result) != 0:
+                    self.print_full_case(case)
+                else:
+                    print("No case found")
             elif command == "2":
                 search_id = input("Enter employee id: ")
                 result = self.llapi.search_case(search_id, 'empid')
-                self.printing_cases(result)
-                case = self.select_case()
-                if case != None:
-                    self.print_full_case(case)
+                if len(result) != 0:
+                    self.printing_cases(result)
+                    case = self.select_case()
+                    if case != None:
+                        self.print_full_case(case)
+                else:
+                    print("No case found")
             elif command == "3":
                 search_id = input("Enter real estate id: ")
                 result = self.llapi.search_case(search_id, 'realid')
-                self.printing_cases(result)
-                case = self.select_case()
-                if case != None:
-                    self.print_full_case(case)
+                if len(result) != 0:
+                    self.printing_cases(result)
+                    case = self.select_case()
+                    if case != None:
+                        self.print_full_case(case)
+                else:
+                    print("No case found")
             elif command == "4": 
                 cases = self.get_contractors()
-                self.printing_cases(cases)
-                case = self.select_case()
-                if case != None:
-                    self.print_full_case(case)
+                if len(result) != 0:
+                    self.printing_cases(result)
+                    case = self.select_case()
+                    if case != None:
+                        self.print_full_case(case)
+                else:
+                    print("No case found")
             elif command == "r":
                     return
             else:
@@ -58,7 +69,6 @@ ________________________________________________________________________________
 
     def print_full_case(self, case):
         reports = self.llapi.search_maintenance_report(case.id)
-        last_report = reports[-1]
         print_case = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -67,7 +77,7 @@ ________________________________________________________________________________
 |       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|      Case: {case.id:28s}Created by: {case.emp_id:25}Total cost: {last_report.total_cost:24s}|
+|      Case: {case.id:28s}Created by: {case.emp_id:31}Total cost: {self.get_total_cost(reports):<18s}|
 |                                                                                                                 |
 |          Real estate ID: {case.real_est_id:87s}|
 |                Location: {case.location:87s}|
@@ -81,27 +91,36 @@ ________________________________________________________________________________
 |             Closed date: {case.closed_date:87s}|
 |_________________________________________________________________________________________________________________|"""
 
-
-
         print(print_case)
-        if len(reports) == 1:
+        if len(reports) == 0:
+            print("No maintenance reports have been made")
+        elif len(reports) == 1:
             self.print_report(reports[0])
         else:
             for rep in reports:
                 self.print_report(rep)
             
 
+
     def print_report(self, report):
         content =  f"""|                                                                                                                 |
 |      Maintenance Report                                                                                         |
 |                                                                                                                 |
 |             Employee ID: {report.employee_id:87s}|
+|           Material cost: {report.material_cost:87s}|
 |              Contractor: {report.contractor:87s}|
 |         Contractor cost: {report.contractor_cost:87s}|
 |             Description: {report.description:87s}|
 |_________________________________________________________________________________________________________________|"""
         
         print(content)
+
+
+    def get_total_cost(self, reports):
+        if len(reports) != 0:
+            last_report = reports[-1]
+            return last_report.total_cost
+        return 0
 
 
     def printing_cases(self, case_list):
