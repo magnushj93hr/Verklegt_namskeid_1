@@ -6,6 +6,7 @@ from ui_layer.Contractor.ContractorMenu import ContractorMenu
 from ui_layer.Location.LocationMenu import LocationMenu
 from logic_layer.LLAPI import LLAPI
 
+
 class MainMenu:
     def __init__(self, user):
         self.user = user

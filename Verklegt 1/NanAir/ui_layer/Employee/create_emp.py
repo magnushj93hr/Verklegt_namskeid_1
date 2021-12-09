@@ -45,6 +45,7 @@ ________________________________________________________________________________
 
 # input parameters and checks
     def input_and_check(self, info_type, check_fun):
+        """Takes in input from user and checks if input is valid, returns the input if it's valid"""
         while True:
             value = input(f"Enter employee {info_type}: ")
             if not check_fun(value):
@@ -53,6 +54,7 @@ ________________________________________________________________________________
                 return value
 
     def available_locations(self):
+        """Displays available locations and returns the location the user chooses"""
         while True:
             print('Available locations to choose from: \n')
             for location in self.llapi.get_locations_name():
@@ -65,11 +67,13 @@ ________________________________________________________________________________
                 return location
 
     def get_emp_id(self):
+        """Returns employee id"""
         all_id = self.llapi.all_employees()
         id = AUTO_ID + str(len(all_id) + 1)
         return id
     
     def is_supervisor(self):
+        """Making employee an supervisor or not, returns yes or no"""
         while True:
             opt = input("Make employee supervisor(yes/no): ")
             if opt != "yes" and opt != "no":
@@ -98,6 +102,7 @@ ________________________________________________________________________________
 
 
     def display_emp(self, emp):
+        """Prints new employee info"""
         header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
