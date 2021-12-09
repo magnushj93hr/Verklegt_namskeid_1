@@ -42,7 +42,8 @@ class Login:
             result = self.llapi.search_employee(user_id)
             if result == None:
                 print("No user found")
-            break
+            else:
+                break
         user = User(result)
         main_menu = MainMenu(user)
         main_menu.prompt_input()
