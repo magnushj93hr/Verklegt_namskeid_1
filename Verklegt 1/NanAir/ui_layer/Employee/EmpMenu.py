@@ -1,6 +1,4 @@
 from ui_layer.Employee.create_emp import CreateEmp
-from logic_layer.LLAPI import LLAPI
-from models.Employee import Employee
 from ui_layer.Employee.search_emp import SearchEmp
 from ui_layer.Employee.list_all_emp import ListAllEmployee
 
@@ -9,7 +7,7 @@ class EmpMenu:
     def __init__(self, llapi, user):
         self.user = user
         self.llapi = llapi
-        # self.create_emp = CreateEmp()
+        self.create_emp = CreateEmp(llapi)
         self.search_emp = SearchEmp(llapi)
         self.list_all_emp = ListAllEmployee(llapi)
         self.header = """
