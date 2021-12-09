@@ -17,4 +17,4 @@ class Employee:
         return email
 
     def __str__(self):
-        return f"name: {self.name}, id: {self.id}, address: {self.address}, homeline: {self.homeline}, email: {self.email}, location: {self.location}, phone: {self.phone}"
+        return f"  {self.name:<20}{self.id:<11}{self.address:<20}{self.homeline:<11}{self.email:<30}{self.location:<20}{self.phone:<20}"
