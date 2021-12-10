@@ -1,7 +1,0 @@
-dags 9.12.21
-
-verkefni dagsins:
-fletta upp verkbeiðnum sem verktakar unnu við: Haukur og Maggi
-Gera ui layer: Ellý og Siggi
-commenta öll föll: Kristín og Hlynur
-laga skýrsluna og byrja á myndbandinu?
