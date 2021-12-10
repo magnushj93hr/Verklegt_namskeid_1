@@ -21,6 +21,7 @@ ________________________________________________________________________________
 
     def prompt_input(self):
         while True:
+            self.llapi.clear()
             print(self.options)
             command = input("Choose option: ")
             if command == "1":
@@ -28,8 +29,7 @@ ________________________________________________________________________________
             elif command == "2":
                 self.list_all_cases.list_all_cases()
             elif command == "r":
+                self.llapi.clear()
                 return "r"
-            elif command == "m":
-                return "m"
             else:
                 print("invalid option, try again!")

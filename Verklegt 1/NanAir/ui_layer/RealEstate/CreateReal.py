@@ -69,18 +69,6 @@ class CreateReal:
 # ------------------------------------------------------------------------------------------------------------------
 
     def display_real(self, real):
-        print(real)
-        self.edit_options = f"""
-            Real estate: {real.id}
-
-            1 - address: {real.address}
-            2 - size: {real.size}
-            3 - rooms: {real.rooms}
-            4 - amenities: {real.amenities}
-            5 - location: {real.location}
-            r - return to previous menu
-            """
-        print(self.edit_options)
         self.header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -101,6 +89,7 @@ ________________________________________________________________________________
             4 - amenities: {real.amenities}
             5 - location: {real.location}
 |_________________________________________________________________________________________________________________|"""
+        self.llapi.clear()
         print(f"{self.header}\n{self.new_real}")
         while True:
             save = input("Do you want to save employee(y/n): ")

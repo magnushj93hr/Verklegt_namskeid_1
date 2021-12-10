@@ -33,6 +33,7 @@ ________________________________________________________________________________
 |      Location: {real.location:97s}|
 |      Return to previous menu                                                                                    |
 |_________________________________________________________________________________________________________________|"""
+        self.llapi.clear()
         print(f"{self.header}\n{self.edit_options}")
 
 
@@ -58,13 +59,10 @@ ________________________________________________________________________________
             self.search_output_printer(result)
             command = input("Enter your input: ")
             if command == "1": 
-                self.llapi.clear() # Maby clear 2 times
                 self.edit_real1.edit_real(result)
             elif command == "2":
-                self.llapi.clear() 
                 self.create_real1.create_case(result)
             elif command == "3": 
-                self.llapi.clear()
                 self.edit_case1.edit_case(result)   
             elif command == "r": 
                 self.llapi.clear()

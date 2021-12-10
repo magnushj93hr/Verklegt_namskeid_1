@@ -19,6 +19,7 @@ ________________________________________________________________________________
 """
 
     def draw_options(self):
+        self.llapi.clear()
         print(self.options)
         self.prompt_input()
 
@@ -28,6 +29,7 @@ ________________________________________________________________________________
             if command == "1":
                 self.create_location.create_location()
             elif command == "r":
+                self.llapi.clear()
                 return "r"
             else:
                 print("invalid option, try again!")
