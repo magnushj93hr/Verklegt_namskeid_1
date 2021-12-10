@@ -1,6 +1,0 @@
-dags 29.11.2021
-
-verkefni dagsins:
--Fara yfir feedbackið og laga það sem við getum í skýrslunni
--Skipta upp verkum (layers)
-	- fara yfir myndbandið og vera á sömu blaðsíðunni þegar við 	byrjum að forrita.
