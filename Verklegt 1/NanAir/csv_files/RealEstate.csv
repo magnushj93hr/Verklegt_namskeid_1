@@ -4,7 +4,7 @@ Reykjabyggd 47,600,5,5001,"['Hot-tub', ' mirror']",Nuuk
 Harbor 1,500m2,1,5002,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
 Harbor 1,500m2,1,5003,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
 Harbor 1,500m2,1,5004,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
-Harbor 1,500m2,1,5005,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
+Harbor 1,500m2,1,5005,"['Sauna', 'Billiard', 'Nuclear reactor']",Longyearbyen
 Harbor 1,500m2,1,5006,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
 Harbor 1,500m2,1,5007,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
 Harbor 1,500m2,1,5008,"['Sauna', 'Gym', 'Billiard', 'Nuclear reactor']",Longyearbyen
@@ -130,3 +130,10 @@ sunnubraut 18,200m2,8,1246,"['pool', 'sauna']",Wardrobe
 sunnubraut 18,200m2,8,1247,"['pool', 'sauna']",Wardrobe
 Vel 217,150m2,4,1001,"['hot-tub', ' shower']",Longyearbyen
 Harbour 1,5000m2,80,9991,['bed'],Longyearbyen
+sunnubraut 1,200m2,15,8888,"['sund', ' gym']",Reykjavik
+sunnubraut 1,200m2,50,8889,"['sund', ' gym']",Reykjavik
+sunnubraut 1,200m2,50,8890,"['sund', ' gym']",Reykjavik
+sunnubraut 1,200m2,50,8891,"['sund', ' gym']",Reykjavik
+sunnubraut 1,200m2,50,8892,"['sund', ' gym']",Reykjavik
+noatun 5,40m2,4,5555,"['pool', ' sauna']",Wardrobe
+noatun 5,40m2,5,5556,"['pool', ' sauna']",Wardrobe

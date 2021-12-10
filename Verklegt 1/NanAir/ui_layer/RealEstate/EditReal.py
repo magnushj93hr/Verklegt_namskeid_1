@@ -36,8 +36,7 @@ ________________________________________________________________________________
 |    3 - Rooms: {real.rooms:98s}|
 |    4 - Amenities: {real.amenities:94s}|
 |    5 - Location: {real.location:95s}|
-|_________________________________________________________________________________________________________________|
-"""
+|_________________________________________________________________________________________________________________|"""
         self.llapi.clear()
         print(f"{self.header}\n{self.edit_options}")
 
@@ -89,12 +88,15 @@ ________________________________________________________________________________
 
     def amenities_logic(self, ame):
         """amenities options, add or remove"""
-        input_ame = input("Enter a option: ")
-        if input_ame == "1":
-            list_ame = self.amenities_remove(ame)
-        elif input_ame == "2":
-            list_ame = self.amenities_add(ame)
-        return list_ame
+        while True:
+            input_ame = input("Enter a option: ")
+            if input_ame == "1":
+                list_ame = self.amenities_remove(ame)
+                return list_ame
+            elif input_ame == "2":
+                list_ame = self.amenities_add(ame)
+                return list_ame
+            else: print("Invalid option")
 
     def amenities_remove(self, ame):
         """Remove amenities from amenities list"""
@@ -104,16 +106,17 @@ ________________________________________________________________________________
             if rem_input in ame.amenities: 
                 new_list = ast.literal_eval(ame.amenities)
                 new_list.remove(rem_input)
-                return new_list
+                return str(new_list)
             else: print(f"{rem_input} is not in the amenities")
 
     def amenities_add(self, ame):
         """Add amenities to amenities list"""
         print(ame.amenities)
         list_ame = input("Enter a amenities to add, seperated by(,): ").split(",")
-        if ame.amenities == "":
-            ame.amenities = []
-        return ame.amenities.extend(list_ame)
+        if ame.amenities == "":   ame.amenities = []
+        new_list = ast.literal_eval(ame.amenities)
+        new_list.extend(list_ame)
+        return str(new_list)
 # -- end of edit amenities
 
     def available_locations(self):
