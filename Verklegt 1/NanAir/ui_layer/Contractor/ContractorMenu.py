@@ -1,6 +1,7 @@
 from ui_layer.Contractor.list_all_con import ListAllContractors
 from ui_layer.Contractor.create_con import CreateCon
 from ui_layer.Contractor.search_con import SearchCon
+from ui_layer.Contractor.edit_con import EditCon
 
 class ContractorMenu:
     def __init__(self, llapi, user):
@@ -9,6 +10,7 @@ class ContractorMenu:
         self.list_all_con = ListAllContractors(llapi)
         self.create_con = CreateCon(llapi)
         self.search_con = SearchCon(llapi)
+        self.edit_con = EditCon(llapi)
         self.header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -43,8 +45,8 @@ ________________________________________________________________________________
                 self.search_con.search_con()
             elif command == "3" and self.user.is_supervisor():
                 self.create_con.create_contractor()
-            elif command == "4":
-                pass
+            elif command == "4" and self.user.is_supervisor():
+                self.edit_con.promt_input()
             elif command == "r":
                 return "r"
             elif command == "m":

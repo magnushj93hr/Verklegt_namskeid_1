@@ -22,7 +22,7 @@ ________________________________________________________________________________
         print(self.options)
         print("Welcome to the creation kit!")
         name, phone, contact, location, opening_hours = self.user_options()        
-        contr = Contractor(name, contact, phone, opening_hours, location)
+        contr = Contractor(name.lower().title(), contact, phone, opening_hours, location)
         save = self.display_con(contr)
         if save:
             self.llapi.create_contractor(contr)

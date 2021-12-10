@@ -26,7 +26,7 @@ class ContractorLL:
                 return contractor
     
     def edit_contractor(self, contractor):
-        """Takes in a case and updates it"""
+        """Takes in contractor and updates it"""
         return self.dlapi.edit_contractor(contractor)
 
     def get_contractors_name(self):
