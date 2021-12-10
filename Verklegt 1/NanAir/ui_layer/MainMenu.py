@@ -67,8 +67,8 @@ ________________________________________________________________________________
                 con_menu = ContractorMenu(self.llapi, self.user)
                 con_menu.prompt_input()
             elif command == "5":
-                loc_menu = LocationMenu(self.llapi, self.user)
-                loc_menu.draw_options()
+                loc_menu = LocationMenu(self.llapi)
+                loc_menu.prompt_input()
             elif command == "q":
                 print("Thanks for using NaN air")
                 return
