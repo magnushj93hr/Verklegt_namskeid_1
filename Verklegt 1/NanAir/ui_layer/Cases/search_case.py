@@ -21,6 +21,7 @@ ________________________________________________________________________________
 """
 
     def search_options(self):
+        """Search for case"""    
         while True:
             print(self.options)
             command = input("Enter your input: ")
@@ -71,6 +72,7 @@ ________________________________________________________________________________
 
 
     def print_full_case(self, case):
+        """Print case info plus maintenance report"""
         reports = self.llapi.search_maintenance_report(case.id)
         print_case = f"""
       __|__                                                                                             __|__
@@ -106,6 +108,7 @@ ________________________________________________________________________________
 
 
     def print_report(self, report):
+        """prints report"""
         content =  f"""|                                                                                                                 |
 |      Maintenance Report                                                                                         |
 |                                                                                                                 |
@@ -120,6 +123,7 @@ ________________________________________________________________________________
 
 
     def get_total_cost(self, reports):
+        """Takes in report info and returns total cost"""
         if len(reports) != 0:
             last_report = reports[-1]
             return last_report.total_cost
@@ -127,6 +131,7 @@ ________________________________________________________________________________
 
 
     def printing_cases(self, case_list):
+        """Prints list of cases"""
         header = """
 __________________________________________________________________________________________________________________________________________________________________
 |   ID       Subject                     Real estate ID       Location                   Priority        Created          Status             Closed date         |
@@ -139,6 +144,7 @@ ________________________________________________________________________________
 
 
     def select_case(self):
+        """Asks user if he wants to select a case"""
         while True:
             option = input("Do you want to select a case(y/n): ")
             if option == "y":
@@ -149,6 +155,7 @@ ________________________________________________________________________________
                 print("Invalid option")
 
     def get_the_case(self):
+        """Returns a case"""
         while True:
             case_id = input("Enter case ID: ")
             case = self.llapi.get_case(case_id)
@@ -158,6 +165,8 @@ ________________________________________________________________________________
                 return case
 
     def get_contractors(self):
+        """Displays all available contractors and asks what contractor user wants,
+        returns cases he's worked on"""
         all_contractors = self.llapi.get_contractors_name()
         print("Here are all available contractors: ")
         for contractor in all_contractors:
@@ -174,6 +183,7 @@ ________________________________________________________________________________
                 print("Invalid option")
 
     def make_report(self, case):
+        """Takes in case information and asks user if he wants to create maintenance report"""
         if case.status == "Open":
             while True:
                 option = input("Do you want to create maintenance report(y/n): ")
