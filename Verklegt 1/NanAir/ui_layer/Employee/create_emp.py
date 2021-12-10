@@ -20,6 +20,7 @@ ________________________________________________________________________________
 
     def create_employee(self):
         """Creates employee"""
+        self.llapi.clear()
         print(self.options)
         print("Welcome to the creation kit!")
         name, phone, id, address, homeline, location, supervisor = self.user_options()

@@ -70,6 +70,19 @@ ________________________________________________________________________________
             else:
                 print("Invalid option")
 
+    def available_locations(self):
+        """Displays available locations and returns the location the user chooses"""
+        while True:
+            print('Available locations to choose from: \n')
+            for location in self.llapi.get_locations_name():
+                print(location)
+            print()
+            location = str(input("Enter location: ")).lower().capitalize()
+            if location not in self.llapi.get_locations_name():
+                print("Invalid location")
+            else:
+                return location
+
     def input_and_check(self, info_type, check_fun):
         """Takes in input from user and checks if input is valid, returns the input if it's valid"""
         while True:
