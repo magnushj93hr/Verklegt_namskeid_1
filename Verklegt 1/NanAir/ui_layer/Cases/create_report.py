@@ -56,10 +56,10 @@ ________________________________________________________________________________
 |             Employee ID: {report.employee_id:87s}|
 |          Real estate ID: {report.real_estate_id:87s}|
 |             Description: {report.description:87s}|
-|           Material cost: {report.material_cost:87s}|
+|           Material cost: {report.material_cost:<87d}|
 |              Contractor: {report.contractor:87s}|
-|         Contractor cost: {report.contractor_cost:87s}|
-|              Total cost: {report.total_cost:87s}|
+|         Contractor cost: {report.contractor_cost:<87d}|
+|              Total cost: {report.total_cost:<87d}|
 |_________________________________________________________________________________________________________________|
 """
         print(layout)

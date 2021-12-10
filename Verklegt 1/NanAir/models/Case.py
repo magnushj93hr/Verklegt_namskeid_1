@@ -1,7 +1,7 @@
 import datetime
 
 class Case:
-    def __init__(self, id, location, subject, description, priority, repeated, repeat_days, real_est_id, emp_id, date = None, status = 'Open', closed_date = None):
+    def __init__(self, id, location, subject, description, priority, repeated, repeat_days, real_est_id, emp_id, date = None, status = 'Open', closed_date = ""):
         self.id = id
         self.location = location
         self.subject = subject

@@ -29,7 +29,8 @@ class CreateCase:
         repeated = input("Is the case repeated(y/n)?: ")
         if repeated == "y":
             repeat_days = int(input("Enter how many days between cases: "))
-        repeat_days = 0
+        else:
+            repeat_days = 0
         real_id = real_est.id
         
         case = Case(id,location,subject, description, priority, repeated, repeat_days, real_id, emp_id)
@@ -37,7 +38,7 @@ class CreateCase:
         if save:
             self.llapi.create_case(case)
 
-    def print_case(case):
+    def print_case(self, case):
         layout = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -46,7 +47,7 @@ ________________________________________________________________________________
 |       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|      Case: {case.id:28s}Created by: {case.emp_id:76}|
+|      Case: {case.id:28s}Created by: {case.emp_id:61s}|
 |                                                                                                                 |
 |          Real estate ID: {case.real_est_id:87s}|
 |                Location: {case.location:87s}|
@@ -54,7 +55,7 @@ ________________________________________________________________________________
 |             Description: {case.description:87s}|
 |                Priority: {case.priority:87s}|
 |                Repeated: {case.repeated:87s}|
-|           Repeated days: {case.repeat_days:87s}|
+|           Repeated days: {case.repeat_days:<87d}|
 |                    Date: {case.date:87s}|
 |                  Status: {case.status:87s}|
 |             Closed date: {case.closed_date:87s}|
