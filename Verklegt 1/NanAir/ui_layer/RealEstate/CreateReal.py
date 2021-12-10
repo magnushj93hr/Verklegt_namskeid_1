@@ -48,7 +48,7 @@ class CreateReal:
 # Create real estate
     def create_realestate(self):
         try:
-            value = int(input("How many apartments are the in your area: "))
+            value = int(input("How many apartments are available for rental: "))
         except ValueError:
             print("Only enter a int number")
         address, size, rooms, id, amenities, location = self.user_options("create")
