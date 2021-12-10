@@ -1,7 +1,0 @@
-dags 6.12.21
-
-Verkefni dagsins:
-
--fara yfir alla klasana, vantar eh, þarf að færa eh yfir í logic layer: allir
--búa til ui look sem við viljum fyrir A-kröfurnar: Ellý, Kristín
-- testa A-kröfurnar (virka þær): allir
