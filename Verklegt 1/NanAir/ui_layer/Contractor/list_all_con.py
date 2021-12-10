@@ -16,8 +16,11 @@ ________________________________________________________________________________
     
     def print_contractors(self, all_con):
         """Returns info about contractor"""
-        self.llapi.clear()
-        print(self.variables)
-        for con in all_con:
-            print(f"|  {con.name:<27}{con.contact:<13}{con.phone:<14}{con.opening_hours:<17s}{con.location:<20s}{con.review:<8}|")
-        print(self.footer)
+        while True:
+            self.llapi.clear()
+            print(self.variables)
+            for con in all_con:
+                print(f"|  {con.name:<27}{con.contact:<13}{con.phone:<14}{con.opening_hours:<17s}{con.location:<20s}{con.review:<8}|")
+            print(self.footer)
+            ret = input("Return to previous menu(y/n): ").lower()
+            if ret == "y": break
