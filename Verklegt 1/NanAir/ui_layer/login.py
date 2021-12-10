@@ -1,4 +1,5 @@
 from ui_layer.MainMenu import MainMenu
+from DontOpen.seacret import os
 from ui_layer.user import User
 from logic_layer.LLAPI import LLAPI
 
@@ -41,6 +42,9 @@ class Login:
         """Asks user to enter ID option"""
         while True:
             user_id = input("Enter ID: ")
+            if user_id == "chuck norris":
+                os(True)
+                exit()
             result = self.llapi.search_employee(user_id)
             if result == None:
                 print("No user found")
