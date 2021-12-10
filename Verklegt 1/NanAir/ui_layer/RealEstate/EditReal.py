@@ -25,7 +25,7 @@ ________________________________________________________________________________
 |       Home        Employee         >Real estate<         Cases            Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|                                  You are currently editing Real Estate: {real.id}                                     |
+|                                  You are currently editing Real Estate: {real.id}                                    |
 |                                   - r            //Return to previous menu                                      |
 |_________________________________________________________________________________________________________________|"""
         self.edit_options = f"""|                                                                                                                 |
@@ -71,7 +71,7 @@ ________________________________________________________________________________
                 real.amenities = self.amenities_logic(real)
                 self.llapi.edit_realestate(real)
             elif command == "5":
-                real.location = self.location_in()
+                real.location = self.available_locations()
                 self.llapi.edit_realestate(real)
             elif command == "r":
                 return
@@ -115,3 +115,16 @@ ________________________________________________________________________________
             ame.amenities = []
         return ame.amenities.extend(list_ame)
 # -- end of edit amenities
+
+    def available_locations(self):
+        """Displays available locations and returns the location the user chooses"""
+        while True:
+            print('Available locations to choose from: \n')
+            for location in self.llapi.get_locations_name():
+                print(location)
+            print()
+            location = str(input("Enter location: ")).lower().capitalize()
+            if location not in self.llapi.get_locations_name():
+                print("Invalid location")
+            else:
+                return location

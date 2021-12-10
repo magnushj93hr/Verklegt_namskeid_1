@@ -55,6 +55,8 @@ ________________________________________________________________________________
                 cases = self.llapi.filter_cases("Ready to close")
                 case, reports = self.select_case(cases)
                 if case != None:
+                    print(self.search_case.header_report_reddy_to_close)
+                    self.search_case.print_full_case(case)
                     close_case_opt = input("Do you want to close the case(y/n): ")
                     if close_case_opt == "y":
                         self.contractor_review(reports)
@@ -67,6 +69,8 @@ ________________________________________________________________________________
                 cases = self.llapi.filter_cases("Closed")
                 case, reports = self.select_case(cases)
                 if case != None:
+                    print(self.search_case.header_report_closed)
+                    self.search_case.print_full_case(case)
                     open_case_opt = input("Do you want to open the case(y/n): ")
                     if open_case_opt == "y":
                         self.change_case_status("Open", case)
@@ -95,7 +99,6 @@ ________________________________________________________________________________
                         print("Invalid id")
                     case = next(case for case in cases if case.id == case_id)
                     reports = self.llapi.search_maintenance_report(case_id)
-                    self.search_case.print_full_case(case)
                     return case, reports
             else:
                 print("Invalid option")
