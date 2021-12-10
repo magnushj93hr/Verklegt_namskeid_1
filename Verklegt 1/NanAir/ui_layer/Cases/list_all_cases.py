@@ -45,7 +45,7 @@ ________________________________________________________________________________
                 cases = self.llapi.filter_cases("Open")
                 case, reports = self.select_case(cases)
                 if case != None:
-                    self.search_case.make_report(case)
+                    self.search_case.edit_or_report(case)
 
             elif command == "2":
                 cases = self.llapi.filter_cases("Ready to close")

@@ -1,9 +1,11 @@
 from ui_layer.Cases.create_report import CreateReport
+from ui_layer.Cases.EditCase import EditCase
 
 class SearchCase:
     def __init__(self, llapi, user):
         self.llapi = llapi
         self.report = CreateReport(llapi, user)
+        self.edit_case = EditCase(llapi)
         self.options = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -20,6 +22,19 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|
 """
 
+        self.edit_or_report_opt = """
+      __|__                                                                                             __|__
+*---o--(_)--o---*                                                                                 *---o--(_)--o---* 
+___________________________________________________________________________________________________________________
+|                                                                                                                 |
+|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
+|_________________________________________________________________________________________________________________|
+|                                                                                                                 |
+|   - 1              //Edit case                                2               //Make maintenance report         |
+|   - r              //Return                                                                                     |
+|_________________________________________________________________________________________________________________|
+"""
+
     def search_options(self):
         while True:
             print(self.options)
@@ -29,7 +44,7 @@ ________________________________________________________________________________
                 result = self.llapi.get_case(search_id)
                 if result != None:
                     self.print_full_case(result)
-                    self.make_report(result)
+                    self.edit_or_report(result)
                 else:
                     print("No case found")
             elif command == "2":
@@ -40,7 +55,7 @@ ________________________________________________________________________________
                     case = self.select_case()
                     if case != None:
                         self.print_full_case(case)
-                        self.make_report(case)
+                        self.edit_or_report(case)
                 else:
                     print("No case found")
             elif command == "3":
@@ -51,7 +66,7 @@ ________________________________________________________________________________
                     case = self.select_case()
                     if case != None:
                         self.print_full_case(case)
-                        self.make_report(case)
+                        self.edit_or_report(case)
                 else:
                     print("No case found")
             elif command == "4": 
@@ -61,7 +76,7 @@ ________________________________________________________________________________
                     case = self.select_case()
                     if case != None:
                         self.print_full_case(case)
-                        self.make_report(case)
+                        self.edit_or_report(case)
                 else:
                     print("No case found")
             elif command == "r":
@@ -173,14 +188,18 @@ ________________________________________________________________________________
             else:
                 print("Invalid option")
 
-    def make_report(self, case):
+    def edit_or_report(self, case):
         if case.status == "Open":
             while True:
-                option = input("Do you want to create maintenance report(y/n): ")
-                if option =="y":
+                print(self.edit_or_report_opt)
+                option = input("Enter option: ")
+                if option =="1":
+                    self.edit_case.promt_edit_case(case)
+                    return
+                elif option == "2":
                     self.report.create_maintenance_report(case)
                     return
-                elif option == "n":
+                elif option == "r":
                     return
                 else:
                     print("Invalid option")

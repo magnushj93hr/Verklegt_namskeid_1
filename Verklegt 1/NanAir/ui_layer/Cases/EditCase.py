@@ -1,7 +1,8 @@
 
-class EditCase:
+PRIORITY = ['low','medium','high']
 
-    def __init__(self, llapi, user):
+class EditCase:
+    def __init__(self, llapi):
         self.llapi = llapi
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -15,30 +16,21 @@ ________________________________________________________________________________
 |       Home(home)        Employee(emp)        >Real estate(real)<         Cases(cases)        Contractor(con)    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|                                    You are curently editing a Case: {case.id}                                       |
-|                                     - r          //Return to previous menu                                      |
+|                                     - r        //Return to previous menu                                        |
 |_________________________________________________________________________________________________________________|"""
 
         self.edit_options = f"""|                                                                                                                 |
-|      Case: {case.id:100s}|
+|      Case: {case.id:101s}|
 |                                                                                                                 |
-|       1 - Location: {case.location:87s}|
-|       2 - subject: {case.subject:87s}|
-|       3 - description: {case.description:87s}|
-|       4 - priority: {case.priority:87s}|
-|       5 - repeated: {case.repeated:87s}|
+|       1 - Location: {case.location:92s}|
+|       2 - Subject: {case.subject:93s}|
+|       3 - Description: {case.description:89s}|
+|       4 - Priority: {case.priority:92s}|
+|       5 - Repeated: {case.repeated:92s}|
 |_________________________________________________________________________________________________________________|
 """
         self.llapi.clear()
         print(f"{self.header}\n{self.edit_options}")
-
-    def edit_case(self, real):
-        print(real.id)
-        case = self.llapi.search_cases_for_real_id(real.id)
-        if case == None:
-            print("The case id was not found")
-            return
-        self.promt_edit_case(case)
 
     def promt_edit_case(self, case):
         while True:
@@ -46,7 +38,7 @@ ________________________________________________________________________________
             command = input("Enter edit option: ")
             
             if command == "1":
-                case.location = self.location_in()
+                case.location = self.available_locations()
                 self.llapi.edit_case(case)
             elif command == "2":
                 case.subject = input("Enter subject")
@@ -65,9 +57,24 @@ ________________________________________________________________________________
                         break 
             elif command == "5":
                 case.repeated = input("Enter repeated(y/n): ")
+                if case.repeated == "y":
+                    case.repeat_days = int(input("Enter how many days between cases: "))
                 self.llapi.edit_case(case)
             elif command == "r":
                 return
             else:
                 print("Invalid option")
-# ------------------------------------------------------------------------------------------------------------------
+
+
+    def available_locations(self):
+        """Displays available locations and returns the location the user chooses"""
+        while True:
+            print('Available locations to choose from: \n')
+            for location in self.llapi.get_locations_name():
+                print(location)
+            print()
+            location = str(input("Enter location: ")).lower().capitalize()
+            if location not in self.llapi.get_locations_name():
+                print("Invalid location")
+            else:
+                return location
