@@ -81,7 +81,7 @@ class CreateReal:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
+|       Home        Employee          >Real estate<         Cases           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   Create New Real Estate                                                                                        |
@@ -90,16 +90,16 @@ ________________________________________________________________________________
         self.new_real = f"""|                                                                                                                 |
 |      Real Eastete                                                                                               |
 |                                                                                                                 |
-            1 - address: {real.address}
-            2 - size: {real.size}
-            3 - rooms: {real.rooms}
-            4 - amenities: {real.amenities}
-            5 - location: {real.location}
+|            1 - address: {real.address:88s}|
+|            2 - size: {real.size:91s}|
+|            3 - rooms: {real.rooms:90s}|
+|            4 - amenities: {str(real.amenities):86s}|
+|            5 - location: {real.location:87s}|
 |_________________________________________________________________________________________________________________|"""
         self.llapi.clear()
         print(f"{self.header}\n{self.new_real}")
         while True:
-            save = input("Do you want to save employee(y/n): ")
+            save = input("Do you want to save real estate(y/n): ")
             if save == "y":
                 return True
             elif save == "n":
