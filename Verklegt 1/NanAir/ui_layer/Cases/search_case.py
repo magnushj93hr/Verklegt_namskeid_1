@@ -1,8 +1,9 @@
+from ui_layer.Cases.create_report import CreateReport
 
-
-class SearchCasae:
-    def __init__(self, llapi):
+class SearchCase:
+    def __init__(self, llapi, user):
         self.llapi = llapi
+        self.report = CreateReport(llapi, user)
         self.options = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -26,38 +27,52 @@ ________________________________________________________________________________
             if command == "1":
                 search_id = input("Enter case id: ")
                 result = self.llapi.get_case(search_id)
-                self.print_full_case(result)
+                if result != None:
+                    self.print_full_case(result)
+                    self.make_report(result)
+                else:
+                    print("No case found")
             elif command == "2":
                 search_id = input("Enter employee id: ")
                 result = self.llapi.search_case(search_id, 'empid')
-                self.printing_cases(result)
-                case = self.select_case()
-                if case != None:
-                    self.print_full_case(case)
+                if len(result) != 0:
+                    self.printing_cases(result)
+                    case = self.select_case()
+                    if case != None:
+                        self.print_full_case(case)
+                        self.make_report(case)
+                else:
+                    print("No case found")
             elif command == "3":
                 search_id = input("Enter real estate id: ")
                 result = self.llapi.search_case(search_id, 'realid')
-                self.printing_cases(result)
-                case = self.select_case()
-                if case != None:
-                    self.print_full_case(case)
+                if len(result) != 0:
+                    self.printing_cases(result)
+                    case = self.select_case()
+                    if case != None:
+                        self.print_full_case(case)
+                        self.make_report(case)
+                else:
+                    print("No case found")
             elif command == "4": 
                 cases = self.get_contractors()
-                self.printing_cases(cases)
-                case = self.select_case()
-                if case != None:
-                    self.print_full_case(case)
+                if len(result) != 0:
+                    self.printing_cases(result)
+                    case = self.select_case()
+                    if case != None:
+                        self.print_full_case(case)
+                        self.make_report(case)
+                else:
+                    print("No case found")
             elif command == "r":
                     return
             else:
                 print("Invalid option")
 
 
-# id, location, subject, description, priority, repeated, repeat_days, real_est_id, emp_id, date = None, status = 'Open', closed_date = None
-
-
     def print_full_case(self, case):
-        self.print_case = f"""
+        reports = self.llapi.search_maintenance_report(case.id)
+        print_case = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
@@ -65,12 +80,11 @@ ________________________________________________________________________________
 |       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|      Case: {case.id:101s}|
+|      Case: {case.id:28s}Created by: {case.emp_id:31}Total cost: {self.get_total_cost(reports):<18s}|
 |                                                                                                                 |
 |          Real estate ID: {case.real_est_id:87s}|
-|             Employee ID: {case.emp_id:87s}|
 |                Location: {case.location:87s}|
-|                 Subject: {case.id:87s}|
+|                 Subject: {case.subject:87s}|
 |             Description: {case.description:87s}|
 |                Priority: {case.priority:87s}|
 |                Repeated: {case.repeated:87s}|
@@ -80,36 +94,37 @@ ________________________________________________________________________________
 |             Closed date: {case.closed_date:87s}|
 |_________________________________________________________________________________________________________________|"""
 
-
-        reports = self.llapi.search_maintenance_report(case.id)
-        print(self.print_case)
-        if len(reports) == 1:
+        print(print_case)
+        if len(reports) == 0:
+            print("No maintenance reports have been made")
+        elif len(reports) == 1:
             self.print_report(reports[0])
         else:
             for rep in reports:
                 self.print_report(rep)
             
 
+
     def print_report(self, report):
         content =  f"""|                                                                                                                 |
 |      Maintenance Report                                                                                         |
 |                                                                                                                 |
-|             Employee ID: {report.employee_id:}                                                                  |
-|              Contractor: {report.contractor}                                                               |
-|               
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
+|             Employee ID: {report.employee_id:87s}|
+|           Material cost: {report.material_cost:87s}|
+|              Contractor: {report.contractor:87s}|
+|         Contractor cost: {report.contractor_cost:87s}|
+|             Description: {report.description:87s}|
+|_________________________________________________________________________________________________________________|"""
+        
+        print(content)
 
-real_estate_id,description,employee_id,case_id,total_cost,contractor,contractor_cost
-"""
+
+    def get_total_cost(self, reports):
+        if len(reports) != 0:
+            last_report = reports[-1]
+            return last_report.total_cost
+        return "0"
+
 
     def printing_cases(self, case_list):
         header = """
@@ -157,3 +172,15 @@ ________________________________________________________________________________
                 return result
             else:
                 print("Invalid option")
+
+    def make_report(self, case):
+        if case.status == "Open":
+            while True:
+                option = input("Do you want to create maintenance report(y/n): ")
+                if option =="y":
+                    self.report.create_maintenance_report(case)
+                    return
+                elif option == "n":
+                    return
+                else:
+                    print("Invalid option")

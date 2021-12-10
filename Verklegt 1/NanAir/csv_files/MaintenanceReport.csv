@@ -1,7 +1,2 @@
 real_estate_id,description,employee_id,case_id,material_cost,contractor,contractor_cost,total_cost
-5003,pizza,1002,CAS-1,4500,Iron Man,1234,5734
-5006, Gaf mike hawk spliffið og doinkið,CAS-2,6900,Iron Man,1231,6969
-5002,Lagaði vaskinn,NaN-12,CAS-4,4500,Iron Man,0,4500
-5003,Lagaði heita potta,NaN-10,CAS-1,4500,Tobey,0,4500
-5002,Lagaði allt,NaN-10,CAS-4,500,Tobey,0,599
-5002,Lagaði vaskinn,NaN-10,CAS-5,599,Tobey,349,948
+5001,lagaði þakið,NaN-14,CAS-2,4000,,0,4000

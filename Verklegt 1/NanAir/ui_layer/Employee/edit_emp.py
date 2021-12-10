@@ -30,7 +30,6 @@ ________________________________________________________________________________
     def edit_employee(self):
         """Checks if employee exists before editing"""
 
-        
         while True:
             print("Quit by entering (q)")
             edit_id = str(input("Enter employee id: "))

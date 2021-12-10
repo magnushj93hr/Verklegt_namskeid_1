@@ -1,9 +1,11 @@
-from ui_layer.Cases.search_case import SearchCasae
+from ui_layer.Cases.search_case import SearchCase
+from ui_layer.Cases.list_all_cases import ListAllCases
 
 class CaseMenu:
-    def __init__(self, llapi):
+    def __init__(self, llapi, user):
         self.llapi = llapi
-        self.search_case = SearchCasae(llapi)
+        self.search_case = SearchCase(llapi, user)
+        self.list_all_cases = ListAllCases(llapi, user)
         self.options = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -13,13 +15,9 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - 1              //Search for cases                         - 2          //List all cases                     |
-|   - 3              //List all maintenance reports             - r          //Go back                            |
+|   - r              //Go back                                                                                    |
 |_________________________________________________________________________________________________________________|
 """
-
-    # def draw_options(self):
-    #     print(self.options)
-    #     return self.prompt_input()
 
     def prompt_input(self):
         while True:
@@ -28,9 +26,7 @@ ________________________________________________________________________________
             if command == "1":
                 self.search_case.search_options()
             elif command == "2":
-                pass
-            elif command == "3":
-                pass
+                self.list_all_cases.list_all_cases()
             elif command == "r":
                 return "r"
             elif command == "m":
