@@ -1,17 +1,9 @@
 name,id,address,homeline,email,location,phone,supervisor
-Jan Jacobsen,NaN-1,Vei 230 12,9209770,jan.jacobsen@nanair.com,Reykjavik,7771337,no
-Jacob Yxa,NaN-2,Vei 224 3B,9209771,jacob1001@nanair.com,Longyearbyen,7771338,no
-Nanna Daema,NaN-3,Ivan Starostin 109,9209772,nanna1002@nanair.com,Longyearbyen,7771339,no
-Minik Wallace,NaN-4,Isaajjap Aqquta 1,3424671,minik1003@nanair.com,Nuuk,7771361,no
-Aqqaluk Lynge,NaN-5,Qattaaq 44,3521642,aqqaluk1004@nanair.com,Nuuk,7771362,no
-Nauja Lynge,NaN-6,Qunguleq 3759,3121643,nauja1004@nanair.com,Nuuk,7771363,no
-Annette Djurhuus,NaN-7,Tjarnardeild 8,7720001,annette1006@nanair.com,Þórshöfn,7771381,no
-Áki Knudsen,NaN-8,Traðartún 3,6172101,áki1007@nanair.com,Þórshöfn,7773181,no
-André Hjaltalin,NaN-9,Í Lágni 19,6614411,andré1008@nanair.com,Þórshöfn,7771382,no
-Hlynur Freyr,NaN-10,asfasf,1123456,hlynur.['hlynur']@nanair.com,Reykjavík,6699287,no
-svenni jons,NaN-11,sdgsdg,1234567,svenni.jons@nanair.com,Nuuk,1234567,no
-Mike Hawk,NaN-12,svalgata 69,7764415,mike.hawk@nanair.com,Nuuk,7764418,no
-join,NaN-13,adfi,7654321,join.join@nanair.com,Nuuk,7654321,no
-Siggi,NaN-14,Ironvil 29,9876543,siggi.siggi@nanair.com,Nuuk,8765432,yes
-Tómata Kál,NaN-15,Pizzahöt 21,7654321,gunnar.kál@nanair.com,Reykjavik,1234567,no
-jfdskfjs jfdksfldsf jfdsfsfjds,NaN-16,gfhjdfhfjdfhdjfdjfjdjdhdj,123456712345,jfsldfjfjsfjlksdjfsdjfkldjfefkdfjefjklsdf,hfjdfhgfjdksjdfhgfjdkjfjd,1234567,no
+Jacob Yxa,NaN-2,Vel 224 3B,92097701,jacob.yxa@nanair.com,Longyearbyen,7771338,no
+Nanna Daema,NaN-3,Ivan staroatin at. 109,92097702,nanna.daema@nanair.com,Longyearbyen,7771339,no
+Minik Wallace,NaN-4,"Iaaajap Aqqutaa 1, 3900",229342467,minik.wallace@nanair.com,Nuuk,7771361,yes
+Aqqaluk Lynga,NaN-5,"Qattaaq 44,3905",7771362,aqqaluk.aqqaluk@nanair.com,Nuuk,299352466,no
+Nauja Lynge,NaN-6,"Qunguleg 3759, 3905",299312164,nauja.lynge@nanair.com,Nuuk,7771363,no
+Annette Djurhuua,NaN-7,"Tjarnadeild 8, 100",298772000,annette.djurhuua@nanair.com,Torshavn,7771381,yes
+Áki Knudeen,NaN-8,"Traðartún 3, 108",298617210,áki.knudeen@nanair.com,Torshavn,7771381,no
+André Hjaltalín,NaN-9,"Í lágni 19, 100",298661441,andré.hjaltalín@nanair.com,Torshavn,7771382,no

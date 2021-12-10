@@ -63,5 +63,3 @@ ________________________________________________________________________________
                 return "m"
             else:
                 print("invalid option, try again!")
-            print(self.header)
-            print(self.footer)
