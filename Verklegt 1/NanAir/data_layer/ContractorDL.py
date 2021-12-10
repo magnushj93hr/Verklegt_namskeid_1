@@ -35,7 +35,6 @@ class ContractorDL:
         with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
             reader = csv.DictReader(csvfile, fieldnames=fieldnames)
             writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
-            # writer.writeheader()
             for row in reader:
                 if row['name'] == contr.name:
                     print('updating row', row['name'])
