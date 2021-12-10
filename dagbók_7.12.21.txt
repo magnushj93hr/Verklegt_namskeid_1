@@ -1,8 +1,0 @@
-dags 7.12.21
-
-náðum að gera ready to close, laga edit og margt fleira í gær en þurfum 
-að fara yfir kóðann og tékka hvort allt meiki sense.
-
-verkefni dagsins:
-- fara yfir A kröfur og kóðann, virkar allt: All hands on board!!
-- Gera ui layer í alvöru fileinu: Kristín og eh fleirri
