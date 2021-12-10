@@ -16,8 +16,14 @@ ________________________________________________________________________________
     
     def print_contractors(self, all_loc):
         """Returns info about contractor"""
-        print(self.variables)
-        for loc in all_loc:
-            print(f"|  {loc.country:<27}{loc.location:<27}{loc.airport:<27}{loc.phone:<16s}{loc.opening_hours:<19s}|")
-        print(self.footer)
-    
+        while True:
+            self.llapi.clear()
+            print(self.variables)
+            for loc in all_loc:
+                print(f"|  {loc.country:<27}{loc.location:<27}{loc.airport:<27}{loc.phone:<16s}{loc.opening_hours:<19s}|")
+            print(self.footer)
+            cont = input("Return to previous menu(y/n): ").lower()
+            if cont == "y": break
+            
+            
+        
