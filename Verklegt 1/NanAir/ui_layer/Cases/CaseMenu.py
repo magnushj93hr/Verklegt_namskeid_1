@@ -20,6 +20,7 @@ ________________________________________________________________________________
 """
 
     def prompt_input(self):
+        """Asks user to enter Case menu option"""
         while True:
             print(self.options)
             command = input("Choose option: ")

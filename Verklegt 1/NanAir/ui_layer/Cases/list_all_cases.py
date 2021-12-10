@@ -24,6 +24,7 @@ ________________________________________________________________________________
 """
     
     def list_all_cases(self):
+        """Returns list of all cases and asks if user wants to filter by status"""
         all_cases = self.llapi.all_cases()
         self.search_case.printing_cases(all_cases)
         while True:
@@ -38,6 +39,7 @@ ________________________________________________________________________________
         
 
     def prompt_input_filter(self):
+        """Asks user to enter filter by status option"""
         while True:
             print(self.filter_options)
             command = input("Enter input: ")
@@ -72,6 +74,7 @@ ________________________________________________________________________________
 
 
     def select_case(self, cases):
+        """Asks to select a case from list of case"""
         self.search_case.printing_cases(cases)
         if len(cases) == 0:
             print("No cases found")
@@ -95,6 +98,7 @@ ________________________________________________________________________________
 
 
     def contractor_review(self, reports):
+        """Asks user to review contractor"""
         report = reports[-1]
         contractor = self.llapi.search_contractor(report.contractor)
         if report.contractor != "":
@@ -110,6 +114,7 @@ ________________________________________________________________________________
         return
 
     def change_case_status(self, status, case):
+        """Takes in case information and status, changes the status of the case """
         if status == "Closed":
             dt = datetime.datetime.now()
             case.closed_date = "%s/%s/%s" % (dt.day, dt.month, dt.year)
@@ -119,6 +124,7 @@ ________________________________________________________________________________
         self.llapi.edit_case(case)
 
     def create_repeated_case(self, case_id):
+        """Takes in case id, making a case a repeated case"""
         all_cases = self.llapi.all_cases()
         case = self.llapi.get_case(case_id)
         id = CASE + str(len(all_cases) + 1)
