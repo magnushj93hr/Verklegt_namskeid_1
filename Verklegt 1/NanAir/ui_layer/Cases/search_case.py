@@ -38,6 +38,7 @@ ________________________________________________________________________________
     def search_options(self):
         """Search for case"""    
         while True:
+            self.llapi.clear()
             print(self.options)
             command = input("Enter your input: ")
             if command == "1":
@@ -111,6 +112,7 @@ ________________________________________________________________________________
 |             Closed date: {case.closed_date:87s}|
 |_________________________________________________________________________________________________________________|"""
 
+        self.llapi.clear()
         print(print_case)
         if len(reports) == 0:
             print("No maintenance reports have been made")
@@ -147,6 +149,7 @@ ________________________________________________________________________________
 
     def printing_cases(self, case_list):
         """Prints list of cases"""
+        self.llapi.clear()
         header = """
 __________________________________________________________________________________________________________________________________________________________________
 |   ID       Subject                     Real estate ID       Location                   Priority        Created          Status             Closed date         |

@@ -41,6 +41,7 @@ ________________________________________________________________________________
     def prompt_input_filter(self):
         """Asks user to enter filter by status option"""
         while True:
+            self.llapi.clear()
             print(self.filter_options)
             command = input("Enter input: ")
             if command == "1":
@@ -50,6 +51,7 @@ ________________________________________________________________________________
                     self.search_case.edit_or_report(case)
 
             elif command == "2":
+                self.llapi.clear()
                 cases = self.llapi.filter_cases("Ready to close")
                 case, reports = self.select_case(cases)
                 if case != None:
@@ -61,6 +63,7 @@ ________________________________________________________________________________
                             self.create_repeated_case(case.id)
 
             elif command == "3":
+                self.llapi.clear()
                 cases = self.llapi.filter_cases("Closed")
                 case, reports = self.select_case(cases)
                 if case != None:
@@ -68,6 +71,7 @@ ________________________________________________________________________________
                     if open_case_opt == "y":
                         self.change_case_status("Open", case)
             elif command == "r":
+                self.llapi.clear()
                 return
             else:
                 print("Invalid option")

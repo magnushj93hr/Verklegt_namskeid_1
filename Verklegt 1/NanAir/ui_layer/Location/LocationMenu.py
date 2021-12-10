@@ -24,12 +24,14 @@ ________________________________________________________________________________
 """
 
     def draw_options(self):
+        self.llapi.clear()
         print(self.header)
         if self.user.is_supervisor():
             print(self.supervisor_opt)
         print(self.footer)
 
     def prompt_input(self):
+        """Asks user enter info"""
         while True:
             self.draw_options()
             command = input("Choose option: ")
@@ -38,6 +40,7 @@ ________________________________________________________________________________
             elif command == "2" and self.user.is_supervisor():
                 self.create_location.create_location()
             elif command == "r":
+                self.llapi.clear()
                 return "r"
             else:
                 print("invalid option, try again!")

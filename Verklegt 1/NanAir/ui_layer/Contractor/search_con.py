@@ -5,6 +5,7 @@ class SearchCon:
         self.llapi = llapi
     
     def search_con(self):
+        """Displays available contractors and user inputs a contractor name"""
         while True:
             print('Available contractors to choose from: \n')
             for contractor in self.llapi.get_contractors_name():
@@ -21,6 +22,7 @@ class SearchCon:
             break
     
     def print_searched_contractor(self, contractor):
+        """prints contractor infor"""
         layout = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -39,4 +41,5 @@ ________________________________________________________________________________
 |                  Review: {contractor.review:87s}|
 |_________________________________________________________________________________________________________________|
 """
+        self.llapi.clear()
         print(layout)

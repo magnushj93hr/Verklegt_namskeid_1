@@ -24,9 +24,11 @@ ________________________________________________________________________________
 |    r - Return to previous menu                                                                                  |
 |_________________________________________________________________________________________________________________|
 """
+        self.llapi.clear()
         print(edit_options)
 
     def promt_input(self):
+        """Get info about contractor, and sends the info to edit contractor function"""
         contractor_name = self.select_contr()
         if contractor_name == None:
             return
@@ -34,6 +36,8 @@ ________________________________________________________________________________
         self.edit_contr(contractor)
 
     def select_contr(self):
+        """Displays all available contractors, and asks user to enter contractor,
+        returns contractor info"""
         contractors = self.llapi.get_contractors_name()
         while True:
             print('Available contractors to choose from: \n')
