@@ -12,7 +12,7 @@ class LocationMenu:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
+|       Home        Employee          Real estate          Cases            Contractor          >Location<        |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |       - 1         //List all locations                                                                          |"""
@@ -24,6 +24,7 @@ ________________________________________________________________________________
 """
 
     def draw_options(self):
+        """Prints location menu and checks if user is supervisor"""
         self.llapi.clear()
         print(self.header)
         if self.user.is_supervisor():

@@ -11,18 +11,21 @@ _____________________________________________________
         self.footer = "|___________________________________________________|"
 
     def real_printer(self):
+        """Gets all real estates and calls print and sort functions"""
         self.llapi.clear()
         all_real = self.llapi.all_realestate()
         self.output_printer(all_real)
         self.sort_by_location()
 
     def output_printer(self, real):
+        """Prints all real estate"""
         data = ""
         for real in real:
             data += f"\n|   {real.id:<8s}{real.address:<20s}{real.location:<20s}|"
         print(f"{self.variables}{data}\n{self.footer}")
 
     def sort_by_location(self):
+        """Filters by location"""
         while True:
             filter_input = input("Do you want to filter by location(y/n)?: ")
             if filter_input == 'y':
@@ -34,6 +37,7 @@ _____________________________________________________
             else: break
 
     def location_in(self):
+        """User inputs location he wants to filter by"""
         while True:
             self.llapi.clear()
             print('Available locations to choose from:')

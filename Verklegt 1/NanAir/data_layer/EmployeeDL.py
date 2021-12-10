@@ -35,9 +35,7 @@ class EmployeeDL:
         fieldnames = ["name","id","address",'homeline','email','location','phone', "supervisor"]
         with open(self.filepath, 'r', newline='', encoding='utf-8') as csvfile, temp_file:
             reader = csv.DictReader(csvfile, fieldnames=fieldnames)
-            #fieldnames = ["name","id","address",'homeline','email','location','phone']
             writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
-            # writer.writeheader()
             for row in reader:
                 if row['id'] == emp.id:
                     print('updating row', row['id'])

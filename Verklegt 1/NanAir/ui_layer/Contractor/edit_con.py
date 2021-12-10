@@ -20,7 +20,7 @@ ________________________________________________________________________________
 |    2 - Contact: {emp.contact:96s}|
 |    3 - Location: {emp.location:95s}|
 |    4 - Phone: {emp.phone:98s}|
-|    5 - Openin hours: {emp.opening_hours:91s}|
+|    5 - Opening hours: {emp.opening_hours:91s}|
 |    r - Return to previous menu                                                                                  |
 |_________________________________________________________________________________________________________________|
 """

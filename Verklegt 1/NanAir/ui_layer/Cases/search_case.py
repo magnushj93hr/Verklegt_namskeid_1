@@ -11,7 +11,7 @@ class SearchCase:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - 1              //Search by case ID                                                                          |
@@ -27,7 +27,7 @@ ________________________________________________________________________________
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - 1              //Edit case                                - 2             //Make maintenance report         |
@@ -223,6 +223,7 @@ ________________________________________________________________________________
                 print("Invalid option")
 
     def edit_or_report(self, case):
+        """Asks user to enter input, either edit or create"""
         if case.status == "Open":
             while True:
                 print(self.edit_or_report_opt)

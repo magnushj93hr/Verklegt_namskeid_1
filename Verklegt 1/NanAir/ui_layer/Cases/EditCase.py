@@ -8,12 +8,13 @@ class EditCase:
 # ------------------------------------------------------------------------------------------------------------------
 # Edit Case
     def print_case_as_menu(self, case):
+        """Prints case info"""
         self.header = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        >Real estate(real)<         Cases(cases)        Contractor(con)    |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |                                     - r        //Return to previous menu                                        |
@@ -33,6 +34,7 @@ ________________________________________________________________________________
         print(f"{self.header}\n{self.edit_options}")
 
     def promt_edit_case(self, case):
+        """Asks user to enter edit case option"""
         while True:
             self.print_case_as_menu(case)
             command = input("Enter edit option: ")
