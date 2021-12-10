@@ -4,7 +4,6 @@ from ui_layer.RealEstate.CreateReal import CreateReal
 from ui_layer.RealEstate.EditReal import EditReal
 from ui_layer.RealEstate.SearchReal import SearchReal
 from ui_layer.RealEstate.CreateCase import CreateCase
-from ui_layer.RealEstate.EditCase import EditCase
 from ui_layer.RealEstate.ListReal import ListReal
 
 
@@ -15,7 +14,6 @@ class RealEstMenu:
         self.edit_real = EditReal(llapi, user)
         self.search_real = SearchReal(llapi, user)
         self.create_case = CreateCase(llapi, user)
-        self.edit_case = EditCase(llapi, user)
         self.list_real = ListReal(llapi, user)
         self.user = user
         self.llapi = llapi
@@ -24,7 +22,7 @@ class RealEstMenu:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        >Real estate(real)<         Cases(cases)        Contractor(con)    |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - 1               //list all realestate                     - 2           //search real estate                |"""

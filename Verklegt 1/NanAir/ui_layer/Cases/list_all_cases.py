@@ -13,7 +13,7 @@ class ListAllCases:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - 1              //Filter by open cases                                                                       |
@@ -47,7 +47,7 @@ ________________________________________________________________________________
                 cases = self.llapi.filter_cases("Open")
                 case, reports = self.select_case(cases)
                 if case != None:
-                    self.search_case.make_report(case)
+                    self.search_case.edit_or_report(case)
 
             elif command == "2":
                 cases = self.llapi.filter_cases("Ready to close")
