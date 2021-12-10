@@ -25,6 +25,8 @@ ________________________________________________________________________________
                 location = self.available_locations()
                 result = self.llapi.filter_employee(location)
                 self.print_employees(result)
+                if len(result) == 0:
+                    print("No employee found at this location")
             elif filter_input == "n":
                 return
             else:
