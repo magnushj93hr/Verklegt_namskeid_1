@@ -45,10 +45,6 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|
 """
 
-    # def draw_options(self):
-    #     print(self.options)
-    #     self.prompt_input()
-
     def prompt_input(self):
         """Asks user to enter main menu option"""
         return_option = ""
