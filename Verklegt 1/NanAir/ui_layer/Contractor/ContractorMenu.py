@@ -1,5 +1,6 @@
 from ui_layer.Contractor.list_all_con import ListAllContractors
 from ui_layer.Contractor.create_con import CreateCon
+from ui_layer.Contractor.search_con import SearchCon
 
 class ContractorMenu:
     def __init__(self, llapi, user):
@@ -7,6 +8,7 @@ class ContractorMenu:
         self.llapi = llapi
         self.list_all_con = ListAllContractors(llapi)
         self.create_con = CreateCon(llapi)
+        self.search_con = SearchCon(llapi)
         self.header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -15,10 +17,11 @@ ________________________________________________________________________________
 |       Home         Employee           Real estate         Cases          >Contractor<          Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|   - 1               //List all contractor                     - r               //Return to previous menu       |"""
-        self.supervisorLine = """|   - 2               //Creates new contractor                                                                    |"""
+|   - 1               //List all contractor                     - 2               //Search contractor             |"""
+        self.supervisorLine = """|   - 3               //Creates new contractor                  - 4               //Edit contractor               |"""
 
-        self.footer = """|_________________________________________________________________________________________________________________|
+        self.footer = """|   - r               //return                                                                                    |
+|_________________________________________________________________________________________________________________|
 """
 
 
@@ -36,8 +39,12 @@ ________________________________________________________________________________
             command = input("Choose option: ")
             if command == "1":
                 self.list_all_con.list_all_contractors()
-            elif command == "2" and self.user.is_supervisor():
+            elif command == "2":
+                self.search_con.search_con()
+            elif command == "3" and self.user.is_supervisor():
                 self.create_con.create_contractor()
+            elif command == "4":
+                pass
             elif command == "r":
                 return "r"
             elif command == "m":

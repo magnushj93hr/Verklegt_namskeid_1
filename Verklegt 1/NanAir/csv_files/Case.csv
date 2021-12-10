@@ -1,3 +1,4 @@
 id,location,subject,description,priority,repeated,repeat_days,real_est_id,emp_id,date,status,closed_date
 CAS-1,Longyearbyen,þrífa klósett,þarf að þrífa klósettið,low,y,2,5006,NaN-14,10/12/2021,Open,
 CAS-2,Nuuk,laga þak,þakið lekur,medium,n,0,5001,NaN-14,10/12/2021,Ready to close,
+CAS-3,Longyearbyen,Laga heita pottinn,Heiti potturinn er bilaður,medium,n,0,5003,NaN-14,10/12/2021,Closed,10/12/2021

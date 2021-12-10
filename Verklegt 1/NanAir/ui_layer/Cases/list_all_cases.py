@@ -95,8 +95,15 @@ ________________________________________________________________________________
         report = reports[-1]
         contractor = self.llapi.search_contractor(report.contractor)
         if report.contractor != "":
-            contractor.review = int(input("Pleas review contractor(1-5): "))
-            self.llapi.edit_contractor(contractor)
+            while True:
+                review = input("Pleas review contractor(1-5): ")
+                if review != "1" and review != "2" and review != "3" and review != "4" and review != "5":
+                    print("Invalid input")
+                else:
+                    contractor.review = review
+                    self.llapi.edit_contractor(contractor)
+                    return
+                    
         return
 
     def change_case_status(self, status, case):

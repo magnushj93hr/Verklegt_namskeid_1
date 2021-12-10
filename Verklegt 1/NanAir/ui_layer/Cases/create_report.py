@@ -32,13 +32,14 @@ class CreateReport:
 
 
     def available_contractors(self):
+        contractors = self.llapi.get_contractors_name()
         while True:
             print('Available contractors to choose from: \n')
-            for contractor in self.llapi.get_contractors_name():
+            for contractor in contractors:
                 print(contractor)
             print()
-            contractor = str(input("Enter contractor: ")).lower().capitalize()
-            if contractor not in self.llapi.get_contractors_name():
+            contractor = input("Enter contractor: ").lower().title()
+            if contractor not in contractors:
                 print("Contractor not found")
             else:
                 return contractor
