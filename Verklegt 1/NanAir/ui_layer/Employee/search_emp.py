@@ -15,7 +15,7 @@ class SearchEmp:
                     print("No employee found")
                 else:
                     self.print_searched_emp(result)
-            break
+            else: break
     
     def print_searched_emp(self, result):
         """Prints employee info"""
