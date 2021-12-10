@@ -10,6 +10,7 @@ class SearchReal:
         self.user = user
         
     def search_output_printer(self, real):
+        """Prints real estate info"""
         self.header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -38,6 +39,7 @@ ________________________________________________________________________________
 # ------------------------------------------------------------------------------------------------------------------
 # Search for real estate
     def search_realestate(self):
+        """Search for real estate, returns real estate info"""
         while True:
             print("Quit by entering (q)")
             self.search_id = input("Enter real estate id: ")
@@ -53,6 +55,7 @@ ________________________________________________________________________________
 # ------------------------------------------------------------------------------------------------------------------
 # Menu after search
     def prompt_input_search(self, result):
+        """Asks user to enter option, edit real, create case or edit case"""
         while True:
             self.search_output_printer(result)
             command = input("Enter your input: ")

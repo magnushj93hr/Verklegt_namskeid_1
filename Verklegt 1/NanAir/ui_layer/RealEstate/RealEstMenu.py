@@ -32,7 +32,7 @@ ________________________________________________________________________________
 """
 
     def print_options(self):
-        #determines if menu bar should include supervisor options or not
+        """determines if menu bar should include supervisor options or not"""
         self.llapi.clear()
         print(self.header)
         if self.user.is_supervisor():
@@ -40,6 +40,7 @@ ________________________________________________________________________________
         print(self.footer)
     
     def prompt_input(self):
+        """Asks user for real estate menu option"""
         while True:
             self.print_options()
             command = input("Choose option: ")

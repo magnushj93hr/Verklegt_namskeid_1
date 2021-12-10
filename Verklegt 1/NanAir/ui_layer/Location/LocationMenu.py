@@ -24,6 +24,7 @@ ________________________________________________________________________________
 """
 
     def draw_options(self):
+        """Prints location menu and checks if user is supervisor"""
         self.llapi.clear()
         print(self.header)
         if self.user.is_supervisor():

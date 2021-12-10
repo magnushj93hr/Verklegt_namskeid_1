@@ -201,6 +201,7 @@ ________________________________________________________________________________
                 print("Invalid option")
 
     def edit_or_report(self, case):
+        """Asks user to enter input, either edit or create"""
         if case.status == "Open":
             while True:
                 print(self.edit_or_report_opt)
