@@ -6,6 +6,10 @@ class SearchCon:
     
     def search_con(self):
         while True:
+            print('Available contractors to choose from: \n')
+            for contractor in self.llapi.get_contractors_name():
+                print(contractor)
+            print()
             print("Quit by entering (q)")
             search_name = input("Enter contractor name: ")
             if search_name.lower().title() != "q":
