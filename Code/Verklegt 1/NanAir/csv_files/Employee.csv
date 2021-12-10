@@ -1,0 +1,13 @@
+name,id,address,homeline,email,location,phone,supervisor
+Garfield,NaN-1,sunnubraut 19,8882323,garfield.garfield@nanair.com,Nuuk,7512552,no
+Jacob Yxa,NaN-2,Vel 224 3B,92097701,jacob.yxa@nanair.com,Longyearbyen,7771338,no
+Nanna Daema,NaN-3,Ivan staroatin at. 109,92097702,nanna.daema@nanair.com,Longyearbyen,7771339,no
+Minik Wallace,NaN-4,"Iaaajap Aqqutaa 1, 3900",229342467,minik.wallace@nanair.com,Nuuk,7771361,yes
+Aqqaluk Lynga,NaN-5,"Qattaaq 44,3905",7771362,aqqaluk.lynga@nanair.com,Nuuk,7654331,no
+Nauja Lynge,NaN-6,"Qunguleg 3759, 3905",299312164,nauja.lynge@nanair.com,Nuuk,7771363,no
+Annette Djurhuua,NaN-7,"Tjarnadeild 8, 100",298772000,annette.djurhuua@nanair.com,Torshavn,7771381,yes
+Áki Knudeen,NaN-8,"Traðartún 3, 108",298617210,áki.knudeen@nanair.com,Torshavn,7771381,no
+André Hjaltalín,NaN-9,"Í lágni 19, 100",298661441,andré.hjaltalín@nanair.com,Torshavn,7771382,no
+John doe,NaN-10,sunnubraut 6,12345566,john.doe@nanair.com,Nuuk,1234567,no
+John doe,NaN-11,sunnubraut 8,1234567,john.doe@nanair.com,Nuuk,7764418,yes
+John,NaN-12,sunnubraut 6,1234567,john.john@nanair.com,Reykjavik,7764418,no

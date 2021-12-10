@@ -1,0 +1,8 @@
+id,location,subject,description,priority,repeated,repeat_days,real_est_id,emp_id,date,status,closed_date
+CAS-1,Reykjavik,Laga heita Pottinn,það þarf að laga pottinn,medium,n,0,5003,NaN-7,6/12/2021,Open,
+CAS-2,Longyearbyen,Laga donkið,Vantar spliffið,low,n,0,5006,NaN-2,7/12/2021,Open,
+CAS-3,Longyearbyen,Laga donkið,Vantar spliffið,low,n,0,5003,NaN-2,7/12/2021,Open,
+CAS-4,Longyearbyen,Laga vaskinn,Þarf að laga vaskinn,medium,y,7,5002,NaN-12,7/12/2021,Closed,8/12/2021
+CAS-5,Longyearbyen,Laga vaskinn,Þarf að laga vaskinn,medium,y,7,5002,NaN-12,14/12/2021,Ready to close,
+CAS-6,Longyearbyen,asdfaf,fasdfija,high,n,0,5003,NaN-14,9/12/2021,Open,
+CAS-7,Longyearbyen,asdkfajdf ,adsljfk ,low,n,0,5003,NaN-14,9/12/2021,Open,
