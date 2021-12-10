@@ -23,11 +23,12 @@ class CreateReport:
             total_cost = cost_of_materials
         
         maintenance = MaintananceReport(real_estate_id, tasks_done, employee_id, case_id, cost_of_materials, contractor, contractor_cost, total_cost)
-
-        case = self.llapi.get_case(case_id)
-        case.status = "Ready to close"
-        self.llapi.create_maintenance_report(maintenance)
-        self.llapi.edit_case(case)
+        save = self.print_report(maintenance)
+        if save:
+            case = self.llapi.get_case(case_id)
+            case.status = "Ready to close"
+            self.llapi.create_maintenance_report(maintenance)
+            self.llapi.edit_case(case)
 
 
     def available_contractors(self):
@@ -41,3 +42,32 @@ class CreateReport:
                 print("Contractor not found")
             else:
                 return contractor
+    
+    def print_report(self, report):
+        layout = f"""
+      __|__                                                                                             __|__
+*---o--(_)--o---*                                                                                 *---o--(_)--o---* 
+___________________________________________________________________________________________________________________
+|                                                                                                                 |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
+|_________________________________________________________________________________________________________________|
+|                                                                                                                 |
+|                 Case ID: {report.case_id:87s}|
+|             Employee ID: {report.employee_id:87s}|
+|          Real estate ID: {report.real_estate_id:87s}|
+|             Description: {report.description:87s}|
+|           Material cost: {report.material_cost:87s}|
+|              Contractor: {report.contractor:87s}|
+|         Contractor cost: {report.contractor_cost:87s}|
+|              Total cost: {report.total_cost:87s}|
+|_________________________________________________________________________________________________________________|
+"""
+        print(layout)
+        while True:
+            save = input("Do you want to save(y/n):")
+            if save == "y":
+                return True
+            elif save == "n":
+                return False
+            else:
+                print("Invalid option")
