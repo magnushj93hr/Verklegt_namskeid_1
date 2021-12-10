@@ -44,9 +44,7 @@ ________________________________________________________________________________
                 cases = self.llapi.filter_cases("Open")
                 case, reports = self.select_case(cases)
                 if case != None:
-                    make_report = input("Do you want to make a report(y/n): ")
-                    if make_report == "y":
-                        self.create_maintenance_report(case)
+                    self.search_case.make_report(case)
 
             elif command == "2":
                 cases = self.llapi.filter_cases("Ready to close")

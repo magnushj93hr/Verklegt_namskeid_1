@@ -1,7 +1,9 @@
+from ui_layer.Cases.create_report import CreateReport
 
 class SearchCasae:
     def __init__(self, llapi):
         self.llapi = llapi
+        self.report = CreateReport(llapi)
         self.options = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -25,8 +27,9 @@ ________________________________________________________________________________
             if command == "1":
                 search_id = input("Enter case id: ")
                 result = self.llapi.get_case(search_id)
-                if len(result) != 0:
-                    self.print_full_case(case)
+                if result != None:
+                    self.print_full_case(result)
+                    self.make_report(result)
                 else:
                     print("No case found")
             elif command == "2":
@@ -37,6 +40,7 @@ ________________________________________________________________________________
                     case = self.select_case()
                     if case != None:
                         self.print_full_case(case)
+                        self.make_report(case)
                 else:
                     print("No case found")
             elif command == "3":
@@ -47,6 +51,7 @@ ________________________________________________________________________________
                     case = self.select_case()
                     if case != None:
                         self.print_full_case(case)
+                        self.make_report(case)
                 else:
                     print("No case found")
             elif command == "4": 
@@ -56,15 +61,13 @@ ________________________________________________________________________________
                     case = self.select_case()
                     if case != None:
                         self.print_full_case(case)
+                        self.make_report(case)
                 else:
                     print("No case found")
             elif command == "r":
                     return
             else:
                 print("Invalid option")
-
-
-# id, location, subject, description, priority, repeated, repeat_days, real_est_id, emp_id, date = None, status = 'Open', closed_date = None
 
 
     def print_full_case(self, case):
@@ -77,7 +80,7 @@ ________________________________________________________________________________
 |       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|      Case: {case.id:28s}Created by: {case.emp_id:31}Total cost: {self.get_total_cost(reports):<18s}|
+|      Case: {case.id:28s}Created by: {case.emp_id:31}Total cost: {self.get_total_cost(reports):<18d}|
 |                                                                                                                 |
 |          Real estate ID: {case.real_est_id:87s}|
 |                Location: {case.location:87s}|
@@ -109,7 +112,7 @@ ________________________________________________________________________________
 |             Employee ID: {report.employee_id:87s}|
 |           Material cost: {report.material_cost:87s}|
 |              Contractor: {report.contractor:87s}|
-|         Contractor cost: {report.contractor_cost:87s}|
+|         Contractor cost: {report.contractor_cost:87d}|
 |             Description: {report.description:87s}|
 |_________________________________________________________________________________________________________________|"""
         
@@ -169,3 +172,14 @@ ________________________________________________________________________________
                 return result
             else:
                 print("Invalid option")
+
+    def make_report(self, case):
+        if case.status == "Open":
+            while True:
+                option = input("Do you want to create maintenance report(y/n): ")
+                if option =="y":
+                    self.report.create_maintenance_report(case)
+                elif option == "n":
+                    return
+                else:
+                    print("Invalid option")

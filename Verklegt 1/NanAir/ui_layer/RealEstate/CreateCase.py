@@ -1,5 +1,7 @@
 from models.Case import Case
 
+CASE = 'CAS-'
+PRIORITY = ['low','medium','high']
 
 class CreateCase:
     
@@ -17,7 +19,7 @@ class CreateCase:
 
     def create_case_start(self):
         emp_id = input("Enter your supervisor ID: ").lower()
-        result = LLAPI().search_employee(emp_id)
+        result = self.llapi.search_employee(emp_id)
         try:
             result.id
             return result, emp_id
