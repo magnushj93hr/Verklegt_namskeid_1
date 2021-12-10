@@ -57,9 +57,17 @@ ________________________________________________________________________________
         while True:
             self.search_output_printer(result)
             command = input("Enter your input: ")
-            if command == "1": self.edit_real1.edit_real(result)
-            elif command == "2": self.create_real1.create_case(result)
-            elif command == "3": self.edit_case1.edit_case(result)   
-            elif command == "r": return
+            if command == "1": 
+                self.llapi.clear() # Maby clear 2 times
+                self.edit_real1.edit_real(result)
+            elif command == "2":
+                self.llapi.clear() 
+                self.create_real1.create_case(result)
+            elif command == "3": 
+                self.llapi.clear()
+                self.edit_case1.edit_case(result)   
+            elif command == "r": 
+                self.llapi.clear()
+                return
             else: print("Invalid option, try again!")
 # ------------------------------------------------------------------------------------------------------------------

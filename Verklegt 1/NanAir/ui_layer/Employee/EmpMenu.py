@@ -41,17 +41,20 @@ ________________________________________________________________________________
             self.draw_options()
             command = input("Choose option: ")
             if command == "1":
+                self.llapi.clear()
                 self.search_emp.search_employee()
             elif command == "2":
+                self.llapi.clear()
                 self.list_all_emp.list_all_employees()
             elif command == "3" and self.user.is_supervisor():
+                self.llapi.clear()
                 self.create_emp.create_employee()
             elif command == "4":
+                self.llapi.clear()
                 self.edit_emp.edit_employee()
             elif command == "r":
+                self.llapi.clear()
                 return
-            elif command == "m":
-                return "m"
             else:
                 print("invalid option, try again!")
 
