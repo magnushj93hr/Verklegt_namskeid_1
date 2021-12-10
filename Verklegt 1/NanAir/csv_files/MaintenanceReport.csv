@@ -4,3 +4,4 @@ real_estate_id,description,employee_id,case_id,material_cost,contractor,contract
 5006,lagaði eh,NaN-7,CAS-1,249,Iron Man,295,544
 1244,lagðai shittið,NaN-7,CAS-4,2450,Siggi,214,2664
 5005,lagaði +,NaN-7,CAS-6,254,,0,254
+1244,fixed light,NaN-7,CAS-5,250,Maggi,460,710
