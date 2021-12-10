@@ -10,6 +10,7 @@ class CreateCase:
         self.llapi = llapi
 
     def priority_check(self):
+        """User inputs priority and returns it"""
         while True:
             print('What priority?: ')
             for prio in PRIORITY:
@@ -19,6 +20,7 @@ class CreateCase:
                 return priority
 
     def create_case(self, real_est):
+        """Creates case in real estate"""
         emp_id = self.user.user_id
         all_cases = self.llapi.all_cases()
         id = CASE + str(len(all_cases) + 1)
@@ -39,6 +41,7 @@ class CreateCase:
             self.llapi.create_case(case)
 
     def print_case(self, case):
+        """Prints out case info"""
         layout = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 

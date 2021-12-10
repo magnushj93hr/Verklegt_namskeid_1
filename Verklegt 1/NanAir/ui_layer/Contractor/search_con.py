@@ -13,13 +13,16 @@ class SearchCon:
             print()
             print("Quit by entering (q)")
             search_name = input("Enter contractor name: ")
-            if search_name.lower().title() != "q":
+            if search_name.lower().title() == "Q":
+                return
+            else:
                 result = self.llapi.search_contractor(search_name)
                 if result == None:
                     print("No contractor found")
                 else:
                     self.print_searched_contractor(result)
-            break
+                
+
     
     def print_searched_contractor(self, contractor):
         """prints contractor infor"""
@@ -41,5 +44,5 @@ ________________________________________________________________________________
 |                  Review: {contractor.review:87s}|
 |_________________________________________________________________________________________________________________|
 """
-        self.llapi.clear()
+        # self.llapi.clear()
         print(layout)

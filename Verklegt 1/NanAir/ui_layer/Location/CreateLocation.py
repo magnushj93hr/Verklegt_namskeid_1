@@ -40,7 +40,7 @@ class CreateLocation:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|        Home        Employee          Real estate         Cases           Contractor          >Location <        |
+|        Home        Employee          Real estate         Cases           Contractor          >Location<         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   Create New Location                                                                                           |

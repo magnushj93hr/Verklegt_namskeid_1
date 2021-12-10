@@ -10,18 +10,21 @@ class CreateReal:
 # ------------------------------------------------------------------------------------------------------------------
 # Check if the input is valid and 
     def input_real_and_check(self, info_type, check_fun):
+        """Takes in real estate info type  and checks if the value is valid"""
         while True:
             value = input(f"Enter the {info_type} of the real estate: ")
             if not check_fun(value): print(f"Invalid {info_type} for the real estate")
             else: return value
 
     def input_case_and_check(self, info_type, check_fun):
+        """Takes in case info type and checks if the value is valid"""
         while True:
             value = input(f"Enter case {info_type}: ")
             if not check_fun(value): print(f"Invalid {info_type} for the real estate")
             else: return value
 
     def location_in(self):
+        """Displays all location and asks user to enter location"""
         while True:
             print('Available locations to choose from:')
             for location in self.llapi.get_locations_name():
@@ -32,6 +35,7 @@ class CreateReal:
 
 
     def user_options(self, controller):
+        """User input and checks if its valid, returns real estate info"""
         address = self.input_real_and_check("address", lambda value : self.llapi.is_address_correct(value))
         size = self.input_real_and_check("size", lambda value : self.llapi.check_if_size_correct(value))
         rooms = self.input_real_and_check("rooms", lambda value : self.llapi.check_if_room_correct(value))
@@ -47,6 +51,7 @@ class CreateReal:
 # ------------------------------------------------------------------------------------------------------------------
 # Create real estate
     def create_realestate(self):
+        """Create real estate"""
         try:
             value = int(input("How many apartments are available for rental: "))
             star = True
@@ -62,6 +67,7 @@ class CreateReal:
             else: self.make_realestate(address, size, rooms, id, amenities, location)
 
     def make_realestate(self, address, size, rooms, id, amenities, location):
+        """Make real estate"""
         real = RealEstate(address, size, rooms, id, amenities, location)
         save = self.display_real(real)
         if save == True:
@@ -69,12 +75,13 @@ class CreateReal:
 # ------------------------------------------------------------------------------------------------------------------
 
     def display_real(self, real):
+        """Prints real estate info"""
         self.header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
+|       Home        Employee          >Real estate<         Cases           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   Create New Real Estate                                                                                        |
@@ -83,16 +90,16 @@ ________________________________________________________________________________
         self.new_real = f"""|                                                                                                                 |
 |      Real Eastete                                                                                               |
 |                                                                                                                 |
-            1 - address: {real.address}
-            2 - size: {real.size}
-            3 - rooms: {real.rooms}
-            4 - amenities: {real.amenities}
-            5 - location: {real.location}
+|            1 - address: {real.address:88s}|
+|            2 - size: {real.size:91s}|
+|            3 - rooms: {real.rooms:90s}|
+|            4 - amenities: {str(real.amenities):86s}|
+|            5 - location: {real.location:87s}|
 |_________________________________________________________________________________________________________________|"""
         self.llapi.clear()
         print(f"{self.header}\n{self.new_real}")
         while True:
-            save = input("Do you want to save employee(y/n): ")
+            save = input("Do you want to save real estate(y/n): ")
             if save == "y":
                 return True
             elif save == "n":
