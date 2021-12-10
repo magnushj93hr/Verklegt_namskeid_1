@@ -10,6 +10,7 @@ class CreateLocation:
         self.user = user
 
     def input_and_check(self, info_type, check_fun):
+        """Takes in user input and checks if it's valid"""
         while True:
             value = input(f"Enter the {info_type} of the new location: ")
             if not check_fun(value): print(f"Invalid {info_type} for new location")
@@ -25,6 +26,7 @@ class CreateLocation:
         return location, country, airport, phone, opening_hours
 
     def create_location(self):
+        """Create location"""
         location, country, airport, phone, opening_hours = self.user_options()
         loc = Location(country, location, airport, phone, opening_hours)
         save = self.display_loc(loc)
@@ -32,6 +34,7 @@ class CreateLocation:
             self.llapi.create_location(loc)
 
     def display_loc(self, loc):
+        """prints location info"""
         header = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 

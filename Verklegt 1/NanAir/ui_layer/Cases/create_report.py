@@ -7,6 +7,8 @@ class CreateReport:
 
 
     def create_maintenance_report(self, case):
+        """Takes in case information and asks user to enter info for 
+        maintenence report"""
         real_estate_id = case.real_est_id
         tasks_done = input("Enter what you did: ")
         employee_id = self.user.user_id
@@ -32,6 +34,7 @@ class CreateReport:
 
 
     def available_contractors(self):
+        """Displays available contractors and returns the contractor the user chooses"""
         contractors = self.llapi.get_contractors_name()
         while True:
             print('Available contractors to choose from: \n')
@@ -45,6 +48,7 @@ class CreateReport:
                 return contractor
     
     def print_report(self, report):
+        """prints report info after user has typed it in"""
         layout = f"""
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 

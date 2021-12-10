@@ -1,3 +1,4 @@
+import ast
 
 class EditReal:
     
@@ -19,7 +20,7 @@ class EditReal:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        >Real estate(real)<         Cases(cases)        Contractor(con)    |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |                                  You are curently editing Real Estate: {real.id}                                     |
