@@ -1,5 +1,10 @@
 from ui_layer.Cases.create_report import CreateReport
 from ui_layer.Cases.EditCase import EditCase
+import datetime
+from models.Case import Case
+
+CASE = 'CAS-'
+
 
 class SearchCase:
     def __init__(self, llapi, user):
@@ -66,8 +71,7 @@ ________________________________________________________________________________
                 search_id = input("Enter case id: ")
                 result = self.llapi.get_case(search_id)
                 if result != None:
-                    self.print_full_case(result)
-                    self.edit_or_report(result)
+                    self.status_options(result)
                 else:
                     print("No case found")
             elif command == "2":
@@ -77,8 +81,7 @@ ________________________________________________________________________________
                     self.printing_cases(result)
                     case = self.select_case()
                     if case != None:
-                        self.print_full_case(case)
-                        self.edit_or_report(case)
+                        self.status_options(case)
                 else:
                     print("No case found")
             elif command == "3":
@@ -88,8 +91,7 @@ ________________________________________________________________________________
                     self.printing_cases(result)
                     case = self.select_case()
                     if case != None:
-                        self.print_full_case(case)
-                        self.edit_or_report(case)
+                        self.status_options(case)
                 else:
                     print("No case found")
             elif command == "4": 
@@ -98,8 +100,7 @@ ________________________________________________________________________________
                     self.printing_cases(result)
                     case = self.select_case()
                     if case != None:
-                        self.print_full_case(case)
-                        self.edit_or_report(case)
+                        self.status_options(case)
                 else:
                     print("No case found")
             elif command == "r":
@@ -126,16 +127,21 @@ ________________________________________________________________________________
 |             Closed date: {case.closed_date:87s}|
 |_________________________________________________________________________________________________________________|"""
 
-        if case.status == "Open":
-            self.llapi.clear()
-            print(self.header_report_open) 
-        elif case.status == "Ready to close":
-            self.llapi.clear()
-            print(self.header_report_reddy_to_close)
-        elif case.status == "Closed":
-            self.llapi.clear()
-            print(self.header_report_closed)
+        # if case.status == "Open":
+        #     self.llapi.clear()
+        #     self.status_options(case)
+        #     print(self.header_report_open) 
+        # elif case.status == "Ready to close":
+        #     self.llapi.clear()
+        #     self.status_options(case)
+        #     print(self.header_report_reddy_to_close)
+        # elif case.status == "Closed":
+        #     self.llapi.clear()
+        #     self.status_options(case)
+        #     print(self.header_report_closed)
+        # print(print_case)
         print(print_case)
+
         if len(reports) == 0:
             print("No maintenance reports have been made")
         elif len(reports) == 1:
@@ -226,7 +232,9 @@ ________________________________________________________________________________
         """Asks user to enter input, either edit or create"""
         if case.status == "Open":
             while True:
-                print(self.edit_or_report_opt)
+                self.llapi.clear()
+                print(self.header_report_open)
+                self.print_full_case(case)
                 option = input("Enter option: ")
                 if option =="1":
                     self.edit_case.promt_edit_case(case)
@@ -238,3 +246,64 @@ ________________________________________________________________________________
                     return
                 else:
                     print("Invalid option")
+
+    def status_options(self, case):
+        if case.status == "Open":
+            self.edit_or_report(case)
+        elif case.status == "Ready to close":
+            self.llapi.clear()
+            print(self.header_report_reddy_to_close)
+            self.print_full_case(case)
+            opt = input("Enter option: ")
+            if opt == "1":
+                reports = self.llapi.search_maintenance_report(case.id)
+                self.contractor_review(reports)
+                self.change_case_status("Closed", case)
+                if case.repeated == "y" and len(reports) == 1:
+                    self.create_repeated_case(case.id)
+        elif case.status == "Closed":
+            self.llapi.clear()
+            print(self.header_report_closed)
+            self.print_full_case(case)
+            opt = input("Enter option: ")
+            if opt == "y":
+                self.change_case_status("Open", case)
+
+
+
+    def create_repeated_case(self, case_id):
+        """Takes in case id, making a case a repeated case"""
+        all_cases = self.llapi.all_cases()
+        case = self.llapi.get_case(case_id)
+        id = CASE + str(len(all_cases) + 1)
+        next_date = datetime.datetime.strptime(case.date, "%d/%m/%Y") + datetime.timedelta(days = int(case.repeat_days))
+        new_date = "%s/%s/%s" % (next_date.day, next_date.month, next_date.year)
+        new_case = Case(id, case.location, case.subject, case.description, case.priority, case.repeated, case.repeat_days, case.real_est_id, case.emp_id, new_date)
+        self.llapi.create_case(new_case)
+
+
+    def contractor_review(self, reports):
+        """Asks user to review contractor"""
+        report = reports[-1]
+        contractor = self.llapi.search_contractor(report.contractor)
+        if report.contractor != "":
+            while True:
+                review = input("Pleas review contractor(1-5): ")
+                if review != "1" and review != "2" and review != "3" and review != "4" and review != "5":
+                    print("Invalid input")
+                else:
+                    contractor.review = review
+                    self.llapi.edit_contractor(contractor)
+                    return
+                    
+        return
+
+    def change_case_status(self, status, case):
+        """Takes in case information and status, changes the status of the case """
+        if status == "Closed":
+            dt = datetime.datetime.now()
+            case.closed_date = "%s/%s/%s" % (dt.day, dt.month, dt.year)
+        elif status == "Open":
+            case.closed_date = None
+        case.status = status
+        self.llapi.edit_case(case)
