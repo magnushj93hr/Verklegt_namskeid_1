@@ -24,7 +24,6 @@ ________________________________________________________________________________
         print("Welcome to the creation kit!")
         # print("Quit by entering (q): ")
         name, phone, id, address, homeline, location, supervisor = self.user_options()
-        # if name != None and phone != None and id != None and address != None and homeline != None and location != None and supervisor != None:
         emp = Employee(name, id, address, homeline, location, phone, supervisor)
         save = self.display_emp(emp)
         if save:
