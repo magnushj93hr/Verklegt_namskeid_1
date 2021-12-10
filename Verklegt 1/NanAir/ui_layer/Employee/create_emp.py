@@ -20,11 +20,10 @@ ________________________________________________________________________________
 
     def create_employee(self):
         """Creates employee"""
+        self.llapi.clear()
         print(self.options)
         print("Welcome to the creation kit!")
-        # print("Quit by entering (q): ")
         name, phone, id, address, homeline, location, supervisor = self.user_options()
-        # if name != None and phone != None and id != None and address != None and homeline != None and location != None and supervisor != None:
         emp = Employee(name, id, address, homeline, location, phone, supervisor)
         save = self.display_emp(emp)
         if save:
@@ -33,7 +32,6 @@ ________________________________________________________________________________
     def user_options(self):
         """Returns employee information"""
         location = self.available_locations()
-        # check = self.llapi.check_location_append_to_list(location)
         id = self.get_emp_id()
         name = self.input_and_check("name", lambda value : self.llapi.is_name_correct(value))
         phone = self.input_and_check("phone", lambda value : self.llapi.is_phone_correct(value))
@@ -81,21 +79,6 @@ ________________________________________________________________________________
             else:
                 return opt
 
-
-    # def make_emp_or_sup_id(self, check, location):
-    #     while True:
-    #         all_id = self.llapi.all_employees()
-    #         emp_or_sup = input("Make employee or supervisor(e/s): ").lower()
-    #         if emp_or_sup == "e":
-    #             id = EMP_ID + str(len(all_id) + 1).zfill(4)
-    #             return id
-    #         elif emp_or_sup == "s":
-    #             if check == "True":
-    #                 id = SUP_ID + str(len(all_id) + 1).zfill(4)
-    #                 return id
-    #             else: print(f"Invalid ther is alredy a supervisor in {location}")
-
-
 # ------------------------------------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -108,7 +91,7 @@ ________________________________________________________________________________
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        >Employee(emp)<        Real estate(real)         Cases(cases)        Contractor(con)    |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   Create New Employee                                                                                           |

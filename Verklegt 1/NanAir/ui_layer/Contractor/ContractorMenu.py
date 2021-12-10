@@ -29,6 +29,7 @@ ________________________________________________________________________________
 
     def draw_options(self):
         """determines if menu bar should include supervisor options or not"""
+        self.llapi.clear()
         print(self.header)
         if self.user.is_supervisor():
             print(self.supervisorLine)
@@ -48,9 +49,8 @@ ________________________________________________________________________________
             elif command == "4" and self.user.is_supervisor():
                 self.edit_con.promt_input()
             elif command == "r":
+                self.llapi.clear()
                 return "r"
-            elif command == "m":
-                return "m"
             else:
                 print("invalid option, try again!")
             

@@ -48,6 +48,7 @@ ________________________________________________________________________________
     
     def print_employees(self, all_emps):
         """Returns info about employee"""
+        self.llapi.clear()
         print(self.variables)
         for emp in all_emps:
             print(f"|  {emp.name:<32}{emp.supervisor:<15}{emp.id:<10}{emp.homeline:<15s}{emp.phone:<14s}{emp.address:<27}{emp.location:<27}{emp.email:<43s}|")

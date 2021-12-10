@@ -1,13 +1,11 @@
 from ui_layer.RealEstate.EditReal import EditReal
 from ui_layer.RealEstate.CreateCase import CreateCase
-from ui_layer.RealEstate.EditCase import EditCase
 
 class SearchReal:
     
     def __init__(self, llapi, user):
         self.edit_real1 = EditReal(llapi, user)
         self.create_real1 = CreateCase(llapi, user)
-        self.edit_case1 = EditCase(llapi, user)
         self.llapi = llapi
         self.user = user
         
@@ -17,11 +15,11 @@ class SearchReal:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        >Real estate(real)<         Cases(cases)        Contractor(con)    |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - 1               //Edit Real Estate information            - 2           //Create case                       |
-|   - 3               //Edit case information                   - r           //return to previous menu           |
+|   - r               //return to previous menu                                                                   |
 |_________________________________________________________________________________________________________________|"""
         self.edit_options = f"""|                                                                                                                 |
 |      Real Estate: {real.id:94s}|
@@ -33,6 +31,7 @@ ________________________________________________________________________________
 |      Location: {real.location:97s}|
 |      Return to previous menu                                                                                    |
 |_________________________________________________________________________________________________________________|"""
+        self.llapi.clear()
         print(f"{self.header}\n{self.edit_options}")
 
 
@@ -58,13 +57,10 @@ ________________________________________________________________________________
             self.search_output_printer(result)
             command = input("Enter your input: ")
             if command == "1": 
-                self.llapi.clear() # Maby clear 2 times
                 self.edit_real1.edit_real(result)
             elif command == "2":
-                self.llapi.clear() 
                 self.create_real1.create_case(result)
             elif command == "3": 
-                self.llapi.clear()
                 self.edit_case1.edit_case(result)   
             elif command == "r": 
                 self.llapi.clear()

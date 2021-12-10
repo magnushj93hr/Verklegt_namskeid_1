@@ -13,7 +13,7 @@ class ListAllCases:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - 1              //Filter by open cases                                                                       |
@@ -41,15 +41,17 @@ ________________________________________________________________________________
     def prompt_input_filter(self):
         """Asks user to enter filter by status option"""
         while True:
+            self.llapi.clear()
             print(self.filter_options)
             command = input("Enter input: ")
             if command == "1":
                 cases = self.llapi.filter_cases("Open")
                 case, reports = self.select_case(cases)
                 if case != None:
-                    self.search_case.make_report(case)
+                    self.search_case.edit_or_report(case)
 
             elif command == "2":
+                self.llapi.clear()
                 cases = self.llapi.filter_cases("Ready to close")
                 case, reports = self.select_case(cases)
                 if case != None:
@@ -61,6 +63,7 @@ ________________________________________________________________________________
                             self.create_repeated_case(case.id)
 
             elif command == "3":
+                self.llapi.clear()
                 cases = self.llapi.filter_cases("Closed")
                 case, reports = self.select_case(cases)
                 if case != None:
@@ -68,6 +71,7 @@ ________________________________________________________________________________
                     if open_case_opt == "y":
                         self.change_case_status("Open", case)
             elif command == "r":
+                self.llapi.clear()
                 return
             else:
                 print("Invalid option")

@@ -11,7 +11,7 @@ class CaseMenu:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home(home)        Employee(emp)        Real estate(real)         >Cases(cases)<        Contractor(con)    |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |   - 1              //Search for cases                         - 2          //List all cases                     |
@@ -22,6 +22,7 @@ ________________________________________________________________________________
     def prompt_input(self):
         """Asks user to enter Case menu option"""
         while True:
+            self.llapi.clear()
             print(self.options)
             command = input("Choose option: ")
             if command == "1":
@@ -29,8 +30,7 @@ ________________________________________________________________________________
             elif command == "2":
                 self.list_all_cases.list_all_cases()
             elif command == "r":
+                self.llapi.clear()
                 return "r"
-            elif command == "m":
-                return "m"
             else:
                 print("invalid option, try again!")
