@@ -1,6 +1,11 @@
+from ui_layer.Location.CreateLocation import CreateLocation
+
+
 class LocationMenu:
-    def __init__(self, llapi):
+    def __init__(self, llapi, user):
+        self.create_location = CreateLocation(llapi, user)
         self.llapi = llapi
+        self.user = user
         self.options = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -9,7 +14,7 @@ ________________________________________________________________________________
 |       >Home(home)<        Employee(emp)        Real estate(real)         Cases(cases)        Contractor(con)    |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|   - cr        //Create new destination                                 - b           //Go back                  |
+|       - 1         //Create new destination                        - r         //Return to previous menu         |
 |_________________________________________________________________________________________________________________|
 """
 
@@ -20,10 +25,10 @@ ________________________________________________________________________________
     def prompt_input(self):
         while True:
             command = input("Choose option: ")
-            if command == "cr":
-                pass
-            elif command == "b":
-                return
+            if command == "1":
+                self.create_location.create_location()
+            elif command == "r":
+                return "r"
             else:
                 print("invalid option, try again!")
             if command == "m":

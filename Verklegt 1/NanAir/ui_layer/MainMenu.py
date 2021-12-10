@@ -1,3 +1,4 @@
+import os
 
 from ui_layer.Employee.EmpMenu import EmpMenu
 from ui_layer.RealEstate.RealEstMenu import RealEstMenu
@@ -67,8 +68,10 @@ ________________________________________________________________________________
                 con_menu = ContractorMenu(self.llapi, self.user)
                 con_menu.prompt_input()
             elif command == "5":
-                loc_menu = LocationMenu(self.llapi, self.user)
-                loc_menu.draw_options()
+                if self.user.is_supervisor() == True:
+                    loc_menu = LocationMenu(self.llapi, self.user)
+                    loc_menu.draw_options()
+                else: print("That option is not available for a employee")
             elif command == "q":
                 print("Thanks for using NaN air")
                 return
