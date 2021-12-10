@@ -22,7 +22,7 @@ class EditReal:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
+|       Home        Employee         >Real estate<         Cases            Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |                                  You are currently editing Real Estate: {real.id}                                     |
