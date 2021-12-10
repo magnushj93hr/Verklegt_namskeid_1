@@ -16,8 +16,13 @@ ________________________________________________________________________________
     
     def print_contractors(self, all_loc):
         """Returns info about contractor"""
-        print(self.variables)
-        for loc in all_loc:
-            print(f"|  {loc.country:<27}{loc.location:<27}{loc.airport:<27}{loc.phone:<16s}{loc.opening_hours:<19s}|")
-        print(self.footer)
-    
+        while True:
+            print(self.variables)
+            for loc in all_loc:
+                print(f"|  {loc.country:<27}{loc.location:<27}{loc.airport:<27}{loc.phone:<16s}{loc.opening_hours:<19s}|")
+            print(self.footer)
+            cont = input("Continue(y/n): ").lower()
+            if cont != "y": break
+            
+            
+        
