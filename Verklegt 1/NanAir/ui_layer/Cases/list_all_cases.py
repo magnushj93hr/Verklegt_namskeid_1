@@ -73,6 +73,9 @@ ________________________________________________________________________________
 
     def select_case(self, cases):
         self.search_case.printing_cases(cases)
+        if len(cases) == 0:
+            print("No cases found")
+            return None, None
         case_ids_list = map(lambda case: case.id, cases)
         search_case_opt = input("Do you want to select a case(y/n): ")
         while True:
