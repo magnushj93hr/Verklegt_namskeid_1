@@ -31,11 +31,6 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|
 """
 
-    # def draw_options(self):
-    #     #prints out menu bar
-    #     self.print_options()
-    #     return self.prompt_input()
-
     def print_options(self):
         #determines if menu bar should include supervisor options or not
         self.llapi.clear()
