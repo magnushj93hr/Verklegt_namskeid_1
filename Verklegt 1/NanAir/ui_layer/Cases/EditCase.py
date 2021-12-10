@@ -14,7 +14,7 @@ class EditCase:
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
 ___________________________________________________________________________________________________________________
 |                                                                                                                 |
-|       Home        Employee        >Real estate<          Cases            Contractor           Location         |
+|       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
 |                                     - r        //Return to previous menu                                        |
