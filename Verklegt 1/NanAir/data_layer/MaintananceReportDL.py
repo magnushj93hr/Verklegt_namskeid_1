@@ -4,7 +4,7 @@ from models.MaintananceReport import MaintananceReport
 
 class MaintenanceDL:
     def __init__(self):
-        self.filepath = "Verklegt 1/NanAir/csv_files/MaintenanceReport.csv"
+        self.filepath = "csv_files/MaintenanceReport.csv"
     
     def get_all_maintenance_reports(self):
         """"Returns a list of all maintenance reports"""

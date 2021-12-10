@@ -6,7 +6,7 @@ from tempfile import NamedTemporaryFile
 
 class ContractorDL:
     def __init__(self):
-        self.filepath = "Verklegt 1/NanAir/csv_files/Contractor.csv"
+        self.filepath = "csv_files/Contractor.csv"
    
     def get_all_contractors(self):
         """Returns a list of all contractors"""        
