@@ -1,13 +1,10 @@
+import os
+
 from logic_layer.EmployeeLL import EmployeeLL
-
 from logic_layer.RealEstateLL import RealEstateLL
-
 from logic_layer.CaseLL import CaseLL
-
 from logic_layer.ContractorLL import ContractorLL
-
 from logic_layer.LocationLL import LocationLL
-
 from logic_layer.MaintenanceLL import MaintenanceLL
 from logic_layer.InputCheck import InputCheck
 from data_layer.DLAPI import DLAPI
@@ -54,6 +51,8 @@ class LLAPI:
         return self.input_check.check_if_size_correct(size)
     def check_if_room_correct(self, room):
         return self.input_check.check_if_room_correct(room)
+    def check_if_location_correct(self, location):
+        return self.input_check.check_if_location_correct(location)
     def check_location_append_to_list(self, location):
         return self.input_check.check_location_append_to_list(location)
 
@@ -189,3 +188,10 @@ class LLAPI:
         return self.maintenanceLL.search_maintenance_report(report_id)
 
 # ----------------------------------------------------------------
+# CLEARS THE CONSOLE
+    def clear(self):
+        '''Function to clear screen'''
+        if os.name == 'posix':
+            os.system('clear')
+        else:
+            os.system('cls')

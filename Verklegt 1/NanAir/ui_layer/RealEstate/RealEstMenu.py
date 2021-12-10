@@ -50,16 +50,18 @@ ________________________________________________________________________________
             self.print_options()
             command = input("Choose option: ")
             if command == "1":
+                self.llapi.clear()
                 self.list_real.real_printer()
             elif command == "2":
+                self.llapi.clear()
                 result = self.search_real.search_realestate()
                 if result is not None:
                     self.search_real.prompt_input_search(result)
             elif command == "3" and self.user.is_supervisor():
+                self.llapi.clear()
                 self.create_real.create_realestate()
             elif command == "r":
+                self.llapi.clear()
                 return "r"
-            elif command == "m":
-                return "m"
             else:
                 print("invalid option, try again!")

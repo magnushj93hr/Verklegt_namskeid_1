@@ -50,6 +50,12 @@ class InputCheck:
         if len(address) <= MAX_ADDRESS:
             return True
         return False 
+    def check_if_location_correct(self, location):
+        """Takes in location and checks if the location is valid"""
+        if len(location) <= MAX_LOCATION:
+            if not location.isdigit():
+                return True
+        return False
 # ------------------------------
 # for real estate ///
     def check_if_rel_id_correct(self, id):

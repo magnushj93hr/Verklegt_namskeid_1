@@ -1,3 +1,4 @@
+import os
 
 from ui_layer.Employee.EmpMenu import EmpMenu
 from ui_layer.RealEstate.RealEstMenu import RealEstMenu
@@ -52,23 +53,31 @@ ________________________________________________________________________________
         """Asks user to enter main menu option"""
         return_option = ""
         while True:
+            self.llapi.clear()
             print(self.options)
             command = input("Enter your input: ")
             if command == "1":
+                self.llapi.clear()
                 emp_menu = EmpMenu(self.llapi, self.user)
                 return_option = emp_menu.prompt_input()
             elif command == "2":
+                self.llapi.clear()
                 real_menu = RealEstMenu(self.llapi, self.user)
                 real_menu.prompt_input()
             elif command == '3':
+                self.llapi.clear()
                 case_menu = CaseMenu(self.llapi, self.user)
                 case_menu.prompt_input()
             elif command == '4':
+                self.llapi.clear()
                 con_menu = ContractorMenu(self.llapi, self.user)
                 con_menu.prompt_input()
             elif command == "5":
-                loc_menu = LocationMenu(self.llapi, self.user)
-                loc_menu.draw_options()
+                self.llapi.clear()
+                if self.user.is_supervisor() == True:
+                    loc_menu = LocationMenu(self.llapi, self.user)
+                    loc_menu.draw_options()
+                else: print("That option is not available for a employee")
             elif command == "q":
                 print("Thanks for using NaN air")
                 return

@@ -1,3 +1,5 @@
 real_estate_id,description,employee_id,case_id,material_cost,contractor,contractor_cost,total_cost
 5001,lagaði þakið,NaN-14,CAS-2,4000,,0,4000
 5003,Búið að laga heita pottinn,NaN-14,CAS-3,4000,Iron Man,4000,8000
+5006,lagaði eh,NaN-7,CAS-1,249,Iron Man,295,544
+1244,lagðai shittið,NaN-7,CAS-4,2450,Siggi,214,2664

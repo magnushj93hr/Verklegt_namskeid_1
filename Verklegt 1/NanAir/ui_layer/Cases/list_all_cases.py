@@ -80,8 +80,8 @@ ________________________________________________________________________________
             print("No cases found")
             return None, None
         case_ids_list = map(lambda case: case.id, cases)
-        search_case_opt = input("Do you want to select a case(y/n): ")
         while True:
+            search_case_opt = input("Do you want to select a case(y/n): ")
             if search_case_opt == "n":
                 return None, None
             elif search_case_opt == "y":

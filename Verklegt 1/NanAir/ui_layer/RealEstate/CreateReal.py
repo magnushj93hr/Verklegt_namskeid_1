@@ -49,16 +49,64 @@ class CreateReal:
     def create_realestate(self):
         try:
             value = int(input("How many apartments are available for rental: "))
+            star = True
         except ValueError:
             print("Only enter a int number")
-        address, size, rooms, id, amenities, location = self.user_options("create")
-        if value > 1:
-            for apartment in range(0, value):
-                self.make_realestate(address, size, rooms, id, amenities, location)
-                id += 1
-        else: self.make_realestate(address, size, rooms, id, amenities, location)
+            star = False
+        if star == True:
+            address, size, rooms, id, amenities, location = self.user_options("create")
+            if value > 1:
+                for apartment in range(0, value):
+                    self.make_realestate(address, size, rooms, id, amenities, location)
+                    id += 1
+            else: self.make_realestate(address, size, rooms, id, amenities, location)
 
     def make_realestate(self, address, size, rooms, id, amenities, location):
         real = RealEstate(address, size, rooms, id, amenities, location)
-        self.llapi.create_realestate(real)
+        save = self.display_real(real)
+        if save == True:
+            self.llapi.create_realestate(real)
 # ------------------------------------------------------------------------------------------------------------------
+
+    def display_real(self, real):
+        print(real)
+        self.edit_options = f"""
+            Real estate: {real.id}
+
+            1 - address: {real.address}
+            2 - size: {real.size}
+            3 - rooms: {real.rooms}
+            4 - amenities: {real.amenities}
+            5 - location: {real.location}
+            r - return to previous menu
+            """
+        print(self.edit_options)
+        self.header = """
+      __|__                                                                                             __|__
+*---o--(_)--o---*                                                                                 *---o--(_)--o---* 
+___________________________________________________________________________________________________________________
+|                                                                                                                 |
+|       Home(home)        Employee(emp)        >Real estate(real)<         Cases(cases)        Contractor(con)    |
+|_________________________________________________________________________________________________________________|
+|                                                                                                                 |
+|   Create New Real Estate                                                                                        |
+|_________________________________________________________________________________________________________________|"""
+        
+        self.new_real = f"""|                                                                                                                 |
+|      Real Eastete                                                                                               |
+|                                                                                                                 |
+            1 - address: {real.address}
+            2 - size: {real.size}
+            3 - rooms: {real.rooms}
+            4 - amenities: {real.amenities}
+            5 - location: {real.location}
+|_________________________________________________________________________________________________________________|"""
+        print(f"{self.header}\n{self.new_real}")
+        while True:
+            save = input("Do you want to save employee(y/n): ")
+            if save == "y":
+                return True
+            elif save == "n":
+                return False
+            else:
+                print("Invalid option")
