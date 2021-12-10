@@ -24,6 +24,7 @@ ________________________________________________________________________________
 """
 
     def draw_options(self):
+        """Prints menu, if user is supervisor, he gets more options"""
         print(self.header)
         if self.user.is_supervisor():
             print(self.supervisor_opt)
