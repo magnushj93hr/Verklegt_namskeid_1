@@ -1,13 +1,10 @@
+import os
+
 from logic_layer.EmployeeLL import EmployeeLL
-
 from logic_layer.RealEstateLL import RealEstateLL
-
 from logic_layer.CaseLL import CaseLL
-
 from logic_layer.ContractorLL import ContractorLL
-
 from logic_layer.LocationLL import LocationLL
-
 from logic_layer.MaintenanceLL import MaintenanceLL
 from logic_layer.InputCheck import InputCheck
 from data_layer.DLAPI import DLAPI
@@ -191,3 +188,10 @@ class LLAPI:
         return self.maintenanceLL.search_maintenance_report(report_id)
 
 # ----------------------------------------------------------------
+# CLEARS THE CONSOLE
+    def clear(self):
+        '''Function to clear screen'''
+        if os.name == 'posix':
+            os.system('clear')
+        else:
+            os.system('cls')

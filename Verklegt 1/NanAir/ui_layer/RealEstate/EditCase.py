@@ -7,17 +7,30 @@ class EditCase:
 # ------------------------------------------------------------------------------------------------------------------
 # Edit Case
     def print_case_as_menu(self, case):
-        self.edit_options_case = f"""
-        Case: {case.id}
+        self.header = f"""
+      __|__                                                                                             __|__
+*---o--(_)--o---*                                                                                 *---o--(_)--o---* 
+___________________________________________________________________________________________________________________
+|                                                                                                                 |
+|       Home(home)        Employee(emp)        >Real estate(real)<         Cases(cases)        Contractor(con)    |
+|_________________________________________________________________________________________________________________|
+|                                                                                                                 |
+|                                    You are curently editing a Case: {case.id}                                       |
+|                                     - r          //Return to previous menu                                      |
+|_________________________________________________________________________________________________________________|"""
 
-        1 - Location: {case.location}
-        2 - subject: {case.subject}
-        3 - description: {case.description}
-        4 - priority: {case.priority}
-        5 - repeated: {case.repeated}
-        r - return to previous menu
-        """
-        print(self.edit_options_case)
+        self.edit_options = f"""|                                                                                                                 |
+|      Case: {case.id:100s}|
+|                                                                                                                 |
+|       1 - Location: {case.location:87s}|
+|       2 - subject: {case.subject:87s}|
+|       3 - description: {case.description:87s}|
+|       4 - priority: {case.priority:87s}|
+|       5 - repeated: {case.repeated:87s}|
+|_________________________________________________________________________________________________________________|
+"""
+        self.llapi.clear()
+        print(f"{self.header}\n{self.edit_options}")
 
     def edit_case(self, real):
         print(real.id)
