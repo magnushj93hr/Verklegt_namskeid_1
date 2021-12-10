@@ -22,7 +22,7 @@ ________________________________________________________________________________
             for loc in all_loc:
                 print(f"|  {loc.country:<27}{loc.location:<27}{loc.airport:<27}{loc.phone:<16s}{loc.opening_hours:<19s}|")
             print(self.footer)
-            cont = input("Continue(y/n): ").lower()
+            cont = input("Return to previous menu(y/n): ").lower()
             if cont == "y": break
             
             
