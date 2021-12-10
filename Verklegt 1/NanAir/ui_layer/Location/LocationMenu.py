@@ -24,7 +24,7 @@ ________________________________________________________________________________
 """
 
     def draw_options(self):
-        """Prints menu, if user is supervisor, he gets more options"""
+        self.llapi.clear()
         print(self.header)
         if self.user.is_supervisor():
             print(self.supervisor_opt)
@@ -40,6 +40,7 @@ ________________________________________________________________________________
             elif command == "2" and self.user.is_supervisor():
                 self.create_location.create_location()
             elif command == "r":
+                self.llapi.clear()
                 return "r"
             else:
                 print("invalid option, try again!")

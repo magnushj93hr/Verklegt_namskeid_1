@@ -56,8 +56,9 @@ ________________________________________________________________________________
 |           Opening hours: {loc.opening_hours:87s}|
 |_________________________________________________________________________________________________________________|
 """
-        print(header)
-        print(new_emp)
+        self.llapi.clear()
+        print(f"{header}\n{new_emp}")
+
         while True:
             save = input("Do you want to save the new location(y/n): ")
             if save == "y": return True
