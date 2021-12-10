@@ -1,6 +1,11 @@
 id,location,subject,description,priority,repeated,repeat_days,real_est_id,emp_id,date,status,closed_date
 CAS-1,Longyearbyen,þrífa klósett,þarf að þrífa klósettið,low,y,2,5006,NaN-14,10/12/2021,Ready to close,
-CAS-2,Nuuk,laga þak,þakið lekur,medium,n,0,5001,NaN-14,10/12/2021,Ready to close,
+CAS-2,Nuuk,laga þak,þakið lekur,medium,n,0,5001,NaN-14,10/12/2021,Closed,10/12/2021
 CAS-3,Longyearbyen,Laga heita pottinn,Heiti potturinn er bilaður,medium,n,0,5003,NaN-14,10/12/2021,Open,
 CAS-4,Wardrobe,Laga,þarf að laga eh,low,y,5,1244,NaN-7,10/12/2021,Open,
+<<<<<<< Updated upstream
 CAS-5,Reykjavik,Laga,þarf að laga eh,low,n,5,1244,NaN-7,15/12/2021,Open,
+=======
+CAS-5,Wardrobe,Laga,þarf að laga eh,low,y,5,1244,NaN-7,15/12/2021,Open,
+CAS-6,Longyearbyen,Laga spliffið,færa doinkið,high,n,0,5005,NaN-2,10/12/2021,Open,
+>>>>>>> Stashed changes
