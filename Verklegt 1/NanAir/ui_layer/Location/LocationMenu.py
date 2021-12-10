@@ -19,10 +19,12 @@ ________________________________________________________________________________
 """
 
     def draw_options(self):
+        """prints out location menu and calls a function that prompts input"""
         print(self.options)
         self.prompt_input()
 
     def prompt_input(self):
+        """Asks user enter info"""
         while True:
             command = input("Choose option: ")
             if command == "1":
