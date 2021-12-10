@@ -1,7 +1,0 @@
-dags 2.12.2021
-
-verkefni dagsins:
-
-forrita logic layer 
-forrita
-forrita
