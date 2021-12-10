@@ -74,10 +74,8 @@ ________________________________________________________________________________
                 con_menu.prompt_input()
             elif command == "5":
                 self.llapi.clear()
-                if self.user.is_supervisor() == True:
-                    loc_menu = LocationMenu(self.llapi, self.user)
-                    loc_menu.draw_options()
-                else: print("That option is not available for a employee")
+                loc_menu = LocationMenu(self.llapi, self.user)
+                loc_menu.prompt_input()
             elif command == "q":
                 print("Thanks for using NaN air")
                 return
