@@ -33,10 +33,10 @@ ________________________________________________________________________________
 |_________________________________________________________________________________________________________________|
 """
 
-    def draw_options(self):
-        #prints out menu bar
-        self.print_options()
-        return self.prompt_input()
+    # def draw_options(self):
+    #     #prints out menu bar
+    #     self.print_options()
+    #     return self.prompt_input()
 
     def print_options(self):
         #determines if menu bar should include supervisor options or not
@@ -47,6 +47,7 @@ ________________________________________________________________________________
     
     def prompt_input(self):
         while True:
+            self.print_options()
             command = input("Choose option: ")
             if command == "1":
                 self.list_real.real_printer()

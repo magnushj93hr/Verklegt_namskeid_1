@@ -1,13 +1,13 @@
 import datetime
 from models.Case import Case
-from ui_layer.Cases.search_case import SearchCasae
+from ui_layer.Cases.search_case import SearchCase
 
 CASE = 'CAS-'
 
 class ListAllCases:
-    def __init__(self, llapi):
+    def __init__(self, llapi, user):
         self.llapi = llapi
-        self.search_case = SearchCasae(llapi)
+        self.search_case = SearchCase(llapi, user)
         self.filter_options = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -30,6 +30,7 @@ ________________________________________________________________________________
             option = input("Do you want to filter by status(y/n): ")
             if option == "y":
                 self.prompt_input_filter()
+                return
             elif option == "n":
                 return
             else:

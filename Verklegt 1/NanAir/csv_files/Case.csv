@@ -1,1 +1,4 @@
 id,location,subject,description,priority,repeated,repeat_days,real_est_id,emp_id,date,status,closed_date
+CAS-1,Longyearbyen,Laga potta,þarf að laga potta,low,n,0,5003,NaN-14,10/12/2021,Closed,10/12/2021
+CAS-2,Longyearbyen,Laga ofn,ofninn er bilaður,medium,n,0,5002,NaN-14,10/12/2021,Ready to close,
+CAS-3,Longyearbyen,Laga vaskinn,vaskurinn lekur,low,n,0,5004,NaN-14,10/12/2021,Open,

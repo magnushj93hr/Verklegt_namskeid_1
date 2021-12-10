@@ -1,11 +1,11 @@
-from ui_layer.Cases.search_case import SearchCasae
+from ui_layer.Cases.search_case import SearchCase
 from ui_layer.Cases.list_all_cases import ListAllCases
 
 class CaseMenu:
-    def __init__(self, llapi):
+    def __init__(self, llapi, user):
         self.llapi = llapi
-        self.search_case = SearchCasae(llapi)
-        self.list_all_cases = ListAllCases(llapi)
+        self.search_case = SearchCase(llapi, user)
+        self.list_all_cases = ListAllCases(llapi, user)
         self.options = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 

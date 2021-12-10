@@ -1,14 +1,15 @@
 from models.MaintananceReport import MaintananceReport
 
 class CreateReport:
-    def __init__(self, llapi):
+    def __init__(self, llapi, user):
         self.llapi = llapi
+        self.user = user
 
 
     def create_maintenance_report(self, case):
         real_estate_id = case.real_est_id
         tasks_done = input("Enter what you did: ")
-        employee_id = input("Enter your employee id: ")
+        employee_id = self.user.user_id
         case_id = case.id
         cost_of_materials = int(input("Enter cost of materials: "))
         used_contractor = input('Did you use a contractor(y/n)?: ')

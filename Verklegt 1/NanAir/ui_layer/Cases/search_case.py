@@ -1,9 +1,9 @@
 from ui_layer.Cases.create_report import CreateReport
 
-class SearchCasae:
-    def __init__(self, llapi):
+class SearchCase:
+    def __init__(self, llapi, user):
         self.llapi = llapi
-        self.report = CreateReport(llapi)
+        self.report = CreateReport(llapi, user)
         self.options = """
       __|__                                                                                             __|__
 *---o--(_)--o---*                                                                                 *---o--(_)--o---* 
@@ -80,11 +80,11 @@ ________________________________________________________________________________
 |       Home        Employee          Real estate         >Cases<           Contractor           Location         |
 |_________________________________________________________________________________________________________________|
 |                                                                                                                 |
-|      Case: {case.id:28s}Created by: {case.emp_id:31}Total cost: {self.get_total_cost(reports):<18d}|
+|      Case: {case.id:28s}Created by: {case.emp_id:31}Total cost: {self.get_total_cost(reports):<18s}|
 |                                                                                                                 |
 |          Real estate ID: {case.real_est_id:87s}|
 |                Location: {case.location:87s}|
-|                 Subject: {case.id:87s}|
+|                 Subject: {case.subject:87s}|
 |             Description: {case.description:87s}|
 |                Priority: {case.priority:87s}|
 |                Repeated: {case.repeated:87s}|
@@ -112,7 +112,7 @@ ________________________________________________________________________________
 |             Employee ID: {report.employee_id:87s}|
 |           Material cost: {report.material_cost:87s}|
 |              Contractor: {report.contractor:87s}|
-|         Contractor cost: {report.contractor_cost:87d}|
+|         Contractor cost: {report.contractor_cost:87s}|
 |             Description: {report.description:87s}|
 |_________________________________________________________________________________________________________________|"""
         
@@ -123,7 +123,7 @@ ________________________________________________________________________________
         if len(reports) != 0:
             last_report = reports[-1]
             return last_report.total_cost
-        return 0
+        return "0"
 
 
     def printing_cases(self, case_list):
@@ -179,6 +179,7 @@ ________________________________________________________________________________
                 option = input("Do you want to create maintenance report(y/n): ")
                 if option =="y":
                     self.report.create_maintenance_report(case)
+                    return
                 elif option == "n":
                     return
                 else:
